@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
+		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
+		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
+		A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E50296A9DDD008DD3FA /* AuthManager.swift */; };
+		A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */; };
+		A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */; };
+		A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E32969C7310055B5D2 /* HomeVC.swift */; };
+		A2E2A8E72969C7310055B5D2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A8E52969C7310055B5D2 /* Home.storyboard */; };
+		A2E2A8E92969C7330055B5D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A8E82969C7330055B5D2 /* Assets.xcassets */; };
+		A2E2A8EC2969C7330055B5D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A8EA2969C7330055B5D2 /* LaunchScreen.storyboard */; };
+		A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8F82969C8FB0055B5D2 /* SampleVC.swift */; };
+		A2E2A8FE2969CB0A0055B5D2 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */; };
+		A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */; };
+		A2E2A9032969CBEC0055B5D2 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A9022969CBEC0055B5D2 /* Notification.storyboard */; };
+		A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9042969CBFE0055B5D2 /* NotificationVC.swift */; };
+		A2E2A9082969CC7D0055B5D2 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A9072969CC7D0055B5D2 /* Search.storyboard */; };
+		A2E2A90A2969CCA90055B5D2 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9092969CCA90055B5D2 /* SearchVC.swift */; };
+		A2E2A90D2969CD0D0055B5D2 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A90C2969CD0D0055B5D2 /* Chat.storyboard */; };
+		A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */; };
+		A2E2A9122969CD480055B5D2 /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A9112969CD480055B5D2 /* Mypage.storyboard */; };
+		A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */; };
+		A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9162969D13C0055B5D2 /* Alamofire */; };
+		A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9192969D16E0055B5D2 /* Toast */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		A2D08E50296A9DDD008DD3FA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A2E2A8DC2969C7310055B5D2 /* wowmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A2E2A8E32969C7310055B5D2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A2E2A8E62969C7310055B5D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		A2E2A8E82969C7330055B5D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2E2A8EB2969C7330055B5D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2E2A8ED2969C7330055B5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2E2A8F82969C8FB0055B5D2 /* SampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleVC.swift; sourceTree = "<group>"; };
+		A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		A2E2A9022969CBEC0055B5D2 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		A2E2A9042969CBFE0055B5D2 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		A2E2A9072969CC7D0055B5D2 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		A2E2A9092969CCA90055B5D2 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		A2E2A90C2969CD0D0055B5D2 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
+		A2E2A9112969CD480055B5D2 /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
+		A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
+		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
+		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2E2A8D92969C7310055B5D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */,
+				A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */,
+				7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C2B4A4683F5D787D40E6058 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75A6D48EAB12CD6995DC28E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */,
+				C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A2D08E49296A9B2F008DD3FA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A2D08E4A296A9B4C008DD3FA /* Model */,
+				A2D08E4D296A9C56008DD3FA /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A2D08E4A296A9B4C008DD3FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A2D08E4B296A9B58008DD3FA /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A2D08E4D296A9C56008DD3FA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A2D08E4E296A9C8A008DD3FA /* Router.swift */,
+				A2D08E50296A9DDD008DD3FA /* AuthManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A2E2A8D32969C7310055B5D2 = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8DE2969C7310055B5D2 /* wowmate */,
+				A2E2A8DD2969C7310055B5D2 /* Products */,
+				75A6D48EAB12CD6995DC28E2 /* Pods */,
+				1C2B4A4683F5D787D40E6058 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A2E2A8DD2969C7310055B5D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8DC2969C7310055B5D2 /* wowmate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2E2A8DE2969C7310055B5D2 /* wowmate */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8F32969C73B0055B5D2 /* App */,
+				A2E2A8F42969C83E0055B5D2 /* Global */,
+				A2E2A8ED2969C7330055B5D2 /* Info.plist */,
+				A2D08E49296A9B2F008DD3FA /* Data */,
+				A2E2A8FA2969CA450055B5D2 /* Scenes */,
+			);
+			path = wowmate;
+			sourceTree = "<group>";
+		};
+		A2E2A8F32969C73B0055B5D2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */,
+				A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A2E2A8F42969C83E0055B5D2 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8F72969C8D80055B5D2 /* Templates */,
+				A2E2A8F52969C8580055B5D2 /* Resources */,
+				A2E2A8F62969C8680055B5D2 /* SupportingFiles */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		A2E2A8F52969C8580055B5D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8E82969C7330055B5D2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A2E2A8F62969C8680055B5D2 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8EA2969C7330055B5D2 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A2E2A8F72969C8D80055B5D2 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8F82969C8FB0055B5D2 /* SampleVC.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		A2E2A8FA2969CA450055B5D2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8FC2969CAFE0055B5D2 /* Auth */,
+				A2E2A8FB2969CA770055B5D2 /* Home */,
+				A2E2A9012969CBD00055B5D2 /* Notification */,
+				A2E2A9062969CC750055B5D2 /* Search */,
+				A2E2A90B2969CCFD0055B5D2 /* Chat */,
+				A2E2A9102969CD3E0055B5D2 /* Mypage */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A2E2A8FB2969CA770055B5D2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8E52969C7310055B5D2 /* Home.storyboard */,
+				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A2E2A8FC2969CAFE0055B5D2 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */,
+				A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A2E2A9012969CBD00055B5D2 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A9022969CBEC0055B5D2 /* Notification.storyboard */,
+				A2E2A9042969CBFE0055B5D2 /* NotificationVC.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		A2E2A9062969CC750055B5D2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A9072969CC7D0055B5D2 /* Search.storyboard */,
+				A2E2A9092969CCA90055B5D2 /* SearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		A2E2A90B2969CCFD0055B5D2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A90C2969CD0D0055B5D2 /* Chat.storyboard */,
+				A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		A2E2A9102969CD3E0055B5D2 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				A2E2A9112969CD480055B5D2 /* Mypage.storyboard */,
+				A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2E2A8DB2969C7310055B5D2 /* wowmate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2E2A8F02969C7330055B5D2 /* Build configuration list for PBXNativeTarget "wowmate" */;
+			buildPhases = (
+				2E84D6F5CAB162C8947A6FDD /* [CP] Check Pods Manifest.lock */,
+				A2E2A8D82969C7310055B5D2 /* Sources */,
+				A2E2A8D92969C7310055B5D2 /* Frameworks */,
+				A2E2A8DA2969C7310055B5D2 /* Resources */,
+				25E5CB7D9E17AE28064A6AF8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wowmate;
+			packageProductDependencies = (
+				A2E2A9162969D13C0055B5D2 /* Alamofire */,
+				A2E2A9192969D16E0055B5D2 /* Toast */,
+			);
+			productName = wowmate;
+			productReference = A2E2A8DC2969C7310055B5D2 /* wowmate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2E2A8D42969C7310055B5D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					A2E2A8DB2969C7310055B5D2 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = A2E2A8D72969C7310055B5D2 /* Build configuration list for PBXProject "wowmate" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2E2A8D32969C7310055B5D2;
+			packageReferences = (
+				A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
+			productRefGroup = A2E2A8DD2969C7310055B5D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2E2A8DB2969C7310055B5D2 /* wowmate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2E2A8DA2969C7310055B5D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2E2A90D2969CD0D0055B5D2 /* Chat.storyboard in Resources */,
+				A2E2A8FE2969CB0A0055B5D2 /* Auth.storyboard in Resources */,
+				A2E2A8EC2969C7330055B5D2 /* LaunchScreen.storyboard in Resources */,
+				A2E2A9122969CD480055B5D2 /* Mypage.storyboard in Resources */,
+				A2E2A8E92969C7330055B5D2 /* Assets.xcassets in Resources */,
+				A2E2A8E72969C7310055B5D2 /* Home.storyboard in Resources */,
+				A2E2A9082969CC7D0055B5D2 /* Search.storyboard in Resources */,
+				A2E2A9032969CBEC0055B5D2 /* Notification.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25E5CB7D9E17AE28064A6AF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wowmate/Pods-wowmate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wowmate/Pods-wowmate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wowmate/Pods-wowmate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E84D6F5CAB162C8947A6FDD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wowmate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2E2A8D82969C7310055B5D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */,
+				A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */,
+				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
+				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
+				A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */,
+				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
+				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
+				A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */,
+				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
+				A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */,
+				A2D08E4C296A9B58008DD3FA /* User.swift in Sources */,
+				A2E2A90A2969CCA90055B5D2 /* SearchVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A2E2A8E52969C7310055B5D2 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2E2A8E62969C7310055B5D2 /* Base */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
+		A2E2A8EA2969C7330055B5D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2E2A8EB2969C7330055B5D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2E2A8EE2969C7330055B5D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2E2A8EF2969C7330055B5D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2E2A8F12969C7330055B5D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F7B353LPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wowmate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimdee.wowmate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A2E2A8F22969C7330055B5D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F7B353LPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wowmate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimdee.wowmate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2E2A8D72969C7310055B5D2 /* Build configuration list for PBXProject "wowmate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2E2A8EE2969C7330055B5D2 /* Debug */,
+				A2E2A8EF2969C7330055B5D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2E2A8F02969C7330055B5D2 /* Build configuration list for PBXNativeTarget "wowmate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2E2A8F12969C7330055B5D2 /* Debug */,
+				A2E2A8F22969C7330055B5D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A2E2A9162969D13C0055B5D2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A2E2A9192969D16E0055B5D2 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A2E2A8D42969C7310055B5D2 /* Project object */;
+}
