@@ -11,6 +11,7 @@
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
 		A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E50296A9DDD008DD3FA /* AuthManager.swift */; };
+		A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D660CD297598B4006BE26D /* UIColor+Ext.swift */; };
 		A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */; };
 		A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */; };
 		A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E32969C7310055B5D2 /* HomeVC.swift */; };
@@ -37,6 +38,7 @@
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A2D08E50296A9DDD008DD3FA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		A2D660CD297598B4006BE26D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		A2E2A8DC2969C7310055B5D2 /* wowmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		A2D660CC29759872006BE26D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A2D660CD297598B4006BE26D /* UIColor+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A2E2A8D32969C7310055B5D2 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 		A2E2A8F42969C83E0055B5D2 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				A2D660CC29759872006BE26D /* Extension */,
 				A2E2A8F72969C8D80055B5D2 /* Templates */,
 				A2E2A8F52969C8580055B5D2 /* Resources */,
 				A2E2A8F62969C8680055B5D2 /* SupportingFiles */,
@@ -391,6 +402,7 @@
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
 				A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */,
 				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
+				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */,
 				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
