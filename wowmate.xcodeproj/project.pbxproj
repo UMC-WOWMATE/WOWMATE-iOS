@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
+		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
 		A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E50296A9DDD008DD3FA /* AuthManager.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A2D08E50296A9DDD008DD3FA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		A2E2A8D32969C7310055B5D2 = {
 			isa = PBXGroup;
 			children = (
+				A2AE90782980257A0034D655 /* .gitignore */,
 				A2E2A8DE2969C7310055B5D2 /* wowmate */,
 				A2E2A8DD2969C7310055B5D2 /* Products */,
 				75A6D48EAB12CD6995DC28E2 /* Pods */,
@@ -343,6 +346,7 @@
 				A2E2A8E92969C7330055B5D2 /* Assets.xcassets in Resources */,
 				A2E2A8E72969C7310055B5D2 /* Home.storyboard in Resources */,
 				A2E2A9082969CC7D0055B5D2 /* Search.storyboard in Resources */,
+				A2AE90792980257A0034D655 /* .gitignore in Resources */,
 				A2E2A9032969CBEC0055B5D2 /* Notification.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
