@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
+		A24FB96C298035B5003FBD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96B298035B5003FBD0C /* User.swift */; };
+		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
 		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24FB96B298035B5003FBD0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -95,6 +99,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A24FB96A2980359F003FBD0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A24FB96B298035B5003FBD0C /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A2D08E49296A9B2F008DD3FA /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A2D08E4B296A9B58008DD3FA /* User.swift */,
+				A24FB96D2980370D003FBD0C /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +242,7 @@
 		A2E2A8FC2969CAFE0055B5D2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				A24FB96A2980359F003FBD0C /* Model */,
 				A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */,
 				A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */,
 			);
@@ -406,8 +420,10 @@
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
 				A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */,
 				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
+				A24FB96C298035B5003FBD0C /* User.swift in Sources */,
 				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
+				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */,
 				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
 				A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */,
