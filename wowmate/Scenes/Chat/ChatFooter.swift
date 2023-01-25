@@ -30,7 +30,7 @@ class ChatFooter: UIView {
         button.setDimensions(height: 24, width: 24)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
-        button.tintColor = .systemPink
+        button.tintColor = UIColor(r: 101, g: 81, b: 244)
 
         
         return button
