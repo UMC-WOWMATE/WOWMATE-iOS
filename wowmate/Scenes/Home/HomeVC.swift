@@ -1,28 +1,38 @@
-//
-//  HomeVC.swift
-//  wowmate
-//
-//  Created by Doy Kim on 2023/01/08.
-//
-
 import UIKit
 
-class HomeVC: UIViewController {
-    // MARK: - Properties
-    // 변수 및 상수, IBOutlet
+class HomeVC: UITableViewController {
 
-    // MARK: - Lifecycle
-    // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
     override func viewDidLoad() {
         super.viewDidLoad()
+        configireViewControllers()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"off 3"), style: .plain, target:self , action: nil)
     }
     
-    // MARK: - Actions
-    // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
     
+    // MARK: - HELPERS
+    func configireViewControllers(){
+        view.backgroundColor = .white
     
-    // MARK: - Helpers
-    // 설정, 데이터처리 등 액션 외의 메서드를 정의
+        tableView.rowHeight = 150
+        tableView.separatorStyle = .none
+        tableView.register(MainCell.self, forCellReuseIdentifier: "MainCell")
+        tableView.reloadData()
+    }
+    
+    //MARK: - UIVivewControllerViewDataSourece
+        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        20
+        
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell; return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let matchdetails = MatchCellDetailsVC()
+        self.navigationController?.pushViewController(matchdetails, animated: true)
+    }
+    
+
 
 }
-
