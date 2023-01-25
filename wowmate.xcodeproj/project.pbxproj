@@ -8,8 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
-		A24FB96C298035B5003FBD0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96B298035B5003FBD0C /* User.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
+		A2A39DFA298137F10008BA37 /* SelectSchoolPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF3298137F10008BA37 /* SelectSchoolPopUpVC.swift */; };
+		A2A39DFB298137F10008BA37 /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF4298137F10008BA37 /* JoinVC.swift */; };
+		A2A39DFC298137F10008BA37 /* AgreeTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF5298137F10008BA37 /* AgreeTermsVC.swift */; };
+		A2A39DFD298137F10008BA37 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF6298137F10008BA37 /* JoinViewController.swift */; };
+		A2A39DFE298137F10008BA37 /* InputUserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF7298137F10008BA37 /* InputUserInfoVC.swift */; };
+		A2A39DFF298137F10008BA37 /* FindPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF8298137F10008BA37 /* FindPasswordVC.swift */; };
+		A2A39E00298137F10008BA37 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39DF9298137F10008BA37 /* SchoolTableViewCell.swift */; };
+		A2A39E072981382C0008BA37 /* DetailReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E012981382C0008BA37 /* DetailReplyCell.swift */; };
+		A2A39E082981382C0008BA37 /* DetailReplyReactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E022981382C0008BA37 /* DetailReplyReactionVC.swift */; };
+		A2A39E092981382C0008BA37 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E032981382C0008BA37 /* MainCell.swift */; };
+		A2A39E0A2981382C0008BA37 /* MatchCellDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E042981382C0008BA37 /* MatchCellDetailsVC.swift */; };
+		A2A39E0B2981382C0008BA37 /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E052981382C0008BA37 /* MainTabVC.swift */; };
+		A2A39E0C2981382C0008BA37 /* MatchDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E062981382C0008BA37 /* MatchDetailsVC.swift */; };
+		A2A39E12298138660008BA37 /* MatchInfoPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E0D298138660008BA37 /* MatchInfoPreviewTableViewCell.swift */; };
+		A2A39E13298138660008BA37 /* RecentSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E0E298138660008BA37 /* RecentSearchTableViewCell.swift */; };
+		A2A39E14298138660008BA37 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E0F298138660008BA37 /* SearchResultVC.swift */; };
+		A2A39E15298138660008BA37 /* RecentSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E10298138660008BA37 /* RecentSearchDelegate.swift */; };
+		A2A39E16298138660008BA37 /* MatchInfoPreviewTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E11298138660008BA37 /* MatchInfoPreviewTableViewCell.xib */; };
+		A2A39E1C2981389C0008BA37 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E172981389B0008BA37 /* SectionHeader.swift */; };
+		A2A39E1D2981389C0008BA37 /* MyPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E182981389B0008BA37 /* MyPageHeader.swift */; };
+		A2A39E1E2981389C0008BA37 /* MyWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E192981389B0008BA37 /* MyWritingViewController.swift */; };
+		A2A39E1F2981389C0008BA37 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E1A2981389C0008BA37 /* Extensions.swift */; };
+		A2A39E202981389C0008BA37 /* myPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E1B2981389C0008BA37 /* myPageCell.swift */; };
+		A2A39E27298138BD0008BA37 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E21298138BD0008BA37 /* ChatListCell.swift */; };
+		A2A39E28298138BD0008BA37 /* ChatFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E22298138BD0008BA37 /* ChatFooter.swift */; };
+		A2A39E29298138BD0008BA37 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E23298138BD0008BA37 /* ChatViewController.swift */; };
+		A2A39E2A298138BD0008BA37 /* BubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E24298138BD0008BA37 /* BubbleCell.swift */; };
+		A2A39E2B298138BD0008BA37 /* ChatListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E25298138BD0008BA37 /* ChatListHeader.swift */; };
+		A2A39E2C298138BD0008BA37 /* ChatHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A39E26298138BD0008BA37 /* ChatHeader.swift */; };
 		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
@@ -38,8 +66,36 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24FB96B298035B5003FBD0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A2A39DF3298137F10008BA37 /* SelectSchoolPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchoolPopUpVC.swift; sourceTree = "<group>"; };
+		A2A39DF4298137F10008BA37 /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		A2A39DF5298137F10008BA37 /* AgreeTermsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeTermsVC.swift; sourceTree = "<group>"; };
+		A2A39DF6298137F10008BA37 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		A2A39DF7298137F10008BA37 /* InputUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserInfoVC.swift; sourceTree = "<group>"; };
+		A2A39DF8298137F10008BA37 /* FindPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordVC.swift; sourceTree = "<group>"; };
+		A2A39DF9298137F10008BA37 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
+		A2A39E012981382C0008BA37 /* DetailReplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReplyCell.swift; sourceTree = "<group>"; };
+		A2A39E022981382C0008BA37 /* DetailReplyReactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReplyReactionVC.swift; sourceTree = "<group>"; };
+		A2A39E032981382C0008BA37 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		A2A39E042981382C0008BA37 /* MatchCellDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCellDetailsVC.swift; sourceTree = "<group>"; };
+		A2A39E052981382C0008BA37 /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
+		A2A39E062981382C0008BA37 /* MatchDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsVC.swift; sourceTree = "<group>"; };
+		A2A39E0D298138660008BA37 /* MatchInfoPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchInfoPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		A2A39E0E298138660008BA37 /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
+		A2A39E0F298138660008BA37 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
+		A2A39E10298138660008BA37 /* RecentSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchDelegate.swift; sourceTree = "<group>"; };
+		A2A39E11298138660008BA37 /* MatchInfoPreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchInfoPreviewTableViewCell.xib; sourceTree = "<group>"; };
+		A2A39E172981389B0008BA37 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A2A39E182981389B0008BA37 /* MyPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageHeader.swift; sourceTree = "<group>"; };
+		A2A39E192981389B0008BA37 /* MyWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingViewController.swift; sourceTree = "<group>"; };
+		A2A39E1A2981389C0008BA37 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A2A39E1B2981389C0008BA37 /* myPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPageCell.swift; sourceTree = "<group>"; };
+		A2A39E21298138BD0008BA37 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		A2A39E22298138BD0008BA37 /* ChatFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFooter.swift; sourceTree = "<group>"; };
+		A2A39E23298138BD0008BA37 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A2A39E24298138BD0008BA37 /* BubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCell.swift; sourceTree = "<group>"; };
+		A2A39E25298138BD0008BA37 /* ChatListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListHeader.swift; sourceTree = "<group>"; };
+		A2A39E26298138BD0008BA37 /* ChatHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeader.swift; sourceTree = "<group>"; };
 		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -97,14 +153,6 @@
 				C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		A24FB96A2980359F003FBD0C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A24FB96B298035B5003FBD0C /* User.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A2D08E49296A9B2F008DD3FA /* Data */ = {
@@ -235,6 +283,12 @@
 			children = (
 				A2E2A8E52969C7310055B5D2 /* Home.storyboard */,
 				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
+				A2A39E012981382C0008BA37 /* DetailReplyCell.swift */,
+				A2A39E022981382C0008BA37 /* DetailReplyReactionVC.swift */,
+				A2A39E032981382C0008BA37 /* MainCell.swift */,
+				A2A39E052981382C0008BA37 /* MainTabVC.swift */,
+				A2A39E042981382C0008BA37 /* MatchCellDetailsVC.swift */,
+				A2A39E062981382C0008BA37 /* MatchDetailsVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -242,9 +296,15 @@
 		A2E2A8FC2969CAFE0055B5D2 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A24FB96A2980359F003FBD0C /* Model */,
 				A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */,
 				A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */,
+				A2A39DF5298137F10008BA37 /* AgreeTermsVC.swift */,
+				A2A39DF8298137F10008BA37 /* FindPasswordVC.swift */,
+				A2A39DF7298137F10008BA37 /* InputUserInfoVC.swift */,
+				A2A39DF4298137F10008BA37 /* JoinVC.swift */,
+				A2A39DF6298137F10008BA37 /* JoinViewController.swift */,
+				A2A39DF9298137F10008BA37 /* SchoolTableViewCell.swift */,
+				A2A39DF3298137F10008BA37 /* SelectSchoolPopUpVC.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -263,6 +323,11 @@
 			children = (
 				A2E2A9072969CC7D0055B5D2 /* Search.storyboard */,
 				A2E2A9092969CCA90055B5D2 /* SearchVC.swift */,
+				A2A39E0D298138660008BA37 /* MatchInfoPreviewTableViewCell.swift */,
+				A2A39E11298138660008BA37 /* MatchInfoPreviewTableViewCell.xib */,
+				A2A39E10298138660008BA37 /* RecentSearchDelegate.swift */,
+				A2A39E0E298138660008BA37 /* RecentSearchTableViewCell.swift */,
+				A2A39E0F298138660008BA37 /* SearchResultVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -272,6 +337,12 @@
 			children = (
 				A2E2A90C2969CD0D0055B5D2 /* Chat.storyboard */,
 				A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */,
+				A2A39E24298138BD0008BA37 /* BubbleCell.swift */,
+				A2A39E22298138BD0008BA37 /* ChatFooter.swift */,
+				A2A39E26298138BD0008BA37 /* ChatHeader.swift */,
+				A2A39E21298138BD0008BA37 /* ChatListCell.swift */,
+				A2A39E25298138BD0008BA37 /* ChatListHeader.swift */,
+				A2A39E23298138BD0008BA37 /* ChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -281,6 +352,11 @@
 			children = (
 				A2E2A9112969CD480055B5D2 /* Mypage.storyboard */,
 				A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */,
+				A2A39E1A2981389C0008BA37 /* Extensions.swift */,
+				A2A39E1B2981389C0008BA37 /* myPageCell.swift */,
+				A2A39E182981389B0008BA37 /* MyPageHeader.swift */,
+				A2A39E192981389B0008BA37 /* MyWritingViewController.swift */,
+				A2A39E172981389B0008BA37 /* SectionHeader.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -414,13 +490,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A39E27298138BD0008BA37 /* ChatListCell.swift in Sources */,
+				A2A39E28298138BD0008BA37 /* ChatFooter.swift in Sources */,
+				A2A39E29298138BD0008BA37 /* ChatViewController.swift in Sources */,
+				A2A39E2A298138BD0008BA37 /* BubbleCell.swift in Sources */,
+				A2A39E2B298138BD0008BA37 /* ChatListHeader.swift in Sources */,
+				A2A39E2C298138BD0008BA37 /* ChatHeader.swift in Sources */,
+				A2A39E1C2981389C0008BA37 /* SectionHeader.swift in Sources */,
+				A2A39E1D2981389C0008BA37 /* MyPageHeader.swift in Sources */,
+				A2A39E1E2981389C0008BA37 /* MyWritingViewController.swift in Sources */,
+				A2A39E1F2981389C0008BA37 /* Extensions.swift in Sources */,
+				A2A39E202981389C0008BA37 /* myPageCell.swift in Sources */,
+				A2A39E12298138660008BA37 /* MatchInfoPreviewTableViewCell.swift in Sources */,
+				A2A39E13298138660008BA37 /* RecentSearchTableViewCell.swift in Sources */,
+				A2A39E14298138660008BA37 /* SearchResultVC.swift in Sources */,
+				A2A39E15298138660008BA37 /* RecentSearchDelegate.swift in Sources */,
+				A2A39E16298138660008BA37 /* MatchInfoPreviewTableViewCell.xib in Sources */,
+				A2A39E072981382C0008BA37 /* DetailReplyCell.swift in Sources */,
+				A2A39E082981382C0008BA37 /* DetailReplyReactionVC.swift in Sources */,
+				A2A39E092981382C0008BA37 /* MainCell.swift in Sources */,
+				A2A39E0A2981382C0008BA37 /* MatchCellDetailsVC.swift in Sources */,
+				A2A39E0B2981382C0008BA37 /* MainTabVC.swift in Sources */,
+				A2A39E0C2981382C0008BA37 /* MatchDetailsVC.swift in Sources */,
+				A2A39DFA298137F10008BA37 /* SelectSchoolPopUpVC.swift in Sources */,
+				A2A39DFB298137F10008BA37 /* JoinVC.swift in Sources */,
+				A2A39DFC298137F10008BA37 /* AgreeTermsVC.swift in Sources */,
+				A2A39DFD298137F10008BA37 /* JoinViewController.swift in Sources */,
+				A2A39DFE298137F10008BA37 /* InputUserInfoVC.swift in Sources */,
+				A2A39DFF298137F10008BA37 /* FindPasswordVC.swift in Sources */,
+				A2A39E00298137F10008BA37 /* SchoolTableViewCell.swift in Sources */,
 				A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */,
 				A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */,
 				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
 				A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */,
 				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
-				A24FB96C298035B5003FBD0C /* User.swift in Sources */,
 				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
