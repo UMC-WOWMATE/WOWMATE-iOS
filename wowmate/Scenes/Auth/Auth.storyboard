@@ -69,9 +69,9 @@
                                                     <constraint firstItem="0Ue-RT-bc3" firstAttribute="height" secondItem="kC5-xr-iTZ" secondAttribute="height" id="EKG-Pb-LU1"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-qW-ko3">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-qW-ko3">
                                                 <rect key="frame" x="0.0" y="160.33333333333331" width="333" height="50"/>
-                                                <color key="backgroundColor" name="Main00"/>
+                                                <color key="backgroundColor" name="Main01"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="H63-xf-v7D"/>
                                                 </constraints>
@@ -176,9 +176,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7x-PaY">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7x-PaY">
                                         <rect key="frame" x="0.0" y="81.666666666666657" width="105.66666666666667" height="32"/>
-                                        <color key="backgroundColor" name="Main00"/>
+                                        <color key="backgroundColor" name="Main01"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
@@ -218,9 +218,9 @@
                                     <constraint firstAttribute="trailing" secondItem="t8W-e1-Xf8" secondAttribute="trailing" id="8nU-Sf-Azn"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="56Q-ja-rLd"/>
                                 </constraints>
@@ -520,9 +520,9 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
                                         <rect key="frame" x="0.0" y="175.00000000000003" width="105.66666666666667" height="32"/>
-                                        <color key="backgroundColor" name="Main00"/>
+                                        <color key="backgroundColor" name="Main01"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
@@ -550,9 +550,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
                                                 <rect key="frame" x="268" y="0.0" width="65" height="40"/>
-                                                <color key="backgroundColor" name="Main00"/>
+                                                <color key="backgroundColor" name="Main01"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="EYB-AG-uGe"/>
                                                     <constraint firstAttribute="height" constant="40" id="kXq-BK-Wji"/>
@@ -611,9 +611,9 @@
                                     <constraint firstAttribute="trailing" secondItem="brf-Hk-CJZ" secondAttribute="trailing" id="oJS-k6-WOf"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx9-Zz-djg">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx9-Zz-djg">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uEX-Sr-INg"/>
                                 </constraints>
@@ -676,9 +676,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-7d-084">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-7d-084">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZTW-Bg-44U"/>
                                 </constraints>
@@ -845,9 +845,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhq-PE-g24">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhq-PE-g24">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iux-Zg-EQA"/>
                                 </constraints>
@@ -1000,6 +1000,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Main00">
             <color red="0.396078431372549" green="0.31764705882352939" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Main01">
+            <color red="0.69803921568627447" green="0.6588235294117647" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
