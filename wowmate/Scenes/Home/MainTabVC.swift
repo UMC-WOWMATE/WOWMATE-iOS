@@ -19,7 +19,7 @@ class MainTabVC: UITabBarController {
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
         let Home = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 4"), rootViewController: HomeVC())
-        let Match = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off"), rootViewController: MatchVC())
+        let Match = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off"), rootViewController: UIViewController())
         let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 5"), rootViewController: SearchVC())
         let ChatList = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 2"), rootViewController: ChatListVC())
         let Mypage = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 1"), rootViewController: MypageVC())

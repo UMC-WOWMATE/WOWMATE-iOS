@@ -17,7 +17,7 @@ class AuthManager {
     
     
     func login(id: String, password: String) {
-        AF.request(Router.signup).response { response in
+        AF.request(Router.signup as! URLRequestConvertible).response { response in
             switch response.result {
                 
             case .success(let value):
