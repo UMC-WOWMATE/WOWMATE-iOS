@@ -64,6 +64,7 @@
 		A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */; };
 		A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9162969D13C0055B5D2 /* Alamofire */; };
 		A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9192969D16E0055B5D2 /* Toast */; };
+		A2F90526298827FF00AC588C /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F90525298827FF00AC588C /* Chats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
 		A2E2A9112969CD480055B5D2 /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
 		A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
+		A2F90525298827FF00AC588C /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 			children = (
 				A2D08E4B296A9B58008DD3FA /* User.swift */,
 				A24FB96D2980370D003FBD0C /* Post.swift */,
+				A2F90525298827FF00AC588C /* Chats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
 				A2D28F6329852B9500A7D4EC /* RecentSearchDelegate.swift in Sources */,
+				A2F90526298827FF00AC588C /* Chats.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
