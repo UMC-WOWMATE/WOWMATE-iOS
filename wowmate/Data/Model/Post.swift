@@ -7,11 +7,18 @@
 
 import Foundation
 
+// MARK: - PostList
+struct PostList: Codable {
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let data1: [Post]
+}
+
+// MARK: - Post
 struct Post: Codable {
-    var postTitle: String
-    var categoryName: String
-    var postTags: [String]
-    var postCreatedDate: Date // LocalDateTime?
-    var postLikeNumber: Int
-    var schoolId: String
+    let postTitle, categoryName, postTag1, postTag2: String
+    let postTag3, postTag4, postTag5: String
+    let postLikeNumber: Int
+    let schoolName, createdBy: String
 }
