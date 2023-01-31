@@ -14,7 +14,7 @@ enum AuthAPI {
 
 extension AuthAPI: TargetType {
     var baseURL: URL {
-        return URL(string: Endpoint.baseURL)!
+        return URL(string: ServiceAPI.baseURL)!
     }
     var path: String {
         switch self {

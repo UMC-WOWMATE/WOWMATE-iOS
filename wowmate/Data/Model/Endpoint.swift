@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Endpoint {
+enum ServiceAPI {
     static let baseURL = ""
 }
