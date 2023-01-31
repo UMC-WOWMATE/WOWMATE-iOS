@@ -67,6 +67,7 @@
 		A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052D29895B8900AC588C /* Endpoint.swift */; };
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
 		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
+		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		A2F9052D29895B8900AC588C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = wowmate/Data/Model/Endpoint.swift; sourceTree = SOURCE_ROOT; };
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
+		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -380,6 +382,7 @@
 				A2F9052B29895B7000AC588C /* AuthAPI.swift */,
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
 				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
+				A2F905332989616700AC588C /* PostManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				A2D28F6E29852BA400A7D4EC /* myPageCell.swift in Sources */,
 				A2D28F5B29852B2D00A7D4EC /* MainCell.swift in Sources */,
 				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
+				A2F905342989616700AC588C /* PostManager.swift in Sources */,
 				A2D28F7829852BB100A7D4EC /* ChatListCell.swift in Sources */,
 				A2D28F4E29852B1B00A7D4EC /* FindPasswordVC.swift in Sources */,
 				A2D28F6D29852BA400A7D4EC /* MyWritingViewController.swift in Sources */,
