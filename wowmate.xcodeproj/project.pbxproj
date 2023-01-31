@@ -66,6 +66,7 @@
 		A2F9052C29895B7000AC588C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052B29895B7000AC588C /* AuthAPI.swift */; };
 		A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052D29895B8900AC588C /* Endpoint.swift */; };
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
+		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		A2F9052B29895B7000AC588C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthAPI.swift; path = wowmate/Data/Model/AuthAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9052D29895B8900AC588C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = wowmate/Data/Model/Endpoint.swift; sourceTree = SOURCE_ROOT; };
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
+		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -374,9 +376,10 @@
 		A2F9052A29895B1A00AC588C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A2F9052B29895B7000AC588C /* AuthAPI.swift */,
 				A2F9052D29895B8900AC588C /* Endpoint.swift */,
+				A2F9052B29895B7000AC588C /* AuthAPI.swift */,
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
+				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				A2D28F7729852BB100A7D4EC /* ChatViewController.swift in Sources */,
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
+				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
