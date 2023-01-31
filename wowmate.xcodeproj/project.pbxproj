@@ -62,9 +62,9 @@
 		A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */; };
 		A2E2A9122969CD480055B5D2 /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A9112969CD480055B5D2 /* Mypage.storyboard */; };
 		A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */; };
-		A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9162969D13C0055B5D2 /* Alamofire */; };
 		A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9192969D16E0055B5D2 /* Toast */; };
 		A2F90526298827FF00AC588C /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F90525298827FF00AC588C /* Chats.swift */; };
+		A2F9052929895AE300AC588C /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = A2F9052829895AE300AC588C /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,8 +136,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */,
-				A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */,
 				7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */,
+				A2F9052929895AE300AC588C /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,8 +397,8 @@
 			);
 			name = wowmate;
 			packageProductDependencies = (
-				A2E2A9162969D13C0055B5D2 /* Alamofire */,
 				A2E2A9192969D16E0055B5D2 /* Toast */,
+				A2F9052829895AE300AC588C /* Moya */,
 			);
 			productName = wowmate;
 			productReference = A2E2A8DC2969C7310055B5D2 /* wowmate.app */;
@@ -429,8 +429,8 @@
 			);
 			mainGroup = A2E2A8D32969C7310055B5D2;
 			packageReferences = (
-				A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = A2E2A8DD2969C7310055B5D2 /* Products */;
 			projectDirPath = "";
@@ -784,14 +784,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
 		A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -800,18 +792,26 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = exactVersion;
+				version = 15.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A2E2A9162969D13C0055B5D2 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		A2E2A9192969D16E0055B5D2 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		A2F9052829895AE300AC588C /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
