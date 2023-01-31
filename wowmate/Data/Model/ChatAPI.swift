@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import MOya
+import Moya
 
 enum ChatAPI {
     case chats

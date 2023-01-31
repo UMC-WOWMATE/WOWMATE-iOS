@@ -43,7 +43,7 @@ extension AuthAPI: TargetType {
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
             
         default:
-            let params: [String: Any] = []
+            let params: [String: Any] = [:]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
         }
