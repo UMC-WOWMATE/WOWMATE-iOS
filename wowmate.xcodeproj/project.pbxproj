@@ -11,8 +11,6 @@
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
 		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
-		A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4E296A9C8A008DD3FA /* Router.swift */; };
-		A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E50296A9DDD008DD3FA /* AuthManager.swift */; };
 		A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4329852B1B00A7D4EC /* JoinVC.swift */; };
 		A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */; };
 		A2D28F4C29852B1B00A7D4EC /* AgreeTermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4529852B1B00A7D4EC /* AgreeTermsVC.swift */; };
@@ -62,9 +60,14 @@
 		A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A90E2969CD240055B5D2 /* ChatListVC.swift */; };
 		A2E2A9122969CD480055B5D2 /* Mypage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2A9112969CD480055B5D2 /* Mypage.storyboard */; };
 		A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */; };
-		A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9162969D13C0055B5D2 /* Alamofire */; };
 		A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A2E2A9192969D16E0055B5D2 /* Toast */; };
 		A2F90526298827FF00AC588C /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F90525298827FF00AC588C /* Chats.swift */; };
+		A2F9052929895AE300AC588C /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = A2F9052829895AE300AC588C /* Moya */; };
+		A2F9052C29895B7000AC588C /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052B29895B7000AC588C /* AuthAPI.swift */; };
+		A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052D29895B8900AC588C /* Endpoint.swift */; };
+		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
+		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
+		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +75,6 @@
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A2D08E4E296A9C8A008DD3FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		A2D08E50296A9DDD008DD3FA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		A2D28F4329852B1B00A7D4EC /* JoinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
 		A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		A2D28F4529852B1B00A7D4EC /* AgreeTermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreeTermsVC.swift; sourceTree = "<group>"; };
@@ -126,6 +127,11 @@
 		A2E2A9112969CD480055B5D2 /* Mypage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mypage.storyboard; sourceTree = "<group>"; };
 		A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageVC.swift; sourceTree = "<group>"; };
 		A2F90525298827FF00AC588C /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
+		A2F9052B29895B7000AC588C /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthAPI.swift; path = wowmate/Data/Model/AuthAPI.swift; sourceTree = SOURCE_ROOT; };
+		A2F9052D29895B8900AC588C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = wowmate/Data/Model/Endpoint.swift; sourceTree = SOURCE_ROOT; };
+		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
+		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
+		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E2A91A2969D16E0055B5D2 /* Toast in Frameworks */,
-				A2E2A9172969D13C0055B5D2 /* Alamofire in Frameworks */,
 				7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */,
+				A2F9052929895AE300AC588C /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +170,8 @@
 		A2D08E49296A9B2F008DD3FA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A2F9052A29895B1A00AC588C /* Network */,
 				A2D08E4A296A9B4C008DD3FA /* Model */,
-				A2D08E4D296A9C56008DD3FA /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -178,15 +184,6 @@
 				A2F90525298827FF00AC588C /* Chats.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A2D08E4D296A9C56008DD3FA /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				A2D08E4E296A9C8A008DD3FA /* Router.swift */,
-				A2D08E50296A9DDD008DD3FA /* AuthManager.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		A2D28F7D29852E6800A7D4EC /* Util */ = {
@@ -378,6 +375,18 @@
 			path = Mypage;
 			sourceTree = "<group>";
 		};
+		A2F9052A29895B1A00AC588C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A2F9052D29895B8900AC588C /* Endpoint.swift */,
+				A2F9052B29895B7000AC588C /* AuthAPI.swift */,
+				A2F9052F29895D9400AC588C /* PostAPI.swift */,
+				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
+				A2F905332989616700AC588C /* PostManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -397,8 +406,8 @@
 			);
 			name = wowmate;
 			packageProductDependencies = (
-				A2E2A9162969D13C0055B5D2 /* Alamofire */,
 				A2E2A9192969D16E0055B5D2 /* Toast */,
+				A2F9052829895AE300AC588C /* Moya */,
 			);
 			productName = wowmate;
 			productReference = A2E2A8DC2969C7310055B5D2 /* wowmate.app */;
@@ -429,8 +438,8 @@
 			);
 			mainGroup = A2E2A8D32969C7310055B5D2;
 			packageReferences = (
-				A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = A2E2A8DD2969C7310055B5D2 /* Products */;
 			projectDirPath = "";
@@ -511,9 +520,7 @@
 				A2D28F81298650E400A7D4EC /* setColor.swift in Sources */,
 				A2D28F4F29852B1B00A7D4EC /* InputUserInfoVC.swift in Sources */,
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
-				A2D08E4F296A9C8A008DD3FA /* Router.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
-				A2D08E51296A9DDD008DD3FA /* AuthManager.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
 				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
 				A2D28F4C29852B1B00A7D4EC /* AgreeTermsVC.swift in Sources */,
@@ -534,9 +541,12 @@
 				A2D28F7C29852BB100A7D4EC /* ChatHeader.swift in Sources */,
 				A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */,
 				A2D28F7B29852BB100A7D4EC /* BubbleCell.swift in Sources */,
+				A2F9052C29895B7000AC588C /* AuthAPI.swift in Sources */,
+				A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */,
 				A2D28F6E29852BA400A7D4EC /* myPageCell.swift in Sources */,
 				A2D28F5B29852B2D00A7D4EC /* MainCell.swift in Sources */,
 				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
+				A2F905342989616700AC588C /* PostManager.swift in Sources */,
 				A2D28F7829852BB100A7D4EC /* ChatListCell.swift in Sources */,
 				A2D28F4E29852B1B00A7D4EC /* FindPasswordVC.swift in Sources */,
 				A2D28F6D29852BA400A7D4EC /* MyWritingViewController.swift in Sources */,
@@ -549,7 +559,9 @@
 				A2D28F7729852BB100A7D4EC /* ChatViewController.swift in Sources */,
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
+				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
+				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
 				A2D28F6329852B9500A7D4EC /* RecentSearchDelegate.swift in Sources */,
 				A2F90526298827FF00AC588C /* Chats.swift in Sources */,
@@ -784,14 +796,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
 		A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -800,18 +804,26 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = exactVersion;
+				version = 15.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A2E2A9162969D13C0055B5D2 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A2E2A9152969D13C0055B5D2 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		A2E2A9192969D16E0055B5D2 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A2E2A9182969D16E0055B5D2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		A2F9052829895AE300AC588C /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F9052729895AE200AC588C /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
