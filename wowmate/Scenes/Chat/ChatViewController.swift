@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 private let cellID = "BubbleCell"
 
@@ -13,18 +14,33 @@ class ChatViewController: UIViewController {
     
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
-    var navTitle:String = "매칭 제목"
     
-    let distributionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "눈누 실패~"
-        label.textColor = .red
-        
-        return label
-    }()
+    var maxWidth = UIScreen.main.bounds.size.width
+    
+    var navTitle:String = "매칭 제목"
+    var profImage:String = ""
+    lazy var headerTitle:String = self.navTitle
+    var headerCate:String = "카테고리"
+    var headerChatMade:String = "채팅 생성일 20NN.NN.NN"
     
     let chatTableView = UITableView()
     
+    // navigation bar의 right item
+    let menuImage: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.image = UIImage(systemName: "ellipsis")
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        
+        // 이미지 색 바꾸기
+        //imageView.tintColor = UIColor.init(red: 101, green: 81, blue: 224, alpha: 1)
+        imageView.tintColor = .black
+        
+        imageView.contentMode = .scaleToFill
+        imageView.setDimensions(height: 19.5, width: 19.5)
+        
+        return imageView
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,6 +49,7 @@ class ChatViewController: UIViewController {
         configureUI()
         setNC()
         setTB()
+        addShowMenuGesture()
     }
     
     // MARK: - Actions
@@ -44,48 +61,53 @@ class ChatViewController: UIViewController {
     // UI 관련 함수
     
     func configureUI() {
+        
         view.backgroundColor = .white
         
         chatTableView.register(BubbleCell.self, forCellReuseIdentifier: cellID)
         chatTableView.delegate = self
         chatTableView.dataSource = self
         chatTableView.separatorStyle = .none
-        chatTableView.tableHeaderView = ChatHeader(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: 80))
-        chatTableView.tableHeaderView?.layer.borderWidth = 0.3
-        chatTableView.tableHeaderView?.layer.borderColor = UIColor.lightGray.cgColor
+        
+        setHeader()
         
         view.addSubview(chatTableView)
 
         chatTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        
+    }
     
+    func setHeader() {
+        
+        let headerView:UIView = {
+            let view = ChatHeader(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: 80))
+            
+            let url = URL(string: profImage)
+            view.profileImage.load(url: url!)
+            
+            view.titleLabel.text = headerTitle
+            view.cateLabel.text = headerCate
+            view.chatMadeDateLabel.text = headerChatMade
+            
+            return view
+            
+        }()
+        
+        chatTableView.tableHeaderView = headerView
+        chatTableView.tableHeaderView?.layer.borderWidth = 0.5
+        chatTableView.tableHeaderView?.layer.borderColor = UIColor.WM.gray_400.cgColor
+        
     }
     
     func setNC() {
+        
         self.navigationItem.title = navTitle
         
         // toggle
         // right bar item
         let rightCustomView = UIView(frame: CGRect(x: 0, y: 0, width: 19.5, height: 19.5))
         
-        let bellImage: UIImageView = {
-            let imageView = UIImageView()
-            
-            imageView.image = UIImage(systemName: "ellipsis")
-            imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-            
-            // 이미지 색 바꾸기
-            //imageView.tintColor = UIColor.init(red: 101, green: 81, blue: 224, alpha: 1)
-            imageView.tintColor = .black
-            
-            imageView.contentMode = .scaleToFill
-            imageView.setDimensions(height: 19.5, width: 19.5)
-            
-            return imageView
-        }()
-        
-        rightCustomView.addSubview(bellImage)
-        bellImage.translatesAutoresizingMaskIntoConstraints = false
+        rightCustomView.addSubview(menuImage)
+        menuImage.translatesAutoresizingMaskIntoConstraints = false
         
         let rightBarItem = UIBarButtonItem(customView: rightCustomView)
         self.navigationItem.rightBarButtonItem = rightBarItem
@@ -98,6 +120,16 @@ class ChatViewController: UIViewController {
         
         self.toolbarItems = [footView]
     }
+    
+    func addShowMenuGesture() {
+        let showMenuGesture = UITapGestureRecognizer(target: self, action: #selector(showMenu))
+        self.menuImage.addGestureRecognizer(showMenuGesture)
+        
+    }
+    
+    @objc func showMenu() {
+        print("신고")
+    }
 
 }
 
@@ -105,18 +137,21 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BubbleCell
-        
+        cell.maxWidth = self.maxWidth
         return cell
     }
     
     
 }
 extension ChatViewController:UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
+    }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

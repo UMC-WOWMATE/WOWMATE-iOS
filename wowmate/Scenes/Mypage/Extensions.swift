@@ -100,3 +100,14 @@ extension UIImageView {
         }
     }
 }
+
+func lineDraw(viewLi:UIView)
+    {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor(red: 197/255, green: 197/255, blue: 197/255, alpha: 1.0).cgColor
+        border.frame = CGRect(x: 0, y: viewLi.frame.size.height - width, width:  viewLi.frame.size.width, height: viewLi.frame.size.height)
+        border.borderWidth = width
+        viewLi.layer.addSublayer(border)
+        viewLi.layer.masksToBounds = true
+    }

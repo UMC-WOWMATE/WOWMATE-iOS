@@ -12,6 +12,7 @@ class MyPageHeader: UIView {
     // 변수 및 상수, IBOutlet
     
     let imageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC_Varq6a2k-TR670RYQkEfHPGgRYXArbGuw&usqp=CAU"
+    let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -38,7 +39,7 @@ class MyPageHeader: UIView {
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         
-        let url = URL(string: imageUrl)
+        let url = URL(string: SookImageUrl)
         imageView.load(url: url!)
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
@@ -90,7 +91,7 @@ class MyPageHeader: UIView {
     var signUpDateLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "가입일: 2023년00월00일"
+        label.text = "가입일: 2023년01월10일"
         label.font = .systemFont(ofSize: 13)
         label.textColor = .systemGray
         return label

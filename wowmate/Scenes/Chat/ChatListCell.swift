@@ -25,7 +25,7 @@ class ChatListCell: UITableViewCell {
         imageView.layer.cornerRadius = (56 / 2)
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.3
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.borderColor = UIColor.WM.gray_300.cgColor
         
         return imageView
     }()
@@ -34,7 +34,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.text = "매칭 제목"
         label.font = .boldSystemFont(ofSize: 18)
-        label.textColor = .black
+        label.textColor = UIColor.WM.black
         
         return label
     }()
@@ -43,20 +43,21 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.text = "최근 대화 내용"
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .lightGray
+        label.textColor = UIColor.WM.gray_500
         
         return label
     }()
     
     lazy var vStackView1: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.recentChatLabel])
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.spacing = 12
         
-        stackView.setDimensions(height: 45, width: 150)
+        stackView.setDimensions(height: 45, width: 170)
         
         return stackView
     }()
@@ -65,7 +66,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.text = "오후 00:00"
         label.font = .systemFont(ofSize: 11)
-        label.textColor = .lightGray
+        label.textColor = UIColor.WM.gray_500
         
         return label
     }()
@@ -77,7 +78,7 @@ class ChatListCell: UITableViewCell {
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
         // 이미지 색 바꾸기
-        //imageView.tintColor = UIColor(r: 101, g: 81, b: 244)
+        imageView.tintColor = UIColor.WM.main
 
         
         imageView.contentMode = .scaleToFill
@@ -135,8 +136,8 @@ class ChatListCell: UITableViewCell {
     
     func configureUI() {
         
-        self.layer.borderWidth = 0.3
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.25
+        self.layer.borderColor = UIColor.WM.gray_400.cgColor
         
         addSubview(profileImage)
         addSubview(vStackView1)
@@ -153,16 +154,5 @@ class ChatListCell: UITableViewCell {
         vStackView2.centerY(inView: self)
         
     }
-    
-    func lineDraw(viewLi:UIView)
-        {
-            let border = CALayer()
-            let width = CGFloat(1.0)
-            border.borderColor = UIColor(red: 197/255, green: 197/255, blue: 197/255, alpha: 1.0).cgColor
-            border.frame = CGRect(x: 0, y: viewLi.frame.size.height - width, width:  viewLi.frame.size.width, height: viewLi.frame.size.height)
-            border.borderWidth = width
-            viewLi.layer.addSublayer(border)
-            viewLi.layer.masksToBounds = true
-        }
     
 }
