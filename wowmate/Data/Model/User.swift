@@ -7,17 +7,30 @@
 
 import Foundation
 
-/// 모델 예시. 개발상황에 따라 변경될 수 있습니다.
-class User: Codable {
-    var schoolEmail: String
-    var id: String
+/// 회원가입
+struct Signup: Codable {
+    var name: String
+    var phoneNumber: String
+    var birth: Date
+    var gender: Date
+    var email: String
+    var school: String
     var password: String
     
-    init(schoolEmail: String, id: String, password: String) {
-        
-        self.schoolEmail = schoolEmail
-        self.id = id
+    init(name: String, phoneNumber: String, birth: Date, gender: Date, email: String, school: String, password: String) {
+        self.name = name
+        self.phoneNumber = phoneNumber
+        self.birth = birth
+        self.gender = gender
+        self.email = email
+        self.school = school
         self.password = password
     }
+}
+
+/// 로그인
+struct Login: Codable {
+    var email: String
+    var password: String
 }
 

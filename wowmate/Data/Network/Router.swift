@@ -10,7 +10,7 @@ import Alamofire
 
 // URL Router 예시. 추후 개발상황에 따라 변경예정
 enum Router: URLRequestConvertible {
-    case login, signup, matchlist, withdraw
+    case login(user: Login), signup(user: Signup), matchlist, withdraw
     
     var baseURL: URL {
         return URL(string: "")!
@@ -34,10 +34,59 @@ enum Router: URLRequestConvertible {
         }
     }
     
+    var header: HTTPHeaders {
+        switch self {
+        case .login:
+            return [:]
+        case .signup:
+            return [:]
+        default:
+            return [:]
+        }
+    }
+    
+    private var parameters: Parameters? {
+        switch self {
+        case .login(let user):
+            return [
+             "email": user.email,
+             "password": user.password
+            ]
+        case .signup(let user):
+            return [
+                "email": user.email,
+                "password": user.password,
+                "name": user.name,
+                "birth": user.birth,
+                "gender": user.gender,
+                "phoneNumber": user.phoneNumber,
+                "school": user.school
+            ]
+        case .matchlist:
+            return nil
+        case .withdraw:
+            return nil
+        default:
+            return nil
+        }
+    }
+    
+    var encoding: ParameterEncoding {
+        switch self {
+        default:
+            return JSONEncoding.default
+        }
+    }
+    
+    
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         var request = URLRequest(url: url)
         request.method = method
+        // Parameters
+        if let parameters = parameters {
+            return try encoding.encode(request, with: parameters)
+        }
         
         return request
     }
