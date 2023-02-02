@@ -27,6 +27,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLayouts()
+        setUpInputNotification()
     }
     
     // MARK: - Actions
@@ -38,8 +39,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func didTapLoginButton(_ sender: UIButton) {
-        // 입력된 이메일 & 비밀번호 정보를 서버로 전달
-        // 로그인 성공 여부에 따라 HomeVC로 전환하거나, 로그인 실패 Alert 띄우기
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: emailTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: passwordTextField)
+        
+        // TODO: 로그인 성공 여부에 따라 HomeVC로 전환하거나, 로그인 실패 Alert 띄우기 (로그인 성공할 경우에 notification remove observer하도록 수정)
     }
     
     @IBAction func didTapFindPasswordButton(_ sender: UIButton) {
@@ -66,5 +69,34 @@ class LoginVC: UIViewController {
         maintainLoginButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
         loginButton.layer.cornerRadius = 10
     }
+    private func setUpInputNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: emailTextField
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: passwordTextField
+        )
+    }
+    
+    @objc func textDidChanged(_ notification: Notification) {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            if (email.count > 0) && (password.count > 0) {
+                loginButton.backgroundColor = UIColor(named: "Main00")
+                loginButton.isEnabled = true
+            } else {
+                loginButton.backgroundColor = UIColor(named: "Main01")
+                loginButton.isEnabled = false
+            }
+        }
+    }
+    
+    // MARK: functions about data fetch and validate
+    
     
 }
