@@ -26,6 +26,7 @@ class AgreeTermsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLayout()
+        setUpInputNotification()
     }
     
     // MARK: - Actions
@@ -49,7 +50,7 @@ class AgreeTermsVC: UIViewController {
     @IBAction func didTapAgreeTerm2(_ sender: UIButton) { agreeTerm2Button.isSelected = !(agreeTerm2Button.isSelected) }
     
     @IBAction func didTapCompleteJoinButton(_ sender: UIButton) {
-        // 입력한 정보를 서버로 POST 하고, 회원가입 완료 여부를 반환받아 이후 처리 구현할 예정
+        // TODO: 입력한 정보를 서버로 POST 하고, 회원가입 완료 여부를 반환받아 이후 처리 구현할 예정
     }
     
     
@@ -75,6 +76,25 @@ class AgreeTermsVC: UIViewController {
             completeJoinButton
         ].forEach {
             $0?.layer.cornerRadius = 10
+        }
+    }
+    
+    private func setUpInputNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(checkButtonDidChanged(_:)),
+            name: Notification.Name("checkButtonDidChanged"),
+            object: nil
+        )
+    }
+    
+    @objc func checkButtonDidChanged(_ notification: Notification) {
+        if agreeTerm1Button.isSelected && agreeTerm2Button.isSelected {
+            completeJoinButton.backgroundColor = UIColor(named: "Main00")
+            completeJoinButton.isEnabled = true
+        } else {
+            completeJoinButton.backgroundColor = UIColor(named: "Main01")
+            completeJoinButton.isEnabled = false
         }
     }
     
