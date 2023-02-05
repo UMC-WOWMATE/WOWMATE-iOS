@@ -35,6 +35,38 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
             preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { action in
+            //업로드 통신
+            let post = Post_save(postTitle: self.titleTextField.text ?? "제목 없음",
+                                 categoryName: self.List_of_Category[self.categoryPickerView.selectedRow(inComponent: 0)],
+                                 postMember: Int(self.memberTextField.text!) ?? 0,
+                                 tag1: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
+                                 tag2: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
+                                 tag3: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
+                                 tag4: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
+                                 tag5: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
+                                 postContext: self.contextsTextView.text
+//                                 ,
+//                                 image1: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                 image2: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                 image3: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                 image4: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                 image5: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData()
+            )
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
+
+            do {
+                let jsonData = try encoder.encode(post)
+
+                if let jsonStr = String(data: jsonData, encoding: .utf8) {
+                    print(jsonStr)
+                }
+            } catch {
+                print(error)
+            }
+            
+            //업로드 통신
             let alert_done = UIAlertController(
                 title: "등록 완료",
                 message: nil,

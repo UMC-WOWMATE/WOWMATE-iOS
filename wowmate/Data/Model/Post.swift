@@ -22,3 +22,13 @@ struct Post: Codable {
     let postLikeNumber: Int
     let schoolName, createdBy: String
 }
+
+// MARK: - Post_save
+struct Post_save: Codable {
+    let postTitle: String
+    let categoryName: String
+    let postMember: Int
+    let tag1, tag2, tag3, tag4, tag5: String?
+    let postContext: String
+//    let image1, image2, image3, image4, image5: Data
+}
