@@ -22,13 +22,13 @@ class ChatHeader: UIView {
         
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
-        imageView.backgroundColor = UIColor.WM.gray_300
+        imageView.backgroundColor = UIColor.WM.gray300
         imageView.contentMode = .scaleToFill
         imageView.setDimensions(height: 48, width: 48)
         imageView.layer.cornerRadius = (48 / 2)
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.3
-        imageView.layer.borderColor = UIColor.WM.gray_300.cgColor
+        imageView.layer.borderColor = UIColor.WM.gray300.cgColor
         
         return imageView
     }()
@@ -46,7 +46,7 @@ class ChatHeader: UIView {
         let label = UILabel()
         label.text = "카테고리"
         label.font = .body_11L
-        label.textColor = UIColor.WM.gray_500
+        label.textColor = UIColor.WM.gray500
         
         return label
     }()
@@ -68,7 +68,7 @@ class ChatHeader: UIView {
         let label = UILabel()
         label.text = "채팅 생성일 20NN.NN.NN"
         label.font = .body_11L
-        label.textColor = UIColor.WM.gray_500
+        label.textColor = UIColor.WM.gray500
         
         return label
     }()

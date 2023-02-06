@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Autolayout Setting
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
@@ -86,6 +87,8 @@ extension UIViewController {
     }
 }*/
 
+// MARK: - UIImageView
+
 // URL로 이미지 넣기
 extension UIImageView {
     func load(url: URL) {
@@ -101,6 +104,24 @@ extension UIImageView {
     }
 }
 
+// MARK: - UITextField
+
+extension UITextField {
+    
+    func placeholderColor(_ placeholderColor: UIColor) {
+        attributedPlaceholder = NSAttributedString(
+            string: placeholder ?? "",
+            attributes: [
+                .foregroundColor: placeholderColor,
+                .font: font
+            ].compactMapValues { $0 }
+        )
+    }
+    
+}
+
+// MARK: - Others
+
 func lineDraw(viewLi:UIView)
     {
         let border = CALayer()
@@ -111,3 +132,19 @@ func lineDraw(viewLi:UIView)
         viewLi.layer.addSublayer(border)
         viewLi.layer.masksToBounds = true
     }
+
+// 상태 바 변경 코드
+func changeStatusBarBgColor(bgColor: UIColor?) {
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.first
+            let statusBarManager = window?.windowScene?.statusBarManager
+            
+            let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
+            statusBarView.backgroundColor = bgColor
+            
+            window?.addSubview(statusBarView)
+        } else {
+            let statusBarView = UIApplication.shared.value(forKey: "statusBar") as? UIView
+            statusBarView?.backgroundColor = bgColor
+        }
+}

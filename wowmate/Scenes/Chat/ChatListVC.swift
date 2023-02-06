@@ -84,6 +84,9 @@ class ChatListVC: UIViewController {
 
     func configureUI() {
         
+        view.backgroundColor = .white
+        changeStatusBarBgColor(bgColor: UIColor.white)
+        
         chatTableView.register(ChatListCell.self, forCellReuseIdentifier: cellID)
         chatTableView.delegate = self
         chatTableView.dataSource = self
@@ -91,7 +94,6 @@ class ChatListVC: UIViewController {
         
         view.addSubview(chatTableView)
         
-//        chatTableView.tableHeaderView = ChatListHeader(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: 70))
     
         chatTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 60)
     }
@@ -193,7 +195,7 @@ extension ChatListVC: UITableViewDataSource {
         if (chatList[indexPath.row].recentChatRead == "읽음") {
             cell.newMessageImage.tintColor = UIColor.clear
         } else if (chatList[indexPath.row].recentChatRead == "안읽음") {
-            cell.newMessageImage.tintColor = UIColor.WM.main
+            cell.newMessageImage.tintColor = UIColor.WM.main500
         }
         
         return cell

@@ -25,7 +25,7 @@ class ChatListCell: UITableViewCell {
         imageView.layer.cornerRadius = (56 / 2)
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.3
-        imageView.layer.borderColor = UIColor.WM.gray_300.cgColor
+        imageView.layer.borderColor = UIColor.WM.gray300.cgColor
         
         return imageView
     }()
@@ -43,7 +43,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.text = "최근 대화 내용"
         label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor.WM.gray_500
+        label.textColor = UIColor.WM.gray500
         
         return label
     }()
@@ -66,7 +66,7 @@ class ChatListCell: UITableViewCell {
         let label = UILabel()
         label.text = "오후 00:00"
         label.font = .systemFont(ofSize: 11)
-        label.textColor = UIColor.WM.gray_500
+        label.textColor = UIColor.WM.gray500
         
         return label
     }()
@@ -78,7 +78,7 @@ class ChatListCell: UITableViewCell {
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
         // 이미지 색 바꾸기
-        imageView.tintColor = UIColor.WM.main
+        imageView.tintColor = UIColor.WM.main200
 
         
         imageView.contentMode = .scaleToFill
@@ -137,7 +137,7 @@ class ChatListCell: UITableViewCell {
     func configureUI() {
         
         self.layer.borderWidth = 0.25
-        self.layer.borderColor = UIColor.WM.gray_400.cgColor
+        self.layer.borderColor = UIColor.WM.gray400.cgColor
         
         addSubview(profileImage)
         addSubview(vStackView1)
