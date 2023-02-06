@@ -18,7 +18,7 @@ class BubbleCell: UITableViewCell {
         
         label.text = "2023년 01월 28일 토요일"
         label.font = .body_14R
-        label.textColor = UIColor.WM.gray_700
+        label.textColor = UIColor.WM.gray700
         label.textAlignment = .center
 //        label.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class BubbleCell: UITableViewCell {
         label.font = .body_16R
         label.numberOfLines = 0
 //        label.widthAnchor.constraint(equalToConstant: (self.frame.width - 50)).isActive = true
-        label.backgroundColor = UIColor.WM.gray_100
+        label.backgroundColor = UIColor.WM.gray100
         // 라벨 둥글게 하기
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
