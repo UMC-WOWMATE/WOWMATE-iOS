@@ -26,6 +26,7 @@ class InputUserInfoVC: UIViewController {
         setUpBirthInputView()
         setUpLayout()
         setUpSelectSexPopUpButton()
+        setUpInputNotification()
     }
     
     // MARK: - Actions
@@ -83,11 +84,9 @@ class InputUserInfoVC: UIViewController {
     
     private func setUpSelectSexPopUpButton() {
         let man = UIAction(title: "남성", image: nil, handler: { [weak self] _ in
-//            print("남성 선택")
             self?.setSexButtonSelectedLayout()
         })
         let woman = UIAction(title: "여성", image: nil, handler: { [weak self] _ in
-//            print("여성 선택")
             self?.setSexButtonSelectedLayout()
         })
 
@@ -102,6 +101,21 @@ class InputUserInfoVC: UIViewController {
         sexSelectButton.changesSelectionAsPrimaryAction = true
     }
     
+    private func setUpInputNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: birthTextField
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: phoneNumTextField
+        )
+    }
+    
     
     // objc methods
     @objc private func birthDatePickerValueChanged(_ datePicker: UIDatePicker) {
@@ -109,5 +123,17 @@ class InputUserInfoVC: UIViewController {
         formatter.dateFormat = "yyyy.MM.dd"
         formatter.locale = Locale(identifier: "ko_KR")
         birthTextField.text = formatter.string(from: birthDataPicker.date)
+    }
+    
+    @objc func textDidChanged(_ notification: Notification) {
+        if let birth = birthTextField.text, let phoneNumber = phoneNumTextField.text {
+            if (birth.count > 0) && (phoneNumber.count > 0) {
+                completeAllButton.backgroundColor = UIColor(named: "Main00")
+                completeAllButton.isEnabled = true
+            } else {
+                completeAllButton.backgroundColor = UIColor(named: "Main01")
+                completeAllButton.isEnabled = false
+            }
+        }
     }
 }

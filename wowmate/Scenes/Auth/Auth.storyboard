@@ -69,9 +69,9 @@
                                                     <constraint firstItem="0Ue-RT-bc3" firstAttribute="height" secondItem="kC5-xr-iTZ" secondAttribute="height" id="EKG-Pb-LU1"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-qW-ko3">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTn-qW-ko3">
                                                 <rect key="frame" x="0.0" y="160.33333333333331" width="333" height="50"/>
-                                                <color key="backgroundColor" name="Main00"/>
+                                                <color key="backgroundColor" name="Main01"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="H63-xf-v7D"/>
                                                 </constraints>
@@ -176,9 +176,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7x-PaY">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7x-PaY">
                                         <rect key="frame" x="0.0" y="81.666666666666657" width="105.66666666666667" height="32"/>
-                                        <color key="backgroundColor" name="Main00"/>
+                                        <color key="backgroundColor" name="Main01"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
@@ -218,9 +218,9 @@
                                     <constraint firstAttribute="trailing" secondItem="t8W-e1-Xf8" secondAttribute="trailing" id="8nU-Sf-Azn"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="56Q-ja-rLd"/>
                                 </constraints>
@@ -520,9 +520,9 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
                                         <rect key="frame" x="0.0" y="175.00000000000003" width="105.66666666666667" height="32"/>
-                                        <color key="backgroundColor" name="Main00"/>
+                                        <color key="backgroundColor" name="Main01"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
@@ -550,9 +550,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
                                                 <rect key="frame" x="268" y="0.0" width="65" height="40"/>
-                                                <color key="backgroundColor" name="Main00"/>
+                                                <color key="backgroundColor" name="Main01"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="EYB-AG-uGe"/>
                                                     <constraint firstAttribute="height" constant="40" id="kXq-BK-Wji"/>
@@ -598,6 +598,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 비밀번호가 일치하지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTb-MJ-XNk">
+                                        <rect key="frame" x="0.0" y="488" width="138.33333333333334" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="aI3-2L-adI" firstAttribute="leading" secondItem="9ht-Qk-92i" secondAttribute="leading" id="1X4-LC-b7F"/>
@@ -611,9 +617,9 @@
                                     <constraint firstAttribute="trailing" secondItem="brf-Hk-CJZ" secondAttribute="trailing" id="oJS-k6-WOf"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx9-Zz-djg">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx9-Zz-djg">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uEX-Sr-INg"/>
                                 </constraints>
@@ -659,6 +665,7 @@
                         <outlet property="finalInputPassWordTextField" destination="C8O-UZ-PhC" id="ex2-MZ-Y40"/>
                         <outlet property="firstInputPassWordTextField" destination="aI3-2L-adI" id="t4U-Yw-E6l"/>
                         <outlet property="inputEmailHeadTextField" destination="Qpc-c0-fVa" id="xn2-W7-jSG"/>
+                        <outlet property="passwordValidationLabel" destination="bTb-MJ-XNk" id="XQg-cw-iHX"/>
                         <outlet property="schoolEmailTextField" destination="Sf7-d0-QRj" id="oaG-eJ-6Y7"/>
                         <outlet property="selectSchoolButton" destination="OtS-sz-1XH" id="X93-ot-hVD"/>
                         <outlet property="sendCertificationCodeButton" destination="DU6-iX-cP8" id="3Bv-se-xJE"/>
@@ -676,9 +683,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-7d-084">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-7d-084">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZTW-Bg-44U"/>
                                 </constraints>
@@ -845,9 +852,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhq-PE-g24">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhq-PE-g24">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iux-Zg-EQA"/>
                                 </constraints>
@@ -1001,6 +1008,9 @@
         <namedColor name="Main00">
             <color red="0.396078431372549" green="0.31764705882352939" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Main01">
+            <color red="0.69803921568627447" green="0.6588235294117647" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -1009,6 +1019,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
