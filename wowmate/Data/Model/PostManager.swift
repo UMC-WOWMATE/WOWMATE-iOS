@@ -46,3 +46,41 @@ class PostManager {
      }
  }
  */
+
+
+// MARK: 네트워크 관련 폴더가 로컬에서 이유모르게,,빨간색으로 뜨고,,파일 추가도 되지 않아서,,우선 임시방편으로 여기다가 끼워서 정의하는,,이후에 수정예정,,
+class HomeManager {
+    private init() {}
+    static let shared = HomeManager()
+    let provider = MoyaProvider<AuthAPI>()
+    
+    func signupRequest(user: Signup, completion: @escaping (Result<String, Error>) -> Void) {
+        provider.request(.signup(user: user)) {result in
+            switch result {
+            case .success(let success):
+                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                         completion(.success(message))
+                     }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func emailValidationRequest(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        provider.request(.email(email: email)) { result in
+            switch result {
+            case .success(let success):
+                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
+                    if let confirm = json["confirm"] as? String {
+                         completion(.success(confirm))
+                     }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ import Moya
 
 enum AuthAPI {
     case signup(user: Signup)
+    case email(email: String)
 }
 
 extension AuthAPI: TargetType {
@@ -19,12 +20,14 @@ extension AuthAPI: TargetType {
     var path: String {
         switch self {
         case .signup:
-            return "/sign-api/sign-up"
+            return "/sign-up"
+        case .email:
+            return "/email"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .signup:
+        case .signup, .email:
             return .post
         }
     }
@@ -50,7 +53,7 @@ extension AuthAPI: TargetType {
     }
     var headers: [String : String]? {
         switch self {
-        case .signup(_):
+        case .signup(_), .email(_):
             return ["Content-type": "application/json"]
         }
         

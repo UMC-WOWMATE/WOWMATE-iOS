@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import Toast
 
 class JoinVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+//    private let signupDataManager: SignupDataManager
+    private var validationCode: String?
+    private var inputEmail: String?
+    private var inputPassword: String?
+    
     private var completeAllButtonEnable: Bool = false
     
     
@@ -52,14 +58,37 @@ class JoinVC: UIViewController {
     
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
         // TODO: 이메일로 인증번호 전송 처리
+        if let emailHead = inputEmailHeadTextField.text,
+           let emailDomain = schoolEmailTextField.text {
+            
+            HomeManager.shared.emailValidationRequest(email: emailHead + emailDomain) { [weak self] result in
+                switch result {
+                case .success(let success):
+                    print(success, "성공") //  데이터 불러오는 것이 성공했을 때
+                    self?.validationCode = success
+                    self?.inputEmail = emailHead + emailDomain
+                case .failure(let failure):
+                    print(failure) // 여러가지 이유로 통신이 실패했을 때
+                }
+            }
+        }
     }
     
     @IBAction func didTapCertificateButton(_ sender: UIButton) {
-        // TODO: 입력된 인증번호가 유효한지 검증 처리
+        if validationCode == certificationCodeTextField.text {
+            // TODO: 인증 성공 메세지를 토스트로 띄우기
+            print("이메일 인증 성공")
+        } else {
+            // TODO: 인증 실패 메세지를 토스트로 띄우기
+            print("이메일 인증 성공")
+        }
+        
     }
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
         // TODO: 입력 정보 모두 저장한채로 InputUserInfoVC로 넘어가기
+        SignupDataManager.shared.saveEmailPw(email: inputEmail!, password: inputPassword!)
+        
         NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
         NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
         NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)

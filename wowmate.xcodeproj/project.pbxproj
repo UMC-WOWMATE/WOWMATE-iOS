@@ -44,6 +44,7 @@
 		A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F7E29852E7400A7D4EC /* setFont.swift */; };
 		A2D28F81298650E400A7D4EC /* setColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F80298650E400A7D4EC /* setColor.swift */; };
 		A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D660CD297598B4006BE26D /* UIColor+Ext.swift */; };
+		A2E015282995D19000EBACF0 /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E015272995D19000EBACF0 /* AuthDelegate.swift */; };
 		A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */; };
 		A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */; };
 		A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E32969C7310055B5D2 /* HomeVC.swift */; };
@@ -109,6 +110,7 @@
 		A2D28F7E29852E7400A7D4EC /* setFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setFont.swift; sourceTree = "<group>"; };
 		A2D28F80298650E400A7D4EC /* setColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setColor.swift; sourceTree = "<group>"; };
 		A2D660CD297598B4006BE26D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		A2E015272995D19000EBACF0 /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
 		A2E2A8DC2969C7310055B5D2 /* wowmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				A2D28F4629852B1B00A7D4EC /* SelectSchoolPopUpVC.swift */,
 				A2E2A8FD2969CB0A0055B5D2 /* Auth.storyboard */,
 				A2E2A8FF2969CB2F0055B5D2 /* LoginVC.swift */,
+				A2E015272995D19000EBACF0 /* AuthDelegate.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				A2D28F7029852BA400A7D4EC /* SectionHeader.swift in Sources */,
 				A2D28F7729852BB100A7D4EC /* ChatViewController.swift in Sources */,
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
+				A2E015282995D19000EBACF0 /* AuthDelegate.swift in Sources */,
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
@@ -722,7 +726,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Chat;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -756,7 +760,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Chat;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

@@ -51,6 +51,7 @@ class AgreeTermsVC: UIViewController {
     
     @IBAction func didTapCompleteJoinButton(_ sender: UIButton) {
         // TODO: 입력한 정보를 서버로 POST 하고, 회원가입 완료 여부를 반환받아 이후 처리 구현할 예정
+        
     }
     
     

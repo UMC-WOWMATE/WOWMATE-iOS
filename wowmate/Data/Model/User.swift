@@ -12,12 +12,12 @@ struct Signup: Codable {
     var name: String
     var phoneNumber: String
     var birth: Date
-    var gender: Date
+    var gender: String
     var email: String
     var school: String
     var password: String
-    
-    init(name: String, phoneNumber: String, birth: Date, gender: Date, email: String, school: String, password: String) {
+        
+    init(name: String, phoneNumber: String, birth: Date, gender: String, email: String, school: String, password: String) {
         self.name = name
         self.phoneNumber = phoneNumber
         self.birth = birth
