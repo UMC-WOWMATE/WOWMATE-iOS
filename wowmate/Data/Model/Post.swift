@@ -7,6 +7,7 @@
 
 import Foundation
 
+/* 게시글 전체 조회 (get - posts) */
 // MARK: - PostList
 struct PostList: Codable {
     let isSuccess: Bool
@@ -21,4 +22,12 @@ struct Post: Codable {
     let postTag3, postTag4, postTag5: String
     let postLikeNumber: Int
     let schoolName, createdBy: String
+}
+
+/* 게시글 등록 (post - posts) */
+// MARK: - PostRegister
+struct PostRegister: Codable {
+    let postTitle, categoryName: String
+    let postMember: Int
+    let tag1, tag2, tag3, tag4, tag5, postContext: String
 }

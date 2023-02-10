@@ -22,6 +22,7 @@ class JoinVC: UIViewController {
     
     @IBOutlet weak var firstInputPassWordTextField: UITextField!
     @IBOutlet weak var finalInputPassWordTextField: UITextField!
+    @IBOutlet weak var passwordValidationLabel: UILabel!
     
     @IBOutlet weak var sendCertificationCodeButton: UIButton!
     @IBOutlet weak var certificateButton: UIButton!
@@ -33,6 +34,7 @@ class JoinVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLayout()
+        setUpInputNotification()
     }
     
     // MARK: - Actions
@@ -49,18 +51,21 @@ class JoinVC: UIViewController {
     }
     
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
-        
+        // TODO: 이메일로 인증번호 전송 처리
     }
     
     @IBAction func didTapCertificateButton(_ sender: UIButton) {
-    
+        // TODO: 입력된 인증번호가 유효한지 검증 처리
     }
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
-        // 입력 조건 모두 확인하고, 조건이 모두 충족하면 InputUserInfoVC로 넘어가기
+        // TODO: 입력 정보 모두 저장한채로 InputUserInfoVC로 넘어가기
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
+
         guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
         inputUserInfoVC.modalPresentationStyle = .fullScreen
-        
         present(inputUserInfoVC, animated: true)
     }
     
@@ -80,6 +85,72 @@ class JoinVC: UIViewController {
             completeAllButton
         ].forEach {
             $0?.layer.cornerRadius = 15
+        }
+    }
+    
+    private func setUpInputNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(emailHeadTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: inputEmailHeadTextField
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(certificationCodeTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: certificationCodeTextField
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(passwordTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: finalInputPassWordTextField
+        )
+    }
+    
+    @objc func emailHeadTextDidChanged(_ notification: Notification) {
+        if let emailHead = inputEmailHeadTextField.text {
+            if emailHead.count > 0 {
+                sendCertificationCodeButton.backgroundColor = UIColor(named: "Main00")
+                sendCertificationCodeButton.isEnabled = true
+            } else {
+                sendCertificationCodeButton.backgroundColor = UIColor(named: "Main01")
+                sendCertificationCodeButton.isEnabled = false
+            }
+        }
+    }
+    
+    @objc func certificationCodeTextDidChanged(_ notification: Notification) {
+        if let certificationCode = certificationCodeTextField.text {
+            if certificationCode.count > 0 {
+                certificateButton.backgroundColor = UIColor(named: "Main00")
+                certificateButton.isEnabled = true
+            } else {
+                certificateButton.backgroundColor = UIColor(named: "Main01")
+                certificateButton.isEnabled = false
+            }
+        }
+    }
+    
+    @objc func passwordTextDidChanged(_ notification: Notification) {
+        if let firstPasswordInput = firstInputPassWordTextField.text,
+           let finalPasswordInput = finalInputPassWordTextField.text {
+            if (firstPasswordInput.count > 0) && (finalPasswordInput.count > 0) {
+                if firstPasswordInput == finalPasswordInput {
+                    passwordValidationLabel.isHidden = true
+                    completeAllButton.backgroundColor = UIColor(named: "Main00")
+                    completeAllButton.isEnabled = true
+                } else {
+                    passwordValidationLabel.isHidden = false
+                    completeAllButton.backgroundColor = UIColor(named: "Main01")
+                    completeAllButton.isEnabled = false
+                }
+            } else {
+                completeAllButton.backgroundColor = UIColor(named: "Main01")
+                completeAllButton.isEnabled = false
+            }
         }
     }
 
