@@ -11,9 +11,7 @@ class ChatHeader: UIView {
 
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
-    
-//    var imageUrl: String = ""
-    
+        
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         
