@@ -29,6 +29,8 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
     }
     
     @IBAction func saveButtonDidTab(_ sender: UIBarButtonItem) {
+        if !checkRequirements() { return }
+        
         let alert = UIAlertController(
             title: "글을 등록하시겠습니까?",
             message: nil,
@@ -36,53 +38,48 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { action in
             //업로드 통신
-            let post = Post_save(postTitle: self.titleTextField.text ?? "제목 없음",
-                                 categoryName: self.List_of_Category[self.categoryPickerView.selectedRow(inComponent: 0)],
-                                 postMember: Int(self.memberTextField.text!) ?? 0,
-                                 tag1: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
-                                 tag2: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
-                                 tag3: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
-                                 tag4: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
-                                 tag5: self.Tags.isEmpty ? nil : self.Tags.removeFirst(),
-                                 postContext: self.contextsTextView.text
-//                                 ,
-//                                 image1: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                 image2: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                 image3: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                 image4: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                 image5: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData()
-            )
+            let postByUser = PostRegister(postTitle: self.titleTextField.text!,
+                                          categoryName: self.List_of_Category[self.categoryPickerView.selectedRow(inComponent: 0)],
+                                          postMember: Int(self.memberTextField.text!) ?? 0,
+                                          tag1: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
+                                          tag2: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
+                                          tag3: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
+                                          tag4: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
+                                          tag5: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
+                                          postContext: self.contextsTextView.text)
+//                                         image1: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                         image2: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                         image3: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                         image4: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
+//                                         image5: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData())
             
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
-
-            do {
-                let jsonData = try encoder.encode(post)
-
-                if let jsonStr = String(data: jsonData, encoding: .utf8) {
-                    print(jsonStr)
+            PostManager.shared.registerPost(post: postByUser) { result in
+                switch result {
+                case .success(let success):
+                    print(success)
+                    let alert_done = UIAlertController(
+                        title: "등록 완료",
+                        message: nil,
+                        preferredStyle: .alert)
+                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                    
+                    self.present(alert_done, animated: true)
+                    
+                    print("saved")
+        //home으로 나가기
+        //            self.navigationController?.popViewController(animated: true)
+                case .failure(let failure):
+                    print(failure)
                 }
-            } catch {
-                print(error)
             }
-            
-            //업로드 통신
-            let alert_done = UIAlertController(
-                title: "등록 완료",
-                message: nil,
-                preferredStyle: .alert)
-            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-            
-            self.present(alert_done, animated: true)
-            
-            print("saved")
-//            self.navigationController?.popViewController(animated: true)
         }))
         
         self.present(alert, animated: true)
     }
     
     @IBAction func temsaveButtonDidTab(_ sender: UIBarButtonItem) {
+        if !checkRequirements() { return }
+        
         let alert = UIAlertController(
             title: "글을 임시저장 하시겠습니까?",
             message: nil,
@@ -185,6 +182,41 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
     
     // MARK: - Helpers
     
+    func checkRequirements() -> Bool {
+        if self.titleTextField.text!.isEmpty {
+            let alert_done = UIAlertController(
+                title: "제목을 입력해주세요.",
+                message: "제목은 필수 입력 항목입니다.",
+                preferredStyle: .alert)
+            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            
+            self.present(alert_done, animated: true)
+            return false
+        }
+        else if self.contextsTextView.text == placeholder {
+            let alert_done = UIAlertController(
+                title: "내용을 입력해주세요.",
+                message: "내용은 10 ~ 300자이어야 합니다.",
+                preferredStyle: .alert)
+            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            
+            self.present(alert_done, animated: true)
+            return false
+        }
+        else if self.contextsTextView.text.count < 10 {
+            let alert_done = UIAlertController(
+                title: "내용을 10자 이상 입력해주세요.",
+                message: "내용은 10 ~ 300자이어야 합니다.",
+                preferredStyle: .alert)
+            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            
+            self.present(alert_done, animated: true)
+            return false
+        }
+        
+        return true
+    }
+    
     //PickerView - Category
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -202,7 +234,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
     func textViewDidBeginEditing(_ textView: UITextView) {
             /// 플레이스홀더
             if textView.text.isEmpty {
-                contextsTextView.textColor = .gray
+                contextsTextView.textColor = UIColor(r: 51, g: 51, b: 51)
                 contextsTextView.text = placeholder
             } else if textView.text == placeholder {
                 contextsTextView.textColor = .black
@@ -213,7 +245,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
     func textViewDidEndEditing(_ textView: UITextView) {
         /// 플레이스홀더
         if textView.text.isEmpty {
-            contextsTextView.textColor = .gray
+            contextsTextView.textColor = UIColor(r: 51, g: 51, b: 51)
             contextsTextView.text = placeholder
         }
     }

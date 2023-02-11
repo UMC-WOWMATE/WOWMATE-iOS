@@ -46,6 +46,7 @@ class MatchVC: AloeStackViewController {
         let saveButton = UIBarButtonItem(image: UIImage(named: "btn_save"), style: .plain, target: self, action: #selector(saveButtonDidTab(_:)))
         
         let temsaveButton = UIBarButtonItem(image: UIImage(named: "btn_temsave"), style: .plain, target: self, action: #selector(temsaveButtonDidTab(_:)))
+        
         temsaveButton.tintColor = .black
         
         navigationItem.leftBarButtonItem = closeButton
@@ -53,16 +54,17 @@ class MatchVC: AloeStackViewController {
     }
     
     func setUpGetTitle() {
-//        titleTextField.textColor = .systemGray
-        titleTextField.placeholder = "제목을 입력해주세요. (20자 내외)"
+        titleTextField.font = .head
+        titleTextField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요. (20자 내외)", attributes: [NSAttributedString.Key.foregroundColor : UIColor(r: 130, g: 130, b: 130)])
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(titleTextField)
     }
     
     func setUpGetCategory() {
         let categoryLabel = UILabel()
-        categoryLabel.textColor = .systemGray
-        categoryLabel.text = "카테고리를 선택해주세요.(필수)"
+        categoryLabel.font = .body_16SB
+        categoryLabel.textColor = UIColor(r: 130, g: 130, b: 130)
+        categoryLabel.text = "카테고리를 선택해주세요."
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(categoryLabel)
         stackView.hideSeparator(forRow: categoryLabel)
@@ -83,27 +85,33 @@ class MatchVC: AloeStackViewController {
         memberrow.translatesAutoresizingMaskIntoConstraints = false
         
         let label1 = UILabel()
-        label1.textColor = .systemGray
+        label1.font = .body_16SB
+        label1.textColor = UIColor(r: 130, g: 130, b: 130)
         label1.text = "모집인원"
         
-        memberTextField.textColor = .black
+        memberTextField.font = .body_16R
+        memberTextField.textColor = UIColor(r: 0, g: 0, b: 0)
         memberTextField.placeholder = "0"
         memberTextField.textAlignment = .center
         memberTextField.keyboardType = .numberPad
         memberTextField.layer.borderWidth = 0.5
         memberTextField.layer.borderColor = UIColor.black.cgColor
         memberTextField.layer.cornerRadius = 10
+        memberTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 32.5).isActive = true
         memberTextField.widthAnchor.constraint(equalToConstant: 43).isActive = true
         
         let label2 = UILabel()
-        label2.textColor = .systemGray
+        label2.font = .body_16SB
+        label2.textColor = UIColor(r: 130, g: 130, b: 130)
         label2.text = "명"
         
         let label3 = UILabel()
-        label3.textColor = .systemGray
+        label3.font = .body_16R
+        label3.textColor = UIColor(r: 130, g: 130, b: 130)
         label3.text = "* 0명일 경우 '무관'으로 표시됩니다"
         label3.textAlignment = .center
-        label3.numberOfLines = 2
+        label3.numberOfLines = 0
+        label3.lineBreakMode = .byWordWrapping
         
         memberrow.addArrangedSubview(label1)
         memberrow.addArrangedSubview(memberTextField)
@@ -120,8 +128,8 @@ class MatchVC: AloeStackViewController {
         
         let addtagButton = UIButton()
         addtagButton.setImage(UIImage(named: "btn_addtag"), for: .normal)
-        
         addtagButton.addTarget(self, action: #selector(addTagsButtonDidTab(_:)), for: .touchUpInside)
+        addtagButton.translatesAutoresizingMaskIntoConstraints = false
         
         tagStackView.axis = .horizontal
         tagStackView.hidesSeparatorsByDefault = true
@@ -134,9 +142,10 @@ class MatchVC: AloeStackViewController {
     }
     
     func showTag() {
-        
         if Tags.isEmpty {
             let defaultMessage = UILabel()
+            defaultMessage.font = .body_16SB
+            defaultMessage.textColor = UIColor(r: 130, g: 130, b: 130)
             defaultMessage.text = "#태그를 #추가해주세요"
             tagStackView.addRow(defaultMessage)
         }
@@ -144,11 +153,14 @@ class MatchVC: AloeStackViewController {
             tagStackView.removeAllRows()
             for tag in Tags {
                 let label = UILabel()
+                label.font = .body_16SB
+                label.textColor = UIColor(r: 0, g: 0, b: 0)
                 label.text = "#" + tag
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.isUserInteractionEnabled = true
                 tagStackView.addRow(label)
         
+                //삭제
                 tagStackView.setTapHandler(forRow: label) { [weak self] _ in
 
                     let index = self?.Tags.firstIndex(of: tag)
@@ -171,18 +183,21 @@ class MatchVC: AloeStackViewController {
     
     func setUpGetContext() {
         let contextLabel = UILabel()
-        contextLabel.textColor = .black
+        contextLabel.font = .body_16B
+        contextLabel.textColor = UIColor(r: 0, g: 0, b: 0)
         contextLabel.text = "소개"
         contextLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(contextLabel)
         stackView.hideSeparator(forRow: contextLabel)
         
         contextsTextView.delegate = self
+        contextsTextView.font = .body_14R
         contextsTextView.text = placeholder
-        contextsTextView.textColor = .gray
+        contextsTextView.textColor = UIColor(r: 51, g: 51, b: 51)
         contextsTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        contextsTextView.layer.cornerRadius = 10
         
-        contextsTextView.backgroundColor = .lightGray
+        contextsTextView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
         contextsTextView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         contextsTextView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(contextsTextView)
@@ -190,7 +205,8 @@ class MatchVC: AloeStackViewController {
     
     func setUpGetImage() {
         let imageLabel = UILabel()
-        imageLabel.textColor = .black
+        imageLabel.font = .body_16B
+        imageLabel.textColor = UIColor(r: 0, g: 0, b: 0)
         imageLabel.text = "이미지"
         imageLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(imageLabel)
@@ -198,6 +214,8 @@ class MatchVC: AloeStackViewController {
         
         imageStackView.axis = .horizontal
         imageStackView.hidesSeparatorsByDefault = true
+        imageStackView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+        imageStackView.layer.cornerRadius = 10
         imageStackView.translatesAutoresizingMaskIntoConstraints = false
         
         showImage()

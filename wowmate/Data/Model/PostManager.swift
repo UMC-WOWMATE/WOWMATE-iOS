@@ -13,14 +13,63 @@ class PostManager {
     static let shared = PostManager()
     let provider = MoyaProvider<PostAPI>()
     
+    // 게시글 등록
+    func registerPost(post: PostRegister, completion: @escaping (Result<String, Error>) -> Void ) {
+        provider.request(.postRegister(param: post)) { result in
+            switch result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     // Mock API 용 Post 정보
-    func getMockPosts(completion: @escaping (Result<[Post], Error>) -> Void ) {
-        provider.request(.mockPosts) { result in
+//    func getMockPosts(completion: @escaping (Result<[Post], Error>) -> Void ) {
+//        provider.request(.mockPosts) { result in
+//            switch result {
+//            case .success(let data):
+//                do {
+//                    let decoder = JSONDecoder()
+//                    let result = try decoder.decode([Post].self, from: data.data)
+//                    completion(.success(result))
+//                } catch {
+//                    completion(.failure(error))
+//                }
+//            case .failure(let error):
+//                completion(.failure(error))
+//            }
+//        }
+//    }
+    func getPostList(completion: @escaping (Result<PostList, Error>) -> Void ) {
+        provider.request(.postList) { result in
             switch result {
             case .success(let data):
                 do {
                     let decoder = JSONDecoder()
-                    let result = try decoder.decode([Post].self, from: data.data)
+                    let result = try decoder.decode(PostList.self, from: data.data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPost(completion: @escaping (Result<Post, Error>) -> Void ) {
+        provider.request(.post) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(Post.self, from: data.data)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
