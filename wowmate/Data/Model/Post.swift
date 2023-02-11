@@ -25,19 +25,22 @@ struct Post: Codable {
 }
 
 struct PostData1: Codable {
+    let postId: Int
     let postTitle, categoryName, tag1, tag2: String
 //    let tag3, tag4, tag5: String
     let postLikeNumber: Int
-//    let postMember: Int
+    let postMember: String
     let schoolName, createdDate: String
 }
 
 struct PostData2: Codable {
+//    let isPostUser: Bool
+//    let postId: Int
     let postTitle, categoryName, postTag1, postTag2: String
-//    let tag3, tag4, tag5: String
+//    let postTag3, postTag4, postTag5: String
     let postLikeNumber: Int
-//    let postMember: Int
-//    let schoolName
+//    let postMember: String
+    let postContext: String
     let createdDate: String
 }
 
@@ -45,10 +48,10 @@ struct Coment: Codable {
     let commentContext: String
     let likeNumber: Int
     let createdDate: String
-    let commentReplyDtoList: [commentReply]
+    let commentReplyDtoList: [CommentReply]
 }
 
-struct commentReply: Codable {
+struct CommentReply: Codable {
     let commentReplyContext: String
     let likeNumber: Int
     let createdDate: String

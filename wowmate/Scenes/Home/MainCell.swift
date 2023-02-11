@@ -11,6 +11,7 @@ import Moya
 class MainCell:UITableViewCell {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    var ID: Int = -1
     
     let MainCellImage:UIImageView = {
         let image = UIImageView()

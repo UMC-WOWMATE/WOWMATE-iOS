@@ -13,6 +13,7 @@ import Moya
 class MatchCellDetailsVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    var id: Int = -1
     
     let UnderLine:UIView = {
         let view = UIView()
@@ -289,34 +290,32 @@ class MatchCellDetailsVC: UIViewController {
         self.tableview.rowHeight = 70
         self.tableview.backgroundColor = .white
         
-//        PostManager.shared.getMockPosts { result in
+        // MARK: - Network
+//        PostManager.shared.getPost { result in
 //            switch result {
 //                     case .success(let success):
-//                         let data = try? success.map({ Post in
-//                             self.MatchCellDetailsTitle.text = Post.postTitle
-//                             self.MatchCellDetailsDate.text = Post.createdBy
-////                             self.MatchCellDetailsTags.setTitle(Post.postTag1, for: .normal) = Post.postTag1
-//                             //tag를 리스트로 선언해야 리스트 안에 리스트로 접근 해야할 듯.
-////                             self.MatchCellDetailsTextField.text = PostRegister.postContext
-////                             self. = Post.
-//                            
-//                         })
+//                        self.MatchCellDetailsTitle.text = success.data1.postTitle
+//                        self.MatchCellDetailsDate.text = success.data1.createdDate
+//                        self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
+////                    self.MatchCellDetailsNumber.text = String(success)
 //                     case .failure(let failure):
 //                         print(failure)
 //                     }
 //                 }
-        
-            PostManager.shared.getPost { result in
-                switch result {
-                         case .success(let success):
-                            self.MatchCellDetailsTitle.text = success.data1.postTitle
-                            self.MatchCellDetailsDate.text = success.data1.createdDate
-                            self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
-//                    self.MatchCellDetailsNumber.text = String(success)
-                         case .failure(let failure):
-                             print(failure)
-                         }
+        PostManager.shared.getPost(ID: id) { result in
+            switch result {
+                     case .success(let success):
+                        print(success)
+                        self.MatchCellDetailsTitle.text = success.data1.postTitle
+                        self.MatchCellDetailsDate.text = success.data1.createdDate
+                        self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
+//                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
+//                self.MatchCellDetailsNumber.text = success.data1.postMember //서버에서 넘겨준거에서 누락됨
+                        self.MatchCellDetailsTextField.text = success.data1.postContext
+                     case .failure(let failure):
+                         print(failure)
                      }
+                 }
     
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"ic 1"), style: .plain, target:self , action: #selector(backButtonPressed))

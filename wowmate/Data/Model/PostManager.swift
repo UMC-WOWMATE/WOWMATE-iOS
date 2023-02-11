@@ -46,8 +46,8 @@ class PostManager {
         }
     }
     
-    func getPost(completion: @escaping (Result<Post, Error>) -> Void ) {
-        provider.request(.post) { result in
+    func getPost(ID: Int, completion: @escaping (Result<Post, Error>) -> Void ) {
+        provider.request(.post(postID: ID)) { result in
             switch result {
             case .success(let data):
                 do {

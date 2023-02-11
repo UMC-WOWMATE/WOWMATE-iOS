@@ -10,10 +10,10 @@ import Moya
 
 enum PostAPI {
     case postList
-    case post
+//    case post
 //    case mockPosts
     case postRegister(param: PostRegister)
-    case post1(postID: Int)
+    case post(postID: Int)
 }
 
 extension PostAPI: TargetType {
@@ -33,10 +33,10 @@ extension PostAPI: TargetType {
             return "/posts"
 //        case .mockPosts:
 //            return "/posts"
-        case .post:
-            return "/posts/24"
-        case .post1(let postID):
-            return "/post/\(postID)"
+//        case .post:
+//            return "/posts/24"
+        case .post(let postID):
+            return "/posts/\(postID)"
         }
     }
     var method: Moya.Method {
@@ -45,8 +45,6 @@ extension PostAPI: TargetType {
             return .get
         case .postRegister:
             return .post
-        case .post1:
-            return .get
 //        case .mockPosts:
 //            return .get
         }
@@ -57,8 +55,6 @@ extension PostAPI: TargetType {
             return .requestPlain
         case .postRegister(let param):
             return .requestJSONEncodable(param)
-        case .post1:
-            return .requestPlain
 //        case .mockPosts:
 //            return .requestPlain
         }
@@ -68,7 +64,7 @@ extension PostAPI: TargetType {
         switch self {
             default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MTI4NjA2LCJleHAiOjE2NzYxMzIyMDZ9.SlBh5ci3_kqZS28oJzZnsR4nVKOEZBug1IPJv1yNjHg"]
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MTMzNDQ1LCJleHAiOjE2NzYxMzcwNDV9.U1hXF9pnXR5n7xsHJPbwuBoeL5BxovWO8dwNiMYbVS4"]
 //              return ["Content-Type": "application/json"]
         }
     }

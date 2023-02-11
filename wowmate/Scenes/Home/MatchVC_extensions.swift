@@ -21,7 +21,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
         alert.addAction(UIAlertAction(title: "계속 작성", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "나가기", style: .default, handler: { action in
             print("closed")
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
             
         }))
         
@@ -67,7 +67,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
                     
                     print("saved")
         //home으로 나가기
-        //            self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                 case .failure(let failure):
                     print(failure)
                 }
@@ -94,7 +94,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
             
             self.present(alert_done, animated: true)
             print("temsaved")
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }))
         
         self.present(alert, animated: true)

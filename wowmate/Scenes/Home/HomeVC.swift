@@ -12,12 +12,15 @@ class HomeVC: UITableViewController {
 //    var matchdate = ["2023.01.21","2023.01.21","2023.01.21","2023.01.21","2023.01.21","2023.01.21",]
 //    var matchlikecount = ["10","32","22","100","23","24",]
 //    var matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
-    var matchtitlelist: [String] = []
-    var matchcategorylist: [String] = []
-    var matchtags: [String] = []
-    var matchdate: [String] = []
-    var matchlikecount: [String] = []
-    var matchlogo: [String] = []
+    
+//    var matchtitlelist: [String] = []
+//    var matchcategorylist: [String] = []
+//    var matchtags: [String] = []
+//    var matchdate: [String] = []
+//    var matchlikecount: [String] = []
+//    var matchlogo: [String] = []
+    
+    var posts: [PostData1] = []
 //
     let CategoryBox: UIStackView = {
         let stackview = UIStackView()
@@ -33,17 +36,27 @@ class HomeVC: UITableViewController {
     
     // MARK: - Lifecycle
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
+    // MARK: - Network
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PostManager.shared.getPostList { result in
             switch result {
                      case .success(let success):
                 for post in success.data1 {
-                    self.matchtitlelist.append(post.postTitle)
-                    self.matchcategorylist.append(post.categoryName)
-                    self.matchtags.append(post.tag1)
-                    self.matchdate.append(post.createdDate)
-                    self.matchlikecount.append(String(post.postLikeNumber))
+                    self.posts.append(PostData1.init(postId: post.postId,
+                                                     postTitle: post.postTitle,
+                                                     categoryName: post.categoryName,
+                                                     tag1: post.tag1, tag2: post.tag2,
+//                                                     tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
+                                                     postLikeNumber: post.postLikeNumber,
+                                                     postMember: post.postMember,
+                                                     schoolName: post.schoolName,
+                                                     createdDate: post.createdDate))
+//                    self.matchtitlelist.append(post.postTitle)
+//                    self.matchcategorylist.append(post.categoryName)
+//                    self.matchtags.append(post.tag1)
+//                    self.matchdate.append(post.createdDate)
+//                    self.matchlikecount.append(String(post.postLikeNumber))
 //                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
                 }
                 self.tableView.reloadData()
@@ -65,7 +78,6 @@ class HomeVC: UITableViewController {
 //            self.CategoryButton.widthAnchor.constraint(equalToConstant: 96),
 //
 //        ]
-        
         
         configure()
         navigation()
@@ -102,12 +114,20 @@ class HomeVC: UITableViewController {
                 
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell;
-        cell.MainCellName.text = matchtitlelist[indexPath.row]
-        cell.MainCellCategory.text = matchcategorylist[indexPath.row]
-        cell.MainCellTag.text = matchtags[indexPath.row]
-        cell.MainCellDate.text = matchdate[indexPath.row]
-        cell.MainCellLikeCount.text = matchlikecount[indexPath.row]
-//        cell.MainCellImage.image = UIImage(named: matchlogo[indexPath.row])
+//        cell.MainCellName.text = matchtitlelist[indexPath.row]
+//        cell.MainCellCategory.text = matchcategorylist[indexPath.row]
+//        cell.MainCellTag.text = matchtags[indexPath.row]
+//        cell.MainCellDate.text = matchdate[indexPath.row]
+//        cell.MainCellLikeCount.text = matchlikecount[indexPath.row]
+////        cell.MainCellImage.image = UIImage(named: matchlogo[indexPath.row])
+        
+//        cell.ID = posts[indexPath.row].postId
+        cell.MainCellName.text = posts[indexPath.row].postTitle
+        cell.MainCellCategory.text = posts[indexPath.row].categoryName
+        cell.MainCellTag.text = posts[indexPath.row].tag1
+        cell.MainCellDate.text = posts[indexPath.row].createdDate
+        cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
+//        cell.MainCellImage.image(<#T##t: String##String#>) posts[indexPath.row].schoolName string으로 적절히 삽입
         
         return cell
         }
@@ -119,6 +139,7 @@ class HomeVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let matchdetails = MatchCellDetailsVC()
+        matchdetails.id = posts[indexPath.row].postId
         self.navigationController?.pushViewController(matchdetails, animated: true)
     }
     
@@ -141,7 +162,7 @@ class HomeVC: UITableViewController {
             {
                 return 1
             }
-        return matchtitlelist.count
+        return posts.count
         
         }
     }
