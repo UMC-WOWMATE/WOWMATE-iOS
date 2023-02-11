@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C51492329979E48001557AA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492229979E47001557AA /* CategoryCell.swift */; };
+		2C51492529979E5A001557AA /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492429979E5A001557AA /* CategoryButton.swift */; };
 		2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C17E298FBB040099CE20 /* MatchVC.swift */; };
 		2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */; };
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
@@ -74,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		2CA2C17E298FBB040099CE20 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC_extensions.swift; sourceTree = "<group>"; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
 				2CA2C17E298FBB040099CE20 /* MatchVC.swift */,
 				2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */,
+				2C51492229979E47001557AA /* CategoryCell.swift */,
+				2C51492429979E5A001557AA /* CategoryButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -540,6 +546,7 @@
 				A2D28F5929852B2D00A7D4EC /* DetailReplyReactionVC.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A2D28F5A29852B2D00A7D4EC /* MainTabVC.swift in Sources */,
+				2C51492329979E48001557AA /* CategoryCell.swift in Sources */,
 				A2D28F6429852B9500A7D4EC /* MatchInfoPreviewTableViewCell.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				A2D28F4D29852B1B00A7D4EC /* SelectSchoolPopUpVC.swift in Sources */,
@@ -567,6 +574,7 @@
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
+				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
 				2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,

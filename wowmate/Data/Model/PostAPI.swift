@@ -19,12 +19,11 @@ enum PostAPI {
 extension PostAPI: TargetType {
     var baseURL: URL {
         switch self {
-        case .postList:
-//            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
-            return URL(string: "https://hs-archive.shop")!
+//        case .postList:
+////            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
+//            return URL(string: "https://hs-archive.shop")!
         default:
-//            return URL(string: ServiceAPI.baseURL)!
-            return URL(string: "https://hs-archive.shop")!
+            return URL(string: ServiceAPI.baseURL)!
         }
         
     }
@@ -69,7 +68,7 @@ extension PostAPI: TargetType {
         switch self {
             default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MTEwNzQ2LCJleHAiOjE2NzYxMTQzNDZ9.dbtwrRl1TRdBKqeHF5D7QWfmnIa4a4sN1cZKYCr_GTI"]
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MTI4NjA2LCJleHAiOjE2NzYxMzIyMDZ9.SlBh5ci3_kqZS28oJzZnsR4nVKOEZBug1IPJv1yNjHg"]
 //              return ["Content-Type": "application/json"]
         }
     }

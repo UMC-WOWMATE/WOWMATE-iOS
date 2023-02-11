@@ -29,23 +29,6 @@ class PostManager {
         }
     }
 
-    // Mock API 용 Post 정보
-//    func getMockPosts(completion: @escaping (Result<[Post], Error>) -> Void ) {
-//        provider.request(.mockPosts) { result in
-//            switch result {
-//            case .success(let data):
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let result = try decoder.decode([Post].self, from: data.data)
-//                    completion(.success(result))
-//                } catch {
-//                    completion(.failure(error))
-//                }
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
-//    }
     func getPostList(completion: @escaping (Result<PostList, Error>) -> Void ) {
         provider.request(.postList) { result in
             switch result {
