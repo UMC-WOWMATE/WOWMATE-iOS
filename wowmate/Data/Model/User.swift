@@ -9,23 +9,31 @@ import Foundation
 
 /// 회원가입
 struct Signup: Codable {
-    var name: String
     var phoneNumber: String
-    var birth: Date
+    var birth: String
     var gender: String
     var email: String
     var school: String
     var password: String
         
-    init(name: String, phoneNumber: String, birth: Date, gender: String, email: String, school: String, password: String) {
-        self.name = name
-        self.phoneNumber = phoneNumber
-        self.birth = birth
-        self.gender = gender
-        self.email = email
-        self.school = school
-        self.password = password
+    init() {
+        self.phoneNumber = ""
+        self.birth = ""
+        self.gender = ""
+        self.email = ""
+        self.school = ""
+        self.password = ""
     }
+    
+//    init(name: String, phoneNumber: String, birth: Date, gender: String, email: String, school: String, password: String) {
+//        self.name = name
+//        self.phoneNumber = phoneNumber
+//        self.birth = birth
+//        self.gender = gender
+//        self.email = email
+//        self.school = school
+//        self.password = password
+//    }
 }
 
 /// 로그인

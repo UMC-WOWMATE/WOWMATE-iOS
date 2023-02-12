@@ -66,14 +66,12 @@ class LoginVC: UIViewController {
         findPasswordVC.modalPresentationStyle = .fullScreen
         
         present(findPasswordVC, animated: true)
+        
     }
     
     @IBAction func didTapJoinButton(_ sender: UIButton) {
-        // JoinVC로 넘어가기
-        guard let joinVC = storyboard?.instantiateViewController(withIdentifier: "JoinVC") as? JoinVC else { return }
-        joinVC.modalPresentationStyle = .fullScreen
-        
-        present(joinVC, animated: true)
+        guard let joinVc = storyboard?.instantiateViewController(withIdentifier: "JoinVC") as? JoinVC else { return }
+        navigationController?.pushViewController(joinVc, animated: true)
     }
     
     
