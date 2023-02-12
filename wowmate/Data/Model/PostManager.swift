@@ -54,8 +54,32 @@ class HomeManager {
     static let shared = HomeManager()
     let provider = MoyaProvider<AuthAPI>()
     
+    func signinRequest(user: Login, completion: @escaping (Result<String, Error>) -> Void) {
+        provider.request(.signin(login: user)) {result in
+            switch result {
+            case .success(let success):
+                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
+                    if let code = json["code"] as? Int {
+                        if code == 200 {
+                            // MARK: UserDefaults에 token 저장
+                            let token = json["token"] as? String
+                            UserDefaults.standard.set(token!, forKey: "token")
+                            print(UserDefaults.standard.value(forKey: "token")!)
+                        }
+                    }
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func signupRequest(user: Signup, completion: @escaping (Result<String, Error>) -> Void) {
         provider.request(.signup(user: user)) {result in
+            print("user :: \(user)")
             switch result {
             case .success(let success):
                 if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {

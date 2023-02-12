@@ -6,14 +6,13 @@
 //
 
 import UIKit
+import Toast
 
 class LoginVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
     // 서버로 보낼 데이터를 위한 변수
-    private var inputEmail: String? = nil
-    private var inputPassword: String? = nil
     private var isMaintainLoginStatus: Bool = false
     
     
@@ -43,6 +42,22 @@ class LoginVC: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: passwordTextField)
         
         // TODO: 로그인 성공 여부에 따라 HomeVC로 전환하거나, 로그인 실패 Alert 띄우기 (로그인 성공할 경우에 notification remove observer하도록 수정)
+        if let inputEmail = emailTextField.text,
+           let inputPassword = passwordTextField.text {
+            let login = Login(email: inputEmail, password: inputPassword)
+            HomeManager.shared.signinRequest(user: login) { [weak self] result in
+                switch result {
+                case .success(let success):
+                    self?.view.makeToast(success)
+                    self?.showHomeVC()
+                case .failure(let error):
+                    self?.view.makeToast("네트워크 오류")
+                    return
+                }
+            }
+        }
+        
+        
     }
     
     @IBAction func didTapFindPasswordButton(_ sender: UIButton) {
@@ -82,6 +97,10 @@ class LoginVC: UIViewController {
             name: UITextField.textDidChangeNotification,
             object: passwordTextField
         )
+    }
+    
+    private func showHomeVC() {
+        // TODO: (로그인 성공한 후) 홈 화면으로 넘어가기
     }
     
     @objc func textDidChanged(_ notification: Notification) {
