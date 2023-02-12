@@ -63,7 +63,8 @@ class HomeManager {
                         if code == 200 {
                             // MARK: UserDefaults에 token 저장
                             let token = json["token"] as? String
-                            UserDefaults.standard.set(token!, forKey: "token")
+                            let bearerToken = "Bearer " + token!
+                            UserDefaults.standard.set(bearerToken, forKey: "token")
                             print(UserDefaults.standard.value(forKey: "token")!)
                         }
                     }
@@ -107,5 +108,16 @@ class HomeManager {
                 completion(.failure(error))
             }
         }
+    }
+}
+
+
+class SearchManager {
+    private init() {}
+    static let shared = SearchManager()
+    let provider = MoyaProvider<AuthAPI>()
+    
+    func searchPostRequest(keyword: String, completion: @escaping (Result<String, Error>) -> Void) {
+//        provider.request
     }
 }
