@@ -70,12 +70,13 @@ class HomeManager {
     }
     
     func emailValidationRequest(email: String, completion: @escaping (Result<String, Error>) -> Void) {
-        provider.request(.email(email: email)) { result in
+        provider.request(.emailConfirm(email: email)) { result in
             switch result {
             case .success(let success):
                 if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
-                    if let confirm = json["confirm"] as? String {
-                         completion(.success(confirm))
+                    if let confirm = json["data1"] as? [String : Any] {
+                        let code = confirm["code"] as? String
+                        completion(.success(code!))
                      }
                 }
             case .failure(let error):

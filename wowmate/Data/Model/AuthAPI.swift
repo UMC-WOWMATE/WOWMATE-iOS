@@ -10,7 +10,7 @@ import Moya
 
 enum AuthAPI {
     case signup(user: Signup)
-    case email(email: String)
+    case emailConfirm(email: String)
 }
 
 extension AuthAPI: TargetType {
@@ -21,13 +21,13 @@ extension AuthAPI: TargetType {
         switch self {
         case .signup:
             return "/sign-up"
-        case .email:
-            return "/email"
+        case .emailConfirm:
+            return "/emailConfirm"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .signup, .email:
+        case .signup, .emailConfirm:
             return .post
         }
     }
@@ -45,6 +45,12 @@ extension AuthAPI: TargetType {
             ]
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
             
+        case .emailConfirm(let email):
+            let param: [String: String] = [
+                "email": email
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            
         default:
             let params: [String: Any] = [:]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
@@ -53,7 +59,7 @@ extension AuthAPI: TargetType {
     }
     var headers: [String : String]? {
         switch self {
-        case .signup(_), .email(_):
+        case .signup(_), .emailConfirm(_):
             return ["Content-type": "application/json"]
         }
         
