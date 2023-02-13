@@ -44,6 +44,8 @@ class DefaultCategoryButton: UIButton {
     }
     @objc func buttonDidTap() {
         print("buttonDidTap")
+//        self.title(for: .normal)
+        
         
     }
     required init?(coder: NSCoder) {

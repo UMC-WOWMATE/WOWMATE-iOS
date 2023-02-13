@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C51492329979E48001557AA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492229979E47001557AA /* CategoryCell.swift */; };
 		2C51492529979E5A001557AA /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492429979E5A001557AA /* CategoryButton.swift */; };
+		2C989EF9299A70EC0017D80A /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C989EF8299A70EC0017D80A /* listCell.swift */; };
 		2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C17E298FBB040099CE20 /* MatchVC.swift */; };
 		2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */; };
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
@@ -72,13 +73,13 @@
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
 		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
 		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
-		BEB0D4FD299A27CB008A6487 /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0D4FC299A27CB008A6487 /* listCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		2C989EF8299A70EC0017D80A /* listCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listCell.swift; sourceTree = "<group>"; };
 		2CA2C17E298FBB040099CE20 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC_extensions.swift; sourceTree = "<group>"; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
-		BEB0D4FC299A27CB008A6487 /* listCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = listCell.swift; path = ../../../../../homevc/HomeVC_EX/listCell.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -413,7 +413,7 @@
 				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
 				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
 				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
-				BEB0D4FC299A27CB008A6487 /* listCell.swift */,
+				2C989EF8299A70EC0017D80A /* listCell.swift */,
 			);
 			path = HOME2;
 			sourceTree = "<group>";
@@ -553,6 +553,7 @@
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
+				2C989EF9299A70EC0017D80A /* listCell.swift in Sources */,
 				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
 				A2D28F4C29852B1B00A7D4EC /* AgreeTermsVC.swift in Sources */,
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
@@ -593,7 +594,6 @@
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
-				BEB0D4FD299A27CB008A6487 /* listCell.swift in Sources */,
 				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
 				2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,

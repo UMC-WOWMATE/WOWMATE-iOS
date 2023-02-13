@@ -62,6 +62,24 @@ class PostManager {
             }
         }
     }
+    
+    func getPostListByCategory(Category: String, completion: @escaping (Result<PostList, Error>) -> Void ) {
+        provider.request(.postListByCategory(category: Category)) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(PostList.self, from: data.data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }
 
 
