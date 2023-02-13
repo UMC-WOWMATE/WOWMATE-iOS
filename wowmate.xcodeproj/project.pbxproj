@@ -72,6 +72,7 @@
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
 		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
 		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
+		BEB0D4FD299A27CB008A6487 /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0D4FC299A27CB008A6487 /* listCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,7 @@
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
+		BEB0D4FC299A27CB008A6487 /* listCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = listCell.swift; path = ../../../../../homevc/HomeVC_EX/listCell.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,18 +305,11 @@
 		A2E2A8FB2969CA770055B5D2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
-				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
-				A2D28F5529852B2D00A7D4EC /* MainCell.swift */,
-				A2D28F5429852B2D00A7D4EC /* MainTabVC.swift */,
-				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
-				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
+				BEB0D4FB299A2283008A6487 /* HOME2 */,
+				BEB0D4FA299A2254008A6487 /* HOME1 */,
 				A2E2A8E52969C7310055B5D2 /* Home.storyboard */,
-				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
 				2CA2C17E298FBB040099CE20 /* MatchVC.swift */,
 				2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */,
-				2C51492229979E47001557AA /* CategoryCell.swift */,
-				2C51492429979E5A001557AA /* CategoryButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -397,6 +392,30 @@
 				A2F905332989616700AC588C /* PostManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BEB0D4FA299A2254008A6487 /* HOME1 */ = {
+			isa = PBXGroup;
+			children = (
+				A2D28F5429852B2D00A7D4EC /* MainTabVC.swift */,
+				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
+				A2D28F5529852B2D00A7D4EC /* MainCell.swift */,
+				2C51492229979E47001557AA /* CategoryCell.swift */,
+				2C51492429979E5A001557AA /* CategoryButton.swift */,
+			);
+			path = HOME1;
+			sourceTree = "<group>";
+		};
+		BEB0D4FB299A2283008A6487 /* HOME2 */ = {
+			isa = PBXGroup;
+			children = (
+				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
+				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
+				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
+				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
+				BEB0D4FC299A27CB008A6487 /* listCell.swift */,
+			);
+			path = HOME2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,6 +593,7 @@
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
+				BEB0D4FD299A27CB008A6487 /* listCell.swift in Sources */,
 				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
 				2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
@@ -656,7 +676,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -710,7 +731,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -734,10 +756,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -768,10 +790,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -49,7 +49,7 @@ struct Comment: Codable {
     let commentContext: String
     let likeNumber: Int
     let createdDate: String
-//    let commentReplyDtoList: [CommentReply]
+    let commentReplyDtoList: [CommentReply]
 }
 
 struct CommentReply: Codable {

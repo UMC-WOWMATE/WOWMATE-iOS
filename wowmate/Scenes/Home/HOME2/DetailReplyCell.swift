@@ -10,6 +10,7 @@ import UIKit
 class DetailReplyCell: UITableViewCell {
     
     var ID:Int = -1
+    
         
     let container:UIStackView = {
         let stackview = UIStackView()
@@ -66,7 +67,7 @@ class DetailReplyCell: UITableViewCell {
     
     let like:UILabel = {
         let label = UILabel()
-        label.text = "0"
+//        label.text = "0"
         label.font = .systemFont(ofSize: 11, weight: .light)
         label.numberOfLines = 1
         return label
@@ -74,7 +75,7 @@ class DetailReplyCell: UITableViewCell {
     
     let reply:UILabel = {
         let label = UILabel()
-        label.text = "0"
+//        label.text = "0"
         label.font = .systemFont(ofSize: 11, weight: .light)
         label.numberOfLines = 1
         return label

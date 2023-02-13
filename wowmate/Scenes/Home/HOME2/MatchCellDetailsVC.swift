@@ -15,6 +15,10 @@ class MatchCellDetailsVC: UIViewController {
     // 변수 및 상수, IBOutlet
     var id: Int = -1
     var comments: [Comment] = []
+    let commentReplyDtoList: [CommentReply] = []
+    
+    
+    var tagList: [String] = ["수정해주세요","학교","홍익대"]
     
     let UnderLine:UIView = {
         let view = UIView()
@@ -60,7 +64,6 @@ class MatchCellDetailsVC: UIViewController {
             present(alertAction, animated: true)
         }
     
-    
 //    @objc func mainCellAddButton(_ sender:Any){
 //        let alertAction = UIAlertController(title: "게시글 관련 액션을 취해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
 //
@@ -97,6 +100,28 @@ class MatchCellDetailsVC: UIViewController {
         return button
     }()
     
+    let MatchCellDetailslikeCount:UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "20"
+        return label
+    }()
+    
+    
+    
+    let MatchCellDetailslikecount:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "조회수 : 47"
+        label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textAlignment = .right
+        return label
+    }()
+    
+    
+    
+    
 //    let MatchCellDetailsCount:UILabel = {
 //        let label = UILabel()
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +154,7 @@ class MatchCellDetailsVC: UIViewController {
     let MatchCellDetailsNumber:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "모집인원 3명"
+        label.text = "모집인원 3명"
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textAlignment = .left
@@ -236,7 +261,20 @@ class MatchCellDetailsVC: UIViewController {
         return label
     }()
     
+    let tableViewData = [
+        ["1","2","3","4","5"],
+        ["1","2","3","4","5"],
+        ["1","2","3","4","5"],
+        ["1","2","3","4","5"],
+        ["1","2","3","4","5"],
+    ]
     
+    var hiddenSections = Set<Int>()
+    
+    
+    
+    
+
 //    let MatchCellDetailsCategoryStackView = AloeStackView()
 //
 //    let CategoryButton = SelectedCategoryButton()
@@ -252,6 +290,17 @@ class MatchCellDetailsVC: UIViewController {
     @objc private func backButtonPressed(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
         }
+    
+    let collectionview = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
+    
+    let flowLayout: UICollectionViewFlowLayout = {
+       let layout = UICollectionViewFlowLayout()
+       layout.scrollDirection = .horizontal
+       layout.minimumLineSpacing = 4.0
+//       layout.minimumInteritemSpacing = 0
+       return layout
+     }()
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -271,8 +320,8 @@ class MatchCellDetailsVC: UIViewController {
                             self.comments.append(Comment.init(commentId: comment.commentId,
                                                               commentContext: comment.commentContext,
                                                               likeNumber: comment.likeNumber,
-                                                              createdDate: comment.createdDate))
-        //                                                      ,commentReplyDtoList: comment.commentReplyDtoList))
+                                                              createdDate: comment.createdDate,
+                                                              commentReplyDtoList: comment.commentReplyDtoList))
                         }
                 self.tableview.reloadData()
                      case .failure(let failure):
@@ -315,6 +364,17 @@ class MatchCellDetailsVC: UIViewController {
         self.tableview.layoutIfNeeded()
         self.tableview.rowHeight = 70
         self.tableview.backgroundColor = .white
+        
+        self.view.addSubview(collectionview)
+        self.collectionview.delegate = self
+        self.collectionview.dataSource = self
+        self.collectionview.register(listCell.self, forCellWithReuseIdentifier: "listCell")
+        self.collectionview.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionview.reloadData()
+        self.collectionview.collectionViewLayout = flowLayout
+        
+        self.collectionview.addSubview(header)
+        self.view.addSubview(MatchCellDetailslikeCount)
 
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"ic 1"), style: .plain, target:self , action: #selector(backButtonPressed))
@@ -330,8 +390,10 @@ class MatchCellDetailsVC: UIViewController {
             self.container.heightAnchor.constraint(equalToConstant: 14),
             self.container.topAnchor.constraint(equalTo: self.MatchCellDetailsTitle.bottomAnchor, constant: 15),
             self.container.leadingAnchor.constraint(equalTo: self.MatchCellDetailsTitle.leadingAnchor ),
-//            self.MatchCellDetailsCategory.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
-//            self.MatchCellDetailsCategory.topAnchor.constraint(equalTo: self.container.topAnchor,constant: 20),
+            
+            self.MatchCellDetailslikeCount.topAnchor.constraint(equalTo: self.MatchCellDetailsTitle.bottomAnchor, constant: 15),
+            self.MatchCellDetailslikeCount.leadingAnchor.constraint(equalTo: self.MatchCellDetailsTitle.leadingAnchor,constant: 200 ),
+
             self.MatchCellDetailsNumber.topAnchor.constraint(equalTo: self.MatchCellDetailsCategory.bottomAnchor, constant: 10),
             self.MatchCellDetailsNumber.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
         
@@ -357,7 +419,8 @@ class MatchCellDetailsVC: UIViewController {
             self.MatchCellDetailsTextField.heightAnchor.constraint(equalToConstant: 115),
             self.MatchCellDetailsTextField.widthAnchor.constraint(equalToConstant: 361),
             self.tableview.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 590),
-            self.tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -170),
+//            self.tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -170),
+            self.tableview.heightAnchor.constraint(equalToConstant: 135),
             self.tableview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 16),
             self.tableview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -16),
             self.reply.topAnchor.constraint(equalTo: self.tableview.topAnchor,constant:  -24),
@@ -373,6 +436,12 @@ class MatchCellDetailsVC: UIViewController {
             
             self.replytext.widthAnchor.constraint(equalToConstant: 342),
             self.replytext.heightAnchor.constraint(equalTo: self.replybutton.heightAnchor),
+            
+            
+            self.collectionview.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.collectionview.trailingAnchor.constraint(equalTo: self.UnderLine.trailingAnchor),
+            self.collectionview.topAnchor.constraint(equalTo: self.UnderLine.bottomAnchor, constant: 10),
+            self.collectionview.heightAnchor.constraint(equalToConstant: 32),
 //            self.CategoryButton.heightAnchor.constraint(equalToConstant: 32),
 //            self.CategoryButton.widthAnchor.constraint(equalToConstant: 96),
            
@@ -389,21 +458,56 @@ class MatchCellDetailsVC: UIViewController {
 
 }
 
+
+
+
+
 extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+   
+        return self.comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
         cell.backgroundColor = .white
-        
         cell.usertext.text = comments[indexPath.row].commentContext
         cell.datetext.text = comments[indexPath.row].createdDate
-        cell.like.text = String(comments[indexPath.row].likeNumber)
+        cell.detailreplyreactionVC.heartButtonCount.text = String(comments[indexPath.row].likeNumber)
+        cell.detailreplyreactionVC.likeButtonCount.text = String(comments[indexPath.row].likeNumber)
+        cell.userid.text = String(comments[indexPath.row].commentId)
+
+        
         
         //        cell.heartButtonCount.text = comments[indexPath.row] //대신에 댓글 수?
         return cell
     }
-    
+   
 }
+    
+    extension MatchCellDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let tmpLabel : UILabel = UILabel()
+            tmpLabel.text = tagList[indexPath.item]
+            return CGSize(width: tmpLabel.intrinsicContentSize.width, height: 28)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return tagList.count
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! listCell
+            cell.memberNameLabel.text = tagList[indexPath.row]
+            return cell
+        }
+        
+        
+        func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return 1
+        }
+        
+    }
+

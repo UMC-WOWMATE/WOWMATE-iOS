@@ -107,6 +107,16 @@ class HomeVC: UITableViewController {
         cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
 //        cell.MainCellImage.image(<#T##t: String##String#>) //posts[indexPath.row].schoolName string으로 적절히 삽입
         
+        let schoolname:String = posts[indexPath.row].schoolName
+        
+        switch schoolname {
+        case "홍익대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍대교표_블루")
+            
+        default:
+            cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍대교표_블루")
+        }
+        
         return cell
         }
 
