@@ -21,7 +21,7 @@ struct Post: Codable {
     let code: Int
     let message: String
     let data1: PostData2
-    let data2: [Coment]
+    let data2: [Comment]
 }
 
 struct PostData1: Codable {
@@ -44,11 +44,12 @@ struct PostData2: Codable {
     let createdDate: String
 }
 
-struct Coment: Codable {
+struct Comment: Codable {
+    let commentId: Int
     let commentContext: String
     let likeNumber: Int
     let createdDate: String
-    let commentReplyDtoList: [CommentReply]
+//    let commentReplyDtoList: [CommentReply]
 }
 
 struct CommentReply: Codable {

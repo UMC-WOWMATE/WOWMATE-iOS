@@ -14,6 +14,7 @@ class MatchCellDetailsVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     var id: Int = -1
+    var comments: [Comment] = []
     
     let UnderLine:UIView = {
         let view = UIView()
@@ -235,10 +236,7 @@ class MatchCellDetailsVC: UIViewController {
         return label
     }()
     
-    let replytextex = ["지옥의 송자구","그냥 몇개 포기해도 ㄱㅊ","ㅎㅇㅌ","그저 송"]
-    let replylikeex = ["10","32","22","100"]
-    let replyheartex = ["2","3","2","9"]
-    let replydateex = ["2022.1.3 02:04","2022.1.3 02:04","2022.1.3 02:04","2022.1.3 02:04"]
+    
 //    let MatchCellDetailsCategoryStackView = AloeStackView()
 //
 //    let CategoryButton = SelectedCategoryButton()
@@ -255,6 +253,34 @@ class MatchCellDetailsVC: UIViewController {
     self.navigationController?.popViewController(animated: true)
         }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // MARK: - Network
+        PostManager.shared.getPost(ID: id) { result in
+            switch result {
+                     case .success(let success):
+                print(success)
+                        self.MatchCellDetailsTitle.text = success.data1.postTitle
+                        self.MatchCellDetailsDate.text = success.data1.createdDate
+                        self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
+//                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
+//                self.MatchCellDetailsNumber.text = success.data1.postMember //서버에서 넘겨준거에서 누락됨
+                        self.MatchCellDetailsTextField.text = success.data1.postContext
+                //댓글
+                        for comment in success.data2 {
+                            self.comments.append(Comment.init(commentId: comment.commentId,
+                                                              commentContext: comment.commentContext,
+                                                              likeNumber: comment.likeNumber,
+                                                              createdDate: comment.createdDate))
+        //                                                      ,commentReplyDtoList: comment.commentReplyDtoList))
+                        }
+                self.tableview.reloadData()
+                     case .failure(let failure):
+                         print(failure)
+                     }
+                 }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -289,34 +315,7 @@ class MatchCellDetailsVC: UIViewController {
         self.tableview.layoutIfNeeded()
         self.tableview.rowHeight = 70
         self.tableview.backgroundColor = .white
-        
-        // MARK: - Network
-//        PostManager.shared.getPost { result in
-//            switch result {
-//                     case .success(let success):
-//                        self.MatchCellDetailsTitle.text = success.data1.postTitle
-//                        self.MatchCellDetailsDate.text = success.data1.createdDate
-//                        self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
-////                    self.MatchCellDetailsNumber.text = String(success)
-//                     case .failure(let failure):
-//                         print(failure)
-//                     }
-//                 }
-        PostManager.shared.getPost(ID: id) { result in
-            switch result {
-                     case .success(let success):
-                        print(success)
-                        self.MatchCellDetailsTitle.text = success.data1.postTitle
-                        self.MatchCellDetailsDate.text = success.data1.createdDate
-                        self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
-//                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
-//                self.MatchCellDetailsNumber.text = success.data1.postMember //서버에서 넘겨준거에서 누락됨
-                        self.MatchCellDetailsTextField.text = success.data1.postContext
-                     case .failure(let failure):
-                         print(failure)
-                     }
-                 }
-    
+
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"ic 1"), style: .plain, target:self , action: #selector(backButtonPressed))
         NSLayoutConstraint.activate([
@@ -392,21 +391,19 @@ class MatchCellDetailsVC: UIViewController {
 
 extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
         cell.backgroundColor = .white
-//        cell.UserText.text = replytextex[indexPath.row]
-//        cell.DateText.text = replydateex[indexPath.row]
-//        cell.likeButtonCount.text = replylikeex[indexPath.row]
-//        cell.heartButtonCount.text = replyheartex[indexPath.row]
+        
+        cell.usertext.text = comments[indexPath.row].commentContext
+        cell.datetext.text = comments[indexPath.row].createdDate
+        cell.like.text = String(comments[indexPath.row].likeNumber)
+        
+        //        cell.heartButtonCount.text = comments[indexPath.row] //대신에 댓글 수?
         return cell
     }
-   
-    
     
 }
-
-

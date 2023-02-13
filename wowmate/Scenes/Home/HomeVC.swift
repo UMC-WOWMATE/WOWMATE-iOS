@@ -6,20 +6,6 @@ class HomeVC: UITableViewController {
     
     let Sections = ["",""]
     
-//    var matchtitlelist = ["자료구조 이해 팀플 구함","잔나비 콘서트 갈 사람!","운동파트너 구합니다","홍개팅","[패디]졸업전시 모델 구합니다","16일 중대부고 풋살 1명"]
-//    var matchcategorylist = ["수업","취미","운동","연애","수업","취미"]
-//    var matchtags = ["#자료구조이해","#잔나비#콘서트","#운동#3대100","#연애#ENFP#홍익대","#패디,#CLEINE#DIOR","#한반두#우리형",]
-//    var matchdate = ["2023.01.21","2023.01.21","2023.01.21","2023.01.21","2023.01.21","2023.01.21",]
-//    var matchlikecount = ["10","32","22","100","23","24",]
-//    var matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
-    
-//    var matchtitlelist: [String] = []
-//    var matchcategorylist: [String] = []
-//    var matchtags: [String] = []
-//    var matchdate: [String] = []
-//    var matchlikecount: [String] = []
-//    var matchlogo: [String] = []
-    
     var posts: [PostData1] = []
 //
     let CategoryBox: UIStackView = {
@@ -42,6 +28,8 @@ class HomeVC: UITableViewController {
         PostManager.shared.getPostList { result in
             switch result {
                      case .success(let success):
+                print(success)
+                self.posts.removeAll()
                 for post in success.data1 {
                     self.posts.append(PostData1.init(postId: post.postId,
                                                      postTitle: post.postTitle,
@@ -52,11 +40,6 @@ class HomeVC: UITableViewController {
                                                      postMember: post.postMember,
                                                      schoolName: post.schoolName,
                                                      createdDate: post.createdDate))
-//                    self.matchtitlelist.append(post.postTitle)
-//                    self.matchcategorylist.append(post.categoryName)
-//                    self.matchtags.append(post.tag1)
-//                    self.matchdate.append(post.createdDate)
-//                    self.matchlikecount.append(String(post.postLikeNumber))
 //                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
                 }
                 self.tableView.reloadData()
@@ -65,6 +48,7 @@ class HomeVC: UITableViewController {
                      }
                  }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -114,12 +98,6 @@ class HomeVC: UITableViewController {
                 
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell;
-//        cell.MainCellName.text = matchtitlelist[indexPath.row]
-//        cell.MainCellCategory.text = matchcategorylist[indexPath.row]
-//        cell.MainCellTag.text = matchtags[indexPath.row]
-//        cell.MainCellDate.text = matchdate[indexPath.row]
-//        cell.MainCellLikeCount.text = matchlikecount[indexPath.row]
-////        cell.MainCellImage.image = UIImage(named: matchlogo[indexPath.row])
         
 //        cell.ID = posts[indexPath.row].postId
         cell.MainCellName.text = posts[indexPath.row].postTitle
@@ -127,7 +105,7 @@ class HomeVC: UITableViewController {
         cell.MainCellTag.text = posts[indexPath.row].tag1
         cell.MainCellDate.text = posts[indexPath.row].createdDate
         cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
-//        cell.MainCellImage.image(<#T##t: String##String#>) posts[indexPath.row].schoolName string으로 적절히 삽입
+//        cell.MainCellImage.image(<#T##t: String##String#>) //posts[indexPath.row].schoolName string으로 적절히 삽입
         
         return cell
         }
@@ -165,7 +143,7 @@ class HomeVC: UITableViewController {
         return posts.count
         
         }
-    }
+}
     
 
 

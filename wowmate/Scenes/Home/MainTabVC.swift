@@ -20,7 +20,7 @@ class MainTabVC: UITabBarController {
         tabBar.isTranslucent = false
         let Home = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 4"), rootViewController: HomeVC())
         let Match = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off"), rootViewController: MatchVC())
-        let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 5"), rootViewController: SearchVC())
+        let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "btn_addtag"), rootViewController: SearchVC())
         let ChatList = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 2"), rootViewController: ChatListVC())
         let Mypage = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 1"), rootViewController: MypageVC())
         viewControllers = [Home,Search, Match, ChatList, Mypage]

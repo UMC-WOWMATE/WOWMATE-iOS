@@ -64,7 +64,7 @@ extension PostAPI: TargetType {
         switch self {
             default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MTMzNDQ1LCJleHAiOjE2NzYxMzcwNDV9.U1hXF9pnXR5n7xsHJPbwuBoeL5BxovWO8dwNiMYbVS4"]
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MjY1MjY1LCJleHAiOjE2NzYyNjg4NjV9.Gifs3WUmL6qGio5CyOses1qgnYsoK3r0XXBUPYA3Pjg"]
 //              return ["Content-Type": "application/json"]
         }
     }
