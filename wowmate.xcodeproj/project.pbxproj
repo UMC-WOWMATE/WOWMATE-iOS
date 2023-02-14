@@ -8,7 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
+		2C51492329979E48001557AA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492229979E47001557AA /* CategoryCell.swift */; };
+		2C51492529979E5A001557AA /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492429979E5A001557AA /* CategoryButton.swift */; };
+		2C989EF9299A70EC0017D80A /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C989EF8299A70EC0017D80A /* listCell.swift */; };
+		2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C17E298FBB040099CE20 /* MatchVC.swift */; };
+		2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */; };
+
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
+		A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* AuthManager.swift */; };
+		A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCD29992FF9008EBED6 /* SearchManager.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
 		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
@@ -73,7 +81,17 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
+		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
+		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
+
+		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		2C989EF8299A70EC0017D80A /* listCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listCell.swift; sourceTree = "<group>"; };
+		2CA2C17E298FBB040099CE20 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
+		2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC_extensions.swift; sourceTree = "<group>"; };
+
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -297,14 +315,11 @@
 		A2E2A8FB2969CA770055B5D2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
-				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
-				A2D28F5529852B2D00A7D4EC /* MainCell.swift */,
-				A2D28F5429852B2D00A7D4EC /* MainTabVC.swift */,
-				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
-				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
+				BEB0D4FB299A2283008A6487 /* HOME2 */,
+				BEB0D4FA299A2254008A6487 /* HOME1 */,
 				A2E2A8E52969C7310055B5D2 /* Home.storyboard */,
-				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
+				2CA2C17E298FBB040099CE20 /* MatchVC.swift */,
+				2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -386,8 +401,34 @@
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
 				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
 				A2F905332989616700AC588C /* PostManager.swift */,
+				A2446CCB29992CFA008EBED6 /* AuthManager.swift */,
+				A2446CCD29992FF9008EBED6 /* SearchManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BEB0D4FA299A2254008A6487 /* HOME1 */ = {
+			isa = PBXGroup;
+			children = (
+				A2D28F5429852B2D00A7D4EC /* MainTabVC.swift */,
+				A2E2A8E32969C7310055B5D2 /* HomeVC.swift */,
+				A2D28F5529852B2D00A7D4EC /* MainCell.swift */,
+				2C51492229979E47001557AA /* CategoryCell.swift */,
+				2C51492429979E5A001557AA /* CategoryButton.swift */,
+			);
+			path = HOME1;
+			sourceTree = "<group>";
+		};
+		BEB0D4FB299A2283008A6487 /* HOME2 */ = {
+			isa = PBXGroup;
+			children = (
+				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
+				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
+				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
+				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
+				2C989EF8299A70EC0017D80A /* listCell.swift */,
+			);
+			path = HOME2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +566,7 @@
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
+				2C989EF9299A70EC0017D80A /* listCell.swift in Sources */,
 				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
 				A2D28F4C29852B1B00A7D4EC /* AgreeTermsVC.swift in Sources */,
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
@@ -537,7 +579,9 @@
 				A2D28F5929852B2D00A7D4EC /* DetailReplyReactionVC.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A2D28F5A29852B2D00A7D4EC /* MainTabVC.swift in Sources */,
+				2C51492329979E48001557AA /* CategoryCell.swift in Sources */,
 				A2D28F6429852B9500A7D4EC /* MatchInfoPreviewTableViewCell.swift in Sources */,
+				A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */,
 				A2D28F4D29852B1B00A7D4EC /* SelectSchoolPopUpVC.swift in Sources */,
@@ -556,6 +600,7 @@
 				A2D28F6D29852BA400A7D4EC /* MyWritingViewController.swift in Sources */,
 				A2D28F6F29852BA400A7D4EC /* MyPageHeader.swift in Sources */,
 				A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */,
+				A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */,
 				A2D08E4C296A9B58008DD3FA /* User.swift in Sources */,
 				A2D28F6C29852BA400A7D4EC /* Extensions.swift in Sources */,
 				A2E2A90A2969CCA90055B5D2 /* SearchVC.swift in Sources */,
@@ -565,10 +610,13 @@
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
+				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
+				2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
 				A2D28F6329852B9500A7D4EC /* RecentSearchDelegate.swift in Sources */,
 				A2F90526298827FF00AC588C /* Chats.swift in Sources */,
+				2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +692,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -698,7 +747,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -722,10 +772,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Chat;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -756,10 +806,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Chat;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,16 +1,40 @@
 PODS:
+  - AloeStackView (1.2.0)
   - IQKeyboardManagerSwift (6.5.10)
+  - Pageboy (3.7.0)
+  - PryntTrimmerView (4.0.2)
+  - SteviaLayout (4.7.3)
+  - Tabman (2.13.0):
+    - Pageboy (~> 3.7.0)
+  - YPImagePicker (5.2.1):
+    - PryntTrimmerView (= 4.0.2)
+    - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
+  - AloeStackView
   - IQKeyboardManagerSwift
+  - Tabman (~> 2.9)
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
+    - AloeStackView
     - IQKeyboardManagerSwift
+    - Pageboy
+    - PryntTrimmerView
+    - SteviaLayout
+    - Tabman
+    - YPImagePicker
 
 SPEC CHECKSUMS:
+  AloeStackView: 8a4ce0efa08128dd78d538372f60c76c224034bb
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Pageboy: fe646118f7168960058bea7a96038386aa7c0da8
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  Tabman: 66ea44c44488327ec20f3c8dc5554a5d22f5908c
+  YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 151a3319b978cf915650c02abdd11affb2447ad8
+PODFILE CHECKSUM: d855f31ed74d0be470c561d5d34c20c39d380671
 
 COCOAPODS: 1.11.3

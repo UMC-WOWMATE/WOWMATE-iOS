@@ -1,6 +1,7 @@
 //
 //  ChatListVC.swift
 //  wowmate
+//  채팅 목록 화면
 //
 //  Created by Doy Kim on 2023/01/08.
 //
@@ -14,7 +15,7 @@ private let cellID = "ChatListCell"
 let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
 let SeoulImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkklrIPJWIVzKvdw0-pGJE1tiokGazEbf_A&usqp=CAU"
 
-struct chatListData{
+struct chatListData {
     var profileImageUrl: String
     var matchTitle: String
     var recentChat: String
@@ -47,7 +48,9 @@ class ChatListVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
-//    var maxWidth = UIScreen.main.bounds.width
+//    ---------[Sample Data]---------
+//    lazy var sampleChatListData:ChatRoomListDataModel = ChatRoomListDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: <#T##[Data1]#>)
+    
     
     let chatTableView = UITableView()
     
@@ -155,7 +158,7 @@ class ChatListVC: UIViewController {
     
     func setChatNCBar() {
         navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = UIColor.WM.black
         
         // back button custom
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
@@ -193,9 +196,9 @@ extension ChatListVC: UITableViewDataSource {
         
         // 새로운 메세지 표시
         if (chatList[indexPath.row].recentChatRead == "읽음") {
-            cell.newMessageImage.tintColor = UIColor.clear
+            cell.newMessageImage.alpha = 0
         } else if (chatList[indexPath.row].recentChatRead == "안읽음") {
-            cell.newMessageImage.tintColor = UIColor.WM.main500
+            cell.newMessageImage.alpha = 1
         }
         
         return cell
@@ -211,13 +214,13 @@ extension ChatListVC: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // 데이터 넘겨 주기
+//        // 데이터 넘겨 주기 - 테스트 위해 사용했음
         let chatController = ChatViewController()
-        chatController.navTitle = chatList[indexPath.row].matchTitle
-        chatController.profImage = chatList[indexPath.row].profileImageUrl
-        chatController.headerTitle = chatList[indexPath.row].matchTitle
-        chatController.headerCate = chatList[indexPath.row].category
-        chatController.headerChatMade = chatList[indexPath.row].chatMade
+//        chatController.navTitle = chatList[indexPath.row].matchTitle
+//        chatController.profImage = chatList[indexPath.row].profileImageUrl
+//        chatController.headerTitle = chatList[indexPath.row].matchTitle
+//        chatController.headerCate = chatList[indexPath.row].category
+//        chatController.headerChatMade = chatList[indexPath.row].chatMade
         
         navigationController?.pushViewController(chatController, animated: true)
       
