@@ -10,6 +10,7 @@ import UIKit
 class AgreeTermsVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    var signupInfo: Signup?
     
     @IBOutlet weak var term1TextView: UITextView!
     @IBOutlet weak var term2TextView: UITextView!
@@ -31,7 +32,6 @@ class AgreeTermsVC: UIViewController {
     
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
-    @IBAction func didTapBackButton(_ sender: UIButton) { dismiss(animated: true) }
     @IBAction func didTapAllTermAgreeButton(_ sender: UIButton) {
         agreeAllTermsButton.isSelected = !(agreeAllTermsButton.isSelected)
         
@@ -51,8 +51,31 @@ class AgreeTermsVC: UIViewController {
     
     @IBAction func didTapCompleteJoinButton(_ sender: UIButton) {
         // TODO: 입력한 정보를 서버로 POST 하고, 회원가입 완료 여부를 반환받아 이후 처리 구현할 예정
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("checkButton1DidChanged"), object: agreeTerm1Button)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("checkButton2DidChanged"), object: agreeTerm2Button)
+        
+        print(signupInfo)
+        
+        if let signupInfo = signupInfo {
+            AuthManager.shared.signupRequest(user: signupInfo) { [weak self] result in
+                switch result {
+                case .success(let success):
+                    self?.view.makeToast(success)
+                    // TODO: 로그인 메인으로 화면 이동
+                    self?.showLoginVC()
+                case .failure(let error):
+                    self?.view.makeToast("네트워크 오류")
+                }
+                
+            }
+        }
     }
     
+    private func showLoginVC() {
+//        var storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
     
     // MARK: - Helpers
     // 설정, 데이터처리 등 액션 외의 메서드를 정의
@@ -83,8 +106,15 @@ class AgreeTermsVC: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(checkButtonDidChanged(_:)),
-            name: Notification.Name("checkButtonDidChanged"),
-            object: nil
+            name: Notification.Name("checkButton1DidChanged"),
+            object: agreeTerm1Button
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(checkButtonDidChanged(_:)),
+            name: Notification.Name("checkButton2DidChanged"),
+            object: agreeTerm2Button
         )
     }
     

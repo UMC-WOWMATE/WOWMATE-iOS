@@ -10,6 +10,7 @@ import UIKit
 class SearchResultVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    var resultMatchList: [Post] = []
     var inputSearchKeyword: String? = nil
     weak var delegate: RecentSearchDelegate?
         
@@ -23,8 +24,55 @@ class SearchResultVC: UIViewController {
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData(keyword: inputSearchKeyword)
         setUp()
         setUpLayout()
+    }
+    
+    private func fetchData(keyword: String?) {
+        if let keyword = keyword {
+            SearchManager.shared.searchPostRequest(keyword: keyword) { [weak self] result in
+                switch result {
+                case .success(let success):
+                    if success.code == 200 {
+
+                        self?.resultMatchList = success.data1!
+//                        print("resultMatchList :: \(self?.resultMatchList)")
+                        self?.matchResultTableView.reloadData()
+                        self?.setRefCategoryButtons()
+                        
+                    } else if success.code == 300 {
+                        print("검색 결과 없음")
+                        self?.showAlert()
+                        self?.navigationController?.popToRootViewController(animated: true) // 웨않뒈;
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: nil, message: "검색 결과가 없습니다", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func setRefCategoryButtons() {
+        if resultMatchList.count > 0 {
+            let title1 = resultMatchList[0].tag1
+            let title2 = resultMatchList[0].tag2
+            refCategory1Button.setTitle(title1, for: .normal)
+            refCategory2Button.setTitle(title2, for: .normal)
+            
+            [
+                refCategory1Button,
+                refCategory2Button
+                
+            ].forEach { $0.isHidden = false }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +91,17 @@ class SearchResultVC: UIViewController {
     // MARK: - Helpers
     // 설정, 데이터처리 등 액션 외의 메서드를 정의
     private func setUp(){
+        navigationController?.navigationBar.isHidden = true
         searchBar.delegate = self
+        
+        if resultMatchList.count == 0 {
+            [
+                refCategory1Button,
+                refCategory2Button
+                
+            ].forEach { $0.isHidden = true }
+        }
+        
         let resultCell = UINib(nibName: "MatchInfoPreviewTableViewCell", bundle: nil)
         matchResultTableView.register(resultCell, forCellReuseIdentifier: "MatchInfoPreviewTableViewCell")
     }
@@ -87,12 +145,14 @@ class SearchResultVC: UIViewController {
 
 extension SearchResultVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return resultMatchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MatchInfoPreviewTableViewCell", for: indexPath) as? MatchInfoPreviewTableViewCell else { return UITableViewCell() }
-        cell.title.text = "\(inputSearchKeyword ?? "") 어쩌고 매칭 \(indexPath.row)"  // test title
+        let postInfo = resultMatchList[indexPath.row]
+        cell.configure(postInfo: postInfo)
+
         cell.setUpLayout()
         
         return cell

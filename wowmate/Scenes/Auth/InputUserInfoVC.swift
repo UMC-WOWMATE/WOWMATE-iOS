@@ -10,6 +10,13 @@ import UIKit
 class InputUserInfoVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    var signupInfo: Signup?
+    
+    var gender: String?
+    var birth: String?
+    var phoneNum: String?
+    
+    
     private let birthDataPicker = UIDatePicker()
     
     @IBOutlet weak var birthTextField: UITextField!
@@ -36,17 +43,18 @@ class InputUserInfoVC: UIViewController {
     @IBAction func didEndEditingBirthTExtField(_ sender: UITextField) { sender.textColor = .black }
     
     
-    @IBAction func didSelectedSexButton(_ sender: UIButton) {
-
-    }
+    @IBAction func didSelectedSexButton(_ sender: UIButton) { }
     
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
         // 입력 조건 모두 확인하고, 조건이 모두 충족하면 InputUserInfoVC로 넘어가기
         // 입력 조건 불충족 시, Alert 띄우기
+        setSignupInfo()
+        print(signupInfo)
+        
         guard let agreeTermsVC = storyboard?.instantiateViewController(withIdentifier: "AgreeTermsVC") as? AgreeTermsVC else { return }
-        agreeTermsVC.modalPresentationStyle = .fullScreen
-        present(agreeTermsVC, animated: true)
+        agreeTermsVC.signupInfo = signupInfo
+        navigationController?.pushViewController(agreeTermsVC, animated: true)
     }
 
     
@@ -85,9 +93,13 @@ class InputUserInfoVC: UIViewController {
     private func setUpSelectSexPopUpButton() {
         let man = UIAction(title: "남성", image: nil, handler: { [weak self] _ in
             self?.setSexButtonSelectedLayout()
+            self?.gender = "M"
+            print("gender set :: \(self?.gender)")
         })
         let woman = UIAction(title: "여성", image: nil, handler: { [weak self] _ in
             self?.setSexButtonSelectedLayout()
+            self?.gender = "F"
+            print("gender set :: \(self?.gender)")
         })
 
         sexSelectButton.menu = UIMenu(
@@ -116,13 +128,29 @@ class InputUserInfoVC: UIViewController {
         )
     }
     
+    private func setSignupInfo() {
+        phoneNum = phoneNumTextField.text
+        
+        if let birth = self.birth,
+           let gender = self.gender,
+           let phoneNum = self.phoneNum {
+            
+            signupInfo?.birth = birth
+            signupInfo?.gender = gender
+            signupInfo?.phoneNumber = phoneNum
+        }
+    }
+    
     
     // objc methods
     @objc private func birthDatePickerValueChanged(_ datePicker: UIDatePicker) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "ko_KR")
         birthTextField.text = formatter.string(from: birthDataPicker.date)
+        
+        birth = birthTextField.text
+        print("birth set :: \(birth)")
     }
     
     @objc func textDidChanged(_ notification: Notification) {

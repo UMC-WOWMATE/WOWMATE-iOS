@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Toast
 
 protocol SelectSchoolDelegate: AnyObject {
     func selectSchool(_ selected: String)   // 선택된 셀의 학교명을 전달할 예정
+    func selectSchoolDomain(_ selected: String)   // 선택된 셀의 학교 메일 도메인을 전달할 예정
 }
 
 class SelectSchoolPopUpVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     weak var delegate: SelectSchoolDelegate?
+    private var selectedSchool: String?
     private var selectedSchoolEmail: String?
     
     // 있는 척을 위한,,학교 이름,이메일 임시 데이터,,아 직접입력도 넣어야 하나
@@ -49,13 +52,15 @@ class SelectSchoolPopUpVC: UIViewController {
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
     @IBAction func didTapSelectButton(_ sender: UIButton) {
-        delegate?.selectSchool(selectedSchoolEmail ?? "")
+        delegate?.selectSchoolDomain(selectedSchoolEmail ?? "")
+        delegate?.selectSchool(selectedSchool ?? "")
         dismiss(animated: true)
     }
     
     
     // MARK: - Helpers
     // 설정, 데이터처리 등 액션 외의 메서드를 정의
+    
     private func setUp() {
         schoolTableView.dataSource = self
         schoolTableView.delegate = self
@@ -84,6 +89,7 @@ extension SelectSchoolPopUpVC: UITableViewDataSource {
 
 extension SelectSchoolPopUpVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSchool = schoolEmailArray[indexPath.row][0]
         selectedSchoolEmail = schoolEmailArray[indexPath.row][1]
     }
 }

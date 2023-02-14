@@ -37,6 +37,7 @@ class PostManager {
                 do {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode([Post].self, from: data.data)
+                    print(result)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
@@ -62,3 +63,4 @@ class PostManager {
      }
  }
  */
+
