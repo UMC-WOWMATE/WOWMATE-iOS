@@ -49,8 +49,13 @@ class LoginVC: UIViewController {
             AuthManager.shared.signinRequest(user: login) { [weak self] result in
                 switch result {
                 case .success(let success):
-                    self?.view.makeToast(success)
-                    self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                    print(success)
+                    self?.view.makeToast(success["message"] as! String)
+                    if success["code"] as? Int == 200 {
+                        self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                    }
+//                    self?.view.makeToast(success)
+//                    self?.navigationController?.pushViewController(MainTabVC(), animated: true)
                 case .failure(let error):
                     self?.view.makeToast("네트워크 오류")
                     return

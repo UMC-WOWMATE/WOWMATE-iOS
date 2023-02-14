@@ -13,8 +13,10 @@ class AuthManager {
     static let shared = AuthManager()
     let provider = MoyaProvider<AuthAPI>()
     
-    func signinRequest(user: Login, completion: @escaping (Result<String, Error>) -> Void) {
+    // Result<String,Error> ---> Result<[String:Any]
+    func signinRequest(user: Login, completion: @escaping (Result<[String:Any], Error>) -> Void) {
         provider.request(.signin(login: user)) {result in
+            print(result)
             switch result {
             case .success(let success):
                 if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
@@ -27,8 +29,8 @@ class AuthManager {
                             print(UserDefaults.standard.value(forKey: "token")!)
                         }
                     }
-                    if let message = json["message"] as? String {
-                        completion(.success(message))
+                    if let response = json["message"] as? String {
+                        completion(.success(json))
                     }
                 }
             case .failure(let error):

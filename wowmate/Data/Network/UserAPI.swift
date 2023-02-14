@@ -49,7 +49,9 @@ extension UserAPI: TargetType {
         switch self {
         default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzU1OTA3LCJleHAiOjE2Nzg5NDc5MDd9.WSvZgtt5qBkaf2XmRT5DnV9gSJeZvC1EopITqlny6VM"]
+                                "Authorization": UserDefaults.standard.value(forKey: "token") as! String]
+//            return ["Content-Type": "application/json",
+//                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzU1OTA3LCJleHAiOjE2Nzg5NDc5MDd9.WSvZgtt5qBkaf2XmRT5DnV9gSJeZvC1EopITqlny6VM"]
         }
     }
     
