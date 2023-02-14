@@ -29,7 +29,8 @@ class MatchCellDetailsVC: UIViewController {
     
 //    var tagList: [String] = ["수정해주세요","학교","홍익대"]
     var tagList: [String] = []
-    var imageList: [String] = ["홍익대","연세대","중앙대"]
+//    var imageList: [String] = ["홍익대","연세대","중앙대"]
+    var imageList: [String?] = []
     
     let UnderLine:UIView = {
         let view = UIView()
@@ -414,8 +415,8 @@ class MatchCellDetailsVC: UIViewController {
     
     let collectionview = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
     
-    let imagecollectionview = UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewLayout.init())
-    
+//    let imagecollectionview = UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewLayout.init())
+    let imagecollectionview = AloeStackView()
     let CategoryButton2:UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -456,6 +457,7 @@ class MatchCellDetailsVC: UIViewController {
                         if success.data1.postTag3 != "" { self.tagList.append("#" + success.data1.postTag3 + " ") }
                         if success.data1.postTag4 != "" { self.tagList.append("#" + success.data1.postTag4 + " ") }
                         if success.data1.postTag5 != "" { self.tagList.append("#" + success.data1.postTag5 + " ") }
+
 //                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
                         if success.data1.postMember == "0" { self.MatchCellDetailsNumber.text = "모집인원 : 무관" }
                         else { self.MatchCellDetailsNumber.text = "모집인원 : " + success.data1.postMember + " 명" }
@@ -464,9 +466,14 @@ class MatchCellDetailsVC: UIViewController {
                 
                 
                 
-                
+               
                         self.MatchCellDetailsTextField.text = success.data1.postContext
                         self.CategoryButton2.text = success.data1.categoryName
+                        if success.data1.image1 != nil { self.imageList.append(success.data1.image1!)}
+                        if success.data1.image2 != nil { self.imageList.append(success.data1.image2!)}
+                        if success.data1.image3 != nil { self.imageList.append(success.data1.image3!)}
+                        if success.data1.image4 != nil { self.imageList.append(success.data1.image4!)}
+                        if success.data1.image5 != nil { self.imageList.append(success.data1.image5!)}
                 //댓글
                         for comment in success.data2 {
                             self.comments.append(Comment.init(commentId: comment.commentId,
@@ -475,12 +482,25 @@ class MatchCellDetailsVC: UIViewController {
                                                               createdDate: comment.createdDate,
                                                               commentReplyDtoList: comment.commentReplyDtoList))
                         }
+                self.showImage()
                 self.tableview.reloadData()
                 self.collectionview.reloadData()
                      case .failure(let failure):
                          print(failure)
                      }
                  }
+    }
+    
+    func showImage() {
+        self.imagecollectionview.axis = .horizontal
+        self.imagecollectionview.hidesSeparatorsByDefault = true
+        for image in imageList {
+            let url = URL(string: image!)
+            let data = UIImageView()
+            data.kf.setImage(with: url)
+            data.addConstraint(NSLayoutConstraint(item: data, attribute: .width, relatedBy: .equal, toItem: data, attribute: .height, multiplier: 1.0, constant: 0))
+            imagecollectionview.addRow(data)
+        }
     }
     
     override func viewDidLoad() {
@@ -534,10 +554,10 @@ class MatchCellDetailsVC: UIViewController {
         
         self.view.addSubview(imagecollectionview)
         self.imagecollectionview.delegate = self
-        self.imagecollectionview.dataSource = self
-        self.imagecollectionview.register(imageCell.self, forCellWithReuseIdentifier: "imageCell")
+//        self.imagecollectionview.dataSource = self
+//        self.imagecollectionview.register(imageCell.self, forCellWithReuseIdentifier: "imageCell")
         self.imagecollectionview.translatesAutoresizingMaskIntoConstraints = false
-        self.imagecollectionview.reloadData()
+//        self.imagecollectionview.reloadData()
 //        self.imagecollectionview.collectionViewLayout = flowLayout
         self.view.addSubview(MatchCellDetailsImageText)
         
@@ -643,7 +663,7 @@ class MatchCellDetailsVC: UIViewController {
         ])
         
     
-        
+        self.showImage()
     }
 
 
@@ -704,24 +724,25 @@ extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            if collectionView == collectionview{
+//            if collectionView == collectionview{
                 
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! listCell
                 cell.memberNameLabel.text = tagList[indexPath.row]
                 return cell
 //
-            }
+//            }
 
-            else {
-                let ecell = imagecollectionview.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! imageCell
-//                    cell.memberImage.image = imageList[indexPath.row]
-                ecell.memberImage.image = UIImage(named: imageList[indexPath.row])
-//                cell.memberImage.load(url: url!)
-//                cell.memberImage.image = cell.memberImage.image?.withRenderingMode(.alwaysTemplate)
-
-                return ecell
-
-            }
+//            else {
+//                let ecell = imagecollectionview.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! imageCell
+//
+////                    cell.memberImage.image = imageList[indexPath.row]
+//                ecell.memberImage.image = UIImage(named: imageList[indexPath.row])
+////                cell.memberImage.load(url: url!)
+////                cell.memberImage.image = cell.memberImage.image?.withRenderingMode(.alwaysTemplate)
+//
+//                return ecell
+//
+//            }
         }
             
             
