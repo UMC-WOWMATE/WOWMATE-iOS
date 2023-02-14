@@ -33,7 +33,7 @@ struct PostData1: Codable {
     let postTitle, categoryName: String
     let tag1, tag2, tag3, tag4, tag5: String?
     let postLikeNumber: Int
-//    let postMember: String
+    let postMember: String
     let schoolName, createdDate: String
 }
 
@@ -43,9 +43,10 @@ struct PostData2: Codable {
     let postTitle, categoryName: String
     let postTag1, postTag2, postTag3, postTag4, postTag5: String
     let postLikeNumber: Int
-//    let postMember: String
+    let postMember: String
     let postContext: String
     let createdDate: String
+    let image1, image2, image3, image4, image5: String?
 }
 
 struct Comment: Codable {

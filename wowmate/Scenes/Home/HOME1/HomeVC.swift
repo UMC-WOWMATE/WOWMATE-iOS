@@ -32,7 +32,7 @@ class HomeVC: UITableViewController {
                                                      tag1: post.tag1, tag2: post.tag2,
                                                      tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
                                                      postLikeNumber: post.postLikeNumber,
-//                                                     postMember: post.postMember,
+                                                     postMember: post.postMember,
                                                      schoolName: post.schoolName,
                                                      createdDate: post.createdDate))
 //                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
@@ -109,7 +109,7 @@ class HomeVC: UITableViewController {
 //        cell.ID = posts[indexPath.row].postId
         cell.MainCellName.text = posts[indexPath.row].postTitle
         cell.MainCellCategory.text = posts[indexPath.row].categoryName
-        cell.MainCellTag.text = "#" + (posts[indexPath.row].tag1 ?? "태그")// 여기도 바꿔줘야할듯..?
+        cell.MainCellTag.text = "#" + (posts[indexPath.row].tag1 ?? "")
         cell.MainCellDate.text = getDate(posts[indexPath.row].createdDate)
         cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
 //        cell.MainCellImage.image(<#T##t: String##String#>) //posts[indexPath.row].schoolName string으로 적절히 삽입
