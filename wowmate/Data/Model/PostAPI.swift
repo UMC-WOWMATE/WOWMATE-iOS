@@ -10,6 +10,15 @@ import Moya
 import UIKit
 
 enum PostAPI {
+
+    case posts
+    case mockPosts
+
+    case search(keyword: String)
+
+    case postRegister(param: PostRegister)
+
+
     case postList
     case postRegister(param: PostRegister)
     case post(postID: Int)
@@ -20,21 +29,43 @@ enum PostAPI {
     
     case postRegisterImage(post: PostRegister, images: [UIImage])
     
+
 }
 
 extension PostAPI: TargetType {
     var baseURL: URL {
         switch self {
+
+
+        case .posts, .search:
+            return URL(string: ServiceAPI.baseURL)!
+
+        case .mockPosts:
+            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
+        default:
+            return URL(string: ServiceAPI.baseURL)!
+
 //        case .postList:
 ////            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
 //            return URL(string: "https://hs-archive.shop")!
         default:
             return URL(string: ServiceAPI.baseURL)!
+
         }
         
     }
     var path: String {
         switch self {
+
+        case .posts, .postRegister:
+            return "/posts"
+        case .mockPosts:
+            return "/posts"
+//        case .search(let keyword):
+//            return "/posts/search?title=\(keyword)"
+        case .search:
+            return "/posts/search"
+
         case .postList, .postRegister, .postRegisterImage:
             return "/posts"
         case .post(let postID):
@@ -43,11 +74,20 @@ extension PostAPI: TargetType {
             return "/posts/category"
         case .commentRegister(let postID, _):
             return "/posts/\(postID)/comments"
+
         }
     }
     var method: Moya.Method {
         switch self {
+
+        case .posts, .search:
+            return .get
+        case .postRegister:
+            return .post
+        case .mockPosts:
+
         case .postList, .post, .postListByCategory:
+
             return .get
         case .postRegister, .postRegisterImage, .commentRegister:
             return .post
@@ -57,6 +97,20 @@ extension PostAPI: TargetType {
         switch self {
         case .postList, .post:
             return .requestPlain
+
+        case .postRegister(let param):
+            return .requestJSONEncodable(param)
+        case .mockPosts:
+            return .requestPlain
+            
+//        case .search:
+//            return .requestPlain
+        case .search(let keyword):
+            let param: [String: String] = [
+                "title": keyword
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+
         case .postListByCategory(let name):
             let param: [String: String] = [
                 "name": name
@@ -116,8 +170,10 @@ extension PostAPI: TargetType {
         }
     }
     
+
     var headers: [String : String]? {
         switch self {
+
         case .postRegisterImage:
             return ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzQ5MTUwLCJleHAiOjE2Nzg5NDExNTB9.DrZHeL-AqCKMYJlAAe6NqEyVPefbatHJ7RZX4VeFMF8"]
@@ -128,4 +184,5 @@ extension PostAPI: TargetType {
         }
     }
     
+
 }

@@ -8,12 +8,15 @@
 import Foundation
 import Moya
 
+/* 게시글 전체 조회 (get - posts) */
 // MARK: - PostList
 struct PostList: Codable {
     let isSuccess: Bool
     let code: Int
     let message: String
+
     let data1: [PostData1]
+
 }
 
 // MARK: - Post
@@ -30,7 +33,7 @@ struct PostData1: Codable {
     let postTitle, categoryName, tag1, tag2: String
 //    let tag3, tag4, tag5: String
     let postLikeNumber: Int
-    let postMember: String
+//    let postMember: String
     let schoolName, createdDate: String
 }
 
@@ -60,11 +63,13 @@ struct CommentReply: Codable {
 }
 
 // 게시글 등록 (post - posts)
+
 // MARK: - PostRegister
 struct PostRegister: Codable {
     let postTitle, categoryName: String
     let postMember: Int
     let tag1, tag2, tag3, tag4, tag5, postContext: String
+
 }
 
 struct CommentRegister: Codable {

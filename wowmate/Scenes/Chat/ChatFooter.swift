@@ -16,9 +16,11 @@ class ChatFooter: UIView {
         let textfield = UITextField()
         
         textfield.text = "  메세지 보내기"
+        textfield.textColor = UIColor.WM.gray700
         textfield.setDimensions(height: 32, width: (self.frame.width - 68))
         textfield.layer.cornerRadius = 10
-        textfield.backgroundColor = .lightGray
+        textfield.backgroundColor = UIColor.WM.gray100
+//        textfield.becomeFirstResponder()
         
         return textfield
     }()
@@ -30,13 +32,12 @@ class ChatFooter: UIView {
         button.setDimensions(height: 24, width: 24)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
-        //button.tintColor = UIColor(r: 101, g: 81, b: 244)
+        button.tintColor = UIColor.WM.main200
 
-        
         return button
     }()
     
-    lazy var hStackView:UIStackView = {
+    lazy var messageStackView:UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.messageField, self.sendButton])
         
         stackView.setDimensions(height: 32, width: (self.frame.width - 32))
@@ -58,6 +59,7 @@ class ChatFooter: UIView {
         super.init(frame: frame)
         
         configureUI()
+//        addAction()
     }
     
     required init?(coder: NSCoder) {
@@ -73,13 +75,27 @@ class ChatFooter: UIView {
     
     // 화면 배치 함수
     func configureUI() {
-        addSubview(hStackView)
-        
-        hStackView.centerY(inView: self)
-        hStackView.centerX(inView: self)
-        
-
+//        addSubview(hStackView)
+//        
+//        hStackView.centerY(inView: self)
+//        hStackView.centerX(inView: self)
         
     }
+    
+//    func addAction() {
+//        messageField.addTarget(self, action: #selector(messFieldClick), for: .touchUpInside)
+//
+//    }
+//
+//    @objc func messFieldClick() {
+//        messageField.becomeFirstResponder()
+//
+//    }
+    
+//    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+//        textField.resignFirstResponder()
+//
+//        return true
+//    }
 
 }

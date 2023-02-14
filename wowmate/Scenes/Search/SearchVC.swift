@@ -66,9 +66,14 @@ class SearchVC: UIViewController {
         resultVC.delegate = self
         resultVC.inputSearchKeyword = input
         
-        resultVC.modalPresentationStyle = .fullScreen
-        present(resultVC, animated: true)
+//        fetchData(keyword: input)
+    
+        navigationController?.pushViewController(resultVC, animated: true)
+//        resultVC.modalPresentationStyle = .fullScreen
+//        present(resultVC, animated: true)
     }
+    
+   
     
     // 입력 검색어 조회, 저장, 삭제
     private func retrieveSearchKeywordList() {

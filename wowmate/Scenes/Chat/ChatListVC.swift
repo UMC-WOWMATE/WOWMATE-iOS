@@ -1,6 +1,7 @@
 //
 //  ChatListVC.swift
 //  wowmate
+//  채팅 목록 화면
 //
 //  Created by Doy Kim on 2023/01/08.
 //
@@ -11,33 +12,33 @@ private let cellID = "ChatListCell"
 
 // MARK: - Data
 
-let chatDataArray = ["고양이 좋아", "운동 좋아", "너무 추워", "핫팩은 필수", "길이 빙판길", "고기 좋아"]
-
 let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
 let SeoulImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkklrIPJWIVzKvdw0-pGJE1tiokGazEbf_A&usqp=CAU"
 
-struct chatListData{
+struct chatListData {
     var profileImageUrl: String
     var matchTitle: String
     var recentChat: String
     var recentChatTime: String
     var recentChatRead: String
+    var category:String
+    var chatMade:String
 }
 
 var chatList:[chatListData] = [
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아하는 사람!!", recentChat: "안녕하세요! 반가워요ㅎㅎ", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "같이 운동할 사람 구해요", recentChat: "어떤 운동하세요?", recentChatTime: "오전 03:15", recentChatRead: "읽음", category: "운동", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "한강 가실 분?", recentChat: "안녕하세요~", recentChatTime: "오전 00:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "강아지 좋아하는 사람!", recentChat: "강아지 이름이 뭐예요?", recentChatTime: "오후 11:28", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "밴드 공연 좋아하니?", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "생필품 나눌 사람?", recentChat: "에에에 너 왕 싫음", recentChatTime: "오후 02:35", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "옷 골라줘", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "친구 필요한 사람", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "놀이공원?", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
     
 ]
 
@@ -46,6 +47,10 @@ class ChatListVC: UIViewController {
 
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    
+//    ---------[Sample Data]---------
+//    lazy var sampleChatListData:ChatRoomListDataModel = ChatRoomListDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: <#T##[Data1]#>)
+    
     
     let chatTableView = UITableView()
     
@@ -82,6 +87,9 @@ class ChatListVC: UIViewController {
 
     func configureUI() {
         
+        view.backgroundColor = .white
+        changeStatusBarBgColor(bgColor: UIColor.white)
+        
         chatTableView.register(ChatListCell.self, forCellReuseIdentifier: cellID)
         chatTableView.delegate = self
         chatTableView.dataSource = self
@@ -89,7 +97,6 @@ class ChatListVC: UIViewController {
         
         view.addSubview(chatTableView)
         
-//        chatTableView.tableHeaderView = ChatListHeader(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: 70))
     
         chatTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 60)
     }
@@ -151,7 +158,7 @@ class ChatListVC: UIViewController {
     
     func setChatNCBar() {
         navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = UIColor.WM.black
         
         // back button custom
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
@@ -189,7 +196,9 @@ extension ChatListVC: UITableViewDataSource {
         
         // 새로운 메세지 표시
         if (chatList[indexPath.row].recentChatRead == "읽음") {
-            cell.newMessageImage.layer.isHidden = true
+            cell.newMessageImage.alpha = 0
+        } else if (chatList[indexPath.row].recentChatRead == "안읽음") {
+            cell.newMessageImage.alpha = 1
         }
         
         return cell
@@ -205,10 +214,21 @@ extension ChatListVC: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+//        // 데이터 넘겨 주기 - 테스트 위해 사용했음
         let chatController = ChatViewController()
-        chatController.navTitle = chatList[indexPath.row].matchTitle
+//        chatController.navTitle = chatList[indexPath.row].matchTitle
+//        chatController.profImage = chatList[indexPath.row].profileImageUrl
+//        chatController.headerTitle = chatList[indexPath.row].matchTitle
+//        chatController.headerCate = chatList[indexPath.row].category
+//        chatController.headerChatMade = chatList[indexPath.row].chatMade
         
         navigationController?.pushViewController(chatController, animated: true)
+      
+        // New 표시 제어 - 새로운 메세지 읽으면 New 표시 없앰
+        if (chatList[indexPath.row].recentChatRead == "안읽음") {
+            chatList[indexPath.row].recentChatRead = "읽음"
+            tableView.reloadData()
+        }
         
     }
 }

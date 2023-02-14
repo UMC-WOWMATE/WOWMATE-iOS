@@ -30,6 +30,7 @@ class PostManager {
         }
     }
     
+
     func registerPost_Image(post: PostRegister, images: [UIImage] , completion: @escaping (Result<String, Error>) -> Void ) {
         print("registerPost_Image called")
         provider.request(.postRegisterImage(post: post, images: images)) { result in
@@ -98,11 +99,14 @@ class PostManager {
     
     func getPostListByCategory(Category: String, completion: @escaping (Result<PostList, Error>) -> Void ) {
         provider.request(.postListByCategory(category: Category)) { result in
+
             switch result {
             case .success(let data):
                 do {
                     let decoder = JSONDecoder()
+
                     let result = try decoder.decode(PostList.self, from: data.data)
+
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
@@ -128,3 +132,4 @@ class PostManager {
      }
  }
  */
+
