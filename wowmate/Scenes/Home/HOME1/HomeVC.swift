@@ -30,7 +30,7 @@ class HomeVC: UITableViewController {
                                                      postTitle: post.postTitle,
                                                      categoryName: post.categoryName,
                                                      tag1: post.tag1, tag2: post.tag2,
-//                                                     tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
+                                                     tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
                                                      postLikeNumber: post.postLikeNumber,
 //                                                     postMember: post.postMember,
                                                      schoolName: post.schoolName,
@@ -109,7 +109,7 @@ class HomeVC: UITableViewController {
 //        cell.ID = posts[indexPath.row].postId
         cell.MainCellName.text = posts[indexPath.row].postTitle
         cell.MainCellCategory.text = posts[indexPath.row].categoryName
-        cell.MainCellTag.text = posts[indexPath.row].tag1
+        cell.MainCellTag.text = "#" + (posts[indexPath.row].tag1 ?? "태그")// 여기도 바꿔줘야할듯..?
         cell.MainCellDate.text = getDate(posts[indexPath.row].createdDate)
         cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
 //        cell.MainCellImage.image(<#T##t: String##String#>) //posts[indexPath.row].schoolName string으로 적절히 삽입
@@ -174,14 +174,14 @@ class HomeVC: UITableViewController {
         case "이화여대"
             :cell.MainCellImage.image =
             UIImage(imageLiteralResourceName: "이화여")
-            
+
         case "인하대"
             :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "인하")
         case "항공대"
             :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한국항공")
         case "한양대"
             :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한양")
-        
+
         default:
             cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍익")
         }

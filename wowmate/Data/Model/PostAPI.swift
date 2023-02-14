@@ -110,11 +110,12 @@ extension PostAPI: TargetType {
             formData.append(MultipartFormData(provider: .data(Post.postContext.data(using: .utf8)!), name: "postContext"))
             
             for image in Images {
-                let imageData = image.pngData()
+                let imageData = image.jpegData(compressionQuality: 0.8)
                 formData.append(MultipartFormData(provider: .data(imageData!),
                                                   name: "image\(Images.firstIndex(of: image)!)"))
             }
             
+            print(formData)
             return .uploadMultipart(formData)
             
         case .commentRegister(_, let comment):

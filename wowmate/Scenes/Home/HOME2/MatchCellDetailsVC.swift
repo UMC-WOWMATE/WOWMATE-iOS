@@ -27,7 +27,8 @@ class MatchCellDetailsVC: UIViewController {
 
     
     
-    var tagList: [String] = ["수정해주세요","학교","홍익대"]
+//    var tagList: [String] = ["수정해주세요","학교","홍익대"]
+    var tagList: [String] = []
     var imageList: [String] = ["홍익대","연세대","중앙대"]
     
     let UnderLine:UIView = {
@@ -442,12 +443,17 @@ class MatchCellDetailsVC: UIViewController {
                         self.MatchCellDetailsTitle.text = success.data1.postTitle
                         self.MatchCellDetailsDate.text = getDate(success.data1.createdDate)
                         self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
+                        if success.data1.postTag1 != "" { self.tagList.append("#" + success.data1.postTag1 + " ") }
+                        if success.data1.postTag2 != "" { self.tagList.append("#" + success.data1.postTag2 + " ") }
+                        if success.data1.postTag3 != "" { self.tagList.append("#" + success.data1.postTag3 + " ") }
+                        if success.data1.postTag4 != "" { self.tagList.append("#" + success.data1.postTag4 + " ") }
+                        if success.data1.postTag5 != "" { self.tagList.append("#" + success.data1.postTag5 + " ") }
 //                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
-//                        self.MatchCellDetailsNumber.text = "모집인원" + success.data1.postMember + "명"
+//                        if success.data1.postMember == "무관" { self.MatchCellDetailsNumber.text = "모집인원 : 무관" }
+//                        else { self.MatchCellDetailsNumber.text = "모집인원 : " + success.data1.postMember + " 명" }
                         self.MatchCellDetailsTextField.text = success.data1.postContext
                         self.CategoryButton2.text = success.data1.categoryName
                 //댓글
-                self.comments.removeAll()
                         for comment in success.data2 {
                             self.comments.append(Comment.init(commentId: comment.commentId,
                                                               commentContext: comment.commentContext,
@@ -456,6 +462,7 @@ class MatchCellDetailsVC: UIViewController {
                                                               commentReplyDtoList: comment.commentReplyDtoList))
                         }
                 self.tableview.reloadData()
+                self.collectionview.reloadData()
                      case .failure(let failure):
                          print(failure)
                      }

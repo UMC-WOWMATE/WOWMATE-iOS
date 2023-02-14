@@ -30,18 +30,18 @@ struct Post: Codable {
 
 struct PostData1: Codable {
     let postId: Int
-    let postTitle, categoryName, tag1, tag2: String
-//    let tag3, tag4, tag5: String
+    let postTitle, categoryName: String
+    let tag1, tag2, tag3, tag4, tag5: String?
     let postLikeNumber: Int
 //    let postMember: String
     let schoolName, createdDate: String
 }
 
 struct PostData2: Codable {
-//    let isPostUser: Bool
-//    let postId: Int
-    let postTitle, categoryName, postTag1, postTag2: String
-//    let postTag3, postTag4, postTag5: String
+    let isPostUser: Bool
+    let postId: Int
+    let postTitle, categoryName: String
+    let postTag1, postTag2, postTag3, postTag4, postTag5: String
     let postLikeNumber: Int
 //    let postMember: String
     let postContext: String

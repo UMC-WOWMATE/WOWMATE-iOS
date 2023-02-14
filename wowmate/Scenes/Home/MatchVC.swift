@@ -45,17 +45,18 @@ class MatchVC: AloeStackViewController {
         
         let saveButton = UIBarButtonItem(image: UIImage(named: "btn_save"), style: .plain, target: self, action: #selector(saveButtonDidTab(_:)))
         
-        let temsaveButton = UIBarButtonItem(image: UIImage(named: "btn_temsave"), style: .plain, target: self, action: #selector(temsaveButtonDidTab(_:)))
-        
-        temsaveButton.tintColor = .black
+//        let temsaveButton = UIBarButtonItem(image: UIImage(named: "btn_temsave"), style: .plain, target: self, action: #selector(temsaveButtonDidTab(_:)))
+//        
+//        temsaveButton.tintColor = .black
         
         navigationItem.leftBarButtonItem = closeButton
-        navigationItem.rightBarButtonItems = [saveButton, temsaveButton]
+//        navigationItem.rightBarButtonItems = [saveButton, temsaveButton]
+        navigationItem.rightBarButtonItem = saveButton
     }
     
     func setUpGetTitle() {
         titleTextField.font = .head
-        titleTextField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요. (20자 내외)", attributes: [NSAttributedString.Key.foregroundColor : UIColor(r: 130, g: 130, b: 130)])
+        titleTextField.attributedPlaceholder = NSAttributedString(string: "제목을 입력해주세요. (최대 15자)", attributes: [NSAttributedString.Key.foregroundColor : UIColor(r: 130, g: 130, b: 130)])
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         stackView.addRow(titleTextField)
     }

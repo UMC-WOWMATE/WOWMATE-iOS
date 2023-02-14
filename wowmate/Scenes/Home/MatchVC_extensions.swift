@@ -19,9 +19,10 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
             message: nil,
             preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "계속 작성", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "나가기", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "작성 취소", style: .default, handler: { action in
+            self.clear()
             print("closed")
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
             
         }))
         
@@ -47,11 +48,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
                                           tag4: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
                                           tag5: self.Tags.isEmpty ? "" : self.Tags.removeFirst(),
                                           postContext: self.contextsTextView.text)
-//                                         image1: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                         image2: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                         image3: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                         image4: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
-//                                         image5: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData())
+            
             PostManager.shared.registerPost_Image(post: postByUser, images: self.Images) { result in
                 switch result {
                 case .success(let success):
@@ -63,60 +60,41 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
                     alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
                     
                     self.present(alert_done, animated: true)
-                    
+                    self.clear()
                     print("saved")
         //home으로 나가기
-                    self.navigationController?.popViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
                 case .failure(let failure):
                     print(failure)
                 }
             }
-//            PostManager.shared.registerPost(post: postByUser) { result in
-//                switch result {
-//                case .success(let success):
-//                    print(success)
-//                    let alert_done = UIAlertController(
-//                        title: "등록 완료",
-//                        message: nil,
-//                        preferredStyle: .alert)
-//                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-//
-//                    self.present(alert_done, animated: true)
-//
-//                    print("saved")
-//        //home으로 나가기
-//                    self.navigationController?.popViewController(animated: true)
-//                case .failure(let failure):
-//                    print(failure)
-//                }
-//            }
         }))
         
         self.present(alert, animated: true)
     }
     
-    @IBAction func temsaveButtonDidTab(_ sender: UIBarButtonItem) {
-        if !checkRequirements() { return }
-        
-        let alert = UIAlertController(
-            title: "글을 임시저장 하시겠습니까?",
-            message: nil,
-            preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "임시저장", style: .default, handler: { action in
-            let alert_done = UIAlertController(
-                title: "임시저장 완료",
-                message: nil,
-                preferredStyle: .alert)
-            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-            
-            self.present(alert_done, animated: true)
-            print("temsaved")
-            self.navigationController?.popViewController(animated: true)
-        }))
-        
-        self.present(alert, animated: true)
-    }
+//    @IBAction func temsaveButtonDidTab(_ sender: UIBarButtonItem) {
+//        if !checkRequirements() { return }
+//
+//        let alert = UIAlertController(
+//            title: "글을 임시저장 하시겠습니까?",
+//            message: nil,
+//            preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+//        alert.addAction(UIAlertAction(title: "임시저장", style: .default, handler: { action in
+//            let alert_done = UIAlertController(
+//                title: "임시저장 완료",
+//                message: nil,
+//                preferredStyle: .alert)
+//            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//            self.present(alert_done, animated: true)
+//            print("temsaved")
+//            self.navigationController?.popViewController(animated: true)
+//        }))
+//
+//        self.present(alert, animated: true)
+//    }
     
     
     @IBAction func addTagsButtonDidTab(_ sender: UIButton) {
@@ -199,6 +177,18 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
         }
     
     // MARK: - Helpers
+    
+    func clear() {
+        self.titleTextField.text = nil
+        self.memberTextField.text = nil
+        self.Tags.removeAll()
+        self.tagStackView.removeAllRows()
+        self.showTag()
+        self.contextsTextView.text = placeholder
+        self.Images.removeAll()
+        self.imageStackView.removeAllRows()
+        self.showImage()
+    }
     
     func checkRequirements() -> Bool {
         if self.titleTextField.text!.isEmpty {
