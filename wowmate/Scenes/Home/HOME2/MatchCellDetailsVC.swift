@@ -664,7 +664,7 @@ extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
         cell.datetext.text = comments[indexPath.row].createdDate
         cell.detailreplyreactionVC.heartButtonCount.text = String(comments[indexPath.row].likeNumber)
         cell.detailreplyreactionVC.likeButtonCount.text = String(comments[indexPath.row].likeNumber)
-        cell.userid.text = String(comments[indexPath.row].commentId)
+        cell.userid.text = "익명" + " \(comments[indexPath.row].commentId)"
         //        cell.heartButtonCount.text = comments[indexPath.row] //대신에 댓글 수?
         return cell
     }
