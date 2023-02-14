@@ -76,7 +76,7 @@ class JoinVC: UIViewController {
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
         if let emailHead = inputEmailHeadTextField.text {
             let inputEmail = emailHead + "@" + TEMP_EMAIL_DOMAIN
-            HomeManager.shared.emailValidationRequest(email: inputEmail) { [weak self] result in
+            AuthManager.shared.emailValidationRequest(email: inputEmail) { [weak self] result in
                 switch result {
                 case .success(let success):
                     self?.validationCode = success

@@ -45,7 +45,7 @@ class LoginVC: UIViewController {
         if let inputEmail = emailTextField.text,
            let inputPassword = passwordTextField.text {
             let login = Login(email: inputEmail, password: inputPassword)
-            HomeManager.shared.signinRequest(user: login) { [weak self] result in
+            AuthManager.shared.signinRequest(user: login) { [weak self] result in
                 switch result {
                 case .success(let success):
                     self?.view.makeToast(success)

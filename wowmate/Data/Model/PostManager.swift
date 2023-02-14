@@ -21,6 +21,7 @@ class PostManager {
                 do {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode([Post].self, from: data.data)
+                    print(result)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
@@ -47,77 +48,3 @@ class PostManager {
  }
  */
 
-
-// MARK: 네트워크 관련 폴더가 로컬에서 이유모르게,,빨간색으로 뜨고,,파일 추가도 되지 않아서,,우선 임시방편으로 여기다가 끼워서 정의하는,,이후에 수정예정,,
-class HomeManager {
-    private init() {}
-    static let shared = HomeManager()
-    let provider = MoyaProvider<AuthAPI>()
-    
-    func signinRequest(user: Login, completion: @escaping (Result<String, Error>) -> Void) {
-        provider.request(.signin(login: user)) {result in
-            switch result {
-            case .success(let success):
-                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
-                    if let code = json["code"] as? Int {
-                        if code == 200 {
-                            // MARK: UserDefaults에 token 저장
-                            let token = json["token"] as? String
-                            let bearerToken = "Bearer " + token!
-                            UserDefaults.standard.set(bearerToken, forKey: "token")
-                            print(UserDefaults.standard.value(forKey: "token")!)
-                        }
-                    }
-                    if let message = json["message"] as? String {
-                        completion(.success(message))
-                    }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func signupRequest(user: Signup, completion: @escaping (Result<String, Error>) -> Void) {
-        provider.request(.signup(user: user)) {result in
-            print("user :: \(user)")
-            switch result {
-            case .success(let success):
-                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
-                    if let message = json["message"] as? String {
-                         completion(.success(message))
-                     }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func emailValidationRequest(email: String, completion: @escaping (Result<String, Error>) -> Void) {
-        provider.request(.emailConfirm(email: email)) { result in
-            switch result {
-            case .success(let success):
-                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
-                    if let confirm = json["data1"] as? [String : Any] {
-                        let code = confirm["code"] as? String
-                        completion(.success(code!))
-                     }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-}
-
-
-class SearchManager {
-    private init() {}
-    static let shared = SearchManager()
-    let provider = MoyaProvider<AuthAPI>()
-    
-    func searchPostRequest(keyword: String, completion: @escaping (Result<String, Error>) -> Void) {
-//        provider.request
-    }
-}

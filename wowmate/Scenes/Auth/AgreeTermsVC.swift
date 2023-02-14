@@ -57,11 +57,12 @@ class AgreeTermsVC: UIViewController {
         print(signupInfo)
         
         if let signupInfo = signupInfo {
-            HomeManager.shared.signupRequest(user: signupInfo) { [weak self] result in
+            AuthManager.shared.signupRequest(user: signupInfo) { [weak self] result in
                 switch result {
                 case .success(let success):
                     self?.view.makeToast(success)
                     // TODO: 로그인 메인으로 화면 이동
+                    self?.showLoginVC()
                 case .failure(let error):
                     self?.view.makeToast("네트워크 오류")
                 }
@@ -70,6 +71,11 @@ class AgreeTermsVC: UIViewController {
         }
     }
     
+    private func showLoginVC() {
+//        var storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
     
     // MARK: - Helpers
     // 설정, 데이터처리 등 액션 외의 메서드를 정의

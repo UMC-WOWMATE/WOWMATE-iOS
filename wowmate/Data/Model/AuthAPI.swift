@@ -44,7 +44,7 @@ extension AuthAPI: TargetType {
                 "phoneNumber": user.phoneNumber,
                 "birth": user.birth,
                 "gender": user.gender,
-                "role": "USER" 
+                "role": "USER"
             ]
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
             

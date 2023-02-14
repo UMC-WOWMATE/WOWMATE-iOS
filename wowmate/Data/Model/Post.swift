@@ -12,13 +12,14 @@ struct PostList: Codable {
     let isSuccess: Bool
     let code: Int
     let message: String
-    let data1: [Post]
+    let data1: [Post]?
 }
 
 // MARK: - Post
 struct Post: Codable {
-    let postTitle, categoryName, postTag1, postTag2: String
-    let postTag3, postTag4, postTag5: String
+    let postTitle, categoryName, tag1, tag2: String
+//    let tag3, tag4, tag5: String
     let postLikeNumber: Int
-    let schoolName, createdBy: String
+//    let schoolName, createdBy: String
+    let schoolName, createdDate: String
 }

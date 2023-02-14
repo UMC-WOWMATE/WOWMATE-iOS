@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
-		A2446CCC29992CFA008EBED6 /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* HomeManager.swift */; };
+		A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* AuthManager.swift */; };
+		A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCD29992FF9008EBED6 /* SearchManager.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
 		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
@@ -75,7 +76,8 @@
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
-		A2446CCB29992CFA008EBED6 /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeManager.swift; path = wowmate/Scenes/Auth/HomeManager.swift; sourceTree = SOURCE_ROOT; };
+		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
+		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -388,7 +390,8 @@
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
 				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
 				A2F905332989616700AC588C /* PostManager.swift */,
-				A2446CCB29992CFA008EBED6 /* HomeManager.swift */,
+				A2446CCB29992CFA008EBED6 /* AuthManager.swift */,
+				A2446CCD29992FF9008EBED6 /* SearchManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A2D28F5A29852B2D00A7D4EC /* MainTabVC.swift in Sources */,
 				A2D28F6429852B9500A7D4EC /* MatchInfoPreviewTableViewCell.swift in Sources */,
+				A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */,
 				A2D28F4D29852B1B00A7D4EC /* SelectSchoolPopUpVC.swift in Sources */,
@@ -559,7 +563,7 @@
 				A2D28F6D29852BA400A7D4EC /* MyWritingViewController.swift in Sources */,
 				A2D28F6F29852BA400A7D4EC /* MyPageHeader.swift in Sources */,
 				A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */,
-				A2446CCC29992CFA008EBED6 /* HomeManager.swift in Sources */,
+				A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */,
 				A2D08E4C296A9B58008DD3FA /* User.swift in Sources */,
 				A2D28F6C29852BA400A7D4EC /* Extensions.swift in Sources */,
 				A2E2A90A2969CCA90055B5D2 /* SearchVC.swift in Sources */,
