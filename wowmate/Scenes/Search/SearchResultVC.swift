@@ -165,6 +165,7 @@ extension SearchResultVC: UITableViewDataSource {
 extension SearchResultVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("매칭 결과 \(indexPath.row) 가 선택됨")
+        navigationController?.pushViewController(MatchCellDetailsVC(), animated: true)
     }
 }
 
