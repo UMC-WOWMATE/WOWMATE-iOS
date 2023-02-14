@@ -78,6 +78,7 @@ class CategoryCell:UITableViewCell {
     @objc func buttonDidTap() {
         if(CategoryButton.backgroundColor == .white){
             CategoryButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
+//            HomeVC.shared.showByCategory(category: CategoryButton.title(for: .normal)!)
             HomeVC.shared.showByCategory(category: CategoryButton.title(for: .normal)!)
         }
         else {

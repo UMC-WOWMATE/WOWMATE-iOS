@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import UIKit
 
 class PostManager {
     private init() {}
@@ -28,9 +29,42 @@ class PostManager {
             }
         }
     }
+    
+    func registerPost_Image(post: PostRegister, images: [UIImage] , completion: @escaping (Result<String, Error>) -> Void ) {
+        print("registerPost_Image called")
+        provider.request(.postRegisterImage(post: post, images: images)) { result in
+            print(result)
+            switch result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
+    func registerComment(ID: Int, comment: CommentRegister, completion: @escaping (Result<String, Error>) -> Void ) {
+        provider.request(.commentRegister(postID: ID, commentContext: comment)) { result in
+            switch result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func getPostList(completion: @escaping (Result<PostList, Error>) -> Void ) {
         provider.request(.postList) { result in
+            print(result)
             switch result {
             case .success(let data):
                 do {
@@ -48,6 +82,7 @@ class PostManager {
     
     func getPost(ID: Int, completion: @escaping (Result<Post, Error>) -> Void ) {
         provider.request(.post(postID: ID)) { result in
+            print(result)
             switch result {
             case .success(let data):
                 do {
@@ -79,7 +114,6 @@ class PostManager {
             }
         }
     }
-    
 }
 
 

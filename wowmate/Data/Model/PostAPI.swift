@@ -7,12 +7,18 @@
 
 import Foundation
 import Moya
+import UIKit
 
 enum PostAPI {
     case postList
     case postRegister(param: PostRegister)
     case post(postID: Int)
     case postListByCategory(category: String)
+    
+    case commentRegister(postID: Int, commentContext: CommentRegister)
+    //구조체로 해야 깔끔하게 나올듯. 스트링 하나긴 하지만
+    
+    case postRegisterImage(post: PostRegister, images: [UIImage])
     
 }
 
@@ -29,19 +35,21 @@ extension PostAPI: TargetType {
     }
     var path: String {
         switch self {
-        case .postList, .postRegister:
+        case .postList, .postRegister, .postRegisterImage:
             return "/posts"
         case .post(let postID):
             return "/posts/\(postID)"
-        case .postListByCategory(let category):
-            return "/posts/category?name=\(category)"
+        case .postListByCategory:
+            return "/posts/category"
+        case .commentRegister(let postID, _):
+            return "/posts/\(postID)/comments"
         }
     }
     var method: Moya.Method {
         switch self {
         case .postList, .post, .postListByCategory:
             return .get
-        case .postRegister:
+        case .postRegister, .postRegisterImage, .commentRegister:
             return .post
 //        case .mockPosts:
 //            return .get
@@ -49,12 +57,37 @@ extension PostAPI: TargetType {
     }
     var task: Moya.Task {
         switch self {
-        case .postList, .post, .postListByCategory:
+        case .postList, .post:
             return .requestPlain
+        case .postListByCategory(let name):
+            let param: [String: String] = [
+                "name": name
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .postRegister(let param):
             return .requestJSONEncodable(param)
-//        case .mockPosts:
-//            return .requestPlain
+        //이미지 포함 게시글 등록
+        case .postRegisterImage(post: let Post, images: let Images):
+//            let data = Post.toJSON()
+            
+            let jsonData = try! JSONEncoder().encode(Post)
+            let PostformData = MultipartFormData(provider: .data(jsonData), name: "postData")
+            
+            var ImageformData: [MultipartFormData] = []
+            for image in Images {
+                let imageData = image.pngData()
+                ImageformData.append(MultipartFormData(provider: .data(imageData!),
+                                                       name: "image\(Images.firstIndex(of: image)!)"))
+            }
+            
+            var multipartData: [MultipartFormData] = []
+            multipartData.append(PostformData)
+            multipartData.append(contentsOf: ImageformData)
+            print(multipartData)
+            return .uploadCompositeMultipart(multipartData, urlParameters: [:])
+        //이미지 포함 게시글 등록
+        case .commentRegister(_, let comment):
+            return .requestJSONEncodable(comment)
         }
     }
     
@@ -62,7 +95,7 @@ extension PostAPI: TargetType {
         switch self {
             default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2Mjg5Njg0LCJleHAiOjE2NzYyOTMyODR9.UcmSDQFZU34SE6TOzWu8p5Wj8Jynr_mJrMcDTsJMf68"]
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzQ5MTUwLCJleHAiOjE2Nzg5NDExNTB9.DrZHeL-AqCKMYJlAAe6NqEyVPefbatHJ7RZX4VeFMF8"]
 //              return ["Content-Type": "application/json"]
         }
     }

@@ -23,7 +23,6 @@ class HomeVC: UITableViewController {
         PostManager.shared.getPostListByCategory(Category: category) { result in
             switch result {
                      case .success(let success):
-                print(success)
                 self.posts.removeAll()
                 for post in success.data1 {
                     self.posts.append(PostData1.init(postId: post.postId,
@@ -37,18 +36,20 @@ class HomeVC: UITableViewController {
                                                      createdDate: post.createdDate))
 //                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
                 }
+                print(self.posts)
                 self.tableView.reloadData()
                      case .failure(let failure):
                          print(failure)
                      }
                  }
+        
+        self.tableView.reloadData()
     }
     
     func showAllPosts() {
         PostManager.shared.getPostList { result in
             switch result {
                      case .success(let success):
-                print(success)
                 self.posts.removeAll()
                 for post in success.data1 {
                     self.posts.append(PostData1.init(postId: post.postId,
@@ -91,7 +92,6 @@ class HomeVC: UITableViewController {
 //            self.CategoryButton.widthAnchor.constraint(equalToConstant: 96),
 //
 //        ]
-        
         configure()
         navigation()
     }
