@@ -111,8 +111,9 @@ extension PostAPI: TargetType {
             
             for image in Images {
                 let imageData = image.jpegData(compressionQuality: 0.8)
+//                let imageData = image.pngData()
                 formData.append(MultipartFormData(provider: .data(imageData!),
-                                                  name: "image\(Images.firstIndex(of: image)!)"))
+                                                  name: "image\(Images.firstIndex(of: image)!+1)", fileName: "image\(Images.firstIndex(of: image)!+1).jpg"))
             }
             
             print(formData)
