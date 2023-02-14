@@ -118,7 +118,7 @@ class HomeVC: UITableViewController {
         
         switch schoolname {
         case "홍익대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍익대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍익")
         case "서울대"
             :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서울대")
         case "연세대"
@@ -132,20 +132,58 @@ class HomeVC: UITableViewController {
         case "서강대"
             :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서강대")
         case "중앙대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "중앙대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "중앙")
         case "경희대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "경희대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "경희")
         case "한국외대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한국외대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한국외")
         case "시립대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "시립대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서울시립")
         case "숙명여대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "숙명여대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "숙명여")
         case "명지대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "명지대")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "명지")
+        case "가천대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "가천")
+        case "가톨릭대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "가톨릭")
+        case "광운대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "광운")
+        case "단국대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "단국")
+        case "덕성여대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "덕성여")
+        case "동국대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "동국")
+        case "동덕여대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "동덕여")
+        case "부경대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "부경")
+        case "부산대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "부산")
+        case "서울여대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서울여")
+        case "성신여대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "성신여")
+        case "세종대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "세종")
+        case "숭실대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "숭실")
+        case "아주대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "아주")
+        case "이화여대"
+            :cell.MainCellImage.image =
+            UIImage(imageLiteralResourceName: "이화여")
             
+        case "인하대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "인하")
+        case "항공대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한국항공")
+        case "한양대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한양")
+        
         default:
-            cell.MainCellImage.image = UIImage(imageLiteralResourceName: "명지대")
+            cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍익")
         }
         
         return cell
