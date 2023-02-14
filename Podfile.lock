@@ -4,6 +4,9 @@ PODS:
   - Kingfisher (7.5.0)
   - Pageboy (3.7.0)
   - PryntTrimmerView (4.0.2)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
   - SteviaLayout (4.7.3)
   - Tabman (2.13.0):
     - Pageboy (~> 3.7.0)
@@ -15,6 +18,7 @@ DEPENDENCIES:
   - AloeStackView
   - IQKeyboardManagerSwift
   - Kingfisher (~> 7.0)
+  - Socket.IO-Client-Swift (~> 15.2.0)
   - Tabman (~> 2.9)
   - YPImagePicker
 
@@ -25,6 +29,8 @@ SPEC REPOS:
     - Kingfisher
     - Pageboy
     - PryntTrimmerView
+    - Socket.IO-Client-Swift
+    - Starscream
     - SteviaLayout
     - Tabman
     - YPImagePicker
@@ -35,10 +41,12 @@ SPEC CHECKSUMS:
   Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
   Pageboy: fe646118f7168960058bea7a96038386aa7c0da8
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   Tabman: 66ea44c44488327ec20f3c8dc5554a5d22f5908c
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: e3080a184a04282fb4222ee6cec022cb0ac9371a
+PODFILE CHECKSUM: 9ee12a6a6a330d707e885aae813ac8de8a5fed41
 
 COCOAPODS: 1.11.3

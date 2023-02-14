@@ -11,6 +11,11 @@ class MyPageHeader: UIView {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
+//    ---------[Real Use Data]---------
+    lazy var myPageData:MyPageDataModel = MyPageDataModel(isSuccess: true, code: 200, message: "SUCCESS!", data1: userData)
+    lazy var userData:User = User(email: "my@sookmyung.ac.kr", univ: "숙명여대", phoneNumber: "010-0000-0000", birth: "2000-10-14", gender: "F", create_date: "2023-02-13 03:19:01.756350")//, image_url: SookImageUrl)
+    
+//    ---------[UI components]---------
     let imageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC_Varq6a2k-TR670RYQkEfHPGgRYXArbGuw&usqp=CAU"
     let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
     
@@ -29,7 +34,7 @@ class MyPageHeader: UIView {
         view.layer.cornerRadius = 5
         view.setDimensions(height: 135, width: view.frame.width) // 361
         // 그림자
-        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowColor = UIColor.WM.gray600.cgColor
         view.layer.shadowRadius = 5
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowOpacity = 0.2
@@ -91,7 +96,7 @@ class MyPageHeader: UIView {
     var signUpDateLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "가입일: 2023년01월10일"
+        label.text = "가입일: 2023년 01월 10일"
         label.font = .systemFont(ofSize: 13)
         label.textColor = .systemGray
         return label
@@ -132,6 +137,10 @@ class MyPageHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // 데이터 받아오기
+        fetchMyPageData()
+        
+        // UI 설정
         configureUI()
     }
     
@@ -167,5 +176,69 @@ class MyPageHeader: UIView {
         vStackView.anchor(top: profileImage.topAnchor, left: profileImage.rightAnchor, paddingLeft: 15, paddingRight: 15)
          
         
+    }
+    
+//    ---------[methods for fetching data]---------
+    
+    // method for getting create_date STRING
+    func getCreateDate(_ date:String) -> String {
+        let year = date.prefix(4)
+        
+        let monthStartIndex = date.index(date.startIndex, offsetBy: 5)
+        let monthEndIndex = date.index(date.startIndex, offsetBy: 6)
+        let month = date[monthStartIndex...monthEndIndex]
+        
+        let dayStartIndex = date.index(date.startIndex, offsetBy: 8)
+        let dayEndIndex = date.index(date.startIndex, offsetBy: 9)
+        let day = date[dayStartIndex...dayEndIndex]
+        
+        return year + "년 " + month + "월 " + day + "일"
+    }
+    
+    // method for calculate age
+    func getAge(_ birth: String) -> String {
+        guard let year = Int(birth.prefix(4)) else { return "2000"}
+        
+        let today = Date() // 현재의 Date 날짜 및 시간
+        let dayFormatter = DateFormatter() // Day 포맷 객체 선언
+        
+        dayFormatter.dateFormat = "yyyy" // Day 포맷 타입 지정
+        guard let nowYear = Int(dayFormatter.string(from: today)) else { return "2023" } // 포맷된 형식 문자열로 반환
+        
+        let age = nowYear - year + 1
+        
+        return String(age)
+    }
+    
+    func getSex(_ english:String) -> String {
+        if english == "M" { return "남" }
+        else if english == "F" { return "여" }
+        else { return "미상"}
+    }
+    
+//    ---------[methods to get data from server]---------
+    func fetchMyPageData() {
+        
+        UserManager.shared.getUserInfo { [self] result in
+            switch result {
+            case .success(let data):
+                self.myPageData = data
+                
+//                let url = URL(string: self.myPageData.data1.image_url)
+//                self.profileImage.load(url: url!)
+                
+                self.emailLabel.text = self.myPageData.data1.email
+                self.ageLabel.text = "나이: " + self.getAge(self.myPageData.data1.birth)
+                self.sexLabel.text = "성별: " + self.getSex(self.myPageData.data1.gender)
+                self.phoneNumLabel.text = "연락처: " + self.myPageData.data1.phoneNumber
+                self.signUpDateLabel.text = "가입일: " + self.getCreateDate(self.myPageData.data1.create_date)
+                
+                print(data)
+                
+            case .failure(let Error):
+                print(Error)
+            }
+            
+        }
     }
 }

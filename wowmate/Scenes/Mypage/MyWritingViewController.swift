@@ -13,7 +13,7 @@ class MyWritingViewController: UIViewController {
     // 변수 및 상수, IBOutlet
     let label: UILabel = {
         let label = UILabel()
-        label.text = "내가 작성한 글"
+        label.text = "내가 작성한 글이 아직 없습니다."
         return label
     }()
     

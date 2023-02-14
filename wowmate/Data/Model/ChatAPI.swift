@@ -9,8 +9,9 @@ import Foundation
 import Moya
 
 enum ChatAPI {
-    case chats
+    case chatList
     case chatRoom(String)
+    case createRoom(param: CreateRoomDataModel)
 }
 
 extension ChatAPI: TargetType {
@@ -23,7 +24,9 @@ extension ChatAPI: TargetType {
     // 서버의 base URL 뒤에 추가 될 Path (API)
     var path: String {
         switch self {
-        case .chats:
+        case .createRoom(_):
+            return "/chat/create"
+        case .chatList:
             return "/chats"
         case .chatRoom(let roomUuid):
             return "/chats/\(roomUuid)"
@@ -33,7 +36,9 @@ extension ChatAPI: TargetType {
     // HTTP Method
     var method: Moya.Method {
         switch self {
-        case .chats:
+        case .createRoom(_):
+            return .post
+        case .chatList:
             return .get
         case .chatRoom(_):
             return .get
@@ -43,7 +48,9 @@ extension ChatAPI: TargetType {
     // 요청에 사용되는 파라미터 설정
     var task: Moya.Task {
         switch self {
-        case .chats:
+        case .createRoom(let param):
+            return .requestJSONEncodable(param)
+        case .chatList:
             return .requestPlain
         case .chatRoom(_):
             return .requestPlain
@@ -53,9 +60,9 @@ extension ChatAPI: TargetType {
     // HTTP headers
     var headers: [String : String]? {
         switch self {
-        case .chats,
-                .chatRoom(_):
-            return nil // 토큰이 들어가는 헤더 추가 예정
+        default:
+            return ["Content-Type": "application/json",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzU1OTA3LCJleHAiOjE2Nzg5NDc5MDd9.WSvZgtt5qBkaf2XmRT5DnV9gSJeZvC1EopITqlny6VM"]
         }
     }
     

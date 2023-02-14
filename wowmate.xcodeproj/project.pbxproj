@@ -53,6 +53,11 @@
 		A2D28F81298650E400A7D4EC /* setColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F80298650E400A7D4EC /* setColor.swift */; };
 		A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D660CD297598B4006BE26D /* UIColor+Ext.swift */; };
 		A2DA93DE299BE2BA00FD176F /* SchoolImageUrlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */; };
+		A2DA93E0299C020800FD176F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93DF299C020800FD176F /* SocketIOManager.swift */; };
+		A2DA93E2299C064E00FD176F /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E1299C064E00FD176F /* ChatManager.swift */; };
+		A2DA93E4299C065F00FD176F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E3299C065F00FD176F /* UserManager.swift */; };
+		A2DA93E6299C067100FD176F /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E5299C067100FD176F /* UserAPI.swift */; };
+		A2DA93E8299C068100FD176F /* MyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E7299C068100FD176F /* MyPage.swift */; };
 		A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */; };
 		A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */; };
 		A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2A8E32969C7310055B5D2 /* HomeVC.swift */; };
@@ -128,6 +133,11 @@
 		A2D28F80298650E400A7D4EC /* setColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setColor.swift; sourceTree = "<group>"; };
 		A2D660CD297598B4006BE26D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolImageUrlData.swift; sourceTree = "<group>"; };
+		A2DA93DF299C020800FD176F /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		A2DA93E1299C064E00FD176F /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		A2DA93E3299C065F00FD176F /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A2DA93E5299C067100FD176F /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		A2DA93E7299C068100FD176F /* MyPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPage.swift; sourceTree = "<group>"; };
 		A2E2A8DC2969C7310055B5D2 /* wowmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E2A8DF2969C7310055B5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E2A8E12969C7310055B5D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +214,7 @@
 				A2D08E4B296A9B58008DD3FA /* User.swift */,
 				A24FB96D2980370D003FBD0C /* Post.swift */,
 				A2F90525298827FF00AC588C /* Chats.swift */,
+				A2DA93E7299C068100FD176F /* MyPage.swift */,
 				BE1C3F21299BB7CF005CAC23 /* Match.swift */,
 				A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */,
 			);
@@ -404,6 +415,10 @@
 				A2F9052B29895B7000AC588C /* AuthAPI.swift */,
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
 				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
+				A2DA93E5299C067100FD176F /* UserAPI.swift */,
+				A2DA93DF299C020800FD176F /* SocketIOManager.swift */,
+				A2DA93E3299C065F00FD176F /* UserManager.swift */,
+				A2DA93E1299C064E00FD176F /* ChatManager.swift */,
 				A2F905332989616700AC588C /* PostManager.swift */,
 				A2446CCB29992CFA008EBED6 /* AuthManager.swift */,
 				A2446CCD29992FF9008EBED6 /* SearchManager.swift */,
@@ -582,6 +597,7 @@
 				A2D28F5729852B2D00A7D4EC /* MatchCellDetailsVC.swift in Sources */,
 				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
 				A2D28F7929852BB100A7D4EC /* ChatFooter.swift in Sources */,
+				A2DA93E0299C020800FD176F /* SocketIOManager.swift in Sources */,
 				A2D28F5C29852B2D00A7D4EC /* DetailReplyCell.swift in Sources */,
 				A2D28F5929852B2D00A7D4EC /* DetailReplyReactionVC.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
@@ -590,6 +606,7 @@
 				A2D28F6429852B9500A7D4EC /* MatchInfoPreviewTableViewCell.swift in Sources */,
 				A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
+				A2DA93E2299C064E00FD176F /* ChatManager.swift in Sources */,
 				0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */,
 				A2D28F4D29852B1B00A7D4EC /* SelectSchoolPopUpVC.swift in Sources */,
 				A2D28F5829852B2D00A7D4EC /* MatchDetailsVC.swift in Sources */,
@@ -606,6 +623,7 @@
 				A2D28F4E29852B1B00A7D4EC /* FindPasswordVC.swift in Sources */,
 				A2D28F6D29852BA400A7D4EC /* MyWritingViewController.swift in Sources */,
 				A2D28F6F29852BA400A7D4EC /* MyPageHeader.swift in Sources */,
+				A2DA93E8299C068100FD176F /* MyPage.swift in Sources */,
 				A2E2A9002969CB2F0055B5D2 /* LoginVC.swift in Sources */,
 				A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */,
 				A2D08E4C296A9B58008DD3FA /* User.swift in Sources */,
@@ -618,6 +636,7 @@
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
 				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
+				A2DA93E4299C065F00FD176F /* UserManager.swift in Sources */,
 				2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */,
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
@@ -625,6 +644,7 @@
 				A2DA93DE299BE2BA00FD176F /* SchoolImageUrlData.swift in Sources */,
 				A2F90526298827FF00AC588C /* Chats.swift in Sources */,
 				2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */,
+				A2DA93E6299C067100FD176F /* UserAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

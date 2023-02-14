@@ -102,10 +102,8 @@ class BubbleCell: UITableViewCell {
         view.addSubview(opponentMessage)
         view.addSubview(opponentExtraStackView)
         opponentMessage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor)
-        opponentExtraStackView.anchor(left: opponentMessage.rightAnchor, paddingLeft: 5)
-        opponentExtraStackView.centerY(inView: view)
+        opponentExtraStackView.anchor(left: opponentMessage.rightAnchor, bottom: view.bottomAnchor, paddingLeft: 5, paddingBottom: 3)
         opponentExtraStackView.alignment = .leading
-        
         
         return view
     }()
@@ -116,8 +114,7 @@ class BubbleCell: UITableViewCell {
         view.addSubview(myMessage)
         view.addSubview(myExtraStackView)
         myMessage.anchor(top: view.topAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        myExtraStackView.anchor(right: myMessage.leftAnchor, paddingRight: 5)
-        myExtraStackView.centerY(inView: view)
+        myExtraStackView.anchor(bottom: view.bottomAnchor ,right: myMessage.leftAnchor, paddingBottom: 3, paddingRight: 5)
         myExtraStackView.alignment = .trailing
         
         return view

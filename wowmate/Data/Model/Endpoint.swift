@@ -9,4 +9,5 @@ import Foundation
 
 enum ServiceAPI {
     static let baseURL = "https://hs-archive.shop"
+    static let chatURL = "localhost:8080/ws-chat"
 }

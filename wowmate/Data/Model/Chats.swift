@@ -8,30 +8,59 @@
 import Foundation
 // MARK: - ChatRoomListDataModel
 struct ChatRoomListDataModel: Codable {
-    let isSuccess: Bool
-    let code: Int
-    let message: String
-    let data1: [Data1]
+    var isSuccess: Bool
+    var code: Int
+    var message: String
+    var data1: [data1]
 }
 
-struct Data1: Codable {
-    let roomUuID, postTitle, lastMessage, lastMessageDate: String
-    let opponentUserImg: String
+struct data1: Codable {
+    var roomUuid, postTitle, lastMessage, lastMessageDate: String
+    var opponentUserImg: String
 }
 
 // MARK: - ChatRoomDataModel
-struct ChatRoomDataModel {
+struct ChatRoomDataModel: Codable {
+    var isSuccess: Bool
+    var code: Int
+    var message: String
+    var data1: Data2
+}
+
+struct Data2: Codable {
+    var postTitle, postCategory, createdDate, opponentImg, opponentEmail, userEmail: String
+    var messageList: [MessageList]
+}
+
+struct MessageList: Codable {
+    var content, senderEmail, messageType,sendTime: String
+}
+
+
+struct TestModel: Codable {
+    var isSuccess: Bool
+    var code: Int
+    var message: String
+    var data1: Data4
+}
+//test
+struct Data4: Codable {
+    var postTitle, postCategory, createdDate, opponentEmail, userEmail: String
+    var messageList: [MessageList]
+}
+
+
+// MARK: - CreateRoomDataModel
+struct CreateRoomDataModel: Codable {
     let isSuccess: Bool
     let code: Int
     let message: String
-    let data1: Data2
+    let data1: Data3
 }
 
-struct Data2 {
-    let postTitle, postCategory, createdDate, opponentImg, opponentEmail, userEmail: String
+// MARK: - Data3
+struct Data3: Codable {
+    let postTitle, postCategory, createdDate, opponentEmail: String
+    let opponentImg: String
     let messageList: [MessageList]
-}
-
-struct MessageList {
-    let content, senderEmail, sendDate: String
 }

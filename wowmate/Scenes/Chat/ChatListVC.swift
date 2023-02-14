@@ -15,32 +15,32 @@ private let cellID = "ChatListCell"
 let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
 let SeoulImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkklrIPJWIVzKvdw0-pGJE1tiokGazEbf_A&usqp=CAU"
 
-struct chatListData {
-    var profileImageUrl: String
-    var matchTitle: String
-    var recentChat: String
-    var recentChatTime: String
-    var recentChatRead: String
-    var category:String
-    var chatMade:String
-}
-
-var chatList:[chatListData] = [
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아하는 사람!!", recentChat: "안녕하세요! 반가워요ㅎㅎ", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "같이 운동할 사람 구해요", recentChat: "어떤 운동하세요?", recentChatTime: "오전 03:15", recentChatRead: "읽음", category: "운동", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "한강 가실 분?", recentChat: "안녕하세요~", recentChatTime: "오전 00:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "강아지 좋아하는 사람!", recentChat: "강아지 이름이 뭐예요?", recentChatTime: "오후 11:28", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "밴드 공연 좋아하니?", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "생필품 나눌 사람?", recentChat: "에에에 너 왕 싫음", recentChatTime: "오후 02:35", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "옷 골라줘", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "친구 필요한 사람", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "놀이공원?", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
-    
-]
+//struct chatListData {
+//    var profileImageUrl: String
+//    var matchTitle: String
+//    var recentChat: String
+//    var recentChatTime: String
+//    var recentChatRead: String
+//    var category:String
+//    var chatMade:String
+//}
+//
+//var chatList:[chatListData] = [
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아하는 사람!!", recentChat: "안녕하세요! 반가워요ㅎㅎ", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "같이 운동할 사람 구해요", recentChat: "어떤 운동하세요?", recentChatTime: "오전 03:15", recentChatRead: "읽음", category: "운동", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "한강 가실 분?", recentChat: "안녕하세요~", recentChatTime: "오전 00:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "강아지 좋아하는 사람!", recentChat: "강아지 이름이 뭐예요?", recentChatTime: "오후 11:28", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "밴드 공연 좋아하니?", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "생필품 나눌 사람?", recentChat: "에에에 너 왕 싫음", recentChatTime: "오후 02:35", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "옷 골라줘", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "친구 필요한 사람", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "놀이공원?", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "운동 좋아", recentChat: "반가워요~", recentChatTime: "오후 04:15", recentChatRead: "안읽음", category: "스포츠", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SeoulImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//    chatListData(profileImageUrl: SookImageUrl, matchTitle: "고양이 좋아", recentChat: "안녕하세요~", recentChatTime: "오후 04:15", recentChatRead: "읽음", category: "동물", chatMade: "2023 01 28"),
+//
+//]
 
 
 class ChatListVC: UIViewController {
@@ -48,9 +48,14 @@ class ChatListVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
-//    ---------[Sample Data]---------
-//    lazy var sampleChatListData:ChatRoomListDataModel = ChatRoomListDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: <#T##[Data1]#>)
+//    ---------[Real Use Data]---------
+    lazy var chatRoomListData:ChatRoomListDataModel = ChatRoomListDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: data)
+    var data:[data1] = [
+        data1(roomUuid: "df02975e-b63d-490e-b11b-4196f3ad2266", postTitle: "게시글 1번", lastMessage: "가워요~ㅎㅎㅎ", lastMessageDate: "2023년 01월 02일 14:35:15", opponentUserImg: SookImageUrl)
+    ]
     
+    
+    var read:String = "안읽음"
     
     let chatTableView = UITableView()
     
@@ -61,21 +66,14 @@ class ChatListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 데이터 받아오기
+        fetchChatRoomListData()
+        
+        // UI 설정
         configureUI()
+        
         setNCBI()
         setChatNCBar()
-    }
-    
-    // MARK: - 상단바2
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-        //hideNavigationBar()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-//        setChatNCBar()
     }
     
     // MARK: - Actions
@@ -88,7 +86,7 @@ class ChatListVC: UIViewController {
     func configureUI() {
         
         view.backgroundColor = .white
-        changeStatusBarBgColor(bgColor: UIColor.white)
+        changeStatusBarBgColor(bgColor: UIColor.WM.white)
         
         chatTableView.register(ChatListCell.self, forCellReuseIdentifier: cellID)
         chatTableView.delegate = self
@@ -97,7 +95,6 @@ class ChatListVC: UIViewController {
         
         view.addSubview(chatTableView)
         
-    
         chatTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 60)
     }
     
@@ -163,8 +160,59 @@ class ChatListVC: UIViewController {
         // back button custom
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    
+    }
+    
+    func getNow() -> String {
+        let today = Date() // 현재의 Date 날짜 및 시간
+        let dayFormatter = DateFormatter() // Day 포맷 객체 선언
         
+        dayFormatter.dateFormat = "yyyy년 MM월 dd일" // Day 포맷 타입 지정
+        let day_string = dayFormatter.string(from: today) // 포맷된 형식 문자열로 반환
+        
+        return day_string
+    }
+    
+    // method - get date
+    func getDate(_ date:String) -> String {
+        return String(date.prefix(13))
+    }
+    
+    func getDay(_ date:String) -> String {
+        let dayStartIndex = date.index(date.startIndex, offsetBy: 7)
+        let dayEndIndex = date.index(date.startIndex, offsetBy: 13)
+        let returnDay = String(date[dayStartIndex...dayEndIndex])
+        
+        return returnDay
+    }
+    
+    // method - get time
+    func getTime(_ time:String) -> String {
+        let timeStartIndex = time.index(time.startIndex, offsetBy: 14)
+        let timeEndIndex = time.index(time.startIndex, offsetBy: 18)
+        let returnTime = String(time[timeStartIndex...timeEndIndex])
+        
+        return returnTime
+    }
+    
+    
+    
+//    ---------[Network]---------
 
+    func fetchChatRoomListData() {
+        ChatManager.shared.getChatRoomList { result in
+            switch result {
+            case .success(let data):
+                self.chatRoomListData.data1 = data.data1
+                self.chatTableView.reloadData()
+                print(data)
+            case .failure(let Error):
+                print(Error)
+            }
+        }
+        self.chatRoomListData.data1 = self.data
+        self.chatTableView.reloadData()
+        
     }
     
     
@@ -173,7 +221,7 @@ class ChatListVC: UIViewController {
 // MARK: - Extensions
 extension ChatListVC: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatList.count
+        return chatRoomListData.data1.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,22 +230,29 @@ extension ChatListVC: UITableViewDataSource {
         // cell contents setting
         
         // 프로필 이미지
-        let url = URL(string: chatList[indexPath.row].profileImageUrl)
+//        let url = URL(string: chatRoomListData.data[indexPath.row].opponentUserImg)
+        let url = URL(string: SookImageUrl)
         cell.profileImage.load(url: url!)
         
         // 매칭 제목
-        cell.titleLabel.text = chatList[indexPath.row].matchTitle
+        cell.titleLabel.text = chatRoomListData.data1[indexPath.row].postTitle
         
         // 최근 대화 내용
-        cell.recentChatLabel.text = chatList[indexPath.row].recentChat
+        cell.recentChatLabel.text = chatRoomListData.data1[indexPath.row].lastMessage
         
         // 최근 대화 시각
-        cell.timeLabel.text = chatList[indexPath.row].recentChatTime
+        if getNow() == getDate(chatRoomListData.data1[indexPath.row].lastMessageDate){
+            print("---------같은 날----------")
+            cell.timeLabel.text = getTime(chatRoomListData.data1[indexPath.row].lastMessageDate)
+        } else {
+            print("---------다른 날----------")
+            cell.timeLabel.text = getDay(chatRoomListData.data1[indexPath.row].lastMessageDate)
+        }
         
-        // 새로운 메세지 표시
-        if (chatList[indexPath.row].recentChatRead == "읽음") {
+        // 새로운 메세지 표시 chatListData.data1[indexPath.row].recentChatRead
+        if (read == "읽음") {
             cell.newMessageImage.alpha = 0
-        } else if (chatList[indexPath.row].recentChatRead == "안읽음") {
+        } else if (read == "안읽음") {
             cell.newMessageImage.alpha = 1
         }
         
@@ -214,21 +269,18 @@ extension ChatListVC: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        // 데이터 넘겨 주기 - 테스트 위해 사용했음
         let chatController = ChatViewController()
-//        chatController.navTitle = chatList[indexPath.row].matchTitle
-//        chatController.profImage = chatList[indexPath.row].profileImageUrl
-//        chatController.headerTitle = chatList[indexPath.row].matchTitle
-//        chatController.headerCate = chatList[indexPath.row].category
-//        chatController.headerChatMade = chatList[indexPath.row].chatMade
         
         navigationController?.pushViewController(chatController, animated: true)
       
         // New 표시 제어 - 새로운 메세지 읽으면 New 표시 없앰
-        if (chatList[indexPath.row].recentChatRead == "안읽음") {
-            chatList[indexPath.row].recentChatRead = "읽음"
+        if (read == "안읽음") {
+            read = "읽음"
             tableView.reloadData()
         }
+        
+        // 선택한 채팅방 값 넘기기
+        chatController.selectRoomUuid = chatRoomListData.data1[indexPath.row].roomUuid
         
     }
 }

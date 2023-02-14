@@ -17,13 +17,16 @@ let thirdSectionArray = ["앱 버전", "서비스 이용약관", "기타 문의"
 class MypageVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    
     let myPageTableView = UITableView()
+    
     
     // MARK: - Lifecycle
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // UI 설정
         configureUI()
     }
     
@@ -71,13 +74,8 @@ class MypageVC: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
-    
-//     View Controller 이동 함수들
-//
-//    func moveToMyWritingVC() {
-//        let writingController = MyWritingViewController()
-//        navigationController?.pushViewController(writingController, animated: true)
-//    }
+
+
 }
 
 // MARK: - Extensions

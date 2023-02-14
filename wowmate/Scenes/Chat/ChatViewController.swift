@@ -9,36 +9,35 @@
 import UIKit
 import SwiftUI
 import Moya
+import SocketIO
 
 private let cellID = "BubbleCell"
 
 class ChatViewController: UIViewController {
-    
-    // MARK: - Network Extension
-    
-    private let chatRoomProvider = MoyaProvider<ChatAPI>()
-    
-     
-        
+      
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
 //    ---------[for sizing)]---------
     var maxWidth = UIScreen.main.bounds.size.width
     
-//    var navTitle:String = "매칭 제목"
-//    var profImage:String = ""
-//    lazy var headerTitle:String = self.navTitle
-//    var headerCate:String = "카테고리"
-//    var headerChatMade:String = "채팅 생성일 20NN.NN.NN"
-    
-//    ---------[Sample Data]---------
-    lazy var sampleChatRoomData:ChatRoomDataModel = ChatRoomDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: sampleData)
-    lazy var sampleData:Data2 = Data2(postTitle: "고양이 좋아", postCategory: "동물", createdDate: "채팅 생성일 2023.01.01", opponentImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU", opponentEmail: "opponent@gmail.com", userEmail: "my@gmail.com", messageList: sampleMessagrList)
-    var sampleMessagrList:[MessageList] = [
-        MessageList(content: "안녕하세요~ddkkdkdkldshdhfkldhfkahkfdhhdslhsdhldsf", senderEmail: "opponent@gmail.com", sendDate: "2023년 01월 01일 14:30:15"),
-        MessageList(content: "반가워요~~", senderEmail: "my@gmail.com", sendDate: "2023년 01월 02일 14:35:15")
+//    ---------[Real Use Data]---------
+    lazy var chatRoomData:ChatRoomDataModel = ChatRoomDataModel(isSuccess: true, code: 200, message: "SUCCESS", data1: data)
+    lazy var data:Data2 = Data2(postTitle: "고양이 좋아", postCategory: "동물", createdDate: "채팅 생성일 2023.01.01", opponentImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU", opponentEmail: "opponent@gmail.com", userEmail: "my@gmail.com", messageList: messageList)
+    var messageList:[MessageList] = [
+        MessageList(content: "안녕하세요~ㅎㅎㅎ", senderEmail: "opponent@gmail.com", messageType: "ENTER", sendTime: "2023년 01월 01일 14:30:15"),
+        MessageList(content: "반가워요~~ㅎㅎㅎ", senderEmail: "my@gmail.com", messageType: "TEXT", sendTime: "2023년 01월 02일 14:35:15"),
+        MessageList(content: "안녕하세요~ㅎㅎㅎ", senderEmail: "opponent@gmail.com", messageType: "TEXT", sendTime: "2023년 01월 02일 14:30:15"),
+        MessageList(content: "반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ반가워요~~ㅎㅎㅎ", senderEmail: "my@gmail.com", messageType: "TEXT", sendTime: "2023년 01월 02일 14:35:15")
+        
     ]
+    
+//    ---------[Test Data]---------
+    lazy var testData:TestModel = TestModel(isSuccess: true, code: 200, message: "SUCCESS", data1: test)
+    lazy var test:Data4 = Data4(postTitle: "고양이 좋아", postCategory: "동물", createdDate: "채팅 생성일 2023.01.01", opponentEmail: "opponent@gmail.com", userEmail: "my@gmail.com", messageList: messageList)
+    
+    
+    var selectRoomUuid:String = ""
     
 //    ---------[for method(isSameDate)]---------
     var preDate:String = ""
@@ -85,8 +84,8 @@ class ChatViewController: UIViewController {
     
     let sendButton:UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up.circle.fill"), for: .normal)
         
+        button.setImage(UIImage(systemName: "arrow.up.circle.fill"), for: .normal)
         button.setDimensions(height: 24, width: 24)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
@@ -98,7 +97,6 @@ class ChatViewController: UIViewController {
     lazy var messageStackView:UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [self.messageField, self.sendButton])
         
-//        stackView.setDimensions(height: 32, width: (view.frame.width - 32))
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -108,34 +106,81 @@ class ChatViewController: UIViewController {
         return stackView
     }()
     
+    let matchButton:UIButton = {
+        let button = UIButton()
+        
+        button.setImage(UIImage(named: "main_icon"), for: .normal)
+        button.setDimensions(height: 57, width: 57)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.layer.cornerRadius = 57 / 2
+        button.clipsToBounds = true
+        
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 데이터 받아오기 - 소캣 오픈(소캣 오픈 보류)
+        fetchChatRoomData()
+        
         // UI 설정
         configureUI()
-        setNC()
+        
         
         // 동작 설정
-        setSendAction()
+        setMessageSendAction()
+        setMatchMessageSendButton()
         
+//        print(selectRoomUuid)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // 채팅방 VC가 사라지면 채팅 소캣 닫음
+//        SocketIOManager.shared.closeConnection()
     }
     
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
     
-    func setSendAction() {
-        
+    // method to setting a message send button
+    func setMessageSendAction() {
         let sendAction = UIAction { _ in
             let sendmess = String(self.messageField.text ?? "")
             if sendmess != "" {
                 print(sendmess)
             }
+            
+//            // 임시 메세지 보내기 기능
+//            let messList:MessageList = MessageList(content: self.messageField.text!, senderEmail: self.chatRoomData.data1.userEmail, messageType: "TEXT", sendTime: self.getSendTime())
+//            self.chatRoomData.data1.messageList.append(messList)
+//            self.chatTableView.reloadData()
+            
+            // 메세지 입력창 비우기
+            self.messageField.text = ""
         }
         
         sendButton.addAction(sendAction, for: .touchUpInside)
         
     }
+    
+    // method to setting a matching message send button
+    func setMatchMessageSendButton() {
+        let matchSendAction = UIAction { _ in
+            let sendmess = String("상대방이 매칭 요청을 보냈습니다. 수락하시려면 하단 매칭 버튼을 눌러주세요.")
+            print(sendmess)
+        }
+        
+        matchButton.addAction(matchSendAction, for: .touchUpInside)
+
+    }
+    
+    
     
     
     
@@ -158,16 +203,16 @@ class ChatViewController: UIViewController {
         chatTableView.estimatedRowHeight = UITableView.automaticDimension
         
         
-        setHeader()
-        
         view.addSubview(messageStackView)
         view.addSubview(chatTableView)
+        view.addSubview(matchButton)
         
         messageStackView.setDimensions(height: 32, width: view.frame.width)
         messageStackView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 16, paddingBottom: 36, paddingRight: 16)
         
         chatTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: messageStackView.topAnchor, right: view.rightAnchor, paddingBottom: 10)
-    
+        
+        matchButton.anchor(bottom: messageStackView.topAnchor, right: view.rightAnchor, paddingBottom: 16, paddingRight: 24)
     }
     
     // method - setting tableView header
@@ -176,12 +221,12 @@ class ChatViewController: UIViewController {
         let headerView:UIView = {
             let view = ChatHeader(frame: CGRect(x: 0, y: 0 , width: view.frame.width, height: 80))
             
-            let url = URL(string: sampleChatRoomData.data1.opponentImg)
+            let url = URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU") //chatRoomData.data1.opponentImg)
             view.profileImage.load(url: url!)
             
-            view.titleLabel.text = sampleChatRoomData.data1.postTitle
-            view.cateLabel.text = sampleChatRoomData.data1.postCategory
-            view.chatMadeDateLabel.text = sampleChatRoomData.data1.createdDate
+            view.titleLabel.text = self.chatRoomData.data1.postTitle
+            view.cateLabel.text = self.chatRoomData.data1.postCategory
+            view.chatMadeDateLabel.text = self.chatRoomData.data1.createdDate
             
             return view
             
@@ -196,7 +241,7 @@ class ChatViewController: UIViewController {
     // method - setting navigation controller
     func setNC() {
         
-        self.navigationItem.title = sampleChatRoomData.data1.postTitle
+        self.navigationItem.title = chatRoomData.data1.postTitle
         
         // toggle
         // right bar item
@@ -235,8 +280,19 @@ class ChatViewController: UIViewController {
         return returnTime
     }
     
+    // method - get sendTime
+    func getSendTime() -> String {
+        let today = Date() // 현재의 Date 날짜 및 시간
+        let dayFormatter = DateFormatter() // Day 포맷 객체 선언
+        
+        dayFormatter.dateFormat = "yyyy년 MM월 dd일 HH:mm:ss" // Day 포맷 타입 지정
+        let now_string = dayFormatter.string(from: today) // 포맷된 형식 문자열로 반환
+        
+        return now_string
+    }
     
-//    ---------[methods for get WeekDay]---------
+    
+//    ---------[methods to get WeekDay]---------
     
     func checkLeap(year: Int) -> Bool {
         var checkValue: Bool = false
@@ -300,55 +356,73 @@ class ChatViewController: UIViewController {
         
         returnValue = dayDay[index]
         
-//        print("---------------\(returnValue)-----------------")
         return returnValue
     }
+    
+//    ---------[methods to get data from server]---------
+    func fetchChatRoomData() {
+        ChatManager.shared.getChatRoom(selectRoomUuid) { result in
+            
+            switch result {
+            case .success(let data):
+                self.chatRoomData = data
+                
+                self.setHeader()
+                self.setNC()
+                self.chatTableView.reloadData()
+                
+                self.chatTableView.scrollToRow(at: IndexPath(row: self.chatRoomData.data1.messageList.count  - 1, section: 0),at: .bottom, animated: false)
+//                SocketIOManager.shared.establishConnection()
+                
+                print(data)
+            case .failure(let Error):
+                print(Error)
+            }
+            
+        }
+    }
+    
+    
 }
 
 // MARK: - Tableview Extensions
 
 extension ChatViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleChatRoomData.data1.messageList.count
+        return chatRoomData.data1.messageList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BubbleCell
         
-        let dateString = getDate(sampleChatRoomData.data1.messageList[indexPath.row].sendDate)
-        cell.dateLabel.text = dateString + " " + getWeekDay(dateString)
+        cell.selectionStyle = .none
         
-        if isSameDate(sampleChatRoomData.data1.messageList[indexPath.row].sendDate) {
-            if sampleChatRoomData.data1.userEmail == sampleChatRoomData.data1.messageList[indexPath.row].senderEmail {
+        if isSameDate(chatRoomData.data1.messageList[indexPath.row].sendTime) {
+            if chatRoomData.data1.userEmail == chatRoomData.data1.messageList[indexPath.row].senderEmail {
                 cell.myConfigureUI()
-                cell.myMessage.text = sampleChatRoomData.data1.messageList[indexPath.row].content
-                cell.myTimeLabel.text = getTime(sampleChatRoomData.data1.messageList[indexPath.row].sendDate)
+                cell.myMessage.text = chatRoomData.data1.messageList[indexPath.row].content
+                cell.myTimeLabel.text = getTime(chatRoomData.data1.messageList[indexPath.row].sendTime)
                 
             } else {
                 cell.otherConfigureUI()
-                cell.opponentMessage.text = sampleChatRoomData.data1.messageList[indexPath.row].content
-                cell.opponentTimeLabel.text = getTime(sampleChatRoomData.data1.messageList[indexPath.row].sendDate)
+                cell.opponentMessage.text = chatRoomData.data1.messageList[indexPath.row].content
+                cell.opponentTimeLabel.text = getTime(chatRoomData.data1.messageList[indexPath.row].sendTime)
             }
         } else {
-            if sampleChatRoomData.data1.userEmail == sampleChatRoomData.data1.messageList[indexPath.row].senderEmail {
+            let dateString = getDate(chatRoomData.data1.messageList[indexPath.row].sendTime)
+            cell.dateLabel.text = dateString + " " + getWeekDay(dateString)
+            
+            if chatRoomData.data1.userEmail == chatRoomData.data1.messageList[indexPath.row].senderEmail {
                 cell.dateMyConfigureUI()
-                cell.myMessage.text = sampleChatRoomData.data1.messageList[indexPath.row].content
-                cell.myTimeLabel.text = getTime(sampleChatRoomData.data1.messageList[indexPath.row].sendDate)
+                cell.myMessage.text = chatRoomData.data1.messageList[indexPath.row].content
+                cell.myTimeLabel.text = getTime(chatRoomData.data1.messageList[indexPath.row].sendTime)
             } else {
                 cell.dateOtherConfigureUI()
-                cell.opponentMessage.text = sampleChatRoomData.data1.messageList[indexPath.row].content
-                cell.opponentTimeLabel.text = getTime(sampleChatRoomData.data1.messageList[indexPath.row].sendDate)
+                cell.opponentMessage.text = chatRoomData.data1.messageList[indexPath.row].content
+                cell.opponentTimeLabel.text = getTime(chatRoomData.data1.messageList[indexPath.row].sendTime)
             }
         }
        
-// MARK: - 테스트하고 지우기
-//        if indexPath.row == 0 {
-//            cell.backgroundColor = .red
-//        } else if indexPath.row == 1 {
-//            cell.backgroundColor = .orange
-//        } else {
-//            cell.backgroundColor = .blue
-//        }
         return cell
     }
     
@@ -379,25 +453,5 @@ extension ChatViewController:UITableViewDelegate {
 //
 //
 //    }
-
-//// MARK: - Network Extension
-//extension ChatViewController {
-//
-//    func fetchChatRoom() {
-//        chatRoomProvider.request(.chatRoom("1")) { result in
-//            switch result {
-//            case .success(let data):
-//                guard let givenChatRoomData = try? JSONDecoder().decode(ChatRoomModel.self, from: data.data)
-//                else { return }
-//
-//                print("SUCCESS", givenChatRoomData)
-//                break
-//            case .failure(_):
-//                <#code#>
-//            }
-//        }
-//    }
-//
-//}
 
 

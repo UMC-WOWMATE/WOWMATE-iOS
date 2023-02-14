@@ -57,7 +57,7 @@ class ChatListCell: UITableViewCell {
         stackView.distribution = .fillProportionally
         stackView.spacing = 12
         
-        stackView.setDimensions(height: 45, width: 170)
+        stackView.setDimensions(height: 45, width: (self.frame.width - 100) )
         
         return stackView
     }()
@@ -103,8 +103,6 @@ class ChatListCell: UITableViewCell {
         stackView.alignment = .trailing
         stackView.distribution = .fillProportionally
         stackView.spacing = 8
-        
-        stackView.setDimensions(height: 54, width: 60)
         
         return stackView
     }()

@@ -11,4 +11,7 @@ target 'wowmate' do
   pod 'YPImagePicker'
   pod 'Tabman', '~> 2.9'
   pod 'Kingfisher', '~> 7.0'
+
+  # for chat
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 end
