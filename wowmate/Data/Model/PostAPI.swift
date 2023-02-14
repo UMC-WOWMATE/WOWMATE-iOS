@@ -12,15 +12,10 @@ import UIKit
 enum PostAPI {
 
     case posts
-    case mockPosts
 
     case search(keyword: String)
 
-    case postRegister(param: PostRegister)
-
-
     case postList
-//    case postRegister(param: PostRegister)
     case post(postID: Int)
     case postListByCategory(category: String)
     
@@ -40,14 +35,8 @@ extension PostAPI: TargetType {
         case .posts, .search:
             return URL(string: ServiceAPI.baseURL)!
 
-        case .mockPosts:
-            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
         default:
             return URL(string: ServiceAPI.baseURL)!
-
-//        case .postList:
-////            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
-//            return URL(string: "https://hs-archive.shop")!
 
 
         }
@@ -56,16 +45,14 @@ extension PostAPI: TargetType {
     var path: String {
         switch self {
 
-        case .posts, .postRegister:
-            return "/posts"
-        case .mockPosts:
+        case .posts:
             return "/posts"
 //        case .search(let keyword):
 //            return "/posts/search?title=\(keyword)"
         case .search:
             return "/posts/search"
 
-        case .postList, .postRegister, .postRegisterImage:
+        case .postList, .postRegisterImage:
             return "/posts"
         case .post(let postID):
             return "/posts/\(postID)"
@@ -81,12 +68,10 @@ extension PostAPI: TargetType {
 
         case .posts, .search:
             return .get
-        case .postRegister:
-            return .post
   
         case .postList, .post, .postListByCategory:
             return .get
-        case .postRegister, .postRegisterImage, .commentRegister:
+        case .postRegisterImage, .commentRegister:
             return .post
         default:
             return .get
@@ -95,11 +80,6 @@ extension PostAPI: TargetType {
     var task: Moya.Task {
         switch self {
         case .postList, .post:
-            return .requestPlain
-
-        case .postRegister(let param):
-            return .requestJSONEncodable(param)
-        case .mockPosts:
             return .requestPlain
             
 //        case .search:
@@ -115,13 +95,9 @@ extension PostAPI: TargetType {
                 "name": name
             ]
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
-        case .postRegister(let param):
-            return .requestJSONEncodable(param)
             
       case .postRegisterImage(post: let Post, images: let Images):
             var formData: [MultipartFormData] = []
-//            var data = MultipartFormData(provider: .data(Post.postTitle.data(using: .utf8)!), name: "postTitle")
-            
 
             formData.append(MultipartFormData(provider: .data(Post.postTitle.data(using: .utf8)!), name: "postTitle"))
             formData.append(MultipartFormData(provider: .data(Post.categoryName.data(using: .utf8)!), name: "categoryName"))
@@ -133,19 +109,14 @@ extension PostAPI: TargetType {
             formData.append(MultipartFormData(provider: .data(Post.tag5.data(using: .utf8)!), name: "tag5"))
             formData.append(MultipartFormData(provider: .data(Post.postContext.data(using: .utf8)!), name: "postContext"))
             
-//            var multipartFile: [MultipartFormData] = []
-            
             for image in Images {
                 let imageData = image.pngData()
                 formData.append(MultipartFormData(provider: .data(imageData!),
                                                   name: "image\(Images.firstIndex(of: image)!)"))
             }
             
-//            formData.append(contentsOf: multipartFile)
-            
             return .uploadMultipart(formData)
             
-        //이미지 포함 게시글 등록
         case .commentRegister(_, let comment):
             return .requestJSONEncodable(comment)
             

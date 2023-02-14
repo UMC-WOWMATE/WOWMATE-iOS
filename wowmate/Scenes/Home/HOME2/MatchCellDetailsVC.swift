@@ -265,10 +265,79 @@ class MatchCellDetailsVC: UIViewController {
         button.setTitle("등록", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14,weight: .bold)
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(MatchCellDetailsReplyButton), for: .allEvents)
         return button
         
     }()
     
+    @objc func MatchCellDetailsReplyButton(_ sender:Any){
+            if self.replytext.text.isEmpty {
+                let alert_done = UIAlertController(
+                    title: "댓글 내용을 입력해주세요.",
+                    message: nil,
+                    preferredStyle: .alert)
+                alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+
+                self.present(alert_done, animated: true)
+                
+                return
+                
+            }
+                
+                let alert = UIAlertController(
+                    title: "댓글을 등록하시겠습니까?",
+                    message: nil,
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { action in
+                    //업로드 통신
+                    let commentByUser = CommentRegister(commentContext: self.replytext.text!)
+                    
+                    PostManager.shared.registerComment(ID: self.id, comment: commentByUser) { result in
+                        print(result)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            let alert_done = UIAlertController(
+                                title: "등록 완료",
+                                message: nil,
+                                preferredStyle: .alert)
+                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+
+                            self.present(alert_done, animated: true)
+
+                            self.tableview.reloadData()
+                            self.replytext.text = ""
+                            
+                            PostManager.shared.getPost(ID: self.id) { result in
+                                switch result {
+                                         case .success(let success):
+                                    print(success)
+                                    //댓글
+                                    self.comments.removeAll()
+                                            for comment in success.data2 {
+                                                self.comments.append(Comment.init(commentId: comment.commentId,
+                                                                                  commentContext: comment.commentContext,
+                                                                                  likeNumber: comment.likeNumber,
+                                                                                  createdDate: comment.createdDate,
+                                                                                  commentReplyDtoList: comment.commentReplyDtoList))
+                                            }
+                                    self.tableview.reloadData()
+                                         case .failure(let failure):
+                                             print(failure)
+                                         }
+                                     }
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                }))
+                
+                
+                
+                self.present(alert, animated: true)
+            }
+        
     let chatpost:UIButton = {
        let button = UIButton()
         button.backgroundColor = UIColor(r: 101, g: 81, b: 224)
@@ -378,6 +447,7 @@ class MatchCellDetailsVC: UIViewController {
                         self.MatchCellDetailsTextField.text = success.data1.postContext
                         self.CategoryButton2.text = success.data1.categoryName
                 //댓글
+                self.comments.removeAll()
                         for comment in success.data2 {
                             self.comments.append(Comment.init(commentId: comment.commentId,
                                                               commentContext: comment.commentContext,
