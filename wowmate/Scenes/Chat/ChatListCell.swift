@@ -78,7 +78,7 @@ class ChatListCell: UITableViewCell {
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
         // 이미지 색 바꾸기
-        imageView.tintColor = UIColor.WM.main200
+        imageView.tintColor = UIColor.WM.main500
 
         
         imageView.contentMode = .scaleToFill

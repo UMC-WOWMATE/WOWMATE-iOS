@@ -27,3 +27,55 @@ class paddingLabel:UILabel {
         return contentSize
     }
 }
+
+func messageLabel(_ textColor:UIColor, _ backgroundColor:UIColor, _ labelMaxWidth:CGFloat) -> UILabel {
+    let label = paddingLabel()
+    
+    label.text = "안녕하세요! 반가워요ㅎㅎ 제 이름은 홍길동입니다. 앞으로 잘 지내 봐요~"
+    label.textColor = textColor
+    label.backgroundColor = backgroundColor
+    label.font = .body_16R
+    label.numberOfLines = 0
+    // 라벨 둥글게 하기
+    label.clipsToBounds = true
+    label.layer.cornerRadius = 10
+    // 라벨 크기 제한
+    label.preferredMaxLayoutWidth = labelMaxWidth
+    // 라벨 줄바꿈 속성
+    label.lineBreakMode = .byCharWrapping
+    
+    
+    return label
+}
+
+var messtimeLabel:UILabel = {
+    let label = UILabel()
+    
+    label.text = "00:00"
+    label.font = .body_11L
+    label.textColor = UIColor.WM.gray600
+    
+    return label
+}()
+
+var readLabel:UILabel = {
+    let label = UILabel()
+    
+    label.text = "1"
+    label.font = .body_11L
+    label.textColor = UIColor.WM.main500
+    
+    return label
+}()
+
+func extraLabel() -> UIStackView {
+    let stackView = UIStackView(arrangedSubviews: [readLabel, messtimeLabel])
+
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.axis = .vertical
+//    stackView.alignment = .leading
+    stackView.distribution = .fillProportionally
+    stackView.spacing = 0
+
+    return stackView
+}
