@@ -270,12 +270,12 @@ class MatchCellDetailsVC: UIViewController {
         return button
         
     }()
-    
-    let finalstack : AloeStackView = {
-        let stackview = AloeStackView()
-        stackview.axis = .vertical
-        return stackview
-    }()
+//
+//    let finalstack : AloeStackView = {
+//        let stackview = AloeStackView()
+//        stackview.axis = .vertical
+//        return stackview
+//    }()
     
     
     @objc func MatchCellDetailsReplyButton(_ sender:Any){
@@ -542,7 +542,7 @@ class MatchCellDetailsVC: UIViewController {
         self.view.addSubview(MatchCellDetailsImageText)
         
         //시발 진짜 마지막 제발
-        self.imagecollectionview.addSubview(finalstack)
+//        self.imagecollectionview.addSubview(finalstack)
         
       
 
