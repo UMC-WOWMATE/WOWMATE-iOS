@@ -15,7 +15,7 @@ class MatchCellDetailsVC: UIViewController {
     // 변수 및 상수, IBOutlet
     var id: Int = -1
     var comments: [Comment] = []
-    let commentReplyDtoList: [CommentReply] = []
+//    let commentReplyDtoList: [CommentReply] = []
     
     
     var tagList: [String] = ["수정해주세요","학교","홍익대"]
@@ -259,7 +259,6 @@ class MatchCellDetailsVC: UIViewController {
                 let commentByUser = CommentRegister(commentContext: self.replytext.text!)
                 
                 PostManager.shared.registerComment(ID: self.id, comment: commentByUser) { result in
-                    print(result)
                     switch result {
                     case .success(let success):
                         print(success)
@@ -271,7 +270,6 @@ class MatchCellDetailsVC: UIViewController {
 
                         self.present(alert_done, animated: true)
 
-                        self.tableview.reloadData()
                         self.replytext.text = ""
                         self.showMatchDetails()
                     case .failure(let failure):
@@ -292,9 +290,14 @@ class MatchCellDetailsVC: UIViewController {
         button.setTitle("채팅 걸기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18,weight: .bold)
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(testfunc), for: .allEvents) // 테스트용 댓글 밀기
         return button
     }()
-    
+    //테스트용 댓글 밀기
+    @objc func testfunc(_ sender:Any){
+        self.comments.removeAll()
+        self.tableview.reloadData()
+    }
     
     let MatchCellDetailsCategory : UIStackView = {
         let stackview = UIStackView()
@@ -358,7 +361,6 @@ class MatchCellDetailsVC: UIViewController {
         PostManager.shared.getPost(ID: id) { result in
             switch result {
                      case .success(let success):
-                print(success)
                         self.MatchCellDetailsTitle.text = success.data1.postTitle
                         self.MatchCellDetailsDate.text = success.data1.createdDate
                         self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
@@ -367,6 +369,7 @@ class MatchCellDetailsVC: UIViewController {
                         self.MatchCellDetailsTextField.text = success.data1.postContext
                 //댓글
                         self.comments.removeAll()
+                print(self.comments)
                         for comment in success.data2 {
                             self.comments.append(Comment.init(commentId: comment.commentId,
                                                               commentContext: comment.commentContext,
@@ -374,6 +377,7 @@ class MatchCellDetailsVC: UIViewController {
                                                               createdDate: comment.createdDate,
                                                               commentReplyDtoList: comment.commentReplyDtoList))
                         }
+                print(self.comments)
                 self.tableview.reloadData()
                      case .failure(let failure):
                          print(failure)

@@ -17,13 +17,21 @@ class HomeVC: UITableViewController {
         return stackview
     }()
 
-    static let shared = HomeVC()
+    static var shared = HomeVC()
+    @objc public func test() {
+        self.posts.removeAll()
+        print(posts)
+        self.tableView.reloadData()
+    }
+    
     func showByCategory(category: String) {
         print(category)
+        self.posts.removeAll()
+        print(posts)
+        self.tableView.reloadData()
         PostManager.shared.getPostListByCategory(Category: category) { result in
             switch result {
                      case .success(let success):
-                self.posts.removeAll()
                 for post in success.data1 {
                     self.posts.append(PostData1.init(postId: post.postId,
                                                      postTitle: post.postTitle,
@@ -42,8 +50,6 @@ class HomeVC: UITableViewController {
                          print(failure)
                      }
                  }
-        
-        self.tableView.reloadData()
     }
     
     func showAllPosts() {

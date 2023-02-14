@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 
 // MARK: - PostList
 struct PostList: Codable {
@@ -58,20 +59,12 @@ struct CommentReply: Codable {
     let createdDate: String
 }
 
-/* 게시글 등록 (post - posts) */
+// 게시글 등록 (post - posts)
 // MARK: - PostRegister
 struct PostRegister: Codable {
     let postTitle, categoryName: String
     let postMember: Int
     let tag1, tag2, tag3, tag4, tag5, postContext: String
-    
-//    func toJSON() -> [String: Any] {
-//        return ["postTitle" : postTitle,
-//                "categoryName" : categoryName,
-//                "postMember" : postMember,
-//                "tag1" : tag1, "tag2" : tag2, "tag3" : tag3, "tag4" : tag4, "tag5" : tag5,
-//                "postContext" : postContext]
-//    }
 }
 
 struct CommentRegister: Codable {

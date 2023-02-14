@@ -51,8 +51,6 @@ extension PostAPI: TargetType {
             return .get
         case .postRegister, .postRegisterImage, .commentRegister:
             return .post
-//        case .mockPosts:
-//            return .get
         }
     }
     var task: Moya.Task {
@@ -66,25 +64,52 @@ extension PostAPI: TargetType {
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .postRegister(let param):
             return .requestJSONEncodable(param)
-        //이미지 포함 게시글 등록
+            
+//        이미지 포함 게시글 등록
+//        case .postRegisterImage(post: let Post, images: let Images):
+//            var formData: [MultipartFormData] = []
+//            formData.append(MultipartFormData(provider: .data(Post.postTitle.data(using: .utf8)!), name: "postTitle"))
+//            formData.append(MultipartFormData(provider: .data(Post.categoryName.data(using: .utf8)!), name: "categoryName"))
+//            formData.append(MultipartFormData(provider: .data(String(Post.postMember).data(using: .utf8)!), name: "postMember"))
+//            formData.append(MultipartFormData(provider: .data(Post.tag1.data(using: .utf8)!), name: "tag1"))
+//            formData.append(MultipartFormData(provider: .data(Post.tag2.data(using: .utf8)!), name: "tag2"))
+//            formData.append(MultipartFormData(provider: .data(Post.tag3.data(using: .utf8)!), name: "tag3"))
+//            formData.append(MultipartFormData(provider: .data(Post.tag4.data(using: .utf8)!), name: "tag4"))
+//            formData.append(MultipartFormData(provider: .data(Post.tag5.data(using: .utf8)!), name: "tag5"))
+//            formData.append(MultipartFormData(provider: .data(Post.postContext.data(using: .utf8)!), name: "postContext"))
+//            for image in Images {
+//                let imageData = image.pngData()
+//                formData.append(MultipartFormData(provider: .data(imageData!),
+//                                                       name: "image\(Images.firstIndex(of: image)!)"))
+//            }
+//            return .uploadCompositeMultipart(formData, urlParameters: [:])
+            
         case .postRegisterImage(post: let Post, images: let Images):
-//            let data = Post.toJSON()
+            var formData:MultipartFormData
             
-            let jsonData = try! JSONEncoder().encode(Post)
-            let PostformData = MultipartFormData(provider: .data(jsonData), name: "postData")
+            let postData: [String: Any] =
+            ["postTitle" : Post.postTitle,
+             "categoryName" : Post.categoryName,
+             "postMember" : Post.postMember,
+             "tag1" : Post.tag1, "tag2" : Post.tag2, "tag3" : Post.tag3, "tag4" : Post.tag4, "tag5" : Post.tag5,
+             "postContext" : Post.postContext]
             
-            var ImageformData: [MultipartFormData] = []
-            for image in Images {
-                let imageData = image.pngData()
-                ImageformData.append(MultipartFormData(provider: .data(imageData!),
-                                                       name: "image\(Images.firstIndex(of: image)!)"))
-            }
             
-            var multipartData: [MultipartFormData] = []
-            multipartData.append(PostformData)
-            multipartData.append(contentsOf: ImageformData)
-            print(multipartData)
-            return .uploadCompositeMultipart(multipartData, urlParameters: [:])
+            
+            return .requestPlain
+//            return .uploadMultipart()
+            
+            
+            
+            
+            
+            
+            
+//            formData.bodyParts.append(Post.categoryName.data(using: .utf8)!, withName: "categoryName")
+//            formData.append(Post.categoryName.data(using: .utf8)!, withName: "categoryName")
+            
+            
+            
         //이미지 포함 게시글 등록
         case .commentRegister(_, let comment):
             return .requestJSONEncodable(comment)
@@ -93,6 +118,9 @@ extension PostAPI: TargetType {
     
     var headers: [String : String]? {
         switch self {
+        case .postRegisterImage:
+            return ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzQ5MTUwLCJleHAiOjE2Nzg5NDExNTB9.DrZHeL-AqCKMYJlAAe6NqEyVPefbatHJ7RZX4VeFMF8"]
             default:
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzQ5MTUwLCJleHAiOjE2Nzg5NDExNTB9.DrZHeL-AqCKMYJlAAe6NqEyVPefbatHJ7RZX4VeFMF8"]

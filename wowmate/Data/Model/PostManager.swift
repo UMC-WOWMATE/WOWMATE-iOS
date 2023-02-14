@@ -64,7 +64,6 @@ class PostManager {
     
     func getPostList(completion: @escaping (Result<PostList, Error>) -> Void ) {
         provider.request(.postList) { result in
-            print(result)
             switch result {
             case .success(let data):
                 do {
@@ -82,7 +81,6 @@ class PostManager {
     
     func getPost(ID: Int, completion: @escaping (Result<Post, Error>) -> Void ) {
         provider.request(.post(postID: ID)) { result in
-            print(result)
             switch result {
             case .success(let data):
                 do {

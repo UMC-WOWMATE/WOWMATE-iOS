@@ -78,7 +78,6 @@ class CategoryCell:UITableViewCell {
     @objc func buttonDidTap() {
         if(CategoryButton.backgroundColor == .white){
             CategoryButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-//            HomeVC.shared.showByCategory(category: CategoryButton.title(for: .normal)!)
             HomeVC.shared.showByCategory(category: CategoryButton.title(for: .normal)!)
         }
         else {
@@ -150,7 +149,8 @@ class CategoryCell:UITableViewCell {
         CategoryRow.addRow(CategoryButton3)
         CategoryRow.addRow(CategoryButton4)
         CategoryRow.addRow(CategoryButton5)
-        self.CategoryButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+//        self.CategoryButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+        self.CategoryButton.addTarget(self, action: #selector(HomeVC.test), for: .touchUpInside)
         self.CategoryButton1.addTarget(self, action: #selector(buttonDidTap1), for: .touchUpInside)
         self.CategoryButton2.addTarget(self, action: #selector(buttonDidTap2), for: .touchUpInside)
         self.CategoryButton3.addTarget(self, action: #selector(buttonDidTap3), for: .touchUpInside)
