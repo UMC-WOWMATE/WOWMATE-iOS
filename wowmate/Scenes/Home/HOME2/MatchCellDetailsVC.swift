@@ -271,6 +271,13 @@ class MatchCellDetailsVC: UIViewController {
         return button
         
     }()
+//
+//    let finalstack : AloeStackView = {
+//        let stackview = AloeStackView()
+//        stackview.axis = .vertical
+//        return stackview
+//    }()
+    
     
     @objc func MatchCellDetailsReplyButton(_ sender:Any){
             if self.replytext.text.isEmpty {
@@ -443,15 +450,23 @@ class MatchCellDetailsVC: UIViewController {
                 print(success)
                         self.MatchCellDetailsTitle.text = success.data1.postTitle
                         self.MatchCellDetailsDate.text = getDate(success.data1.createdDate)
+                
                         self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
                         if success.data1.postTag1 != "" { self.tagList.append("#" + success.data1.postTag1 + " ") }
                         if success.data1.postTag2 != "" { self.tagList.append("#" + success.data1.postTag2 + " ") }
                         if success.data1.postTag3 != "" { self.tagList.append("#" + success.data1.postTag3 + " ") }
                         if success.data1.postTag4 != "" { self.tagList.append("#" + success.data1.postTag4 + " ") }
                         if success.data1.postTag5 != "" { self.tagList.append("#" + success.data1.postTag5 + " ") }
-                        self.MatchCellDetailslikecount.text = String(success.data1.postLikeNumber)
-                        if success.data1.postMember == "무관" { self.MatchCellDetailsNumber.text = "모집인원 : 무관" }
+
+//                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
+                        if success.data1.postMember == "0" { self.MatchCellDetailsNumber.text = "모집인원 : 무관" }
                         else { self.MatchCellDetailsNumber.text = "모집인원 : " + success.data1.postMember + " 명" }
+                        
+                
+                
+                
+                
+               
                         self.MatchCellDetailsTextField.text = success.data1.postContext
                         self.CategoryButton2.text = success.data1.categoryName
                         if success.data1.image1 != nil { self.imageList.append(success.data1.image1!)}
@@ -545,6 +560,9 @@ class MatchCellDetailsVC: UIViewController {
 //        self.imagecollectionview.reloadData()
 //        self.imagecollectionview.collectionViewLayout = flowLayout
         self.view.addSubview(MatchCellDetailsImageText)
+        
+        //시발 진짜 마지막 제발
+//        self.imagecollectionview.addSubview(finalstack)
         
       
 
@@ -666,7 +684,7 @@ extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
         cell.datetext.text = comments[indexPath.row].createdDate
         cell.detailreplyreactionVC.heartButtonCount.text = String(comments[indexPath.row].likeNumber)
         cell.detailreplyreactionVC.likeButtonCount.text = String(comments[indexPath.row].likeNumber)
-        cell.userid.text = String(comments[indexPath.row].commentId)
+        cell.userid.text = "익명" + " \(comments[indexPath.row].commentId)"
         //        cell.heartButtonCount.text = comments[indexPath.row] //대신에 댓글 수?
         return cell
     }
