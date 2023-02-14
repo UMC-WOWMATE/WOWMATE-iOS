@@ -85,6 +85,9 @@ class DetailReplyCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        self.contentView.layer.borderColor = UIColor(r: 101, g: 81, b: 224).cgColor
+//        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.cornerRadius = 5
         self.contentView.addSubview(container)
         self.container.addArrangedSubview(useridcontainer)
         self.useridcontainer.addArrangedSubview(userid)

@@ -9,16 +9,26 @@ import Foundation
 import UIKit
 import AloeStackView
 import Moya
+import Kingfisher
+
+
 
 class MatchCellDetailsVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     var id: Int = -1
     var comments: [Comment] = []
-//    let commentReplyDtoList: [CommentReply] = []
+    let commentReplyDtoList: [CommentReply] = []
+    
+    
+    let url = URL(string: "https://wowmateawsbucket.s3.ap-northeast-2.amazonaws.com/9bf12e83-8213-4427-b46a-25892d8cd10c.png")
+    
+
+
     
     
     var tagList: [String] = ["수정해주세요","학교","홍익대"]
+    var imageList: [String] = ["홍익대","연세대","중앙대"]
     
     let UnderLine:UIView = {
         let view = UIView()
@@ -29,6 +39,22 @@ class MatchCellDetailsVC: UIViewController {
     }()
     
     let UnderLine1:UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .gray
+        view.layer.opacity = 0.3
+        return view
+    }()
+    
+    let UnderLine2:UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .gray
+        view.layer.opacity = 0.3
+        return view
+    }()
+    
+    let UnderLine3:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .gray
@@ -103,7 +129,8 @@ class MatchCellDetailsVC: UIViewController {
     let MatchCellDetailslikeCount:UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "20"
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        label.text = "2"
         return label
     }()
     
@@ -161,6 +188,7 @@ class MatchCellDetailsVC: UIViewController {
         return label
     }()
     
+    
     let MatchCellDetailsTags:UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -181,15 +209,23 @@ class MatchCellDetailsVC: UIViewController {
         return label
     }()
     
+    let MatchCellDetailsImageText:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "이미지"
+        label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textAlignment = .left
+        return label
+    }()
+    
     let MatchCellDetailsTextField:UITextView = {
         let label = UITextView()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         label.textColor = .black
         label.textAlignment = .left
         label.backgroundColor = UIColor(r: 224, g: 224, b: 224)
-//        label.text = "송하윤 교수님 자료구조 '과제11_지하철'같이 해결할 분들 찾아요.. 감자를 살려주십숑.."
-//        label.layer.opacity = 0.2
         label.layer.cornerRadius = 10
         return label
     }()
@@ -229,59 +265,9 @@ class MatchCellDetailsVC: UIViewController {
         button.setTitle("등록", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14,weight: .bold)
         button.layer.cornerRadius = 5
-        
-        button.addTarget(self, action: #selector(MatchCellDetailsReplyButton), for: .allEvents)
         return button
         
     }()
-    
-    @objc func MatchCellDetailsReplyButton(_ sender:Any){
-        if self.replytext.text.isEmpty {
-            let alert_done = UIAlertController(
-                title: "댓글 내용을 입력해주세요.",
-                message: nil,
-                preferredStyle: .alert)
-            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-
-            self.present(alert_done, animated: true)
-            
-            return
-            
-        }
-            
-            let alert = UIAlertController(
-                title: "댓글을 등록하시겠습니까?",
-                message: nil,
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { action in
-                //업로드 통신
-                let commentByUser = CommentRegister(commentContext: self.replytext.text!)
-                
-                PostManager.shared.registerComment(ID: self.id, comment: commentByUser) { result in
-                    switch result {
-                    case .success(let success):
-                        print(success)
-                        let alert_done = UIAlertController(
-                            title: "등록 완료",
-                            message: nil,
-                            preferredStyle: .alert)
-                        alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-
-                        self.present(alert_done, animated: true)
-
-                        self.replytext.text = ""
-                        self.showMatchDetails()
-                    case .failure(let failure):
-                        print(failure)
-                    }
-                }
-            }))
-            
-            
-            
-            self.present(alert, animated: true)
-        }
     
     let chatpost:UIButton = {
        let button = UIButton()
@@ -290,20 +276,13 @@ class MatchCellDetailsVC: UIViewController {
         button.setTitle("채팅 걸기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18,weight: .bold)
         button.layer.cornerRadius = 5
-        button.addTarget(self, action: #selector(testfunc), for: .allEvents) // 테스트용 댓글 밀기
         return button
     }()
-    //테스트용 댓글 밀기
-    @objc func testfunc(_ sender:Any){
-        self.comments.removeAll()
-        self.tableview.reloadData()
-    }
     
-    let MatchCellDetailsCategory : UIStackView = {
-        let stackview = UIStackView()
+    
+    let MatchCellDetailsCategory : AloeStackView = {
+        let stackview = AloeStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.alignment = .leading
-        stackview.spacing = 10
         return stackview
     }()
     
@@ -325,6 +304,16 @@ class MatchCellDetailsVC: UIViewController {
     ]
     
     var hiddenSections = Set<Int>()
+    
+    // method - get date
+        func getDate(_ date:String) -> String {
+            return String(date.prefix(13))
+        }
+    
+//    let date = getDate(<#T##self: MatchCellDetailsVC##MatchCellDetailsVC#>)
+    
+    
+    
     
     
     
@@ -348,6 +337,17 @@ class MatchCellDetailsVC: UIViewController {
     
     let collectionview = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
     
+    let imagecollectionview = UICollectionView(frame: .zero , collectionViewLayout: UICollectionViewLayout.init())
+    
+    let CategoryButton2:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor(r: 101, g: 81, b: 224)
+        label.font = .body_14B
+        label.textColor = .white
+        return label
+    }()
+    
     let flowLayout: UICollectionViewFlowLayout = {
        let layout = UICollectionViewFlowLayout()
        layout.scrollDirection = .horizontal
@@ -356,20 +356,28 @@ class MatchCellDetailsVC: UIViewController {
        return layout
      }()
     
-    func showMatchDetails() {
+
+
+    override func viewWillAppear(_ animated: Bool) {
+        
+        func getDate(_ date:String) -> String {
+            return String(date.prefix(10))
+        }
+        
+        super.viewWillAppear(animated)
         // MARK: - Network
         PostManager.shared.getPost(ID: id) { result in
             switch result {
                      case .success(let success):
+                print(success)
                         self.MatchCellDetailsTitle.text = success.data1.postTitle
-                        self.MatchCellDetailsDate.text = success.data1.createdDate
+                        self.MatchCellDetailsDate.text = getDate(success.data1.createdDate)
                         self.MatchCellDetailsTags.setTitle(success.data1.postTag1, for: .normal)
 //                self.MatchCellDetailsViewCount.text = success.data1. //조회수 포기?
-//                self.MatchCellDetailsNumber.text = success.data1.postMember //서버에서 넘겨준거에서 누락됨
+//                        self.MatchCellDetailsNumber.text = "모집인원" + success.data1.postMember + "명"
                         self.MatchCellDetailsTextField.text = success.data1.postContext
+                        self.CategoryButton2.text = success.data1.categoryName
                 //댓글
-                        self.comments.removeAll()
-                print(self.comments)
                         for comment in success.data2 {
                             self.comments.append(Comment.init(commentId: comment.commentId,
                                                               commentContext: comment.commentContext,
@@ -377,17 +385,11 @@ class MatchCellDetailsVC: UIViewController {
                                                               createdDate: comment.createdDate,
                                                               commentReplyDtoList: comment.commentReplyDtoList))
                         }
-                print(self.comments)
                 self.tableview.reloadData()
                      case .failure(let failure):
                          print(failure)
                      }
                  }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        showMatchDetails()
     }
     
     override func viewDidLoad() {
@@ -397,14 +399,17 @@ class MatchCellDetailsVC: UIViewController {
         self.view.addSubview(UnderLine)
         self.view.addSubview(MatchCellDetailsTags)
         
+        
         self.view.addSubview(UnderLine1)
+        self.view.addSubview(UnderLine2)
+        self.view.addSubview(UnderLine3)
         self.view.addSubview(MatchCellDetailsAddButton)
         self.view.addSubview(container)
         self.container.addArrangedSubview(MatchCellDetailsDate)
         self.container.addArrangedSubview(MatchCellDetailslike)
         self.container.addArrangedSubview(MatchCellDetailsViewCount)
         self.view.addSubview(MatchCellDetailsCategory)
-//        self.MatchCellDetailsCategory.addArrangedSubview(CategoryButton2)
+        self.MatchCellDetailsCategory.addRow(CategoryButton2)
         self.view.addSubview(MatchCellDetailsNumber)
         self.view.addSubview(MatchCellDetailsText)
         self.view.addSubview(MatchCellDetailsTextField)
@@ -425,6 +430,7 @@ class MatchCellDetailsVC: UIViewController {
         self.tableview.rowHeight = 70
         self.tableview.backgroundColor = .white
         
+        
         self.view.addSubview(collectionview)
         self.collectionview.delegate = self
         self.collectionview.dataSource = self
@@ -432,9 +438,19 @@ class MatchCellDetailsVC: UIViewController {
         self.collectionview.translatesAutoresizingMaskIntoConstraints = false
         self.collectionview.reloadData()
         self.collectionview.collectionViewLayout = flowLayout
-        
         self.collectionview.addSubview(header)
         self.view.addSubview(MatchCellDetailslikeCount)
+        
+        self.view.addSubview(imagecollectionview)
+        self.imagecollectionview.delegate = self
+        self.imagecollectionview.dataSource = self
+        self.imagecollectionview.register(imageCell.self, forCellWithReuseIdentifier: "imageCell")
+        self.imagecollectionview.translatesAutoresizingMaskIntoConstraints = false
+        self.imagecollectionview.reloadData()
+//        self.imagecollectionview.collectionViewLayout = flowLayout
+        self.view.addSubview(MatchCellDetailsImageText)
+        
+      
 
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"ic 1"), style: .plain, target:self , action: #selector(backButtonPressed))
@@ -451,8 +467,9 @@ class MatchCellDetailsVC: UIViewController {
             self.container.topAnchor.constraint(equalTo: self.MatchCellDetailsTitle.bottomAnchor, constant: 15),
             self.container.leadingAnchor.constraint(equalTo: self.MatchCellDetailsTitle.leadingAnchor ),
             
-            self.MatchCellDetailslikeCount.topAnchor.constraint(equalTo: self.MatchCellDetailsTitle.bottomAnchor, constant: 15),
-            self.MatchCellDetailslikeCount.leadingAnchor.constraint(equalTo: self.MatchCellDetailsTitle.leadingAnchor,constant: 200 ),
+            self.MatchCellDetailslikeCount.topAnchor.constraint(equalTo: self.MatchCellDetailsTitle.bottomAnchor, constant: 14),
+            self.MatchCellDetailslikeCount.leadingAnchor.constraint(equalTo: self.MatchCellDetailsTitle.leadingAnchor,constant: 170 ),
+            
 
             self.MatchCellDetailsNumber.topAnchor.constraint(equalTo: self.MatchCellDetailsCategory.bottomAnchor, constant: 10),
             self.MatchCellDetailsNumber.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
@@ -479,7 +496,7 @@ class MatchCellDetailsVC: UIViewController {
             self.MatchCellDetailsTextField.heightAnchor.constraint(equalToConstant: 115),
             self.MatchCellDetailsTextField.widthAnchor.constraint(equalToConstant: 361),
             self.tableview.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 590),
-//            self.tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -170),
+            self.tableview.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -100),
             self.tableview.heightAnchor.constraint(equalToConstant: 135),
             self.tableview.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 16),
             self.tableview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -16),
@@ -502,9 +519,29 @@ class MatchCellDetailsVC: UIViewController {
             self.collectionview.trailingAnchor.constraint(equalTo: self.UnderLine.trailingAnchor),
             self.collectionview.topAnchor.constraint(equalTo: self.UnderLine.bottomAnchor, constant: 10),
             self.collectionview.heightAnchor.constraint(equalToConstant: 32),
+            
+            self.CategoryButton2.widthAnchor.constraint(equalToConstant: 90),
+            self.CategoryButton2.heightAnchor.constraint(equalToConstant: 30),
+            
+            self.UnderLine2.heightAnchor.constraint(equalToConstant: 1),
+            self.UnderLine2.topAnchor.constraint(equalTo: self.MatchCellDetailsTextField.bottomAnchor,constant: 10),
+            self.UnderLine2.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.UnderLine2.trailingAnchor.constraint(equalTo: self.MatchCellDetailsTextField.trailingAnchor),
+            
+            self.UnderLine3.heightAnchor.constraint(equalToConstant: 1),
+            self.UnderLine3.bottomAnchor.constraint(equalTo: self.header.topAnchor,constant: 10),
+            self.UnderLine3.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.UnderLine3.trailingAnchor.constraint(equalTo: self.MatchCellDetailsTextField.trailingAnchor),
+            
+            self.MatchCellDetailsImageText.topAnchor.constraint(equalTo: self.UnderLine2.bottomAnchor,constant: 10),
+            self.MatchCellDetailsImageText.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
 //            self.CategoryButton.heightAnchor.constraint(equalToConstant: 32),
 //            self.CategoryButton.widthAnchor.constraint(equalToConstant: 96),
-           
+            
+            self.imagecollectionview.topAnchor.constraint(equalTo: self.MatchCellDetailsImageText.bottomAnchor,constant: 10),
+            self.imagecollectionview.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.imagecollectionview.heightAnchor.constraint(equalToConstant: 80),
+            self.imagecollectionview.trailingAnchor.constraint(equalTo: self.UnderLine2.trailingAnchor)
             
             
 
@@ -517,9 +554,6 @@ class MatchCellDetailsVC: UIViewController {
 
 
 }
-
-
-
 
 
 extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
@@ -537,9 +571,6 @@ extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
         cell.detailreplyreactionVC.heartButtonCount.text = String(comments[indexPath.row].likeNumber)
         cell.detailreplyreactionVC.likeButtonCount.text = String(comments[indexPath.row].likeNumber)
         cell.userid.text = String(comments[indexPath.row].commentId)
-
-        
-        
         //        cell.heartButtonCount.text = comments[indexPath.row] //대신에 댓글 수?
         return cell
     }
@@ -549,20 +580,58 @@ extension MatchCellDetailsVC:UITableViewDataSource,UITableViewDelegate {
     extension MatchCellDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let tmpLabel : UILabel = UILabel()
-            tmpLabel.text = tagList[indexPath.item]
-            return CGSize(width: tmpLabel.intrinsicContentSize.width, height: 28)
+            if collectionView == collectionview{
+                let tmpLabel : UILabel = UILabel()
+                tmpLabel.text = tagList[indexPath.item]
+                return CGSize(width: tmpLabel.intrinsicContentSize.width, height: 28)
+                
+
+            }
+
+            else{
+                return CGSize(width: 75, height: 75)
+            }
+                
+
         }
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return tagList.count
+            if collectionView == collectionview{
+                
+                return tagList.count
+                
+            }
+            else{
+                return imageList.count
+                
+                
+            }
+//
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! listCell
-            cell.memberNameLabel.text = tagList[indexPath.row]
-            return cell
+            if collectionView == collectionview{
+                
+                let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "listCell", for: indexPath) as! listCell
+                cell.memberNameLabel.text = tagList[indexPath.row]
+                return cell
+//
+            }
+
+            else {
+                let ecell = imagecollectionview.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! imageCell
+//                    cell.memberImage.image = imageList[indexPath.row]
+                ecell.memberImage.image = UIImage(named: imageList[indexPath.row])
+//                cell.memberImage.load(url: url!)
+//                cell.memberImage.image = cell.memberImage.image?.withRenderingMode(.alwaysTemplate)
+
+                return ecell
+
+            }
         }
+            
+            
+        
         
         
         func numberOfSections(in collectionView: UICollectionView) -> Int {

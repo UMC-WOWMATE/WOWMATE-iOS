@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
         setUpLayouts()
         setUpInputNotification()
     }
@@ -99,6 +100,7 @@ class LoginVC: UIViewController {
     
     private func showHomeVC() {
         // TODO: (로그인 성공한 후) 홈 화면으로 넘어가기
+        navigationController?.pushViewController(MainTabVC(), animated: true)
     }
     
     @objc func textDidChanged(_ notification: Notification) {

@@ -20,7 +20,14 @@ class MainTabVC: UITabBarController {
         tabBar.isTranslucent = false
         let Home = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 4"), rootViewController: HomeVC())
         let Match = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off"), rootViewController: MatchVC())
-        let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "btn_addtag"), rootViewController: SearchVC())
+        
+        let storyboard = UIStoryboard.init(name: "Search", bundle: nil)
+        guard let searchVC = storyboard.instantiateViewController(withIdentifier: "SearchVC") as? SearchVC else { return }
+        let Search = UINavigationController(rootViewController: searchVC)
+        Search.tabBarItem.image = UIImage(named: "off 5")
+//        search.tabBarItem = homeTab
+//        let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 5"), rootViewController: SearchVC())
+        
         let ChatList = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 2"), rootViewController: ChatListVC())
         let Mypage = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 1"), rootViewController: MypageVC())
         viewControllers = [Home,Search, Match, ChatList, Mypage]

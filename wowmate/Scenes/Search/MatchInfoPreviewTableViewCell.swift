@@ -9,7 +9,7 @@ import UIKit
 
 class MatchInfoPreviewTableViewCell: UITableViewCell {
 
-    var postInfo: Post? = nil
+    var postInfo: Match? = nil
     
     @IBOutlet weak var matchImage: UIImageView!
     @IBOutlet weak var title: UILabel!
@@ -41,7 +41,7 @@ class MatchInfoPreviewTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: cellInset, left: cellInset, bottom: 0, right: cellInset))
     }
     
-    func configure(postInfo: Post) {
+    func configure(postInfo: Match) {
         title.text = postInfo.postTitle
         category.text = postInfo.categoryName
         tags.text = postInfo.tag1

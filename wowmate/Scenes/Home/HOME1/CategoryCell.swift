@@ -78,65 +78,53 @@ class CategoryCell:UITableViewCell {
     @objc func buttonDidTap() {
         if(CategoryButton.backgroundColor == .white){
             CategoryButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton.title(for: .normal)!)
         }
         else {
             CategoryButton.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     
     @objc func buttonDidTap1() {
         if(CategoryButton1.backgroundColor == .white){
             CategoryButton1.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton1.title(for: .normal)!)
         }
         else {
             CategoryButton1.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     @objc func buttonDidTap2() {
         if(CategoryButton2.backgroundColor == .white){
             CategoryButton2.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton2.title(for: .normal)!)
         }
         else {
             CategoryButton2.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     
     @objc func buttonDidTap3() {
         if(CategoryButton3.backgroundColor == .white){
             CategoryButton3.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton3.title(for: .normal)!)
         }
         else {
             CategoryButton3.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     
     @objc func buttonDidTap4() {
         if(CategoryButton4.backgroundColor == .white){
             CategoryButton4.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton4.title(for: .normal)!)
         }
         else {
             CategoryButton4.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     
     @objc func buttonDidTap5() {
         if(CategoryButton5.backgroundColor == .white){
             CategoryButton5.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-            HomeVC.shared.showByCategory(category: CategoryButton5.title(for: .normal)!)
         }
         else {
             CategoryButton5.backgroundColor = .white
-            HomeVC.shared.showAllPosts()
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -149,8 +137,7 @@ class CategoryCell:UITableViewCell {
         CategoryRow.addRow(CategoryButton3)
         CategoryRow.addRow(CategoryButton4)
         CategoryRow.addRow(CategoryButton5)
-//        self.CategoryButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        self.CategoryButton.addTarget(self, action: #selector(HomeVC.test), for: .touchUpInside)
+        self.CategoryButton.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         self.CategoryButton1.addTarget(self, action: #selector(buttonDidTap1), for: .touchUpInside)
         self.CategoryButton2.addTarget(self, action: #selector(buttonDidTap2), for: .touchUpInside)
         self.CategoryButton3.addTarget(self, action: #selector(buttonDidTap3), for: .touchUpInside)

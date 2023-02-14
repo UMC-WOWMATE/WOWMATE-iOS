@@ -17,45 +17,18 @@ class HomeVC: UITableViewController {
         return stackview
     }()
 
-    static var shared = HomeVC()
-    @objc public func test() {
-        self.posts.removeAll()
-        print(posts)
-        self.tableView.reloadData()
-    }
     
-    func showByCategory(category: String) {
-        print(category)
-        self.posts.removeAll()
-        print(posts)
-        self.tableView.reloadData()
-        PostManager.shared.getPostListByCategory(Category: category) { result in
-            switch result {
-                     case .success(let success):
-                for post in success.data1 {
-                    self.posts.append(PostData1.init(postId: post.postId,
-                                                     postTitle: post.postTitle,
-                                                     categoryName: post.categoryName,
-                                                     tag1: post.tag1, tag2: post.tag2,
-//                                                     tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
-                                                     postLikeNumber: post.postLikeNumber,
-                                                     postMember: post.postMember,
-                                                     schoolName: post.schoolName,
-                                                     createdDate: post.createdDate))
-//                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
-                }
-                print(self.posts)
-                self.tableView.reloadData()
-                     case .failure(let failure):
-                         print(failure)
-                     }
-                 }
-    }
+                        
     
-    func showAllPosts() {
+    // MARK: - Lifecycle
+    // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
+    // MARK: - Network
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         PostManager.shared.getPostList { result in
             switch result {
                      case .success(let success):
+                print(success)
                 self.posts.removeAll()
                 for post in success.data1 {
                     self.posts.append(PostData1.init(postId: post.postId,
@@ -75,15 +48,6 @@ class HomeVC: UITableViewController {
                      }
                  }
     }
-                        
-    
-    // MARK: - Lifecycle
-    // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
-    // MARK: - Network
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.showAllPosts()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +62,7 @@ class HomeVC: UITableViewController {
 //            self.CategoryButton.widthAnchor.constraint(equalToConstant: 96),
 //
 //        ]
+        
         configure()
         navigation()
     }
@@ -134,11 +99,15 @@ class HomeVC: UITableViewController {
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell;
         
+        func getDate(_ date:String) -> String {
+            return String(date.prefix(10))
+        }
+        
 //        cell.ID = posts[indexPath.row].postId
         cell.MainCellName.text = posts[indexPath.row].postTitle
         cell.MainCellCategory.text = posts[indexPath.row].categoryName
         cell.MainCellTag.text = posts[indexPath.row].tag1
-        cell.MainCellDate.text = posts[indexPath.row].createdDate
+        cell.MainCellDate.text = getDate(posts[indexPath.row].createdDate)
         cell.MainCellLikeCount.text = String(posts[indexPath.row].postLikeNumber)
 //        cell.MainCellImage.image(<#T##t: String##String#>) //posts[indexPath.row].schoolName string으로 적절히 삽입
         
@@ -146,10 +115,34 @@ class HomeVC: UITableViewController {
         
         switch schoolname {
         case "홍익대"
-            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍대교표_블루")
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍익대")
+        case "서울대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서울대")
+        case "연세대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "연세대")
+        case "고려대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "고려대")
+        case "성균관대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "성대")
+        case "한양대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한양대")
+        case "서강대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "서강대")
+        case "중앙대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "중앙대")
+        case "경희대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "경희대")
+        case "한국외대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "한국외대")
+        case "시립대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "시립대")
+        case "숙명여대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "숙명여대")
+        case "명지대"
+            :cell.MainCellImage.image = UIImage(imageLiteralResourceName: "명지대")
             
         default:
-            cell.MainCellImage.image = UIImage(imageLiteralResourceName: "홍대교표_블루")
+            cell.MainCellImage.image = UIImage(imageLiteralResourceName: "명지대")
         }
         
         return cell

@@ -10,4 +10,5 @@ target 'wowmate' do
   pod 'AloeStackView'
   pod 'YPImagePicker'
   pod 'Tabman', '~> 2.9'
+  pod 'Kingfisher', '~> 7.0'
 end

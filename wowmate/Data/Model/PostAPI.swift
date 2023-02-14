@@ -20,7 +20,7 @@ enum PostAPI {
 
 
     case postList
-    case postRegister(param: PostRegister)
+//    case postRegister(param: PostRegister)
     case post(postID: Int)
     case postListByCategory(category: String)
     
@@ -48,8 +48,7 @@ extension PostAPI: TargetType {
 //        case .postList:
 ////            return URL(string: "https://63ba608856043ab3c79a44ce.mockapi.io/api/v1")!
 //            return URL(string: "https://hs-archive.shop")!
-        default:
-            return URL(string: ServiceAPI.baseURL)!
+
 
         }
         
@@ -84,13 +83,13 @@ extension PostAPI: TargetType {
             return .get
         case .postRegister:
             return .post
-        case .mockPosts:
-
+  
         case .postList, .post, .postListByCategory:
-
             return .get
         case .postRegister, .postRegisterImage, .commentRegister:
             return .post
+        default:
+            return .get
         }
     }
     var task: Moya.Task {
@@ -167,6 +166,9 @@ extension PostAPI: TargetType {
         //이미지 포함 게시글 등록
         case .commentRegister(_, let comment):
             return .requestJSONEncodable(comment)
+            
+        default:
+            return .requestPlain
         }
     }
     

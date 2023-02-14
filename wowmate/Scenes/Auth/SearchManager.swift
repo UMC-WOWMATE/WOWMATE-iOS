@@ -13,13 +13,13 @@ class SearchManager {
     static let shared = SearchManager()
     let provider = MoyaProvider<PostAPI>()
     
-    func searchPostRequest(keyword: String, completion: @escaping (Result<PostList, Error>) -> Void ) {
+    func searchPostRequest(keyword: String, completion: @escaping (Result<MatchList, Error>) -> Void ) {
         provider.request(.search(keyword: keyword)) { result in
             switch result {
             case .success(let data):
                 do {
                     let decoder = JSONDecoder()
-                    let result = try decoder.decode(PostList.self, from: data.data)
+                    let result = try decoder.decode(MatchList.self, from: data.data)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))

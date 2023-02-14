@@ -119,6 +119,7 @@ class JoinVC: UIViewController {
     // 설정, 데이터처리 등 액션 외의 메서드를 정의
 
     private func setUpLayout() {
+        navigationController?.isNavigationBarHidden = false
         // set up Buttons layout
         selectSchoolButton.layer.borderWidth = 0.5
         selectSchoolButton.layer.borderColor = UIColor.gray.cgColor

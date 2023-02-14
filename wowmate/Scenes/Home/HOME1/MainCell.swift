@@ -19,6 +19,7 @@ class MainCell:UITableViewCell {
         //        image.image = UIImage(imageLiteralResourceName: "홍대교표_블루")
         image.layer.cornerRadius = 50
         image.layer.cornerCurve = .continuous
+        image.backgroundColor = .white
         return image
     }()
     
@@ -121,8 +122,8 @@ class MainCell:UITableViewCell {
         NSLayoutConstraint.activate([
             self.MainCellImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             self.MainCellImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            self.MainCellImage.heightAnchor.constraint(equalToConstant: 80),
-            self.MainCellImage.widthAnchor.constraint(equalToConstant: 80),
+            self.MainCellImage.heightAnchor.constraint(equalToConstant: 90),
+            self.MainCellImage.widthAnchor.constraint(equalToConstant: 90),
             self.MainCellName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 133),
             self.MainCellName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             self.MainCellCategory.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 133),

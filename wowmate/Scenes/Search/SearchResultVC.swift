@@ -10,7 +10,7 @@ import UIKit
 class SearchResultVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
-    var resultMatchList: [Post] = []
+    var resultMatchList: [Match] = []
     var inputSearchKeyword: String? = nil
     weak var delegate: RecentSearchDelegate?
         

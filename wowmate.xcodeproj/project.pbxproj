@@ -13,12 +13,12 @@
 		2C989EF9299A70EC0017D80A /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C989EF8299A70EC0017D80A /* listCell.swift */; };
 		2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C17E298FBB040099CE20 /* MatchVC.swift */; };
 		2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */; };
-
 		7B225B741CED009C5472DFBF /* Pods_wowmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */; };
+		A2414525299BBDA9003867C9 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2414524299BBDA9003867C9 /* imageCell.swift */; };
+		A2414529299BBE9D003867C9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2414528299BBE9D003867C9 /* .gitignore */; };
 		A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* AuthManager.swift */; };
 		A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCD29992FF9008EBED6 /* SearchManager.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
-		A2AE90792980257A0034D655 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A2AE90782980257A0034D655 /* .gitignore */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4329852B1B00A7D4EC /* JoinVC.swift */; };
 		A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */; };
@@ -77,23 +77,22 @@
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
 		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
 		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
+		BE1C3F22299BB7CF005CAC23 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1C3F21299BB7CF005CAC23 /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
-		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
-		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
-
 		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		2C989EF8299A70EC0017D80A /* listCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listCell.swift; sourceTree = "<group>"; };
 		2CA2C17E298FBB040099CE20 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC_extensions.swift; sourceTree = "<group>"; };
-
+		A2414524299BBDA9003867C9 /* imageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageCell.swift; sourceTree = "<group>"; };
+		A2414528299BBE9D003867C9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
+		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A2AE90782980257A0034D655 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D28F4329852B1B00A7D4EC /* JoinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
 		A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +151,7 @@
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
+		BE1C3F21299BB7CF005CAC23 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +202,7 @@
 				A2D08E4B296A9B58008DD3FA /* User.swift */,
 				A24FB96D2980370D003FBD0C /* Post.swift */,
 				A2F90525298827FF00AC588C /* Chats.swift */,
+				BE1C3F21299BB7CF005CAC23 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,7 +227,7 @@
 		A2E2A8D32969C7310055B5D2 = {
 			isa = PBXGroup;
 			children = (
-				A2AE90782980257A0034D655 /* .gitignore */,
+				A2414528299BBE9D003867C9 /* .gitignore */,
 				A2E2A8DE2969C7310055B5D2 /* wowmate */,
 				A2E2A8DD2969C7310055B5D2 /* Products */,
 				75A6D48EAB12CD6995DC28E2 /* Pods */,
@@ -422,6 +423,7 @@
 		BEB0D4FB299A2283008A6487 /* HOME2 */ = {
 			isa = PBXGroup;
 			children = (
+				A2414524299BBDA9003867C9 /* imageCell.swift */,
 				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
 				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
 				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
@@ -499,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2414529299BBE9D003867C9 /* .gitignore in Resources */,
 				A2E2A90D2969CD0D0055B5D2 /* Chat.storyboard in Resources */,
 				A2E2A8FE2969CB0A0055B5D2 /* Auth.storyboard in Resources */,
 				A2E2A8EC2969C7330055B5D2 /* LaunchScreen.storyboard in Resources */,
@@ -506,7 +509,6 @@
 				A2E2A8E92969C7330055B5D2 /* Assets.xcassets in Resources */,
 				A2E2A8E72969C7310055B5D2 /* Home.storyboard in Resources */,
 				A2E2A9082969CC7D0055B5D2 /* Search.storyboard in Resources */,
-				A2AE90792980257A0034D655 /* .gitignore in Resources */,
 				A2D28F6629852B9500A7D4EC /* MatchInfoPreviewTableViewCell.xib in Resources */,
 				A2E2A9032969CBEC0055B5D2 /* Notification.storyboard in Resources */,
 			);
@@ -564,11 +566,13 @@
 				A2D28F81298650E400A7D4EC /* setColor.swift in Sources */,
 				A2D28F4F29852B1B00A7D4EC /* InputUserInfoVC.swift in Sources */,
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
+				A2414525299BBDA9003867C9 /* imageCell.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
 				2C989EF9299A70EC0017D80A /* listCell.swift in Sources */,
 				A2E2A90F2969CD240055B5D2 /* ChatListVC.swift in Sources */,
 				A2D28F4C29852B1B00A7D4EC /* AgreeTermsVC.swift in Sources */,
+				BE1C3F22299BB7CF005CAC23 /* Match.swift in Sources */,
 				A2E2A8F92969C8FB0055B5D2 /* SampleVC.swift in Sources */,
 				A2E2A8E42969C7310055B5D2 /* HomeVC.swift in Sources */,
 				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
@@ -766,16 +770,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F7B353LPM3;
+				DEVELOPMENT_TEAM = J4X458RVHG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wowmate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,16 +804,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F7B353LPM3;
+				DEVELOPMENT_TEAM = J4X458RVHG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wowmate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = Home;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
