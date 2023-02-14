@@ -50,7 +50,7 @@ class LoginVC: UIViewController {
                 switch result {
                 case .success(let success):
                     self?.view.makeToast(success)
-                    self?.showHomeVC()
+                    self?.navigationController?.pushViewController(MainTabVC(), animated: true)
                 case .failure(let error):
                     self?.view.makeToast("네트워크 오류")
                     return
@@ -96,11 +96,6 @@ class LoginVC: UIViewController {
             name: UITextField.textDidChangeNotification,
             object: passwordTextField
         )
-    }
-    
-    private func showHomeVC() {
-        // TODO: (로그인 성공한 후) 홈 화면으로 넘어가기
-        navigationController?.pushViewController(MainTabVC(), animated: true)
     }
     
     @objc func textDidChanged(_ notification: Notification) {

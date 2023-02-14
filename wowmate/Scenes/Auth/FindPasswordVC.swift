@@ -30,6 +30,7 @@ class FindPasswordVC: UIViewController {
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNotification()
         setUpLayout()
     }
     
