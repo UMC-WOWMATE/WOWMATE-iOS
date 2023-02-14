@@ -52,8 +52,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
 //                                         image3: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
 //                                         image4: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData(),
 //                                         image5: self.Images.isEmpty ? nil : self.Images.removeFirst().pngData())
-            
-            PostManager.shared.registerPost(post: postByUser) { result in
+            PostManager.shared.registerPost_Image(post: postByUser, images: self.Images) { result in
                 switch result {
                 case .success(let success):
                     print(success)
@@ -72,6 +71,25 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
                     print(failure)
                 }
             }
+//            PostManager.shared.registerPost(post: postByUser) { result in
+//                switch result {
+//                case .success(let success):
+//                    print(success)
+//                    let alert_done = UIAlertController(
+//                        title: "등록 완료",
+//                        message: nil,
+//                        preferredStyle: .alert)
+//                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                    self.present(alert_done, animated: true)
+//
+//                    print("saved")
+//        //home으로 나가기
+//                    self.navigationController?.popViewController(animated: true)
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
         }))
         
         self.present(alert, animated: true)

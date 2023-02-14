@@ -17,14 +17,9 @@ class HomeVC: UITableViewController {
         return stackview
     }()
 
+//    func
     
-                        
-    
-    // MARK: - Lifecycle
-    // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
-    // MARK: - Network
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func showAllPosts() {
         PostManager.shared.getPostList { result in
             switch result {
                      case .success(let success):
@@ -37,7 +32,7 @@ class HomeVC: UITableViewController {
                                                      tag1: post.tag1, tag2: post.tag2,
 //                                                     tag3: post.tag3, tag4: post.tag4, tag5: post.tag5,
                                                      postLikeNumber: post.postLikeNumber,
-                                                     postMember: post.postMember,
+//                                                     postMember: post.postMember,
                                                      schoolName: post.schoolName,
                                                      createdDate: post.createdDate))
 //                    matchlogo = ["건국대","다운로드 1","한국체대","홍대교표_블루","홍대교표_블루","건국대",]
@@ -47,6 +42,14 @@ class HomeVC: UITableViewController {
                          print(failure)
                      }
                  }
+    }
+    
+    // MARK: - Lifecycle
+    // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
+    // MARK: - Network
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showAllPosts()
     }
     
     override func viewDidLoad() {
