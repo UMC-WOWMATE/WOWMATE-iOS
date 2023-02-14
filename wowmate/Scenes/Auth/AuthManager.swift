@@ -68,4 +68,17 @@ class AuthManager {
             }
         }
     }
+    
+    func changePassword(email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
+        provider.request(.changePassword(email: email, newPassword: password)) { result in
+            switch result {
+            case .success(let success):
+                if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
+                    completion(.success(json["message"] as! String))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

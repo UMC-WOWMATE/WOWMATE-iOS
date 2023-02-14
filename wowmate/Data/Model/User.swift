@@ -15,6 +15,7 @@ struct Signup: Codable {
     var email: String
     var school: String
     var password: String
+    var imgUrl: String
         
     init() {
         self.phoneNumber = ""
@@ -23,6 +24,7 @@ struct Signup: Codable {
         self.email = ""
         self.school = ""
         self.password = ""
+        self.imgUrl = ""
     }
     
 //    init(name: String, phoneNumber: String, birth: Date, gender: String, email: String, school: String, password: String) {

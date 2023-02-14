@@ -218,6 +218,9 @@ class JoinVC: UIViewController {
 extension JoinVC: SelectSchoolDelegate {
     func selectSchool(_ selected: String) {
         selectedUniv = selected
+        schoolImgUrl.keys.forEach {
+            if selectedUniv! == $0 { signupInfo.imgUrl = schoolImgUrl[$0]! }
+        }
     }
     
     func selectSchoolDomain(_ selected: String) {
