@@ -7,5 +7,7 @@ target 'wowmate' do
 
   # Pods for wowmate
   pod 'IQKeyboardManagerSwift'
-
+  pod 'AloeStackView'
+  pod 'YPImagePicker'
+  pod 'Tabman', '~> 2.9'
 end
