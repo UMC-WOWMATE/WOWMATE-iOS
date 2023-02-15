@@ -79,6 +79,9 @@ class JoinVC: UIViewController {
             AuthManager.shared.emailValidationRequest(email: inputEmail) { [weak self] result in
                 switch result {
                 case .success(let success):
+                    let alert = UIAlertController(title: nil, message: "인증 메일이 발송되었습니다", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    self?.present(alert, animated: true)
                     self?.validationCode = success
                     self?.inputEmail = inputEmail
                 case .failure(let failure):
@@ -91,9 +94,13 @@ class JoinVC: UIViewController {
     @IBAction func didTapCertificateButton(_ sender: UIButton) {
         if let code = validationCode {
             if code == certificationCodeTextField.text {
-                showEmailValidationToast(isValid: code == certificationCodeTextField.text)
+//                showEmailValidationToast(isValid: code == certificationCodeTextField.text)
                 signupInfo.email = inputEmail!
                 signupInfo.school = selectedUniv!
+                
+                let alert = UIAlertController(title: nil, message: "이메일 인증 성공", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                present(alert, animated: true)
             }
         }
     }
@@ -156,9 +163,9 @@ class JoinVC: UIViewController {
         )
     }
     
-    private func showEmailValidationToast(isValid: Bool) {
-        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다")
-    }
+//    private func showEmailValidationToast(isValid: Bool) {
+//        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다")
+//    }
     
     private func setSignupInfo() {
         // 테스트 지메일 계정으로 회원가입을 해버려서,,임시처리,,

@@ -62,11 +62,24 @@ class AgreeTermsVC: UIViewController {
                 case .success(let success):
                     self?.view.makeToast(success["message"] as! String)
                     if success["code"] as? Int == 200 {
-                        self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                        self?.showLoginVC()
+//                        let login = LoginVC()
+//                        self?.present(login, animated: true)
+//
+//                        guard let login = self?.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
+//                        self?.navigationController?.pushViewController(login, animated: true)
                     }
+                    else {
+                        let alert = UIAlertController(title: nil, message: success["message"] as? String, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "확인", style: .default))
+                        self?.present(alert, animated: true)
+                    }
+                    self?.showLoginVC()
+                    
+                    
 //                    self?.view.makeToast(success)
 //                    // TODO: 로그인 메인으로 화면 이동
-//                    self?.showLoginVC()
+                    
                 case .failure(let error):
                     self?.view.makeToast("네트워크 오류")
                 }
