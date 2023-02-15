@@ -22,6 +22,7 @@ class SelectSchoolPopUpVC: UIViewController {
     
     // 있는 척을 위한,,학교 이름,이메일 임시 데이터,,아 직접입력도 넣어야 하나
     private let schoolEmailArray: [[String]] = [
+        ["무관", "none"],
         ["명지대학교","mju.ac.kr"],
         ["홍익대학교","hongik.ac.kr"],
         ["숙명여자대학교","sookmyung.ac.kr"],
