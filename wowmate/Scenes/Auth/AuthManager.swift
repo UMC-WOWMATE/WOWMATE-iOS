@@ -39,14 +39,15 @@ class AuthManager {
         }
     }
     
-    func signupRequest(user: Signup, completion: @escaping (Result<String, Error>) -> Void) {
+    func signupRequest(user: Signup, completion: @escaping (Result<[String:Any], Error>) -> Void) {
         provider.request(.signup(user: user)) {result in
             print("user :: \(user)")
             switch result {
             case .success(let success):
                 if let json = try? JSONSerialization.jsonObject(with: success.data, options: []) as? [String : Any] {
                     if let message = json["message"] as? String {
-                         completion(.success(message))
+//                         completion(.success(message))
+                         completion(.success(json))
                      }
                 }
             case .failure(let error):

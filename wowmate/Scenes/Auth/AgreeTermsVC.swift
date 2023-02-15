@@ -60,9 +60,13 @@ class AgreeTermsVC: UIViewController {
             AuthManager.shared.signupRequest(user: signupInfo) { [weak self] result in
                 switch result {
                 case .success(let success):
-                    self?.view.makeToast(success)
-                    // TODO: 로그인 메인으로 화면 이동
-                    self?.showLoginVC()
+                    self?.view.makeToast(success["message"] as! String)
+                    if success["code"] as? Int == 200 {
+                        self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                    }
+//                    self?.view.makeToast(success)
+//                    // TODO: 로그인 메인으로 화면 이동
+//                    self?.showLoginVC()
                 case .failure(let error):
                     self?.view.makeToast("네트워크 오류")
                 }
