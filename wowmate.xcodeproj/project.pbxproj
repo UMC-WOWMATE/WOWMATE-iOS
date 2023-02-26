@@ -19,6 +19,7 @@
 		A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* AuthManager.swift */; };
 		A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCD29992FF9008EBED6 /* SearchManager.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
+		A2B969D529AB572A006119B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2B969D429AB572A006119B1 /* GoogleService-Info.plist */; };
 		A2D08E4C296A9B58008DD3FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D08E4B296A9B58008DD3FA /* User.swift */; };
 		A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4329852B1B00A7D4EC /* JoinVC.swift */; };
 		A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */; };
@@ -99,6 +100,7 @@
 		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
 		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A2B969D429AB572A006119B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2D28F4329852B1B00A7D4EC /* JoinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
 		A2D28F4429852B1B00A7D4EC /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				A2E2A8F32969C73B0055B5D2 /* App */,
 				A2E2A8F42969C83E0055B5D2 /* Global */,
 				A2E2A8ED2969C7330055B5D2 /* Info.plist */,
+				A2B969D429AB572A006119B1 /* GoogleService-Info.plist */,
 				A2D08E49296A9B2F008DD3FA /* Data */,
 				A2E2A8FA2969CA450055B5D2 /* Scenes */,
 			);
@@ -528,6 +531,7 @@
 				A2E2A8E72969C7310055B5D2 /* Home.storyboard in Resources */,
 				A2E2A9082969CC7D0055B5D2 /* Search.storyboard in Resources */,
 				A2D28F6629852B9500A7D4EC /* MatchInfoPreviewTableViewCell.xib in Resources */,
+				A2B969D529AB572A006119B1 /* GoogleService-Info.plist in Resources */,
 				A2E2A9032969CBEC0055B5D2 /* Notification.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
