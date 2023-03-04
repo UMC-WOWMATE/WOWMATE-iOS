@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
+		2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38529B353F600372D73 /* ChatNotificationVC.swift */; };
+		2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38729B3540800372D73 /* ChatNotificationCell.swift */; };
 		2C51492329979E48001557AA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492229979E47001557AA /* CategoryCell.swift */; };
 		2C51492529979E5A001557AA /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492429979E5A001557AA /* CategoryButton.swift */; };
+		2C5BC95D29B1B5E90089B0B3 /* PostNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BC95C29B1B5E90089B0B3 /* PostNotificationCell.swift */; };
+		2C5BC95F29B1E26E0089B0B3 /* PostNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BC95E29B1E26E0089B0B3 /* PostNotificationVC.swift */; };
 		2C989EF9299A70EC0017D80A /* listCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C989EF8299A70EC0017D80A /* listCell.swift */; };
 		2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C17E298FBB040099CE20 /* MatchVC.swift */; };
 		2CA2C181298FBB1D0099CE20 /* MatchVC_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */; };
@@ -93,8 +97,12 @@
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
+		2C01F38529B353F600372D73 /* ChatNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationVC.swift; sourceTree = "<group>"; };
+		2C01F38729B3540800372D73 /* ChatNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationCell.swift; sourceTree = "<group>"; };
 		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		2C5BC95C29B1B5E90089B0B3 /* PostNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationCell.swift; sourceTree = "<group>"; };
+		2C5BC95E29B1E26E0089B0B3 /* PostNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationVC.swift; sourceTree = "<group>"; };
 		2C989EF8299A70EC0017D80A /* listCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listCell.swift; sourceTree = "<group>"; };
 		2CA2C17E298FBB040099CE20 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		2CA2C180298FBB1D0099CE20 /* MatchVC_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC_extensions.swift; sourceTree = "<group>"; };
@@ -371,6 +379,10 @@
 			children = (
 				A2E2A9022969CBEC0055B5D2 /* Notification.storyboard */,
 				A2E2A9042969CBFE0055B5D2 /* NotificationVC.swift */,
+				2C5BC95E29B1E26E0089B0B3 /* PostNotificationVC.swift */,
+				2C5BC95C29B1B5E90089B0B3 /* PostNotificationCell.swift */,
+				2C01F38529B353F600372D73 /* ChatNotificationVC.swift */,
+				2C01F38729B3540800372D73 /* ChatNotificationCell.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -600,6 +612,7 @@
 				A2D28F81298650E400A7D4EC /* setColor.swift in Sources */,
 				A2D28F4F29852B1B00A7D4EC /* InputUserInfoVC.swift in Sources */,
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
+				2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */,
 				A2414525299BBDA9003867C9 /* imageCell.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
@@ -612,9 +625,11 @@
 				A2E2A9142969CD6B0055B5D2 /* MypageVC.swift in Sources */,
 				A2D28F5729852B2D00A7D4EC /* MatchCellDetailsVC.swift in Sources */,
 				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
+				2C5BC95F29B1E26E0089B0B3 /* PostNotificationVC.swift in Sources */,
 				A2D28F7929852BB100A7D4EC /* ChatFooter.swift in Sources */,
 				A2DA93E0299C020800FD176F /* SocketIOManager.swift in Sources */,
 				A2D28F5C29852B2D00A7D4EC /* DetailReplyCell.swift in Sources */,
+				2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */,
 				A2D28F5929852B2D00A7D4EC /* DetailReplyReactionVC.swift in Sources */,
 				A2E2A9052969CBFE0055B5D2 /* NotificationVC.swift in Sources */,
 				A2D28F5A29852B2D00A7D4EC /* MainTabVC.swift in Sources */,
@@ -650,6 +665,7 @@
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
+				2C5BC95D29B1B5E90089B0B3 /* PostNotificationCell.swift in Sources */,
 				A2D28F4A29852B1B00A7D4EC /* JoinVC.swift in Sources */,
 				2C51492529979E5A001557AA /* CategoryButton.swift in Sources */,
 				A2DA93E4299C065F00FD176F /* UserManager.swift in Sources */,
