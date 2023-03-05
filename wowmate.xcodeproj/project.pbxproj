@@ -10,6 +10,7 @@
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
 		2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38529B353F600372D73 /* ChatNotificationVC.swift */; };
 		2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38729B3540800372D73 /* ChatNotificationCell.swift */; };
+		2C01F38C29B4694400372D73 /* MatchCellDetailsVC_AloeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38B29B4694400372D73 /* MatchCellDetailsVC_AloeStackView.swift */; };
 		2C51492329979E48001557AA /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492229979E47001557AA /* CategoryCell.swift */; };
 		2C51492529979E5A001557AA /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C51492429979E5A001557AA /* CategoryButton.swift */; };
 		2C5BC95D29B1B5E90089B0B3 /* PostNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BC95C29B1B5E90089B0B3 /* PostNotificationCell.swift */; };
@@ -99,6 +100,7 @@
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
 		2C01F38529B353F600372D73 /* ChatNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationVC.swift; sourceTree = "<group>"; };
 		2C01F38729B3540800372D73 /* ChatNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationCell.swift; sourceTree = "<group>"; };
+		2C01F38B29B4694400372D73 /* MatchCellDetailsVC_AloeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCellDetailsVC_AloeStackView.swift; sourceTree = "<group>"; };
 		2C51492229979E47001557AA /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2C51492429979E5A001557AA /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		2C5BC95C29B1B5E90089B0B3 /* PostNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationCell.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				A2414524299BBDA9003867C9 /* imageCell.swift */,
 				A2D28F5129852B2D00A7D4EC /* MatchCellDetailsVC.swift */,
+				2C01F38B29B4694400372D73 /* MatchCellDetailsVC_AloeStackView.swift */,
 				A2D28F5629852B2D00A7D4EC /* DetailReplyCell.swift */,
 				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
 				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
@@ -660,6 +663,7 @@
 				A2D08E4C296A9B58008DD3FA /* User.swift in Sources */,
 				A2D28F6C29852BA400A7D4EC /* Extensions.swift in Sources */,
 				A2E2A90A2969CCA90055B5D2 /* SearchVC.swift in Sources */,
+				2C01F38C29B4694400372D73 /* MatchCellDetailsVC_AloeStackView.swift in Sources */,
 				A2D28F7029852BA400A7D4EC /* SectionHeader.swift in Sources */,
 				A2D28F7729852BB100A7D4EC /* ChatViewController.swift in Sources */,
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
