@@ -10,6 +10,7 @@ import UIKit
 import AloeStackView
 import Moya
 import Kingfisher
+import SnapKit
 
 class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     // MARK: - Properties
@@ -205,81 +206,92 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         let sample:String = "sample"
         
         let firstrow = UIStackView()
-               firstrow.axis = .horizontal
-               firstrow.distribution = .fill
+        firstrow.axis = .horizontal
+        firstrow.distribution = .fill
                
-               let commentsWriter = UILabel()
-               commentsWriter.font = .body_14R
-               commentsWriter.text = sample
-               commentsWriter.textColor = UIColor.WM.gray700
+        let commentsWriter = UILabel()
+        commentsWriter.font = .body_14R
+        commentsWriter.text = sample
+        commentsWriter.textColor = UIColor.WM.gray700
                
-               let bt = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+        let bt = UIButton()
+        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+    
+        firstrow.addArrangedSubview(commentsWriter)
+        firstrow.addArrangedSubview(bt)
                
-               firstrow.addArrangedSubview(commentsWriter)
-               firstrow.addArrangedSubview(bt)
+        stackView.axis = .vertical
+        stackView.hidesSeparatorsByDefault = true
+        stackView.addRow(firstrow)
+            
+        let secondrow = UIStackView()
+        secondrow.axis = .horizontal
+        secondrow.distribution = .fill
                
-               stackView.axis = .vertical
-               stackView.hidesSeparatorsByDefault = true
-               stackView.addRow(firstrow)
+        let lb = UILabel()
+        lb.text = sample
+        lb.font = .body_14R
+        lb.textColor = UIColor.WM.gray700
+        lb.numberOfLines = 0
                
+        secondrow.addArrangedSubview(lb)
+        secondrow.axis = .horizontal
+        secondrow.distribution = .fill
                
+        stackView.addRow(secondrow)
                
-               let secondrow = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
+        let thirdrow = UIStackView()
+        thirdrow.axis = .horizontal
+        thirdrow.distribution = .fill
+        thirdrow.alignment = .center
                
-               let lb = UILabel()
-               lb.text = sample
-               lb.font = .body_14R
-               lb.textColor = UIColor.WM.gray700
-               lb.numberOfLines = 0
+        let container = UIStackView()
+        container.axis = .horizontal
+        container.alignment = .center
+        container.distribution = .fill
+        container.spacing = 5
                
-               secondrow.addArrangedSubview(lb)
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
-               
-               stackView.addRow(secondrow)
-               
-               let thirdrow = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
-               
-               let container = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.alignment = .leading
-               
-               let commentreply = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        let commentreply = UIButton()
+        bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        
+        commentreply.snp.makeConstraints { make in
+        make.size.width.equalTo(20)
+        make.size.height.equalTo(20)
+        }
 
-               let commentlike = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        let commentlike = UIButton()
+        bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        
+        commentlike.snp.makeConstraints { make in
+        make.size.width.equalTo(20)
+        make.size.height.equalTo(20)
+        }
                
-               let commentreplycount = UILabel()
-               commentreplycount.text = sample
-               commentreplycount.font = .body_14R
-               commentreplycount.textColor = UIColor.WM.gray700
+        let commentreplycount = UILabel()
+        commentreplycount.text = sample
+        commentreplycount.font = .body_14R
+        commentreplycount.textColor = UIColor.WM.gray700
                
-               let commentlikecount = UILabel()
-               commentlikecount.text = sample
-               commentlikecount.font = .body_14R
-               commentlikecount.textColor = UIColor.WM.gray700
+        let commentlikecount = UILabel()
+        commentlikecount.text = sample
+        commentlikecount.font = .body_14R
+        commentlikecount.textColor = UIColor.WM.gray700
                
-               container.addArrangedSubview(commentreply)
-               container.addArrangedSubview(commentlike)
-               container.addArrangedSubview(commentreplycount)
-               container.addArrangedSubview(commentlikecount)
+        container.addArrangedSubview(commentreply)
+        container.addArrangedSubview(commentreplycount)
+        container.addArrangedSubview(commentlike)
+        container.addArrangedSubview(commentlikecount)
                
-               let datetext = UILabel()
-               datetext.text = sample
-               datetext.font = .body_11L
-               datetext.textColor = UIColor.WM.gray500
-               datetext.numberOfLines = 1
+        let datetext = UILabel()
+        datetext.text = sample
+        datetext.font = .body_11L
+        datetext.textColor = UIColor.WM.gray500
+        datetext.numberOfLines = 1
                
-               thirdrow.addArrangedSubview(container)
-               thirdrow.addArrangedSubview(datetext)
+        thirdrow.addArrangedSubview(container)
+        thirdrow.addArrangedSubview(datetext)
                
-               stackView.addRow(thirdrow)
+        stackView.addRow(thirdrow)
     }
     
     //    func row7(){
