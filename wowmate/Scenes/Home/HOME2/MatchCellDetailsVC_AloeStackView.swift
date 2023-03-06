@@ -211,7 +211,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                
         let commentsWriter = UILabel()
         commentsWriter.font = .body_14R
-        commentsWriter.text = sample
+        commentsWriter.text = "익명 1"
         commentsWriter.textColor = UIColor.WM.gray700
                
         let bt = UIButton()
@@ -229,7 +229,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         secondrow.distribution = .fill
                
         let lb = UILabel()
-        lb.text = sample
+        lb.text = "댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다."
         lb.font = .body_14R
         lb.textColor = UIColor.WM.gray700
         lb.numberOfLines = 0
@@ -237,18 +237,8 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         secondrow.addArrangedSubview(lb)
         stackView.addRow(secondrow)
                
-        let thirdrow = UIStackView()
-        thirdrow.axis = .horizontal
-        thirdrow.distribution = .fill
-               
-        let container = UIStackView()
-        container.axis = .horizontal
-        container.alignment = .leading
-        container.distribution = .fill
-        container.spacing = 5
-               
         let commentreply = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+        commentreply.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
         
         commentreply.snp.makeConstraints { make in
         make.size.width.equalTo(14)
@@ -256,41 +246,158 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }
 
         let commentlike = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+        commentlike.setImage(UIImage(imageLiteralResourceName: "chat"), for: .normal)
+
         
         commentlike.snp.makeConstraints { make in
         make.size.width.equalTo(14)
         make.size.height.equalTo(14)
         }
                
-        let commentreplycount = UILabel()
-        commentreplycount.text = sample
-        commentreplycount.font = .body_14R
-        commentreplycount.textColor = UIColor.WM.gray700
+        let commentlikecount = UILabel()
+        commentlikecount.text = sample
+        commentlikecount.font = .body_14R
+        commentlikecount.textColor = UIColor.WM.gray700
+        
+        let comentreplaycount = UILabel()
+        comentreplaycount.text = sample
+        comentreplaycount.font = .body_14R
+        comentreplaycount.textColor = UIColor.WM.gray700
+        
+               
+        let datetext = UILabel()
+        datetext.text = "2023-12-20"
+        datetext.font = .body_11L
+        datetext.textColor = UIColor.WM.gray500
+        datetext.numberOfLines = 1
+        
+        let thridRowCompoent = UIStackView()
+        thridRowCompoent.axis = .horizontal
+        thridRowCompoent.translatesAutoresizingMaskIntoConstraints = false
+        thridRowCompoent.distribution = .fill
+        
+        let thirdrow = UIStackView()
+        thirdrow.translatesAutoresizingMaskIntoConstraints = false
+        thirdrow.distribution = .fill
+        thirdrow.axis = .horizontal
+        thirdrow.alignment = .center
+        
+        thridRowCompoent.addArrangedSubview(commentreply)
+        thridRowCompoent.addArrangedSubview(commentlike)
+        thridRowCompoent.addArrangedSubview(commentlikecount)
+        thirdrow.addArrangedSubview(thridRowCompoent)
+        thirdrow.addArrangedSubview(datetext)
+        
+        stackView.addRow(thirdrow)
+
+    }
+    
+    func setUp_Commentsreply(){
+        let sample:String = "sample"
+        
+        let firstrow = UIStackView()
+        firstrow.axis = .horizontal
+        firstrow.distribution = .fill
+               
+        let commentsWriter = UILabel()
+        commentsWriter.font = .body_14R
+        commentsWriter.text = "익명 1"
+        commentsWriter.textColor = UIColor.WM.gray700
+               
+        let bt = UIButton()
+        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+    
+        firstrow.addArrangedSubview(commentsWriter)
+        firstrow.addArrangedSubview(bt)
+        
+        stackView.axis = .vertical
+        stackView.hidesSeparatorsByDefault = true
+        stackView.addRow(firstrow)
+            
+        let secondrow = UIStackView()
+        secondrow.axis = .horizontal
+        secondrow.distribution = .fill
+               
+        let lb = UILabel()
+        lb.text = "댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다."
+        lb.font = .body_14R
+        lb.textColor = UIColor.WM.gray700
+        lb.numberOfLines = 0
+               
+        secondrow.addArrangedSubview(lb)
+        stackView.addRow(secondrow)
+               
+        let commentreply = UIButton()
+        commentreply.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        
+        commentreply.snp.makeConstraints { make in
+        make.size.width.equalTo(14)
+        make.size.height.equalTo(14)
+        }
+
+        let commentlike = UIButton()
+        commentlike.setImage(UIImage(imageLiteralResourceName: "chat"), for: .normal)
+
+        
+        commentlike.snp.makeConstraints { make in
+        make.size.width.equalTo(14)
+        make.size.height.equalTo(14)
+        }
                
         let commentlikecount = UILabel()
         commentlikecount.text = sample
         commentlikecount.font = .body_14R
         commentlikecount.textColor = UIColor.WM.gray700
-               
-        container.addArrangedSubview(commentreply)
-        container.addArrangedSubview(commentreplycount)
-        container.addArrangedSubview(commentlike)
-        container.addArrangedSubview(commentlikecount)
+        
+        let comentreplaycount = UILabel()
+        comentreplaycount.text = sample
+        comentreplaycount.font = .body_14R
+        comentreplaycount.textColor = UIColor.WM.gray700
+        
                
         let datetext = UILabel()
-        datetext.text = sample
+        datetext.text = "2023-12-20"
         datetext.font = .body_11L
         datetext.textColor = UIColor.WM.gray500
         datetext.numberOfLines = 1
-               
-        thirdrow.addArrangedSubview(container)
+        
+        let thridRowCompoent = UIStackView()
+        thridRowCompoent.axis = .horizontal
+        thridRowCompoent.translatesAutoresizingMaskIntoConstraints = false
+        thridRowCompoent.distribution = .fill
+        
+        let thirdrow = UIStackView()
+        thirdrow.translatesAutoresizingMaskIntoConstraints = false
+        thirdrow.distribution = .fill
+        thirdrow.axis = .horizontal
+        thirdrow.alignment = .center
+        
+        thridRowCompoent.addArrangedSubview(commentreply)
+        thridRowCompoent.addArrangedSubview(commentlike)
+        thridRowCompoent.addArrangedSubview(commentlikecount)
+        thirdrow.addArrangedSubview(thridRowCompoent)
         thirdrow.addArrangedSubview(datetext)
-               
+        
         stackView.addRow(thirdrow)
         
-
+        let replystackview = UIStackView()
+        replystackview.axis = .horizontal
+        replystackview.distribution = .fill
+        replystackview.alignment = .center
+        replystackview.spacing = 10
+        
+        let replybt = UIButton()
+        replybt.setImage(UIImage(imageLiteralResourceName: "Vector"), for: .normal)
+        
+        replystackview.addArrangedSubview(replybt)
+        replystackview.addArrangedSubview(stackView)
+        
+        stackView.addRow(replystackview)
+    
     }
+    
+    
+    
     
     //    func row7(){
     //

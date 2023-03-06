@@ -11,7 +11,6 @@ class DetailReplyCell: UITableViewCell {
     
     var ID:Int = -1
     
-        
     let container:UIStackView = {
         let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
