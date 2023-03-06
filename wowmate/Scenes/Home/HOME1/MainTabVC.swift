@@ -28,7 +28,7 @@ class MainTabVC: UITabBarController {
 //        search.tabBarItem = homeTab
 //        let Search = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 5"), rootViewController: SearchVC())
         
-        let ChatList = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 2"), rootViewController: ChatListVC())
+        let ChatList = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "개별"), rootViewController: ChatListVC())
         let Mypage = templateNavigationController(unuselectingIamge: #imageLiteral(resourceName: "off 1"), rootViewController: MypageVC())
         viewControllers = [Home,Search, Match, ChatList, Mypage]
     

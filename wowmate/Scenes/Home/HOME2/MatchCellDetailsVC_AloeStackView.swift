@@ -219,7 +219,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     
         firstrow.addArrangedSubview(commentsWriter)
         firstrow.addArrangedSubview(bt)
-               
+        
         stackView.axis = .vertical
         stackView.hidesSeparatorsByDefault = true
         stackView.addRow(firstrow)
@@ -235,36 +235,32 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         lb.numberOfLines = 0
                
         secondrow.addArrangedSubview(lb)
-        secondrow.axis = .horizontal
-        secondrow.distribution = .fill
-               
         stackView.addRow(secondrow)
                
         let thirdrow = UIStackView()
         thirdrow.axis = .horizontal
         thirdrow.distribution = .fill
-        thirdrow.alignment = .center
                
         let container = UIStackView()
         container.axis = .horizontal
-        container.alignment = .center
+        container.alignment = .leading
         container.distribution = .fill
         container.spacing = 5
                
         let commentreply = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
         
         commentreply.snp.makeConstraints { make in
-        make.size.width.equalTo(20)
-        make.size.height.equalTo(20)
+        make.size.width.equalTo(14)
+        make.size.height.equalTo(14)
         }
 
         let commentlike = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
         
         commentlike.snp.makeConstraints { make in
-        make.size.width.equalTo(20)
-        make.size.height.equalTo(20)
+        make.size.width.equalTo(14)
+        make.size.height.equalTo(14)
         }
                
         let commentreplycount = UILabel()
@@ -292,6 +288,8 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         thirdrow.addArrangedSubview(datetext)
                
         stackView.addRow(thirdrow)
+        
+
     }
     
     //    func row7(){
