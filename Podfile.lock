@@ -1,6 +1,7 @@
 PODS:
   - AloeStackView (1.2.0)
   - IQKeyboardManagerSwift (6.5.10)
+  - JGProgressHUD (2.2)
   - Kingfisher (7.5.0)
   - Pageboy (3.7.0)
   - PryntTrimmerView (4.0.2)
@@ -18,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - AloeStackView
   - IQKeyboardManagerSwift
+  - JGProgressHUD
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.0.0)
   - Socket.IO-Client-Swift (~> 15.2.0)
@@ -28,6 +30,7 @@ SPEC REPOS:
   trunk:
     - AloeStackView
     - IQKeyboardManagerSwift
+    - JGProgressHUD
     - Kingfisher
     - Pageboy
     - PryntTrimmerView
@@ -41,6 +44,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AloeStackView: 8a4ce0efa08128dd78d538372f60c76c224034bb
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
   Pageboy: fe646118f7168960058bea7a96038386aa7c0da8
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
@@ -51,6 +55,6 @@ SPEC CHECKSUMS:
   Tabman: 66ea44c44488327ec20f3c8dc5554a5d22f5908c
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: b2405e2e47f31b0e7faa7e4f8acc9b3b2d945654
+PODFILE CHECKSUM: 01f2ecf88a19a95f1af8b1b264f47502bafa1a7e
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.3
