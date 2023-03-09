@@ -49,18 +49,13 @@ class JoinVC: UIViewController {
         super.viewDidLoad()
         setUpLayout()
         setUpInputNotification()
-        showAlertForEmailIssue()    // 데모데이 이후 이슈 처리 및 메소드 삭제 예정
     }
     
-    
-    private func showAlertForEmailIssue() {
-        let alert = UIAlertController(title: "안내",
-                                      message: "\n✅ 학교 메일 도메인 관련 문제로, \n학교 선택에 무관하게 개인의 구글 이메일로 인증 메일이 발송됩니다! \n\n✅ 이메일 작성란에는 본인의 Gmail 계정을 입력해주세요! \n\n✅ 단, 회원가입을 위해 학교 선택은 필수!",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        present(alert, animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let univ = selectedUniv { selectSchoolButton.setTitle(univ, for: .normal) }
     }
-    
+
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
 
