@@ -16,6 +16,7 @@ class FindPasswordVC: UIViewController {
     private var timer: DispatchSourceTimer?
     private var duration = 180
     
+    private var passwordValid = false
     private var isValid = false
     private var userEmail: String? = nil
     private var validationCode: String? = nil
@@ -27,6 +28,7 @@ class FindPasswordVC: UIViewController {
     @IBOutlet weak var certificationCodeTextField: UITextField!
     
     @IBOutlet weak var newPasswordTextField: UITextField!
+    @IBOutlet weak var passwordTestLabel: UILabel!
     @IBOutlet weak var confirmNewPasswordTextField: UITextField!
     @IBOutlet weak var passwordValidationLabel: UILabel!
     
@@ -40,6 +42,12 @@ class FindPasswordVC: UIViewController {
         super.viewDidLoad()
         setNotification()
         setUpLayout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: newPasswordTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: confirmNewPasswordTextField)
     }
     
     // MARK: - Actions
@@ -130,7 +138,14 @@ class FindPasswordVC: UIViewController {
     private func setNotification() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(passwordTextDidChanged(_:)),
+            selector: #selector(firstPasswordTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: newPasswordTextField
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(finalPasswordTextDidChanged(_:)),
             name: UITextField.textDidChangeNotification,
             object: confirmNewPasswordTextField
         )
@@ -176,11 +191,30 @@ class FindPasswordVC: UIViewController {
         }
     }
     
-    @objc func passwordTextDidChanged(_ notification: Notification) {
+    private func validpassword(password : String) -> Bool {
+        //숫자+문자 포함해서 8~20글자의 비밀번호를 체크하는 정규 표현식
+        let passwordPattern =  ("(?=.*[A-Za-z])(?=.*[0-9]).{8,20}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordTest.evaluate(with: password)
+    }
+    
+    @objc func firstPasswordTextDidChanged(_ notification: Notification) {
+        if let password = newPasswordTextField.text {
+            if validpassword(password: password) {
+                self.passwordTestLabel.isHidden = true
+                passwordValid = true
+            } else {
+                self.passwordTestLabel.isHidden = false
+                passwordValid = false
+            }
+        }
+    }
+    
+    @objc func finalPasswordTextDidChanged(_ notification: Notification) {
         if let firstPasswordInput = newPasswordTextField.text,
            let finalPasswordInput = confirmNewPasswordTextField.text {
             if (firstPasswordInput.count > 0) && (finalPasswordInput.count > 0) {
-                if firstPasswordInput == finalPasswordInput {
+                if passwordValid && (firstPasswordInput == finalPasswordInput) {
                     passwordValidationLabel.isHidden = true
                     changePasswordButton.backgroundColor = UIColor(named: "Main00")
                     changePasswordButton.isEnabled = true

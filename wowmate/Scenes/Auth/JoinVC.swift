@@ -62,6 +62,14 @@ class JoinVC: UIViewController {
             if univ.count > 0 { selectSchoolButton.setTitle(univ, for: .normal) }
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: firstInputPassWordTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
+    }
 
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
@@ -141,11 +149,7 @@ class JoinVC: UIViewController {
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
         if isValid {
             if setSignupInfo() {
-                
-                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
-                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
-                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
-                
+            
                 guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
                 inputUserInfoVC.signupInfo = signupInfo
                 navigationController?.pushViewController(inputUserInfoVC, animated: true)

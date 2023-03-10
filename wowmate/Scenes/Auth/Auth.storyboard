@@ -229,15 +229,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 문자와 숫자를 포함한 8~20자리의 비밀번호를 설정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-4H-G1g">
+                                        <rect key="frame" x="0.0" y="71.666666666666686" width="271.33333333333331" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="t8W-e1-Xf8" firstAttribute="leading" secondItem="FOR-cY-Zgt" secondAttribute="leading" id="4rp-ll-bMK"/>
                                     <constraint firstAttribute="trailing" secondItem="t8W-e1-Xf8" secondAttribute="trailing" id="8nU-Sf-Azn"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="56Q-ja-rLd"/>
                                 </constraints>
@@ -375,6 +381,7 @@
                         <outlet property="confirmNewPasswordTextField" destination="lT5-qZ-HlA" id="LsX-gO-v1u"/>
                         <outlet property="navigationBar" destination="pfN-93-5EJ" id="WrU-wi-7Ts"/>
                         <outlet property="newPasswordTextField" destination="t8W-e1-Xf8" id="bkv-vH-Nh0"/>
+                        <outlet property="passwordTestLabel" destination="fwc-4H-G1g" id="7Lc-ka-pBB"/>
                         <outlet property="passwordValidationLabel" destination="iAh-PQ-7v7" id="lns-UJ-QMT"/>
                         <outlet property="schoolEmailTextField" destination="bvy-1u-a4T" id="iAv-ej-MCa"/>
                         <outlet property="sendCertificationCodeButton" destination="whX-7x-PaY" id="HgT-H5-WdS"/>
