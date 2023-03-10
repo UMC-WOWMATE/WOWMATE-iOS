@@ -44,16 +44,8 @@ class FindPasswordVC: UIViewController {
     
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
-    @IBAction func didTapBackButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
-    
     @IBAction func didTapCloseButton(_ sender: UIBarButtonItem) {
-        // rootView로 이동
-        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
-        loginVC.modalPresentationStyle = .fullScreen
-        
-        present(loginVC, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
@@ -91,17 +83,6 @@ class FindPasswordVC: UIViewController {
             }
 
         }
-        
-//        if let email = schoolEmailTextField.text {
-//            AuthManager.shared.emailValidationRequest(email: email) { [weak self] result in
-//                switch result {
-//                case .success(let success):
-//                    self?.validationCode = success
-//                case .failure(let failure):
-//                    print(failure)
-//                }
-//            }
-//        }
     }
     
     @IBAction func didTapConfirmCodeButton(_ sender: UIButton) {
@@ -121,18 +102,26 @@ class FindPasswordVC: UIViewController {
     }
     
     @IBAction func didTapChangePasswordButton(_ sender: UIButton) {
-        // 비밀번호 변경 성공 여부에 따른 다음 화면 전환 구현 예저
-        print("did Tap ChangePasswordButton")
-        
-        let newPassword = confirmNewPasswordTextField.text
-        AuthManager.shared.changePassword(email: userEmail!, password: newPassword!) { [weak self] result in
-            switch result {
-            case .success(let success):
-                self?.view.makeToast(success)
-            case .failure(let error):
-                self?.view.makeToast("네트워크 오류")
+        if isValid {
+            if let email = userEmail,
+               let password = confirmNewPasswordTextField.text {
+                AuthManager.shared.changePassword(email: email, password: password) { [weak self] result in
+                    switch result {
+                    case .success(let success):
+                        self?.view.makeToast(success, duration: 1.5, position: .center)
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print(error)
+                        self?.view.makeToast("비밀번호 변경 실패", duration: 1.5, position: .center)
+                    }
+                    
+                }
+            } else {
+                self.view.makeToast("정보를 모두 기입해주세요", duration: 1.5, position: .center)
             }
             
+        } else {
+            self.view.makeToast("이메일 인증이 필요합니다", duration: 1.5, position: .center)
         }
     }
     

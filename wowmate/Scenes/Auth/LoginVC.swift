@@ -65,12 +65,8 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func didTapFindPasswordButton(_ sender: UIButton) {
-        // FindPasswordVC로 넘어가기
         guard let findPasswordVC = storyboard?.instantiateViewController(withIdentifier: "FindPasswordVC") as? FindPasswordVC else { return }
-        findPasswordVC.modalPresentationStyle = .fullScreen
-        
-        present(findPasswordVC, animated: true)
-        
+        self.navigationController?.pushViewController(findPasswordVC, animated: true)
     }
     
     @IBAction func didTapJoinButton(_ sender: UIButton) {

@@ -334,12 +334,6 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="비밀번호 찾기" id="2Mb-iE-ykX">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="JSE-Vq-2Uj">
-                                            <color key="tintColor" name="Main00"/>
-                                            <connections>
-                                                <action selector="didTapBackButton:" destination="eXL-Y5-peH" id="YpC-nn-BjO"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="1Bl-CC-jii">
                                             <color key="tintColor" name="Main00"/>
                                             <connections>
@@ -1229,7 +1223,6 @@
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="main_icon" width="175" height="175"/>
         <image name="main_label_icon" width="115" height="23"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
