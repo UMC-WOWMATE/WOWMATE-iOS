@@ -76,3 +76,10 @@ struct PostRegister: Codable {
 struct CommentRegister: Codable {
     let commentContext: String
 }
+
+struct Postdeclare: Codable {
+    let reasnon:String
+}
+
+
+

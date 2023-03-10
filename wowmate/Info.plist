@@ -8,6 +8,8 @@
 	<string>메이트를 찾기 위한 게시글을 작성할 때 카메라를 이용하여 사진을 찍어 추가하기 위한 권한입니다.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>

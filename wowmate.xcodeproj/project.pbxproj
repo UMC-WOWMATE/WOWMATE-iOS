@@ -92,6 +92,9 @@
 		A2F9053029895D9400AC588C /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9052F29895D9400AC588C /* PostAPI.swift */; };
 		A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F9053129895E8E00AC588C /* ChatAPI.swift */; };
 		A2F905342989616700AC588C /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F905332989616700AC588C /* PostManager.swift */; };
+		BE115C3729B5F41900075EB6 /* commnetTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE115C3629B5F41900075EB6 /* commnetTableVC.swift */; };
+		BE115C3929B5F44E00075EB6 /* replyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE115C3829B5F44E00075EB6 /* replyCell.swift */; };
+		BE115C3B29B5F46E00075EB6 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE115C3A29B5F46E00075EB6 /* commentCell.swift */; };
 		BE1C3F22299BB7CF005CAC23 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1C3F21299BB7CF005CAC23 /* Match.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +182,9 @@
 		A2F9052F29895D9400AC588C /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = wowmate/Data/Model/PostAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F9053129895E8E00AC588C /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = wowmate/Data/Model/ChatAPI.swift; sourceTree = SOURCE_ROOT; };
 		A2F905332989616700AC588C /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostManager.swift; path = wowmate/Data/Model/PostManager.swift; sourceTree = SOURCE_ROOT; };
+		BE115C3629B5F41900075EB6 /* commnetTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commnetTableVC.swift; sourceTree = "<group>"; };
+		BE115C3829B5F44E00075EB6 /* replyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replyCell.swift; sourceTree = "<group>"; };
+		BE115C3A29B5F46E00075EB6 /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		BE1C3F21299BB7CF005CAC23 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -473,6 +479,9 @@
 				A2D28F5329852B2D00A7D4EC /* DetailReplyReactionVC.swift */,
 				A2D28F5229852B2D00A7D4EC /* MatchDetailsVC.swift */,
 				2C989EF8299A70EC0017D80A /* listCell.swift */,
+				BE115C3629B5F41900075EB6 /* commnetTableVC.swift */,
+				BE115C3829B5F44E00075EB6 /* replyCell.swift */,
+				BE115C3A29B5F46E00075EB6 /* commentCell.swift */,
 			);
 			path = HOME2;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				A2D28F4F29852B1B00A7D4EC /* InputUserInfoVC.swift in Sources */,
 				A2D28F6229852B9500A7D4EC /* SearchResultVC.swift in Sources */,
 				2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */,
+				BE115C3729B5F41900075EB6 /* commnetTableVC.swift in Sources */,
 				A2414525299BBDA9003867C9 /* imageCell.swift in Sources */,
 				A2D28F6529852B9500A7D4EC /* RecentSearchTableViewCell.swift in Sources */,
 				A2D28F4B29852B1B00A7D4EC /* JoinViewController.swift in Sources */,
@@ -650,6 +660,7 @@
 				A2F9052C29895B7000AC588C /* AuthAPI.swift in Sources */,
 				A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */,
 				A2D28F6E29852BA400A7D4EC /* myPageCell.swift in Sources */,
+				BE115C3B29B5F46E00075EB6 /* commentCell.swift in Sources */,
 				A2D28F5B29852B2D00A7D4EC /* MainCell.swift in Sources */,
 				A2E2A8E22969C7310055B5D2 /* SceneDelegate.swift in Sources */,
 				A2F905342989616700AC588C /* PostManager.swift in Sources */,
@@ -667,6 +678,7 @@
 				A2D28F7029852BA400A7D4EC /* SectionHeader.swift in Sources */,
 				A2D28F7729852BB100A7D4EC /* ChatViewController.swift in Sources */,
 				A2D28F7A29852BB100A7D4EC /* ChatListHeader.swift in Sources */,
+				BE115C3929B5F44E00075EB6 /* replyCell.swift in Sources */,
 				A2D28F5029852B1B00A7D4EC /* SchoolTableViewCell.swift in Sources */,
 				A2F9053229895E8E00AC588C /* ChatAPI.swift in Sources */,
 				2C5BC95D29B1B5E90089B0B3 /* PostNotificationCell.swift in Sources */,

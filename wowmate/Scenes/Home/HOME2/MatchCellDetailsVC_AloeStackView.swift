@@ -26,6 +26,9 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     var comments: [Comment?] = []
     var commentReplyDtoList: [CommentReply?] = []
     
+    
+    let tableview = UITableView(frame: .zero, style: .grouped)
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,9 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         setUp_Context()
         setUp_Image()
         setUp_Comments()
+        tableviewSet()
+       
+        
     }
     
     // MARK: - Actions
@@ -373,6 +379,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         thirdrow.alignment = .center
         
         thridRowCompoent.addArrangedSubview(commentreply)
+        thridRowCompoent.addArrangedSubview(comentreplaycount)
         thridRowCompoent.addArrangedSubview(commentlike)
         thridRowCompoent.addArrangedSubview(commentlikecount)
         thirdrow.addArrangedSubview(thridRowCompoent)
@@ -391,10 +398,10 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         replystackview.addArrangedSubview(replybt)
         replystackview.addArrangedSubview(stackView)
-        
-        stackView.addRow(replystackview)
     
     }
+    
+    
     
     
     
@@ -436,4 +443,35 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
 //        var commentReplyDtoList: [CommentReply?] = []
         
     }
+    
+    func tableviewSet(){
+        self.tableview.delegate = self
+        self.tableview.dataSource = self
+        self.tableview.register(replyCell.self, forCellReuseIdentifier: "replyCell")
+        self.tableview.reloadData()
+//        self.tableview.separatorStyle
+        self.tableview.layoutIfNeeded()
+        self.tableview.rowHeight = 70
+        stackView.addRow(tableview)
+        
+    }
+    
+   
 }
+
+extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "replyCell") as! replyCell
+        
+        return cell
+    }
+   
+}
+
+
