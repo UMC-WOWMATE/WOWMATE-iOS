@@ -49,13 +49,13 @@ class LoginVC: UIViewController {
             AuthManager.shared.signinRequest(user: login) { [weak self] result in
                 switch result {
                 case .success(let success):
-                    print(success)
-                    self?.view.makeToast("로그인 성공", duration: 1.0, position: .center)
                     if success["code"] as? Int == 200 {
                         self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                    } else {
+                        self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)
                     }
-                case .failure(let _):
-                    self?.view.makeToast("로그인 실패")
+                case .failure(_):
+                    self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)
                     return
                 }
             }

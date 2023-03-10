@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class AgreeTermsVC: UIViewController {
     // MARK: - Properties
@@ -59,37 +60,20 @@ class AgreeTermsVC: UIViewController {
         if let signupInfo = signupInfo {
             AuthManager.shared.signupRequest(user: signupInfo) { [weak self] result in
                 switch result {
-                case .success(let success):
-                    self?.view.makeToast(success["message"] as! String)
-                    if success["code"] as? Int == 200 {
-                        self?.showLoginVC()
-//                        let login = LoginVC()
-//                        self?.present(login, animated: true)
-//
-//                        guard let login = self?.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
-//                        self?.navigationController?.pushViewController(login, animated: true)
-                    }
-                    else {
-                        let alert = UIAlertController(title: nil, message: success["message"] as? String, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "확인", style: .default))
-                        self?.present(alert, animated: true)
-                    }
-                    self?.showLoginVC()
-                    
-                    
-//                    self?.view.makeToast(success)
-//                    // TODO: 로그인 메인으로 화면 이동
+                case .success(let success): self?.showHome()
+//                    if success["code"] as? Int == 200 {
+//                        self?.showLoginVC()
+//                    }
                     
                 case .failure(let error):
-                    self?.view.makeToast("네트워크 오류")
+                    self?.view.makeToast("회원가입 실패", duration: 1.0, position: .center)
                 }
                 
             }
         }
     }
     
-    private func showLoginVC() {
-//        var storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+    private func showHome() {
         guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else { return }
         navigationController?.pushViewController(loginVC, animated: true)
     }

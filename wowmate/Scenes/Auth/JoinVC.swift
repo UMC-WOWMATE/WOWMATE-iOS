@@ -9,8 +9,6 @@ import UIKit
 import Toast
 import JGProgressHUD
 
-private let TEMP_EMAIL_DOMAIN = "gmail.com" // 데모데이 시연용 임시 이메일 도메인
-
 class JoinVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
@@ -61,14 +59,6 @@ class JoinVC: UIViewController {
         if let univ = selectedUniv {
             if univ.count > 0 { selectSchoolButton.setTitle(univ, for: .normal) }
         }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: firstInputPassWordTextField)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
     }
 
     // MARK: - Actions
@@ -142,13 +132,18 @@ class JoinVC: UIViewController {
                 certificationCountingLabel.isHidden = false
             }
         } else {
-            self.view.makeToast("인증코드가 만료되었습니다. 재요청 바랍니다.", duration: 1.0, position: .center)
+            self.view.makeToast("인증코드가 만료되었습니다. 재요청해주세요.", duration: 1.0, position: .center)
         }
     }
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
         if isValid {
             if setSignupInfo() {
+                
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: firstInputPassWordTextField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
             
                 guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
                 inputUserInfoVC.signupInfo = signupInfo
