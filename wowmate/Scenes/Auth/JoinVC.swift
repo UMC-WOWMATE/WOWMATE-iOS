@@ -20,6 +20,7 @@ class JoinVC: UIViewController {
     private var timer: DispatchSourceTimer?
     private var duration = 180
     
+    private var passwordValid = false
     private var isValid = false
     private var validationCode: String? = nil
     private var inputEmail: String?
@@ -37,6 +38,7 @@ class JoinVC: UIViewController {
     @IBOutlet weak var certificationCodeTextField: UITextField!
     
     @IBOutlet weak var firstInputPassWordTextField: UITextField!
+    @IBOutlet weak var passwordTestLabel: UILabel!
     @IBOutlet weak var finalInputPassWordTextField: UITextField!
     @IBOutlet weak var passwordValidationLabel: UILabel!
     
@@ -193,7 +195,14 @@ class JoinVC: UIViewController {
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(passwordTextDidChanged(_:)),
+            selector: #selector(firstPasswordTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: firstInputPassWordTextField
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(finalPasswordTextDidChanged(_:)),
             name: UITextField.textDidChangeNotification,
             object: finalInputPassWordTextField
         )
@@ -246,6 +255,13 @@ class JoinVC: UIViewController {
         }
     }
     
+    private func validpassword(password : String) -> Bool {
+        //숫자+문자 포함해서 8~20글자의 비밀번호를 체크하는 정규 표현식
+        let passwordPattern =  ("(?=.*[A-Za-z])(?=.*[0-9]).{8,20}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordTest.evaluate(with: password)
+    }
+    
     @objc func emailHeadTextDidChanged(_ notification: Notification) {
         if let emailHead = inputEmailHeadTextField.text {
             if emailHead.count > 0 {
@@ -270,11 +286,24 @@ class JoinVC: UIViewController {
         }
     }
     
-    @objc func passwordTextDidChanged(_ notification: Notification) {
+    @objc func firstPasswordTextDidChanged(_ notification: Notification) {
+        if let password = firstInputPassWordTextField.text {
+            if validpassword(password: password) {
+                self.passwordTestLabel.isHidden = true
+                passwordValid = true
+            } else {
+                self.passwordTestLabel.isHidden = false
+                passwordValid = false
+            }
+        }
+    }
+        
+        
+    @objc func finalPasswordTextDidChanged(_ notification: Notification) {
         if let firstPasswordInput = firstInputPassWordTextField.text,
            let finalPasswordInput = finalInputPassWordTextField.text {
             if (firstPasswordInput.count > 0) && (finalPasswordInput.count > 0) {
-                if firstPasswordInput == finalPasswordInput {
+                if passwordValid && (firstPasswordInput == finalPasswordInput) {
                     passwordValidationLabel.isHidden = true
                     completeAllButton.backgroundColor = UIColor(named: "Main00")
                     completeAllButton.isEnabled = true

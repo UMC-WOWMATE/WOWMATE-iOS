@@ -655,6 +655,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 문자와 숫자를 포함한 8~20자리의 비밀번호를 설정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABG-ZS-XtV">
+                                        <rect key="frame" x="0.0" y="402.33333333333331" width="271.33333333333331" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 확인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHO-gi-Bv5">
                                         <rect key="frame" x="0.0" y="410.33333333333331" width="97.666666666666671" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
@@ -724,6 +730,7 @@
                         <outlet property="finalInputPassWordTextField" destination="C8O-UZ-PhC" id="ex2-MZ-Y40"/>
                         <outlet property="firstInputPassWordTextField" destination="aI3-2L-adI" id="t4U-Yw-E6l"/>
                         <outlet property="inputEmailHeadTextField" destination="Qpc-c0-fVa" id="xn2-W7-jSG"/>
+                        <outlet property="passwordTestLabel" destination="ABG-ZS-XtV" id="xvl-NT-5sg"/>
                         <outlet property="passwordValidationLabel" destination="bTb-MJ-XNk" id="XQg-cw-iHX"/>
                         <outlet property="schoolEmailTextField" destination="Sf7-d0-QRj" id="oaG-eJ-6Y7"/>
                         <outlet property="selectSchoolButton" destination="OtS-sz-1XH" id="X93-ot-hVD"/>
