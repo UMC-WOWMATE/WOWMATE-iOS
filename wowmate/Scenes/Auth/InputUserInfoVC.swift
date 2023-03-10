@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class InputUserInfoVC: UIViewController {
     // MARK: - Properties
@@ -13,15 +14,15 @@ class InputUserInfoVC: UIViewController {
     var signupInfo: Signup?
     
     var gender: String?
-    var birth: String?
-    var phoneNum: String?
+//    var birth: String?
+//    var phoneNum: String?
     
     
     private let birthDatePicker = UIDatePicker()
     
     @IBOutlet weak var birthTextField: UITextField!
     
-    @IBOutlet weak var sexSelectButton: UIButton!
+    @IBOutlet weak var genderSelectButton: UIButton!
     @IBOutlet weak var phoneNumTextField: UITextField!
     
     @IBOutlet weak var completeAllButton: UIButton!
@@ -38,22 +39,24 @@ class InputUserInfoVC: UIViewController {
     
     // MARK: - Actions
     // IBAction 및 사용자 인터랙션과 관련된 메서드 정의
-    @IBAction func didTapBackButton(_ sender: UIButton) { dismiss(animated: true) }
-        
     @IBAction func didEndEditingBirthTExtField(_ sender: UITextField) { sender.textColor = .black }
     
-    
-    @IBAction func didSelectedSexButton(_ sender: UIButton) { }
-    
+    @IBAction func didSelectedGenderButton(_ sender: UIButton) { }
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
         // 입력 조건 모두 확인하고, 조건이 모두 충족하면 InputUserInfoVC로 넘어가기
         // 입력 조건 불충족 시, Alert 띄우기
-        setSignupInfo()
-        
-        guard let agreeTermsVC = storyboard?.instantiateViewController(withIdentifier: "AgreeTermsVC") as? AgreeTermsVC else { return }
-        agreeTermsVC.signupInfo = signupInfo
-        navigationController?.pushViewController(agreeTermsVC, animated: true)
+        if setSignupInfo() {
+            NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: birthTextField)
+            NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: phoneNumTextField)
+            
+            guard let agreeTermsVC = storyboard?.instantiateViewController(withIdentifier: "AgreeTermsVC") as? AgreeTermsVC else { return }
+            agreeTermsVC.signupInfo = signupInfo
+            navigationController?.pushViewController(agreeTermsVC, animated: true)
+            
+        } else {
+            self.view.makeToast("정보를 모두 기입해주세요", duration: 1.5, position: .center)
+        }
     }
 
     
@@ -72,13 +75,13 @@ class InputUserInfoVC: UIViewController {
     
     private func setUpLayout() {
         // set up Buttons layout
-        sexSelectButton.setImage(nil, for: .selected)
+        genderSelectButton.setImage(nil, for: .selected)
 
-        sexSelectButton.layer.borderWidth = 0.5
-        sexSelectButton.layer.borderColor = UIColor.gray.cgColor
+        genderSelectButton.layer.borderWidth = 0.5
+        genderSelectButton.layer.borderColor = UIColor.gray.cgColor
         [
             phoneNumTextField,
-            sexSelectButton,
+            genderSelectButton,
             completeAllButton
         ].forEach {
             $0?.layer.cornerRadius = 15
@@ -86,30 +89,29 @@ class InputUserInfoVC: UIViewController {
     }
     
     private func setSexButtonSelectedLayout() {
-        sexSelectButton.isSelected = !(sexSelectButton.isSelected)
+        genderSelectButton.isSelected = !(genderSelectButton.isSelected)
     }
     
     private func setUpSelectSexPopUpButton() {
         let man = UIAction(title: "남성", image: nil, handler: { [weak self] _ in
             self?.setSexButtonSelectedLayout()
             self?.gender = "M"
-            print("gender set :: \(self?.gender)")
+            self?.genderSelectButton.setTitle("남성", for: .normal)
         })
         let woman = UIAction(title: "여성", image: nil, handler: { [weak self] _ in
             self?.setSexButtonSelectedLayout()
             self?.gender = "F"
-            print("gender set :: \(self?.gender)")
+            self?.genderSelectButton.setTitle("여성", for: .normal)
         })
 
-        sexSelectButton.menu = UIMenu(
+        genderSelectButton.menu = UIMenu(
             title: "성별을 선택해주세요",
             image: nil,
             identifier: nil,
             options: .displayInline,
             children: [man, woman]
         )
-        sexSelectButton.showsMenuAsPrimaryAction = true
-        sexSelectButton.changesSelectionAsPrimaryAction = true
+        genderSelectButton.showsMenuAsPrimaryAction = true
     }
     
     private func setUpInputNotification() {
@@ -125,19 +127,32 @@ class InputUserInfoVC: UIViewController {
             name: UITextField.textDidChangeNotification,
             object: phoneNumTextField
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(phoneNumTextDidChanged(_:)),
+            name: UITextField.textDidChangeNotification,
+            object: phoneNumTextField
+        )
     }
     
-    private func setSignupInfo() {
-        phoneNum = phoneNumTextField.text
-        
-        if let birth = self.birth,
-           let gender = self.gender,
-           let phoneNum = self.phoneNum {
+    private func setSignupInfo() -> Bool {
+        if var phoneNum =  phoneNumTextField.text,
+           let birth = birthTextField.text ,
+           let gender = gender {
             
             signupInfo?.birth = birth
             signupInfo?.gender = gender
+
+            if phoneNum.count > 11 {
+                self.view.makeToast("전화번호를 확인해주세요", duration: 1.5, position: .center)
+                return false
+            }
+            
+            if phoneNum.contains("-") { phoneNum = phoneNum.trimmingCharacters(in: ["-"]) }
             signupInfo?.phoneNumber = phoneNum
-        }
+            
+            return true
+        } else { return false }
     }
     
     
@@ -147,9 +162,6 @@ class InputUserInfoVC: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "ko_KR")
         birthTextField.text = formatter.string(from: birthDatePicker.date)
-        
-        birth = birthTextField.text
-        print("birth set :: \(birth)")
     }
     
     @objc func textDidChanged(_ notification: Notification) {
@@ -162,5 +174,9 @@ class InputUserInfoVC: UIViewController {
                 completeAllButton.isEnabled = false
             }
         }
+    }
+    
+    @objc func phoneNumTextDidChanged(_ notification: Notification) {
+        // TODO: 010-0000-0000 형태로 표시
     }
 }

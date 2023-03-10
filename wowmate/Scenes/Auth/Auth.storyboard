@@ -1127,7 +1127,7 @@
                                             <color key="titleColor" systemColor="systemGrayColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="didSelectedSexButton:" destination="eif-4Y-d9S" eventType="touchUpInside" id="USD-0Q-PYb"/>
+                                            <action selector="didSelectedGenderButton:" destination="eif-4Y-d9S" eventType="touchUpInside" id="xZi-Dd-w2J"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1210,8 +1210,8 @@
                     <connections>
                         <outlet property="birthTextField" destination="pKG-gL-7kt" id="mU3-EJ-PQu"/>
                         <outlet property="completeAllButton" destination="nhq-PE-g24" id="ORb-Az-q79"/>
+                        <outlet property="genderSelectButton" destination="GMK-br-SC2" id="UAq-A8-q1H"/>
                         <outlet property="phoneNumTextField" destination="0qn-re-kFH" id="Oje-x4-Iit"/>
-                        <outlet property="sexSelectButton" destination="GMK-br-SC2" id="1ub-Rl-Mr6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvw-lF-Ftx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
