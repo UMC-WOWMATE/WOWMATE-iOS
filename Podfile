@@ -12,6 +12,7 @@ target 'wowmate' do
   pod 'Tabman', '~> 2.9'
   pod 'Kingfisher', '~> 7.0'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'JGProgressHUD'
 
   # for chat
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'

@@ -567,21 +567,26 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kmE-nh-28b">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="imn-P8-hRr">
                                         <rect key="frame" x="0.0" y="175" width="105.66666666666667" height="32"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kmE-nh-28b">
                                                 <rect key="frame" x="0.0" y="0.0" width="105.66666666666667" height="32"/>
-                                                <color key="backgroundColor" name="Main01"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="didTapSendCertificationCodeButton:" destination="V3C-u5-uEv" eventType="touchUpInside" id="li6-G2-Way"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU6-iX-cP8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="105.66666666666667" height="32"/>
+                                                        <color key="backgroundColor" name="Main01"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="인증번호 전송">
+                                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="didTapSendCertificationCodeButton:" destination="V3C-u5-uEv" eventType="touchUpInside" id="li6-G2-Way"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBl-hU-BeI">
@@ -590,35 +595,49 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nFV-Ms-Xxu">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1CF-AK-yDC">
                                         <rect key="frame" x="0.0" y="260.66666666666669" width="333" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pq9-fg-UlT">
-                                                <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
-                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="0jV-an-3db"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
-                                                <rect key="frame" x="268" y="0.0" width="65" height="40"/>
-                                                <color key="backgroundColor" name="Main01"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="65" id="EYB-AG-uGe"/>
-                                                    <constraint firstAttribute="height" constant="40" id="kXq-BK-Wji"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="확인">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="didTapCertificateButton:" destination="V3C-u5-uEv" eventType="touchUpInside" id="VPo-Ib-utD"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nFV-Ms-Xxu">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pq9-fg-UlT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="258" height="40"/>
+                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="0jV-an-3db"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erp-pS-1N4">
+                                                        <rect key="frame" x="268" y="0.0" width="65" height="40"/>
+                                                        <color key="backgroundColor" name="Main01"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="65" id="EYB-AG-uGe"/>
+                                                            <constraint firstAttribute="height" constant="40" id="kXq-BK-Wji"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="확인">
+                                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="didTapCertificateButton:" destination="V3C-u5-uEv" eventType="touchUpInside" id="VPo-Ib-utD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rf-KZ-ilG">
+                                                <rect key="frame" x="0.0" y="0.0" width="43.666666666666664" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="nFV-Ms-Xxu" secondAttribute="trailing" id="Jlc-E0-fTa"/>
+                                        </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-Kz-dfW">
                                         <rect key="frame" x="0.0" y="316.66666666666669" width="62.333333333333336" height="21.666666666666686"/>
@@ -663,7 +682,7 @@
                                     <constraint firstAttribute="trailing" secondItem="aI3-2L-adI" secondAttribute="trailing" id="72S-Uc-A4O"/>
                                     <constraint firstAttribute="trailing" secondItem="pxQ-Ge-MUu" secondAttribute="trailing" id="9Fk-wz-5sW"/>
                                     <constraint firstItem="pxQ-Ge-MUu" firstAttribute="leading" secondItem="9ht-Qk-92i" secondAttribute="leading" id="F4a-7u-Wea"/>
-                                    <constraint firstAttribute="trailing" secondItem="nFV-Ms-Xxu" secondAttribute="trailing" id="HaW-Pj-hbb"/>
+                                    <constraint firstAttribute="trailing" secondItem="1CF-AK-yDC" secondAttribute="trailing" id="NFb-XG-Icv"/>
                                     <constraint firstItem="brf-Hk-CJZ" firstAttribute="leading" secondItem="9ht-Qk-92i" secondAttribute="leading" id="afp-Fs-eRE"/>
                                     <constraint firstAttribute="trailing" secondItem="C8O-UZ-PhC" secondAttribute="trailing" id="eWC-cb-QYT"/>
                                     <constraint firstAttribute="trailing" secondItem="brf-Hk-CJZ" secondAttribute="trailing" id="oJS-k6-WOf"/>
@@ -699,6 +718,7 @@
                     <connections>
                         <outlet property="certificateButton" destination="erp-pS-1N4" id="sIi-jp-YRg"/>
                         <outlet property="certificationCodeTextField" destination="Pq9-fg-UlT" id="r5v-D0-7gY"/>
+                        <outlet property="certificationCountingLabel" destination="9rf-KZ-ilG" id="Wuf-dE-Tc5"/>
                         <outlet property="completeAllButton" destination="Yx9-Zz-djg" id="kk1-od-XqS"/>
                         <outlet property="finalInputPassWordTextField" destination="C8O-UZ-PhC" id="ex2-MZ-Y40"/>
                         <outlet property="firstInputPassWordTextField" destination="aI3-2L-adI" id="t4U-Yw-E6l"/>
