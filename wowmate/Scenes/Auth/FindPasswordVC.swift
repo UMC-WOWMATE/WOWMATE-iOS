@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import Toast
+import JGProgressHUD
 
 class FindPasswordVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
+    
+    private var timer: DispatchSourceTimer?
+    private var duration = 180
+    
+    private var isValid = false
     private var userEmail: String? = nil
     private var validationCode: String? = nil
     
@@ -24,6 +31,7 @@ class FindPasswordVC: UIViewController {
     @IBOutlet weak var passwordValidationLabel: UILabel!
     
     @IBOutlet weak var sendCertificationCodeButton: UIButton!
+    @IBOutlet weak var certificationCountingLabel: UILabel!
     @IBOutlet weak var changePasswordButton: UIButton!
     
     // MARK: - Lifecycle
@@ -49,23 +57,65 @@ class FindPasswordVC: UIViewController {
     }
     
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
-        if let email = schoolEmailTextField.text {
-            AuthManager.shared.emailValidationRequest(email: email) { [weak self] result in
-                switch result {
-                case .success(let success):
-                    self?.validationCode = success
-                case .failure(let failure):
-                    print(failure)
+        DispatchQueue.main.async {
+            
+            if let email = self.schoolEmailTextField.text {
+                
+                // Button Title Setting
+                self.sendCertificationCodeButton.setTitle("재전송", for: .normal)
+                
+                // Loading Animation Setting
+                let hud = JGProgressHUD()
+                hud.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                hud.style = .light
+                hud.textLabel.text = "인증코드 발송 요청 중"
+                hud.show(in: self.view)
+                
+                AuthManager.shared.emailValidationRequest(email: email) { [weak self] result in
+                    hud.dismiss()
+                    
+                    switch result {
+                    case .success(let success):
+                        self?.view.makeToast("인증 메일이 발송되었습니다", duration: 1.0, position: .center)
+                        self?.validationCode = success
+                        self?.userEmail = email
+                        self?.certificationCountingLabel.isHidden = false
+                        self?.startCounting()
+                    case .failure(let failure):
+                        print(failure)
+                        self?.view.makeToast("인증 메일이 발송에 실패하였습니다", duration: 1.0, position: .center)
+                    }
                 }
+            } else {
+                self.view.makeToast("이메일을 입력해주세요", duration: 1.5, position: .center)
             }
+
         }
+        
+//        if let email = schoolEmailTextField.text {
+//            AuthManager.shared.emailValidationRequest(email: email) { [weak self] result in
+//                switch result {
+//                case .success(let success):
+//                    self?.validationCode = success
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//        }
     }
     
     @IBAction func didTapConfirmCodeButton(_ sender: UIButton) {
         if let code = validationCode {
             if code == certificationCodeTextField.text {
+                isValid = true
                 showEmailValidationToast(isValid: code == certificationCodeTextField.text)
                 userEmail = schoolEmailTextField.text!
+                
+                certificationCountingLabel.isHidden = true
+                sendCertificationCodeButton.backgroundColor = UIColor(named: "Main01")
+                confirmCodeButton.backgroundColor = UIColor(named: "Main01")
+                sendCertificationCodeButton.isEnabled = false
+                confirmCodeButton.isEnabled = false
             }
         }
     }
@@ -111,7 +161,30 @@ class FindPasswordVC: UIViewController {
     }
 
     private func showEmailValidationToast(isValid: Bool) {
-        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다")
+        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다", duration: 1.5, position: .center)
+    }
+    
+    private func startCounting() {
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 1)
+            self.timer?.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                self.duration -= 1
+                let min = self.duration / 60
+                let sec = (self.duration % 60) % 60
+                self.certificationCountingLabel.text = String(format: "%02d:%02d", min, sec)
+                
+                if self.duration <= 0{
+                    self.timer?.cancel()
+                    self.timer = nil    // 타이머 해제
+                    self.validationCode = nil   // 생성된 인증코드 무효화
+                    self.certificationCountingLabel.isHidden = true
+                    self.duration = 180
+                }
+            }
+            self.timer?.resume()
+        }
     }
     
     @objc func passwordTextDidChanged(_ notification: Notification) {

@@ -320,6 +320,12 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ng-6O-CZV">
+                                        <rect key="frame" x="0.0" y="71.666666666666629" width="343" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-93-5EJ">
@@ -369,6 +375,7 @@
                     </view>
                     <connections>
                         <outlet property="certificationCodeTextField" destination="CTf-xx-NlP" id="B0X-jm-9Uw"/>
+                        <outlet property="certificationCountingLabel" destination="9Ng-6O-CZV" id="ycy-7m-ppT"/>
                         <outlet property="changePasswordButton" destination="LFy-XY-Tdc" id="78h-Ij-oHy"/>
                         <outlet property="confirmCodeButton" destination="T8Y-RN-DwQ" id="RE5-GH-WYz"/>
                         <outlet property="confirmNewPasswordTextField" destination="lT5-qZ-HlA" id="LsX-gO-v1u"/>
