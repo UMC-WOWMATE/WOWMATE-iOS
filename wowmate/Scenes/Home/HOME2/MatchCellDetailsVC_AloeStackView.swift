@@ -21,10 +21,12 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     var MatchCellDetailslikeCount = String()
     var MatchCellDetailsContext = String()
     var MatchCellDetailsMember = String()
-    var tagList: [String] = []
-    var imageList: [String?] = []
-    var comments: [Comment?] = []
-    var commentReplyDtoList: [CommentReply?] = []
+    var MatchCellDetailsTagList: [String] = []
+    var MatchCellDetailsImageList: [String?] = []
+    var MatchCellDetailsComments: [Comment?] = []
+    var MatchCellDetailsCommentReplyDtoList: [CommentReply?] = []
+    let placeholder = "댓글 작성하기"
+    var MatchCellDetailsReplytext = UITextView()
     
     // MARK: - Lifecycle
     
@@ -66,6 +68,106 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
             present(alertAction, animated: true)
         }
     
+    @objc func replyButtonPressed(_ sender:Any){
+            if self.MatchCellDetailsReplytext.text.isEmpty {
+                let alert_done = UIAlertController(
+                    title: "댓글 내용을 입력해주세요.",
+                    message: nil,
+                    preferredStyle: .alert)
+                alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+
+                self.present(alert_done, animated: true)
+                
+                return
+                
+            }
+                
+                let alert = UIAlertController(
+                    title: "댓글을 등록하시겠습니까?",
+                    message: nil,
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "등록", style: .default, handler: { action in
+                    //업로드 통신
+                    let commentByUser = CommentRegister(commentContext: self.MatchCellDetailsReplytext.text!)
+                    
+                    PostManager.shared.registerComment(ID: self.PostID, comment: commentByUser) { result in
+                        print(result)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            let alert_done = UIAlertController(
+                                title: "등록 완료",
+                                message: nil,
+                                preferredStyle: .alert)
+                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+
+                            self.present(alert_done, animated: true)
+
+//                            self.tableview.reloadData()
+//                            self.replytext.text = ""
+                            
+//                            PostManager.shared.getPost(ID: self.id) { result in
+//                                switch result {
+//                                         case .success(let success):
+//                                    print(success)
+//                                    //댓글
+//                                    self.comments.removeAll()
+//                                            for comment in success.data2 {
+//                                                self.comments.append(Comment.init(commentId: comment.commentId,
+//                                                                                  commentContext: comment.commentContext,
+//                                                                                  likeNumber: comment.likeNumber,
+//                                                                                  createdDate: comment.createdDate,
+//                                                                                  commentReplyDtoList: comment.commentReplyDtoList))
+//                                            }
+//                                    self.tableview.reloadData()
+//                                         case .failure(let failure):
+//                                             print(failure)
+//                                         }
+//                                     }
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                }))
+                
+                
+                
+                self.present(alert, animated: true)
+            }
+    
+    @objc func chatButtonPressed(_ sender:Any){
+                let alert = UIAlertController(
+                    title: "채팅을 시작하시겠습니까??",
+                    message: nil,
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "채팅", style: .default, handler: { action in
+                    //채팅걸기 통신
+//                    let commentByUser = CommentRegister(commentContext: self.MatchCellDetailsReplytext.text!)
+//
+//                    PostManager.shared.registerComment(ID: self.PostID, comment: commentByUser) { result in
+//                        print(result)
+//                        switch result {
+//                        case .success(let success):
+//                            print(success)
+//                            let alert_done = UIAlertController(
+//                                title: "등록 완료",
+//                                message: nil,
+//                                preferredStyle: .alert)
+//                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                            self.present(alert_done, animated: true)
+//
+//                        case .failure(let failure):
+//                            print(failure)
+//                        }
+//                    }
+                }))
+                
+                self.present(alert, animated: true)
+            }
+    
     // MARK: - Helpers
     func getData() {
         
@@ -83,19 +185,19 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                     self.MatchCellDetailslikeCount = String(success.data1.postLikeNumber)
                     self.MatchCellDetailsContext = success.data1.postContext
                     self.MatchCellDetailsMember = success.data1.postMember
-                    self.tagList.append(success.data1.postTag1)
-                    self.tagList.append(success.data1.postTag2)
-                    self.tagList.append(success.data1.postTag3)
-                    self.tagList.append(success.data1.postTag4)
-                    self.tagList.append(success.data1.postTag5)
-                            if success.data1.image1 != nil { self.imageList.append(success.data1.image1!)}
-                            if success.data1.image2 != nil { self.imageList.append(success.data1.image2!)}
-                            if success.data1.image3 != nil { self.imageList.append(success.data1.image3!)}
-                            if success.data1.image4 != nil { self.imageList.append(success.data1.image4!)}
-                            if success.data1.image5 != nil { self.imageList.append(success.data1.image5!)}
+                    self.MatchCellDetailsTagList.append(success.data1.postTag1)
+                    self.MatchCellDetailsTagList.append(success.data1.postTag2)
+                    self.MatchCellDetailsTagList.append(success.data1.postTag3)
+                    self.MatchCellDetailsTagList.append(success.data1.postTag4)
+                    self.MatchCellDetailsTagList.append(success.data1.postTag5)
+                            if success.data1.image1 != nil { self.MatchCellDetailsImageList.append(success.data1.image1!)}
+                            if success.data1.image2 != nil { self.MatchCellDetailsImageList.append(success.data1.image2!)}
+                            if success.data1.image3 != nil { self.MatchCellDetailsImageList.append(success.data1.image3!)}
+                            if success.data1.image4 != nil { self.MatchCellDetailsImageList.append(success.data1.image4!)}
+                            if success.data1.image5 != nil { self.MatchCellDetailsImageList.append(success.data1.image5!)}
                     //댓글
                     for comment in success.data2 {
-                        self.comments.append(Comment.init(commentId: comment.commentId,
+                        self.MatchCellDetailsComments.append(Comment.init(commentId: comment.commentId,
                                                           commentContext: comment.commentContext,
                                                           likeNumber: comment.likeNumber,
                                                           createdDate: comment.createdDate,
@@ -111,6 +213,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                     self.setUp_Context()
                     self.setUp_Image()
                     self.setUp_Comments()
+                    self.setUp_FooterView()
                 }
                 
                      case .failure(let failure):
@@ -209,7 +312,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     }
     
     func setUp_Tags() {
-        if tagList[0] == "" { return }
+        if MatchCellDetailsTagList[0] == "" { return }
         
         let TagStackView = AloeStackView()
         TagStackView.axis = .horizontal
@@ -217,7 +320,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         TagStackView.rowInset = UIEdgeInsets(top: 0, left: 8, bottom:0, right: 8)
         TagStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        for tag in tagList {
+        for tag in MatchCellDetailsTagList {
             if tag != "" {
                 let TagLabel = UIButton()
                 TagLabel.setTitle("  #" + tag + "  ", for: .normal)
@@ -261,7 +364,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     }
     
     func setUp_Image() {
-        if self.imageList.isEmpty { return }
+        if self.MatchCellDetailsImageList.isEmpty { return }
         
         let ImageLabel = UILabel()
         ImageLabel.font = .body_16B
@@ -280,7 +383,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         ImageStackView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         ImageStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        for image in imageList {
+        for image in MatchCellDetailsImageList {
             let url = URL(string: image!)
             let data = UIImageView()
             data.kf.setImage(with: url)
@@ -305,7 +408,6 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         let sample:String = "sample"
         
-        if self.comments.isEmpty { return }
         let firstrow = UIStackView()
                firstrow.axis = .horizontal
                firstrow.distribution = .fill
@@ -384,24 +486,90 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                stackView.addRow(thirdrow)
     }
     
-    func test() {
-        self.MatchCellDetailsTitle = "제목"
-        self.MatchCellDetailsCategoty = "카테고리"
-        self.MatchCellDetailsDate = "2000.03.31"
-        self.MatchCellDetailslikeCount = "2500"
-        self.MatchCellDetailsContext = "내용"
-        self.MatchCellDetailsMember = "30000"
-        self.tagList.append("tag1")
-        self.tagList.append("tag2")
-        self.tagList.append("tag3")
-        self.tagList.append("tag4")
-        self.tagList.append("tag5")
-        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/c92e32ab-a03f-4b04-a0a1-11baf3498462.jpg")
-        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/48d2a989-4f0e-4b28-8e03-f9240e0df076.jpg")
-        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/8d616432-a2ea-45f5-97c7-8688f9035392.jpg")
+    func setUp_FooterView() {
+        let FooterStackView = UIStackView()
+        let ReplyStackView = UIStackView()
+        FooterStackView.axis = .vertical
+        FooterStackView.spacing = 10
+        ReplyStackView.axis = .horizontal
+        ReplyStackView.spacing = 8
+        
+        MatchCellDetailsReplytext.delegate = self
+        MatchCellDetailsReplytext.text = placeholder
+        MatchCellDetailsReplytext.font = .body_14R
+        MatchCellDetailsReplytext.textContainerInset = UIEdgeInsets(top: 9, left: 10, bottom: 9, right: 10)
+        MatchCellDetailsReplytext.layer.cornerRadius = 5
+        MatchCellDetailsReplytext.backgroundColor = UIColor(r: 242, g: 242, b: 242)
+        MatchCellDetailsReplytext.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        MatchCellDetailsReplytext.translatesAutoresizingMaskIntoConstraints = false
+        
+        let ReplyButton = UIButton()
+        ReplyButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
+        ReplyButton.setTitle("등록", for: .normal)
+        ReplyButton.titleLabel?.font = .body_14B
+        ReplyButton.tintColor = .white
+        ReplyButton.layer.cornerRadius = 5
+        ReplyButton.addTarget(self, action: #selector(replyButtonPressed), for: .allEvents)
+        ReplyButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        ReplyStackView.addArrangedSubview(MatchCellDetailsReplytext)
+        ReplyStackView.addArrangedSubview(ReplyButton)
+        
+        let ChatButton = UIButton()
+        ChatButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
+        ChatButton.setTitle("채팅 걸기", for: .normal)
+        ChatButton.titleLabel?.font = .subHead_18B
+        ChatButton.tintColor = .white
+        ChatButton.layer.cornerRadius = 5
+        ChatButton.addTarget(self, action: #selector(chatButtonPressed), for: .allEvents)
+        ChatButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        FooterStackView.addArrangedSubview(ReplyStackView)
+        FooterStackView.addArrangedSubview(ChatButton)
+        
+        stackView.addRow(FooterStackView)
+    }
+    
+//    func test() {
+//        self.MatchCellDetailsTitle = "제목"
+//        self.MatchCellDetailsCategoty = "카테고리"
+//        self.MatchCellDetailsDate = "2000.03.31"
+//        self.MatchCellDetailslikeCount = "2500"
+//        self.MatchCellDetailsContext = "내용"
+//        self.MatchCellDetailsMember = "30000"
+//        self.tagList.append("tag1")
+//        self.tagList.append("tag2")
+//        self.tagList.append("tag3")
+//        self.tagList.append("tag4")
+//        self.tagList.append("tag5")
+//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/c92e32ab-a03f-4b04-a0a1-11baf3498462.jpg")
+//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/48d2a989-4f0e-4b28-8e03-f9240e0df076.jpg")
+//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/8d616432-a2ea-45f5-97c7-8688f9035392.jpg")
         
 //        var comments: [Comment?] = []
 //        var commentReplyDtoList: [CommentReply?] = []
         
+//    }
+}
+
+extension MatchCellDetailsVC_AloeStackView: UITextViewDelegate {
+    //TextView - Reply
+    func textViewDidBeginEditing(_ textView: UITextView) {
+            /// 플레이스홀더
+            if textView.text.isEmpty {
+                MatchCellDetailsReplytext.textColor = UIColor(r: 51, g: 51, b: 51)
+                MatchCellDetailsReplytext.text = placeholder
+            } else if textView.text == placeholder {
+                MatchCellDetailsReplytext.textColor = .black
+                MatchCellDetailsReplytext.text = nil
+            }
+        }
+        
+    func textViewDidEndEditing(_ textView: UITextView) {
+        /// 플레이스홀더
+        if textView.text.isEmpty {
+            MatchCellDetailsReplytext.textColor = UIColor(r: 51, g: 51, b: 51)
+            MatchCellDetailsReplytext.text = placeholder
+        }
     }
 }
