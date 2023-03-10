@@ -24,6 +24,7 @@ class JoinVC: UIViewController {
     private var inputEmail: String?
     private var inputPassword: String?
     private var selectedUniv: String?
+    private var selectedUnivEmailDomain: String?
     
     private var completeAllButtonEnable: Bool = false
     
@@ -71,16 +72,22 @@ class JoinVC: UIViewController {
     
     @IBAction func didTapSendCertificationCodeButton(_ sender: UIButton) {
         DispatchQueue.main.async {
-            self.sendCertificationCodeButton.setTitle("재전송", for: .normal)
             
-            let hud = JGProgressHUD()
-            hud.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-            hud.style = .light
-            hud.textLabel.text = "인증코드 발송 요청 중"
-            hud.show(in: self.view)
-            
-            if let emailHead = self.inputEmailHeadTextField.text {
-                let inputEmail = emailHead + "@" + TEMP_EMAIL_DOMAIN
+            if let emailHead = self.inputEmailHeadTextField.text,
+               let emailDomain = self.selectedUnivEmailDomain {
+                
+                // Button Title Setting
+                self.sendCertificationCodeButton.setTitle("재전송", for: .normal)
+                
+                // Loading Animation Setting
+                let hud = JGProgressHUD()
+                hud.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                hud.style = .light
+                hud.textLabel.text = "인증코드 발송 요청 중"
+                hud.show(in: self.view)
+                
+                // Request Sending Email
+                let inputEmail = emailHead + "@" + emailDomain
                 AuthManager.shared.emailValidationRequest(email: inputEmail) { [weak self] result in
 
                     hud.dismiss()
@@ -98,6 +105,8 @@ class JoinVC: UIViewController {
                         self?.view.makeToast("인증 메일이 발송에 실패하였습니다", duration: 1.0, position: .center)
                     }
                 }
+            } else {
+                self.view.makeToast("학교를 선택해주세요", duration: 1.5, position: .center)
             }
         }
     }
@@ -135,8 +144,6 @@ class JoinVC: UIViewController {
         guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
         inputUserInfoVC.signupInfo = signupInfo
         navigationController?.pushViewController(inputUserInfoVC, animated: true)
-//        inputUserInfoVC.modalPresentationStyle = .fullScreen
-//        present(inputUserInfoVC, animated: true)
     }
     
     
@@ -188,8 +195,14 @@ class JoinVC: UIViewController {
     
     private func setSignupInfo() {
         // 테스트 지메일 계정으로 회원가입을 해버려서,,임시처리,,
-        signupInfo.email = inputEmailHeadTextField.text! + "@gmail.com"
-        signupInfo.school = selectedUniv!
+        if let _ = schoolEmailTextField.text,
+            let _ = selectedUniv {
+            signupInfo.email = inputEmailHeadTextField.text! + schoolEmailTextField.text!
+            signupInfo.school = selectedUniv!
+        } else {
+            self.view.makeToast("학교를 선택해주세요", duration: 1.5, position: .center)
+        }
+
         
         
         signupInfo.password = finalInputPassWordTextField.text!
@@ -279,6 +292,7 @@ extension JoinVC: SelectSchoolDelegate {
     }
     
     func selectSchoolDomain(_ selected: String) {
-        schoolEmailTextField.text = "gmail.com" // 인증메일 전송 관련 이슈가 해결될 때까지 임시 처리
+        selectedUnivEmailDomain = selected
+        schoolEmailTextField.text = selected
     }
 }
