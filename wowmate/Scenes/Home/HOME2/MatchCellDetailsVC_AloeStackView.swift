@@ -26,25 +26,11 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     var comments: [Comment?] = []
     var commentReplyDtoList: [CommentReply?] = []
     
-    
-    let tableview = UITableView(frame: .zero, style: .grouped)
-    
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        test()
-        setUpNavigationbarView()
-        setUp_Title_moreButton()
-        setUp_Date_Like()
-        setUp_Category()
-        setUp_Member()
-        setUp_Tags()
-        setUp_Context()
-        setUp_Image()
-        setUp_Comments()
-        tableviewSet()
-       
-        
+        self.getData()
     }
     
     // MARK: - Actions
@@ -65,11 +51,63 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     
     
     // MARK: - Helpers
+    func getData() {
+        
+        func getDate(_ date:String) -> String {
+            return String(date.prefix(10))
+        }
+        
+        PostManager.shared.getPost(ID: PostID) { result in
+            switch result {
+                     case .success(let success):
+                    print(success)
+                    self.MatchCellDetailsTitle = success.data1.postTitle
+                    self.MatchCellDetailsCategoty = success.data1.categoryName
+                    self.MatchCellDetailsDate = getDate(success.data1.createdDate)
+                    self.MatchCellDetailslikeCount = String(success.data1.postLikeNumber)
+                    self.MatchCellDetailsContext = success.data1.postContext
+                    self.MatchCellDetailsMember = success.data1.postMember
+                    self.tagList.append(success.data1.postTag1)
+                    self.tagList.append(success.data1.postTag2)
+                    self.tagList.append(success.data1.postTag3)
+                    self.tagList.append(success.data1.postTag4)
+                    self.tagList.append(success.data1.postTag5)
+                            if success.data1.image1 != nil { self.imageList.append(success.data1.image1!)}
+                            if success.data1.image2 != nil { self.imageList.append(success.data1.image2!)}
+                            if success.data1.image3 != nil { self.imageList.append(success.data1.image3!)}
+                            if success.data1.image4 != nil { self.imageList.append(success.data1.image4!)}
+                            if success.data1.image5 != nil { self.imageList.append(success.data1.image5!)}
+                    //댓글
+                    for comment in success.data2 {
+                        self.comments.append(Comment.init(commentId: comment.commentId,
+                                                          commentContext: comment.commentContext,
+                                                          likeNumber: comment.likeNumber,
+                                                          createdDate: comment.createdDate,
+                                                          commentReplyDtoList: comment.commentReplyDtoList))
+                    }
+                
+                DispatchQueue.main.async {
+                    self.setUpNavigationbarView()
+                    self.setUp_Title_moreButton()
+                    self.setUp_Date_Like()
+                    self.setUp_Category_Member()
+                    self.setUp_Tags()
+                    self.setUp_Context()
+                    self.setUp_Image()
+                    self.setUp_Comments()
+                }
+                
+                     case .failure(let failure):
+                         print(failure)
+                     }
+                 }
+    }
+    
     func setUpNavigationbarView() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image:UIImage(imageLiteralResourceName:"ic 1"), style: .plain, target:self , action: #selector(backButtonPressed))
     }
     
-    func setUp_Title_moreButton() {
+    func setUp_Title_moreButton() {print(MatchCellDetailsTitle)
         let Title_Row = UIStackView()
         Title_Row.axis = .horizontal
         Title_Row.translatesAutoresizingMaskIntoConstraints = false
@@ -91,60 +129,102 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         stackView.hideSeparator(forRow: Title_Row)
     }
     
-    func setUp_Date_Like() {
+    func setUp_Date_Like() {print(MatchCellDetailsDate)
+        print(MatchCellDetailslikeCount)
         let Date_Like_Row = UIStackView()
         Date_Like_Row.axis = .horizontal
+        Date_Like_Row.alignment = .leading
+        Date_Like_Row.distribution = .fillProportionally
+//        Date_Like_Row.spacing = 2
         Date_Like_Row.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let DateLabel = UILabel()
-        DateLabel.font =  .body_14R
+        DateLabel.font =  .body_16R
         DateLabel.textColor = .black
-        DateLabel.text = "등록일 : " + MatchCellDetailsDate
+        DateLabel.text = MatchCellDetailsDate
+        DateLabel.textAlignment = .left
         DateLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        let LikeStackView = UIStackView()
-        LikeStackView.axis = .horizontal
-        LikeStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+        DateLabel.widthAnchor.constraint(equalToConstant: 86).isActive = true
+
         let LikeButton = UIButton()
         LikeButton.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
-//        LikeButton.addTarget(self, action: #selector(moreButtonPressed), for: .allEvents)
+//        LikeButton.widthAnchor.constraint(equalToConstant: 10.5).isActive = true
+        LikeButton.setTitle(MatchCellDetailslikeCount, for: .normal)
+        LikeButton.titleLabel?.font = .body_16R
+        LikeButton.setTitleColor(.black, for: .normal)
 
-        let LikeLabel = UILabel()
-        LikeLabel.font =  .body_14R
-        LikeLabel.textColor = .black
-        LikeLabel.text = MatchCellDetailslikeCount
-        LikeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        LikeStackView.addArrangedSubview(LikeButton)
-        LikeStackView.addArrangedSubview(LikeLabel)
-        
+//        let LikeLabel = UILabel()
+//        LikeLabel.text = MatchCellDetailslikeCount
+//        LikeLabel.font = .body_16R
+
+
         Date_Like_Row.addArrangedSubview(DateLabel)
-        Date_Like_Row.addArrangedSubview(LikeStackView)
+        Date_Like_Row.addArrangedSubview(LikeButton)
+//        Date_Like_Row.addArrangedSubview(LikeLabel)
         stackView.addRow(Date_Like_Row)
         stackView.hideSeparator(forRow: Date_Like_Row)
     }
     
-    func setUp_Category() {
-        var CategoryButton = UIButton()
+//    func setUp_Date_Like() {
+//        let Date_Like_Row = UIView()
+//
+//        let DateLabel = UILabel()
+//        DateLabel.font =  .body_16R
+//        DateLabel.textColor = .black
+//        DateLabel.text = MatchCellDetailsDate
+//        DateLabel.widthAnchor.constraint(equalToConstant: 86).isActive = true
+//        DateLabel.leadingAnchor.constraint(equalTo: Date_Like_Row.leadingAnchor, constant: 22).isActive = true
+//        DateLabel.topAnchor.constraint(equalTo: Date_Like_Row.topAnchor, constant: 20).isActive = true
+//        DateLabel.backgroundColor = .green
+//
+//        Date_Like_Row.addSubview(DateLabel)
+////        let LikeButton = UIButton()
+////        Date_Like_Row.addSubview(LikeButton)
+////        LikeButton.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+////        LikeButton.leadingAnchor.constraint(equalTo: DateLabel.trailingAnchor, constant: 30).isActive = true
+////        LikeButton.setTitle(MatchCellDetailslikeCount, for: .normal)
+////        LikeButton.titleLabel?.font = .body_16R
+////        LikeButton.setTitleColor(.black, for: .normal)
+////        LikeButton.backgroundColor = .green
+////        let LikeLabel = UILabel()
+////        LikeLabel.text = MatchCellDetailslikeCount
+////        LikeLabel.font = .body_16R
+////
+////        LikeStackView.addArrangedSubview(LikeButton)
+////        LikeStackView.addArrangedSubview(LikeLabel)
+//
+//
+////        Date_Like_Row.addArrangedSubview(dot)
+////        Date_Like_Row.addArrangedSubview(LikeStackView)
+//
+////        Date_Like_Row.addArrangedSubview(LikeLabel)
+//
+//        Date_Like_Row.heightAnchor.constraint(equalToConstant: 100).isActive = true
+////        Date_Like_Row.backgroundColor = .orange
+//        stackView.addRow(Date_Like_Row)
+//        stackView.hideSeparator(forRow: Date_Like_Row)
+//    }
+    
+    func setUp_Category_Member() {print(MatchCellDetailsCategoty)
+        print(MatchCellDetailsMember)
+        let Category_Member_Row = UIStackView()
+        Category_Member_Row.axis = .horizontal
+        Category_Member_Row.alignment = .center
+        Category_Member_Row.distribution = .fillProportionally
+        Category_Member_Row.spacing = 24
+        Category_Member_Row.translatesAutoresizingMaskIntoConstraints = false
+
+        let CategoryButton = UIButton()
         CategoryButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
         CategoryButton.titleLabel?.font = .body_14B
-        CategoryButton.layer.cornerRadius = 16
+        CategoryButton.layer.cornerRadius = 14
         CategoryButton.setTitle(MatchCellDetailsCategoty, for: .normal)
         CategoryButton.setTitleColor(.white, for: .normal)
-        CategoryButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
-        CategoryButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        
-//        CategoryButton.tintColor = UIColor(r: 101, g: 81, b: 224)
-//        CategoryButton.layer.shadowColor = UIColor.black.cgColor
-//        CategoryButton.layer.shadowOpacity = 0.1
-//        CategoryButton.layer.shadowOffset = CGSize(width: 10, height: 10)
-        CategoryButton.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addRow(CategoryButton)
-        stackView.hideSeparator(forRow: CategoryButton)
-    }
-    
-    func setUp_Member() {
+//        CategoryButton.configuration
+//        CategoryButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
+//        CategoryButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+//        CategoryButton.translatesAutoresizingMaskIntoConstraints = false
+
         let MemberLabel = UILabel()
         if MatchCellDetailsMember == "무관" {
             MemberLabel.text = "모집인원 무관"
@@ -154,26 +234,56 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }
         MemberLabel.font = .body_16SB
         MemberLabel.textColor = .black
-        
-        stackView.addRow(MemberLabel)
+
+        Category_Member_Row.addArrangedSubview(CategoryButton)
+        Category_Member_Row.addArrangedSubview(MemberLabel)
+
+        stackView.addRow(Category_Member_Row)
+        stackView.hideSeparator(forRow: Category_Member_Row)
     }
     
+//    func setUp_Category_Member() {
+//        let Category_Member_Row = UIView()
+//        Category_Member_Row.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let CategoryButton = UIButton()
+//        CategoryButton.backgroundColor = UIColor(r: 101, g: 81, b: 224)
+//        CategoryButton.titleLabel?.font = .body_14B
+//        CategoryButton.layer.cornerRadius = 14
+//        CategoryButton.setTitle(MatchCellDetailsCategoty, for: .normal)
+//        CategoryButton.setTitleColor(.white, for: .normal)
+//        CategoryButton.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let MemberLabel = UILabel()
+//        if MatchCellDetailsMember == "무관" {
+//            MemberLabel.text = "모집인원 무관"
+//        }
+//        else {
+//            MemberLabel.text = "모집인원 " + MatchCellDetailsMember + "명"
+//        }
+//        MemberLabel.font = .body_16SB
+//        MemberLabel.textColor = .black
+//        MemberLabel.translatesAutoresizingMaskIntoConstraints = false
+//
+//        Category_Member_Row.addSubview(CategoryButton)
+//        Category_Member_Row.addSubview(MemberLabel)
+//
+//        NSLayoutConstraint.activate([
+//            MemberLabel.leadingAnchor.constraint(equalTo: Category_Member_Row.trailingAnchor, constant: 50)])
+//
+//        stackView.addRow(Category_Member_Row)
+//        stackView.hideSeparator(forRow: Category_Member_Row)
+//    }
+    
+    
     func setUp_Tags() {
-        var TagStackView = AloeStackView()
+        let TagStackView = AloeStackView()
         TagStackView.axis = .horizontal
         TagStackView.hidesSeparatorsByDefault = true
         TagStackView.translatesAutoresizingMaskIntoConstraints = false
         
         for tag in tagList {
             if tag != "" {
-//                let TagLabel = UILabel()
-//                TagLabel.text = "#" + tag
-//                TagLabel.font = .body_14B
-//                TagLabel.textAlignment = .center
-//                TagLabel.textColor = .white
-//                TagLabel.backgroundColor = UIColor(r: 101, g: 81, b: 224)
-//                TagLabel.layer.cornerRadius = 10
-//                TagLabel.translatesAutoresizingMaskIntoConstraints = false
                 let TagLabel = UIButton()
                 TagLabel.setTitle("  #" + tag + "  ", for: .normal)
                 TagLabel.titleLabel?.font = .body_14B
@@ -191,220 +301,147 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     
     func setUp_Context() {
         let ContextLabel = UILabel()
+        ContextLabel.translatesAutoresizingMaskIntoConstraints = false
         ContextLabel.text = "소개"
         ContextLabel.font = .body_16B
         ContextLabel.textColor = .black
+        stackView.addRow(ContextLabel)
+        stackView.hideSeparator(forRow: ContextLabel)
         
         let ContextTextView = UITextView()
-        ContextTextView.textColor = UIColor.WM.gray700
+//        ContextTextView.delegate = self
         ContextTextView.font = .body_14R
-        ContextTextView.backgroundColor = UIColor.WM.gray100
+        ContextTextView.text = MatchCellDetailsContext
+        ContextTextView.textColor = UIColor(r: 51, g: 51, b: 51)
+        ContextTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        ContextTextView.layer.cornerRadius = 10
         
-        stackView.addRow(ContextLabel)
+        ContextTextView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+//        ContextTextView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        ContextTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
+        ContextTextView.translatesAutoresizingMaskIntoConstraints = false
+        
         stackView.addRow(ContextTextView)
     }
     
     func setUp_Image() {
+        let ImageLabel = UILabel()
+        ImageLabel.font = .body_16B
+        ImageLabel.textColor = UIColor(r: 0, g: 0, b: 0)
+        ImageLabel.text = "이미지"
+        ImageLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addRow(ImageLabel)
+        stackView.hideSeparator(forRow: ImageLabel)
+        
+        let ImageStackView = AloeStackView()
+        ImageStackView.axis = .horizontal
+        ImageStackView.hidesSeparatorsByDefault = true
+        ImageStackView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
+        ImageStackView.layer.cornerRadius = 10
+        ImageStackView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        ImageStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        for image in imageList {
+            let url = URL(string: image!)
+            let data = UIImageView()
+            data.kf.setImage(with: url)
+            data.addConstraint(NSLayoutConstraint(item: data, attribute: .width, relatedBy: .equal, toItem: data, attribute: .height, multiplier: 1.0, constant: 0))
+            data.contentMode = .scaleAspectFit
+            ImageStackView.addRow(data)
+        }
+        
+        stackView.addRow(ImageStackView)
         
     }
     
     func setUp_Comments() {
+        let CommentLabel = UILabel()
+        CommentLabel.translatesAutoresizingMaskIntoConstraints = false
+        CommentLabel.text = "댓글"
+        CommentLabel.font = .body_16B
+        CommentLabel.textColor = .black
+        stackView.addRow(CommentLabel)
+        stackView.hideSeparator(forRow: CommentLabel)
+        
         let sample:String = "sample"
         
         let firstrow = UIStackView()
-        firstrow.axis = .horizontal
-        firstrow.distribution = .fill
+               firstrow.axis = .horizontal
+               firstrow.distribution = .fill
                
-        let commentsWriter = UILabel()
-        commentsWriter.font = .body_14R
-        commentsWriter.text = "익명 1"
-        commentsWriter.textColor = UIColor.WM.gray700
+               let commentsWriter = UILabel()
+               commentsWriter.font = .body_14R
+               commentsWriter.text = sample
+               commentsWriter.textColor = UIColor.WM.gray700
                
-        let bt = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
-    
-        firstrow.addArrangedSubview(commentsWriter)
-        firstrow.addArrangedSubview(bt)
-        
-        stackView.axis = .vertical
-        stackView.hidesSeparatorsByDefault = true
-        stackView.addRow(firstrow)
-            
-        let secondrow = UIStackView()
-        secondrow.axis = .horizontal
-        secondrow.distribution = .fill
+               let bt = UIButton()
+               bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
                
-        let lb = UILabel()
-        lb.text = "댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다."
-        lb.font = .body_14R
-        lb.textColor = UIColor.WM.gray700
-        lb.numberOfLines = 0
+               firstrow.addArrangedSubview(commentsWriter)
+               firstrow.addArrangedSubview(bt)
                
-        secondrow.addArrangedSubview(lb)
-        stackView.addRow(secondrow)
+               stackView.axis = .vertical
+               stackView.hidesSeparatorsByDefault = true
+               stackView.addRow(firstrow)
                
-        let commentreply = UIButton()
-        commentreply.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
-        
-        commentreply.snp.makeConstraints { make in
-        make.size.width.equalTo(14)
-        make.size.height.equalTo(14)
-        }
+               
+               
+               let secondrow = UIStackView()
+               secondrow.axis = .horizontal
+               secondrow.distribution = .fill
+               
+               let lb = UILabel()
+               lb.text = sample
+               lb.font = .body_14R
+               lb.textColor = UIColor.WM.gray700
+               lb.numberOfLines = 0
+               
+               secondrow.addArrangedSubview(lb)
+               secondrow.axis = .horizontal
+               secondrow.distribution = .fill
+               
+               stackView.addRow(secondrow)
+               
+               let thirdrow = UIStackView()
+               secondrow.axis = .horizontal
+               secondrow.distribution = .fill
+               
+               let container = UIStackView()
+               secondrow.axis = .horizontal
+               secondrow.alignment = .leading
+               
+               let commentreply = UIButton()
+               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
 
-        let commentlike = UIButton()
-        commentlike.setImage(UIImage(imageLiteralResourceName: "chat"), for: .normal)
-
-        
-        commentlike.snp.makeConstraints { make in
-        make.size.width.equalTo(14)
-        make.size.height.equalTo(14)
-        }
+               let commentlike = UIButton()
+               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
                
-        let commentlikecount = UILabel()
-        commentlikecount.text = sample
-        commentlikecount.font = .body_14R
-        commentlikecount.textColor = UIColor.WM.gray700
-        
-        let comentreplaycount = UILabel()
-        comentreplaycount.text = sample
-        comentreplaycount.font = .body_14R
-        comentreplaycount.textColor = UIColor.WM.gray700
-        
+               let commentreplycount = UILabel()
+               commentreplycount.text = sample
+               commentreplycount.font = .body_14R
+               commentreplycount.textColor = UIColor.WM.gray700
                
-        let datetext = UILabel()
-        datetext.text = "2023-12-20"
-        datetext.font = .body_11L
-        datetext.textColor = UIColor.WM.gray500
-        datetext.numberOfLines = 1
-        
-        let thridRowCompoent = UIStackView()
-        thridRowCompoent.axis = .horizontal
-        thridRowCompoent.translatesAutoresizingMaskIntoConstraints = false
-        thridRowCompoent.distribution = .fill
-        
-        let thirdrow = UIStackView()
-        thirdrow.translatesAutoresizingMaskIntoConstraints = false
-        thirdrow.distribution = .fill
-        thirdrow.axis = .horizontal
-        thirdrow.alignment = .center
-        
-        thridRowCompoent.addArrangedSubview(commentreply)
-        thridRowCompoent.addArrangedSubview(commentlike)
-        thridRowCompoent.addArrangedSubview(commentlikecount)
-        thirdrow.addArrangedSubview(thridRowCompoent)
-        thirdrow.addArrangedSubview(datetext)
-        
-        stackView.addRow(thirdrow)
-
+               let commentlikecount = UILabel()
+               commentlikecount.text = sample
+               commentlikecount.font = .body_14R
+               commentlikecount.textColor = UIColor.WM.gray700
+               
+               container.addArrangedSubview(commentreply)
+               container.addArrangedSubview(commentlike)
+               container.addArrangedSubview(commentreplycount)
+               container.addArrangedSubview(commentlikecount)
+               
+               let datetext = UILabel()
+               datetext.text = sample
+               datetext.font = .body_11L
+               datetext.textColor = UIColor.WM.gray500
+               datetext.numberOfLines = 1
+               
+               thirdrow.addArrangedSubview(container)
+               thirdrow.addArrangedSubview(datetext)
+               
+               stackView.addRow(thirdrow)
     }
-    
-    func setUp_Commentsreply(){
-        let sample:String = "sample"
-        
-        let firstrow = UIStackView()
-        firstrow.axis = .horizontal
-        firstrow.distribution = .fill
-               
-        let commentsWriter = UILabel()
-        commentsWriter.font = .body_14R
-        commentsWriter.text = "익명 1"
-        commentsWriter.textColor = UIColor.WM.gray700
-               
-        let bt = UIButton()
-        bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
-    
-        firstrow.addArrangedSubview(commentsWriter)
-        firstrow.addArrangedSubview(bt)
-        
-        stackView.axis = .vertical
-        stackView.hidesSeparatorsByDefault = true
-        stackView.addRow(firstrow)
-            
-        let secondrow = UIStackView()
-        secondrow.axis = .horizontal
-        secondrow.distribution = .fill
-               
-        let lb = UILabel()
-        lb.text = "댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다.댓글내용 놀사람 구합니다."
-        lb.font = .body_14R
-        lb.textColor = UIColor.WM.gray700
-        lb.numberOfLines = 0
-               
-        secondrow.addArrangedSubview(lb)
-        stackView.addRow(secondrow)
-               
-        let commentreply = UIButton()
-        commentreply.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
-        
-        commentreply.snp.makeConstraints { make in
-        make.size.width.equalTo(14)
-        make.size.height.equalTo(14)
-        }
-
-        let commentlike = UIButton()
-        commentlike.setImage(UIImage(imageLiteralResourceName: "chat"), for: .normal)
-
-        
-        commentlike.snp.makeConstraints { make in
-        make.size.width.equalTo(14)
-        make.size.height.equalTo(14)
-        }
-               
-        let commentlikecount = UILabel()
-        commentlikecount.text = sample
-        commentlikecount.font = .body_14R
-        commentlikecount.textColor = UIColor.WM.gray700
-        
-        let comentreplaycount = UILabel()
-        comentreplaycount.text = sample
-        comentreplaycount.font = .body_14R
-        comentreplaycount.textColor = UIColor.WM.gray700
-        
-               
-        let datetext = UILabel()
-        datetext.text = "2023-12-20"
-        datetext.font = .body_11L
-        datetext.textColor = UIColor.WM.gray500
-        datetext.numberOfLines = 1
-        
-        let thridRowCompoent = UIStackView()
-        thridRowCompoent.axis = .horizontal
-        thridRowCompoent.translatesAutoresizingMaskIntoConstraints = false
-        thridRowCompoent.distribution = .fill
-        
-        let thirdrow = UIStackView()
-        thirdrow.translatesAutoresizingMaskIntoConstraints = false
-        thirdrow.distribution = .fill
-        thirdrow.axis = .horizontal
-        thirdrow.alignment = .center
-        
-        thridRowCompoent.addArrangedSubview(commentreply)
-        thridRowCompoent.addArrangedSubview(comentreplaycount)
-        thridRowCompoent.addArrangedSubview(commentlike)
-        thridRowCompoent.addArrangedSubview(commentlikecount)
-        thirdrow.addArrangedSubview(thridRowCompoent)
-        thirdrow.addArrangedSubview(datetext)
-        
-        stackView.addRow(thirdrow)
-        
-        let replystackview = UIStackView()
-        replystackview.axis = .horizontal
-        replystackview.distribution = .fill
-        replystackview.alignment = .center
-        replystackview.spacing = 10
-        
-        let replybt = UIButton()
-        replybt.setImage(UIImage(imageLiteralResourceName: "Vector"), for: .normal)
-        
-        replystackview.addArrangedSubview(replybt)
-        replystackview.addArrangedSubview(stackView)
-    
-    }
-    
-    
-    
-    
-    
     
     //    func row7(){
     //
@@ -429,7 +466,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         self.MatchCellDetailsTitle = "제목"
         self.MatchCellDetailsCategoty = "카테고리"
         self.MatchCellDetailsDate = "2000.03.31"
-        self.MatchCellDetailslikeCount = " 2500"
+        self.MatchCellDetailslikeCount = "2500"
         self.MatchCellDetailsContext = "내용"
         self.MatchCellDetailsMember = "30000"
         self.tagList.append("tag1")
@@ -437,41 +474,12 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         self.tagList.append("tag3")
         self.tagList.append("tag4")
         self.tagList.append("tag5")
+        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/c92e32ab-a03f-4b04-a0a1-11baf3498462.jpg")
+        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/48d2a989-4f0e-4b28-8e03-f9240e0df076.jpg")
+        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/8d616432-a2ea-45f5-97c7-8688f9035392.jpg")
         
-//        var imageList: [String?] = []
 //        var comments: [Comment?] = []
 //        var commentReplyDtoList: [CommentReply?] = []
         
     }
-    
-    func tableviewSet(){
-        self.tableview.delegate = self
-        self.tableview.dataSource = self
-        self.tableview.register(replyCell.self, forCellReuseIdentifier: "replyCell")
-        self.tableview.reloadData()
-//        self.tableview.separatorStyle
-        self.tableview.layoutIfNeeded()
-        self.tableview.rowHeight = 70
-        stackView.addRow(tableview)
-        
-    }
-    
-   
 }
-
-extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "replyCell") as! replyCell
-        
-        return cell
-    }
-   
-}
-
-
