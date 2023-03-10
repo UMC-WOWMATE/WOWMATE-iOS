@@ -20,6 +20,7 @@ class JoinVC: UIViewController {
     private var timer: DispatchSourceTimer?
     private var duration = 180
     
+    private var isValid = false
     private var validationCode: String? = nil
     private var inputEmail: String?
     private var inputPassword: String?
@@ -55,7 +56,9 @@ class JoinVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let univ = selectedUniv { selectSchoolButton.setTitle(univ, for: .normal) }
+        if let univ = selectedUniv {
+            if univ.count > 0 { selectSchoolButton.setTitle(univ, for: .normal) }
+        }
     }
 
     // MARK: - Actions
@@ -114,6 +117,7 @@ class JoinVC: UIViewController {
     @IBAction func didTapCertificateButton(_ sender: UIButton) {
         if let code = validationCode {
             if code == certificationCodeTextField.text {
+                isValid = true
                 signupInfo.email = inputEmail!
                 signupInfo.school = selectedUniv!
                 showEmailValidationToast(isValid: true)
@@ -133,17 +137,24 @@ class JoinVC: UIViewController {
     }
     
     @IBAction func didTapCompleteAllButton(_ sender: UIButton) {
-        setSignupInfo()
-        print(signupInfo)   // for test
+        if isValid {
+            if setSignupInfo() {
+                
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
+                
+                guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
+                inputUserInfoVC.signupInfo = signupInfo
+                navigationController?.pushViewController(inputUserInfoVC, animated: true)
+                
+            } else {
+                self.view.makeToast("정보를 모두 기입해주세요", duration: 1.5, position: .center)
+            }
+        } else {
+            self.view.makeToast("이메일 인증이 완료되지 않았습니다", duration: 1.5, position: .center)
+        }
         
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: inputEmailHeadTextField)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: certificationCodeTextField)
-        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: finalInputPassWordTextField)
-
-        
-        guard let inputUserInfoVC = storyboard?.instantiateViewController(withIdentifier: "InputUserInfoVC") as? InputUserInfoVC else { return }
-        inputUserInfoVC.signupInfo = signupInfo
-        navigationController?.pushViewController(inputUserInfoVC, animated: true)
     }
     
     
@@ -193,19 +204,17 @@ class JoinVC: UIViewController {
                             duration: 1.0, position: .center)
     }
     
-    private func setSignupInfo() {
-        // 테스트 지메일 계정으로 회원가입을 해버려서,,임시처리,,
+    private func setSignupInfo() -> Bool {
         if let _ = schoolEmailTextField.text,
-            let _ = selectedUniv {
+            let _ = selectedUniv,
+            let _ = finalInputPassWordTextField.text {
             signupInfo.email = inputEmailHeadTextField.text! + schoolEmailTextField.text!
             signupInfo.school = selectedUniv!
-        } else {
-            self.view.makeToast("학교를 선택해주세요", duration: 1.5, position: .center)
-        }
-
-        
-        
-        signupInfo.password = finalInputPassWordTextField.text!
+            signupInfo.password = finalInputPassWordTextField.text!
+            
+            return true
+            
+        } else { return false }
     }
     
     private func showAlert(message: String) {

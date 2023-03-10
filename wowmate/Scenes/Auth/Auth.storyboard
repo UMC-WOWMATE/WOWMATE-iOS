@@ -1111,7 +1111,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-br-SC2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-br-SC2">
                                         <rect key="frame" x="0.0" y="33" width="333" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6g8-Gc-n8Y"/>
@@ -1180,7 +1180,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="didEndEditingBirthTExtField:" destination="eif-4Y-d9S" eventType="editingDidEnd" id="Gbh-D0-4ko"/>
+                                            <action selector="didEndEditingBirthTExtField:" destination="eif-4Y-d9S" eventType="editingDidEnd" id="ZGT-8i-wNd"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -1216,7 +1216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvw-lF-Ftx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-386"/>
+            <point key="canvasLocation" x="1930.534351145038" y="-386.61971830985919"/>
         </scene>
     </scenes>
     <resources>

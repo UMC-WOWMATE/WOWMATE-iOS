@@ -50,14 +50,12 @@ class LoginVC: UIViewController {
                 switch result {
                 case .success(let success):
                     print(success)
-                    self?.view.makeToast(success["message"] as! String)
+                    self?.view.makeToast("로그인 성공", duration: 1.0, position: .center)
                     if success["code"] as? Int == 200 {
                         self?.navigationController?.pushViewController(MainTabVC(), animated: true)
                     }
-//                    self?.view.makeToast(success)
-//                    self?.navigationController?.pushViewController(MainTabVC(), animated: true)
-                case .failure(let error):
-                    self?.view.makeToast("네트워크 오류")
+                case .failure(let _):
+                    self?.view.makeToast("로그인 실패")
                     return
                 }
             }

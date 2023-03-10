@@ -24,6 +24,7 @@
 		A2446CCC29992CFA008EBED6 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCB29992CFA008EBED6 /* AuthManager.swift */; };
 		A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2446CCD29992FF9008EBED6 /* SearchManager.swift */; };
 		A24FB96E2980370D003FBD0C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24FB96D2980370D003FBD0C /* Post.swift */; };
+		A295FE3029BB2C9C0032DB20 /* SchoolEmailDomainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A295FE2F29BB2C9C0032DB20 /* SchoolEmailDomainData.swift */; };
 		A2B969D529AB572A006119B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2B969D429AB572A006119B1 /* GoogleService-Info.plist */; };
 		A2B969D829AB5804006119B1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A2B969D729AB5804006119B1 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		A2B969DA29AB5804006119B1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A2B969D929AB5804006119B1 /* FirebaseCrashlytics */; };
@@ -116,6 +117,7 @@
 		A2446CCB29992CFA008EBED6 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = wowmate/Scenes/Auth/AuthManager.swift; sourceTree = SOURCE_ROOT; };
 		A2446CCD29992FF9008EBED6 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchManager.swift; path = wowmate/Scenes/Auth/SearchManager.swift; sourceTree = SOURCE_ROOT; };
 		A24FB96D2980370D003FBD0C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A295FE2F29BB2C9C0032DB20 /* SchoolEmailDomainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolEmailDomainData.swift; sourceTree = "<group>"; };
 		A2B969D429AB572A006119B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2B969DD29AB5D4F006119B1 /* wowmate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wowmate.entitlements; sourceTree = "<group>"; };
 		A2D08E4B296A9B58008DD3FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				A2DA93E7299C068100FD176F /* MyPage.swift */,
 				BE1C3F21299BB7CF005CAC23 /* Match.swift */,
 				A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */,
+				A295FE2F29BB2C9C0032DB20 /* SchoolEmailDomainData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				2C51492329979E48001557AA /* CategoryCell.swift in Sources */,
 				A2D28F6429852B9500A7D4EC /* MatchInfoPreviewTableViewCell.swift in Sources */,
 				A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */,
+				A295FE3029BB2C9C0032DB20 /* SchoolEmailDomainData.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				A2DA93E2299C064E00FD176F /* ChatManager.swift in Sources */,
 				0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */,
@@ -847,6 +851,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wowmate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
+				INFOPLIST_KEY_NSCameraUsageDescription = "메이트를 찾기 위한 게시글을 작성할 때 카메라를 이용하여 사진을 찍어 추가하기 위한 권한입니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "메이트를 찾기 위한 게시글을 작성할 때 사진을 추가하기 위한 권한입니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
@@ -883,6 +889,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wowmate/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "와우메이트";
+				INFOPLIST_KEY_NSCameraUsageDescription = "메이트를 찾기 위한 게시글을 작성할 때 카메라를 이용하여 사진을 찍어 추가하기 위한 권한입니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "메이트를 찾기 위한 게시글을 작성할 때 사진을 추가하기 위한 권한입니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
