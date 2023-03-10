@@ -17,14 +17,13 @@ class JoinVC: UIViewController {
     
     var signupInfo: Signup = Signup()
     
+    private var timer: DispatchSourceTimer?
+    private var duration = 180
+    
     private var validationCode: String? = nil
     private var inputEmail: String?
     private var inputPassword: String?
     private var selectedUniv: String?
-    
-    private var timer: DispatchSourceTimer?
-    private var currentSecond = 0
-
     
     private var completeAllButtonEnable: Bool = false
     
@@ -88,8 +87,7 @@ class JoinVC: UIViewController {
                     
                     switch result {
                     case .success(let success):
-                        
-                        self?.showAlert(message: "인증 메일이 발송되었습니다")
+                        self?.view.makeToast("인증 메일이 발송되었습니다", duration: 1.0, position: .center)
                         self?.validationCode = success
                         self?.inputEmail = inputEmail
                         self?.certificationCountingLabel.isHidden = false
@@ -97,7 +95,7 @@ class JoinVC: UIViewController {
                         
                     case .failure(let failure):
                         print(failure)
-                        self?.showAlert(message: "인증 메일이 발송에 실패하였습니다. \n잠시 후 재시도 해주세요.")
+                        self?.view.makeToast("인증 메일이 발송에 실패하였습니다", duration: 1.0, position: .center)
                     }
                 }
             }
@@ -109,12 +107,19 @@ class JoinVC: UIViewController {
             if code == certificationCodeTextField.text {
                 signupInfo.email = inputEmail!
                 signupInfo.school = selectedUniv!
-                showAlert(message: "이메일 인증에 성공하였습니다!")
+                showEmailValidationToast(isValid: true)
+                certificationCountingLabel.isHidden = true
                 
+                sendCertificationCodeButton.backgroundColor = UIColor(named: "Main01")
+                certificateButton.backgroundColor = UIColor(named: "Main01")
+                sendCertificationCodeButton.isEnabled = false
+                certificateButton.isEnabled = false
             } else {
-                showAlert(message: "이메일 인증에 실패하였습니다. \n인증코드를 확인해주세요")
+                showEmailValidationToast(isValid: false)
+                certificationCountingLabel.isHidden = false
             }
-            certificationCountingLabel.isHidden = true
+        } else {
+            self.view.makeToast("인증코드가 만료되었습니다. 재요청 바랍니다.", duration: 1.0, position: .center)
         }
     }
     
@@ -176,9 +181,10 @@ class JoinVC: UIViewController {
         )
     }
     
-//    private func showEmailValidationToast(isValid: Bool) {
-//        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다")
-//    }
+    private func showEmailValidationToast(isValid: Bool) {
+        self.view.makeToast(isValid ? "이메일 인증에 성공하였습니다" : "이메일 인증에 실패하였습니다",
+                            duration: 1.0, position: .center)
+    }
     
     private func setSignupInfo() {
         // 테스트 지메일 계정으로 회원가입을 해버려서,,임시처리,,
@@ -196,7 +202,26 @@ class JoinVC: UIViewController {
     }
     
     private func startCounting() {
-        // TODO: 이메일 인증 유효시간 카운팅
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 1)
+            self.timer?.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                self.duration -= 1
+                let min = self.duration / 60
+                let sec = (self.duration % 60) % 60
+                self.certificationCountingLabel.text = String(format: "%02d:%02d", min, sec)
+                
+                if self.duration <= 0{
+                    self.timer?.cancel()
+                    self.timer = nil    // 타이머 해제
+                    self.validationCode = nil   // 생성된 인증코드 무효화
+                    self.certificationCountingLabel.isHidden = true
+                    self.duration = 180
+                }
+            }
+            self.timer?.resume()
+        }
     }
     
     @objc func emailHeadTextDidChanged(_ notification: Notification) {
