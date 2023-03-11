@@ -24,6 +24,7 @@ enum PostAPI {
     
     case postRegisterImage(post: PostRegister, images: [UIImage])
     case postAccusation(postID: Int, reason: String)
+    case postCommentAccusation(postID: Int, commentID:Int, reason: String)
 }
 
 extension PostAPI: TargetType {
@@ -60,6 +61,8 @@ extension PostAPI: TargetType {
             return "/posts/\(postID)/comments"
         case .postAccusation(let postID, _):
             return "/postAccusation/\(postID)"
+        case .postCommentAccusation(let postID, let commentID, _):
+            return "/postAccusation/\(postID)/\(commentID)"
         }
     }
     var method: Moya.Method {
@@ -70,7 +73,7 @@ extension PostAPI: TargetType {
   
         case .postList, .post, .postListByCategory:
             return .get
-        case .postRegisterImage, .commentRegister, .postAccusation:
+        case .postRegisterImage, .commentRegister, .postAccusation, .postCommentAccusation:
             return .post
         default:
             return .get
@@ -122,6 +125,11 @@ extension PostAPI: TargetType {
             return .requestJSONEncodable(comment)
             
         case .postAccusation(_, let reason):
+            let param: [String: String] = [
+                "reason": reason
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .postCommentAccusation(_, _, let reason):
             let param: [String: String] = [
                 "reason": reason
             ]

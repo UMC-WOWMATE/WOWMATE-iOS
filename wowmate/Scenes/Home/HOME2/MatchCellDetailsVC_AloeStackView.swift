@@ -32,6 +32,8 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     let accusationOption3:String = "음란물/불건전한 내용"
     let accusationOption4:String = "상업적 광고 및 판매"
     
+    let replytableview = UITableView(frame: .zero, style: .grouped)
+    
     
     // MARK: - Lifecycle
     
@@ -74,7 +76,6 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                 }))
                         
         alert.addAction(UIAlertAction(title: accusationOption2, style: .default, handler: { action in
-            //업로드 통신
             let accusationByUser = self.accusationOption2
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
@@ -98,7 +99,6 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }))
         
         alert.addAction( UIAlertAction(title: accusationOption3, style: .default, handler: { action in
-            //업로드 통신
             let accusationByUser = self.accusationOption3
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
@@ -122,7 +122,6 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }))
         
         alert.addAction(UIAlertAction(title: accusationOption4, style: .default, handler: { action in
-            //업로드 통신
             let accusationByUser = self.accusationOption4
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
@@ -150,30 +149,108 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         
         }
+    
+//    @objc func commentMoreButtonPressed(_ sender:Any){
+//        let alert = UIAlertController(title: "댓글 관련 옵션을 취해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
 //
-//    { action in
-//        //업로드 통신
-//        let accusationByUser = PostDeclare(reasnon: self.accusationOption1)
+//        alert.addAction(UIAlertAction(title: accusationOption1, style: .default, handler: { action in
+//                    //업로드 통신
+//                    let accusationByUser = self.accusationOption1
 //
-//        PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
-//            print(result)
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//                let alert_done = UIAlertController(
-//                    title: "신고 완료",
-//                    message: nil,
-//                    preferredStyle: .alert)
-//                alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//                    PostManager.shared.accusationPostComment(ID: self.PostID, reason:accusationByUser) { result in
+//                        print(result)
+//                        switch result {
+//                        case .success(let success):
+//                            print(success)
+//                            let alert_done = UIAlertController(
+//                                title: "신고 완료",
+//                                message: nil,
+//                                preferredStyle: .alert)
+//                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
 //
-//                self.present(alert_done, animated: true)
+//                            self.present(alert_done, animated: true)
 //
-//            case .failure(let failure):
-//                print(failure)
+//                        case .failure(let failure):
+//                            print(failure)
+//                        }
+//                    }
+//
+//                }))
+//
+//        alert.addAction(UIAlertAction(title: accusationOption2, style: .default, handler: { action in
+//            let accusationByUser = self.accusationOption2
+//
+//            PostManager.shared.accusationPostComment(ID: self.PostID, reason:accusationByUser) { result in
+//                print(result)
+//                switch result {
+//                case .success(let success):
+//                    print(success)
+//                    let alert_done = UIAlertController(
+//                        title: "신고 완료",
+//                        message: nil,
+//                        preferredStyle: .alert)
+//                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                    self.present(alert_done, animated: true)
+//
+//                case .failure(let failure):
+//                    print(failure)
+//                }
 //            }
-//        }
 //
-//    }
+//        }))
+//
+//        alert.addAction( UIAlertAction(title: accusationOption3, style: .default, handler: { action in
+//            let accusationByUser = self.accusationOption3
+//
+//            PostManager.shared.accusationPostComment(ID: self.PostID, reason:accusationByUser) { result in
+//                print(result)
+//                switch result {
+//                case .success(let success):
+//                    print(success)
+//                    let alert_done = UIAlertController(
+//                        title: "신고 완료",
+//                        message: nil,
+//                        preferredStyle: .alert)
+//                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                    self.present(alert_done, animated: true)
+//
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//
+//        }))
+//
+//        alert.addAction(UIAlertAction(title: accusationOption4, style: .default, handler: { action in
+//            let accusationByUser = self.accusationOption4
+//
+//            PostManager.shared.accusationPostComment(ID: self.PostID, reason:accusationByUser) { result in
+//                print(result)
+//                switch result {
+//                case .success(let success):
+//                    print(success)
+//                    let alert_done = UIAlertController(
+//                        title: "신고 완료",
+//                        message: nil,
+//                        preferredStyle: .alert)
+//                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                    self.present(alert_done, animated: true)
+//
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//
+//        }))
+//        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+//
+//        self.present(alert, animated: true)
+//
+//
+//        }
     
     @objc func likeButtonPressed(_ sender:Any){
             let alertAction = UIAlertController(title: "게시글을 추천하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -335,7 +412,8 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                     self.setUp_Tags()
                     self.setUp_Context()
                     self.setUp_Image()
-                    self.setUp_Comments()
+//                    self.setUp_Comments()
+                    self.setUp_Comments_tableview()
                     self.setUp_FooterView()
                 }
                 
@@ -527,86 +605,100 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         CommentLabel.font = .body_16B
         CommentLabel.textColor = .black
         stackView.addRow(CommentLabel)
-        stackView.hideSeparator(forRow: CommentLabel)
+//        stackView.hideSeparator(forRow: CommentLabel)
         
-        let sample:String = "sample"
+        for comment in MatchCellDetailsComments {
+            let firstrow = UIStackView()
+            firstrow.axis = .horizontal
+            firstrow.distribution = .fill
+            
+            let commentsWriter = UILabel()
+            commentsWriter.font = .body_14R
+            commentsWriter.text = "익명" + String(comment!.commentId)
+            commentsWriter.textColor = UIColor.WM.gray700
+            
+            let bt = UIButton()
+            bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
+            
+            firstrow.addArrangedSubview(commentsWriter)
+            firstrow.addArrangedSubview(bt)
+            
+            stackView.axis = .vertical
+            stackView.addRow(firstrow)
+            stackView.hideSeparator(forRow: firstrow)
+            stackView.setInset(forRow: firstrow, inset: UIEdgeInsets(top: 12, left: 12, bottom: 4, right: 12))
+            
+            let secondrow = UIStackView()
+            secondrow.axis = .horizontal
+            secondrow.distribution = .fill
+            
+            let lb = UILabel()
+            lb.text = comment?.commentContext
+            lb.font = .body_14R
+            lb.textColor = UIColor.WM.gray700
+            lb.numberOfLines = 0
+//
+            secondrow.addArrangedSubview(lb)
+//            secondrow.axis = .horizontal
+//            secondrow.distribution = .fill
+            
+            stackView.addRow(secondrow)
+            stackView.hideSeparator(forRow: secondrow)
+            stackView.setInset(forRow: secondrow, inset: UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12))
+            
+            let thirdrow = UIStackView()
+            secondrow.axis = .horizontal
+            secondrow.distribution = .fill
+            
+            let container = UIStackView()
+            secondrow.axis = .horizontal
+            secondrow.alignment = .leading
+            
+//            let commentreply = UIButton()
+//            bt.setImage(UIImage(imageLiteralResourceName: "개별"), for: .normal)
+//
+//            let commentlike = UIButton()
+//            bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
+//
+//            let commentreplycount = UILabel()
+//            commentreplycount.text = String(comment!.commentReplyDtoList.count)
+//            commentreplycount.font = .body_14R
+//            commentreplycount.textColor = UIColor.WM.gray700
+//
+//            let commentlikecount = UILabel()
+//            commentlikecount.text = String(comment!.likeNumber)
+//            commentlikecount.font = .body_14R
+//            commentlikecount.textColor = UIColor.WM.gray700
+//
+//            container.addArrangedSubview(commentreply)
+//            container.addArrangedSubview(commentlike)
+//            container.addArrangedSubview(commentreplycount)
+//            container.addArrangedSubview(commentlikecount)
+            
+            let datetext = UILabel()
+            datetext.text = comment?.createdDate
+            datetext.font = .body_11L
+            datetext.textColor = UIColor.WM.gray500
+            datetext.numberOfLines = 1
+            
+            thirdrow.addArrangedSubview(container)
+            thirdrow.addArrangedSubview(datetext)
+            
+            stackView.addRow(thirdrow)
+            stackView.setInset(forRow: firstrow, inset: UIEdgeInsets(top: 9, left: 12, bottom: 8, right: 12))
+        }
         
-        let firstrow = UIStackView()
-               firstrow.axis = .horizontal
-               firstrow.distribution = .fill
-               
-               let commentsWriter = UILabel()
-               commentsWriter.font = .body_14R
-               commentsWriter.text = sample
-               commentsWriter.textColor = UIColor.WM.gray700
-               
-               let bt = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic"), for: .normal)
-               
-               firstrow.addArrangedSubview(commentsWriter)
-               firstrow.addArrangedSubview(bt)
-               
-               stackView.axis = .vertical
-               stackView.hidesSeparatorsByDefault = true
-               stackView.addRow(firstrow)
-               
-               
-               
-               let secondrow = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
-               
-               let lb = UILabel()
-               lb.text = sample
-               lb.font = .body_14R
-               lb.textColor = UIColor.WM.gray700
-               lb.numberOfLines = 0
-               
-               secondrow.addArrangedSubview(lb)
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
-               
-               stackView.addRow(secondrow)
-               
-               let thirdrow = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.distribution = .fill
-               
-               let container = UIStackView()
-               secondrow.axis = .horizontal
-               secondrow.alignment = .leading
-               
-               let commentreply = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
-
-               let commentlike = UIButton()
-               bt.setImage(UIImage(imageLiteralResourceName: "ic 2"), for: .normal)
-               
-               let commentreplycount = UILabel()
-               commentreplycount.text = sample
-               commentreplycount.font = .body_14R
-               commentreplycount.textColor = UIColor.WM.gray700
-               
-               let commentlikecount = UILabel()
-               commentlikecount.text = sample
-               commentlikecount.font = .body_14R
-               commentlikecount.textColor = UIColor.WM.gray700
-               
-               container.addArrangedSubview(commentreply)
-               container.addArrangedSubview(commentlike)
-               container.addArrangedSubview(commentreplycount)
-               container.addArrangedSubview(commentlikecount)
-               
-               let datetext = UILabel()
-               datetext.text = sample
-               datetext.font = .body_11L
-               datetext.textColor = UIColor.WM.gray500
-               datetext.numberOfLines = 1
-               
-               thirdrow.addArrangedSubview(container)
-               thirdrow.addArrangedSubview(datetext)
-               
-               stackView.addRow(thirdrow)
+    }
+    
+    func setUp_Comments_tableview() {
+        self.replytableview.delegate = self
+        self.replytableview.dataSource = self
+        self.replytableview.register(DetailReplyCell.self, forCellReuseIdentifier: "DetailReplyCell")
+        self.replytableview.reloadData()
+        self.replytableview.separatorStyle = .none
+//        self.replytableview.layoutIfNeeded()
+        self.replytableview.rowHeight = 70
+        stackView.addRow(replytableview)
     }
     
     func setUp_FooterView() {
@@ -652,27 +744,6 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         stackView.addRow(FooterStackView)
     }
-    
-//    func test() {
-//        self.MatchCellDetailsTitle = "제목"
-//        self.MatchCellDetailsCategoty = "카테고리"
-//        self.MatchCellDetailsDate = "2000.03.31"
-//        self.MatchCellDetailslikeCount = "2500"
-//        self.MatchCellDetailsContext = "내용"
-//        self.MatchCellDetailsMember = "30000"
-//        self.tagList.append("tag1")
-//        self.tagList.append("tag2")
-//        self.tagList.append("tag3")
-//        self.tagList.append("tag4")
-//        self.tagList.append("tag5")
-//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/c92e32ab-a03f-4b04-a0a1-11baf3498462.jpg")
-//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/48d2a989-4f0e-4b28-8e03-f9240e0df076.jpg")
-//        self.imageList.append("https://wowmate-server-s3.s3.ap-northeast-2.amazonaws.com/8d616432-a2ea-45f5-97c7-8688f9035392.jpg")
-        
-//        var comments: [Comment?] = []
-//        var commentReplyDtoList: [CommentReply?] = []
-        
-//    }
 }
 
 extension MatchCellDetailsVC_AloeStackView: UITextViewDelegate {
@@ -709,4 +780,22 @@ extension MatchCellDetailsVC_AloeStackView: UITextViewDelegate {
                 }
             }
         }
+}
+
+extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   
+        return self.MatchCellDetailsComments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
+        cell.backgroundColor = .white
+        cell.usertext.text = MatchCellDetailsComments[indexPath.row]?.commentContext
+        cell.datetext.text = MatchCellDetailsComments[indexPath.row]?.createdDate
+//        cell.detailreplyreactionVC.heartButtonCount.text = String(MatchCellDetailsComments[indexPath.row]?.likeNumber)
+//        cell.detailreplyreactionVC.likeButtonCount.text = String(MatchCellDetailsComments[indexPath.row].)
+//        cell.userid.text = "익명" + " \(MatchCellDetailsComments[indexPath.row].commentId)"
+        return cell
+    }
 }

@@ -115,6 +115,21 @@ class PostManager {
             }
         }
     }
+    
+    func accusationPostComment(postID: Int, commentID: Int, reason: String, completion: @escaping (Result<String, Error>) -> Void ) {
+        provider.request(.postCommentAccusation(postID: postID, commentID: commentID, reason: reason)) { result in
+            switch result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
 

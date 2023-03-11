@@ -195,8 +195,8 @@ class HomeVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let matchdetails = MatchCellDetailsVC()
-        matchdetails.id = posts[indexPath.row].postId
+        let matchdetails = MatchCellDetailsVC_AloeStackView()
+        matchdetails.PostID = posts[indexPath.row].postId
         self.navigationController?.pushViewController(matchdetails, animated: true)
     }
     
