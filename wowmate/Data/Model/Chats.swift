@@ -81,6 +81,6 @@ struct ChatRoomExistDataModel: Codable {
 
 // MARK: - Data5
 struct Data5: Codable {
-    let roomUUID: String
+    let roomUuid: String
     let isBlocked: Bool
 }
