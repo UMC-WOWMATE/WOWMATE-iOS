@@ -141,6 +141,14 @@ class SearchResultVC: UIViewController {
         present(resultVC, animated: true)
     }
     
+    private func substractDateText(_ originText: String) -> String {
+        // 0000-00-00
+        let timeStartIndex = originText.index(originText.startIndex, offsetBy: 0)
+        let timeEndIndex = originText.index(originText.startIndex, offsetBy: 10)
+        let returnTime = String(originText[timeStartIndex...timeEndIndex])
+        return returnTime
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -166,7 +174,7 @@ extension SearchResultVC: UITableViewDataSource {
         cell.ID = postInfo.postId
         cell.MainCellName.text = postInfo.postTitle
         cell.MainCellCategory.text = postInfo.categoryName
-        cell.MainCellDate.text = postInfo.createdDate   // TODO: "0000-00-00 형태로 문자열 자르기"
+        cell.MainCellDate.text = substractDateText(postInfo.createdDate)
         cell.MainCellLikeCount.text = String(postInfo.postLikeNumber)
         cell.MainCellTag.text = postInfo.tag1
         
