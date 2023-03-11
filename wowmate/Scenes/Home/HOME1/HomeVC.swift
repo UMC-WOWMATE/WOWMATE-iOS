@@ -222,6 +222,20 @@ class HomeVC: UITableViewController {
         return posts.count
         
         }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                guard velocity.y != 0 else { return }
+                if velocity.y < 0 {
+                    let height = self?.tabBarController?.tabBar.frame.height ?? 0.0
+                    self?.tabBarController?.tabBar.alpha = 1.0
+                    self?.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - height)
+                } else {
+                self?.tabBarController?.tabBar.alpha = 0.0
+                    self?.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
+                }
+            }
+        }
 }
     
 

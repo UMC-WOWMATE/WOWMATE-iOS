@@ -36,7 +36,7 @@ class MatchVC: AloeStackViewController {
         setUpGetContext()
         setUpGetImage()
     }
-
+    
     func setUpNavigationbarView() {
         navigationController?.navigationBar.backgroundColor = .white
         
@@ -45,12 +45,12 @@ class MatchVC: AloeStackViewController {
         
         let saveButton = UIBarButtonItem(image: UIImage(named: "btn_save"), style: .plain, target: self, action: #selector(saveButtonDidTab(_:)))
         
-//        let temsaveButton = UIBarButtonItem(image: UIImage(named: "btn_temsave"), style: .plain, target: self, action: #selector(temsaveButtonDidTab(_:)))
-//        
-//        temsaveButton.tintColor = .black
+        //        let temsaveButton = UIBarButtonItem(image: UIImage(named: "btn_temsave"), style: .plain, target: self, action: #selector(temsaveButtonDidTab(_:)))
+        //
+        //        temsaveButton.tintColor = .black
         
         navigationItem.leftBarButtonItem = closeButton
-//        navigationItem.rightBarButtonItems = [saveButton, temsaveButton]
+        //        navigationItem.rightBarButtonItems = [saveButton, temsaveButton]
         navigationItem.rightBarButtonItem = saveButton
     }
     
@@ -118,7 +118,7 @@ class MatchVC: AloeStackViewController {
         memberrow.addArrangedSubview(memberTextField)
         memberrow.addArrangedSubview(label2)
         memberrow.addArrangedSubview(label3)
-
+        
         stackView.addRow(memberrow)
     }
     
@@ -160,10 +160,10 @@ class MatchVC: AloeStackViewController {
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.isUserInteractionEnabled = true
                 tagStackView.addRow(label)
-        
+                
                 //삭제
                 tagStackView.setTapHandler(forRow: label) { [weak self] _ in
-
+                    
                     let index = self?.Tags.firstIndex(of: tag)
                     let alert = UIAlertController(
                         title: "\(index!+1)번 태그를 삭제하시겠습니까?",
@@ -174,9 +174,9 @@ class MatchVC: AloeStackViewController {
                         self?.Tags.remove(at: index!)
                         self?.tagStackView.removeRow(label)
                     }))
-
+                    
                     self?.present(alert, animated: true)
-
+                    
                 }
             }
         }
@@ -262,4 +262,3 @@ class MatchVC: AloeStackViewController {
         }
     }
 }
-
