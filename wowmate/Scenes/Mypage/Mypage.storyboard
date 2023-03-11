@@ -34,6 +34,40 @@
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="mJt-Ux-Iod">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rTq-nZ-vsj" customClass="WebViewController" customModule="wowmate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S9A-5C-E8V">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPm-Z3-p4r">
+                                <rect key="frame" x="0.0" y="59" width="393" height="753"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qxv-6o-KOq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FPm-Z3-p4r" firstAttribute="leading" secondItem="qxv-6o-KOq" secondAttribute="leading" id="9uI-Pq-mLt"/>
+                            <constraint firstItem="FPm-Z3-p4r" firstAttribute="top" secondItem="qxv-6o-KOq" secondAttribute="top" id="R1i-su-3OZ"/>
+                            <constraint firstItem="FPm-Z3-p4r" firstAttribute="trailing" secondItem="qxv-6o-KOq" secondAttribute="trailing" id="R9W-k6-UGO"/>
+                            <constraint firstAttribute="bottom" secondItem="FPm-Z3-p4r" secondAttribute="bottom" constant="40" id="jQJ-n5-dSS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="FPm-Z3-p4r" id="chz-DH-joD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EH2-Tl-FP1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1725.9541984732823" y="2.8169014084507045"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CMp-CM-kNH">
             <objects>

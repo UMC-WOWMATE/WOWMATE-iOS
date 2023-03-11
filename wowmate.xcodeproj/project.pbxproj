@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0938466229BC749300F02639 /* StompManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938466129BC749300F02639 /* StompManager.swift */; };
+		0977AB3529BC946A006ADEC8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977AB3429BC946A006ADEC8 /* WebViewController.swift */; };
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
 		2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38529B353F600372D73 /* ChatNotificationVC.swift */; };
 		2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38729B3540800372D73 /* ChatNotificationCell.swift */; };
@@ -102,6 +103,7 @@
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0938466129BC749300F02639 /* StompManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StompManager.swift; sourceTree = "<group>"; };
+		0977AB3429BC946A006ADEC8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
 		2C01F38529B353F600372D73 /* ChatNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationVC.swift; sourceTree = "<group>"; };
 		2C01F38729B3540800372D73 /* ChatNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationCell.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				A2D28F6829852BA400A7D4EC /* MyWritingViewController.swift */,
 				A2D28F6B29852BA400A7D4EC /* SectionHeader.swift */,
 				A2E2A9132969CD6B0055B5D2 /* MypageVC.swift */,
+				0977AB3429BC946A006ADEC8 /* WebViewController.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				A2E2A8E02969C7310055B5D2 /* AppDelegate.swift in Sources */,
 				A2D28F7B29852BB100A7D4EC /* BubbleCell.swift in Sources */,
 				A2F9052C29895B7000AC588C /* AuthAPI.swift in Sources */,
+				0977AB3529BC946A006ADEC8 /* WebViewController.swift in Sources */,
 				A2F9052E29895B8900AC588C /* Endpoint.swift in Sources */,
 				A2D28F6E29852BA400A7D4EC /* myPageCell.swift in Sources */,
 				BE115C3B29B5F46E00075EB6 /* commentCell.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 private let cellID = "myPageCell"
 
@@ -37,7 +38,8 @@ class MypageVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        tabBarController?.tabBar.isHidden = false
+
         hideNavigationBar()
     }
     
@@ -222,6 +224,10 @@ extension MypageVC: UITableViewDelegate {
             case 0:
                 print("\(thirdSectionArray[indexPath.row])")
             case 1:
+                let webView = UIStoryboard.init(name: "Mypage", bundle: nil)
+                guard let vc =  webView.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController else {return}
+                vc.destinationURL = "https://lyoodong.notion.site/7e1158b7c165471d8a44b07971c4c7f9"
+                navigationController?.pushViewController(vc, animated: true)
                 print("\(thirdSectionArray[indexPath.row])")
             case 2:
                 print("\(thirdSectionArray[indexPath.row])")
@@ -258,3 +264,5 @@ extension MypageVC: UITableViewDelegate {
     }
     
 }
+
+
