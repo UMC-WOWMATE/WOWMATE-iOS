@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchResultVC: UIViewController {
     // MARK: - Properties
@@ -102,8 +103,10 @@ class SearchResultVC: UIViewController {
             ].forEach { $0.isHidden = true }
         }
         
-        let resultCell = UINib(nibName: "MatchInfoPreviewTableViewCell", bundle: nil)
-        matchResultTableView.register(resultCell, forCellReuseIdentifier: "MatchInfoPreviewTableViewCell")
+//        let resultCell = UINib(nibName: "MatchInfoPreviewTableViewCell", bundle: nil)
+//        matchResultTableView.register(resultCell, forCellReuseIdentifier: "MatchInfoPreviewTableViewCell")
+//        let resultCell = UINib(nibName: "MainCell", bundle: nil)
+        matchResultTableView.register(MainCell.self, forCellReuseIdentifier: "MainCell")
     }
     
     private func setUpLayout() {
@@ -149,23 +152,37 @@ extension SearchResultVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MatchInfoPreviewTableViewCell", for: indexPath) as? MatchInfoPreviewTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as? MainCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         let postInfo = resultMatchList[indexPath.row]
-        cell.configure(postInfo: postInfo)
+//        cell.configure(postInfo: postInfo)
+        
+        schoolImgUrl.keys.forEach {
+            if $0 == (postInfo.schoolName+"학교") {
+                cell.MainCellImage.kf.setImage(with: URL(string: schoolImgUrl[$0]!))
+            }
+        }
 
-        cell.setUpLayout()
+        cell.MainCellName.text = postInfo.postTitle
+        cell.MainCellCategory.text = postInfo.categoryName
+        cell.MainCellDate.text = postInfo.createdDate   // TODO: "0000-00-00 형태로 문자열 자르기"
+        cell.MainCellLikeCount.text = String(postInfo.postLikeNumber)
+        cell.MainCellTag.text = postInfo.tag1
         
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 135  // default height value
+        return 140  // default height value
     }
 }
 
 extension SearchResultVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("매칭 결과 \(indexPath.row) 가 선택됨")
-        navigationController?.pushViewController(MatchCellDetailsVC(), animated: true)
+        let cellDetailVC = MatchCellDetailsVC_AloeStackView()
+        
+        // TODO: postID를 통해 매치의 세부 내용 설정
+        
+        navigationController?.pushViewController(cellDetailVC, animated: true)
     }
 }
 

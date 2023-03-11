@@ -29,9 +29,8 @@ class AuthManager {
                             print(UserDefaults.standard.value(forKey: "token")!)
                         }
                     }
-                    if let response = json["message"] as? String {
-                        completion(.success(json))
-                    }
+                    completion(.success(json))
+                    
                 }
             case .failure(let error):
                 completion(.failure(error))

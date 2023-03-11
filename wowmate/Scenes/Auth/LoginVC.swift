@@ -49,15 +49,13 @@ class LoginVC: UIViewController {
             AuthManager.shared.signinRequest(user: login) { [weak self] result in
                 switch result {
                 case .success(let success):
-                    print(success)
-                    self?.view.makeToast(success["message"] as! String)
                     if success["code"] as? Int == 200 {
                         self?.navigationController?.pushViewController(MainTabVC(), animated: true)
+                    } else {
+                        self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)
                     }
-//                    self?.view.makeToast(success)
-//                    self?.navigationController?.pushViewController(MainTabVC(), animated: true)
-                case .failure(let error):
-                    self?.view.makeToast("네트워크 오류")
+                case .failure(_):
+                    self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)
                     return
                 }
             }
@@ -67,12 +65,8 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func didTapFindPasswordButton(_ sender: UIButton) {
-        // FindPasswordVC로 넘어가기
         guard let findPasswordVC = storyboard?.instantiateViewController(withIdentifier: "FindPasswordVC") as? FindPasswordVC else { return }
-        findPasswordVC.modalPresentationStyle = .fullScreen
-        
-        present(findPasswordVC, animated: true)
-        
+        self.navigationController?.pushViewController(findPasswordVC, animated: true)
     }
     
     @IBAction func didTapJoinButton(_ sender: UIButton) {

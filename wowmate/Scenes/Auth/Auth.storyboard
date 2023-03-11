@@ -229,15 +229,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 문자와 숫자를 포함한 8~20자리의 비밀번호를 설정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-4H-G1g">
+                                        <rect key="frame" x="0.0" y="71.666666666666686" width="271.33333333333331" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="t8W-e1-Xf8" firstAttribute="leading" secondItem="FOR-cY-Zgt" secondAttribute="leading" id="4rp-ll-bMK"/>
                                     <constraint firstAttribute="trailing" secondItem="t8W-e1-Xf8" secondAttribute="trailing" id="8nU-Sf-Azn"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFy-XY-Tdc">
                                 <rect key="frame" x="20" y="718" width="353" height="50"/>
-                                <color key="backgroundColor" name="Main00"/>
+                                <color key="backgroundColor" name="Main01"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="56Q-ja-rLd"/>
                                 </constraints>
@@ -320,6 +326,12 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ng-6O-CZV">
+                                        <rect key="frame" x="0.0" y="71.666666666666629" width="343" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-93-5EJ">
@@ -328,12 +340,6 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="비밀번호 찾기" id="2Mb-iE-ykX">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="JSE-Vq-2Uj">
-                                            <color key="tintColor" name="Main00"/>
-                                            <connections>
-                                                <action selector="didTapBackButton:" destination="eXL-Y5-peH" id="YpC-nn-BjO"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="1Bl-CC-jii">
                                             <color key="tintColor" name="Main00"/>
                                             <connections>
@@ -369,11 +375,13 @@
                     </view>
                     <connections>
                         <outlet property="certificationCodeTextField" destination="CTf-xx-NlP" id="B0X-jm-9Uw"/>
+                        <outlet property="certificationCountingLabel" destination="9Ng-6O-CZV" id="ycy-7m-ppT"/>
                         <outlet property="changePasswordButton" destination="LFy-XY-Tdc" id="78h-Ij-oHy"/>
                         <outlet property="confirmCodeButton" destination="T8Y-RN-DwQ" id="RE5-GH-WYz"/>
                         <outlet property="confirmNewPasswordTextField" destination="lT5-qZ-HlA" id="LsX-gO-v1u"/>
                         <outlet property="navigationBar" destination="pfN-93-5EJ" id="WrU-wi-7Ts"/>
                         <outlet property="newPasswordTextField" destination="t8W-e1-Xf8" id="bkv-vH-Nh0"/>
+                        <outlet property="passwordTestLabel" destination="fwc-4H-G1g" id="7Lc-ka-pBB"/>
                         <outlet property="passwordValidationLabel" destination="iAh-PQ-7v7" id="lns-UJ-QMT"/>
                         <outlet property="schoolEmailTextField" destination="bvy-1u-a4T" id="iAv-ej-MCa"/>
                         <outlet property="sendCertificationCodeButton" destination="whX-7x-PaY" id="HgT-H5-WdS"/>
@@ -654,6 +662,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 문자와 숫자를 포함한 8~20자리의 비밀번호를 설정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABG-ZS-XtV">
+                                        <rect key="frame" x="0.0" y="402.33333333333331" width="271.33333333333331" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 확인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHO-gi-Bv5">
                                         <rect key="frame" x="0.0" y="410.33333333333331" width="97.666666666666671" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
@@ -723,6 +737,7 @@
                         <outlet property="finalInputPassWordTextField" destination="C8O-UZ-PhC" id="ex2-MZ-Y40"/>
                         <outlet property="firstInputPassWordTextField" destination="aI3-2L-adI" id="t4U-Yw-E6l"/>
                         <outlet property="inputEmailHeadTextField" destination="Qpc-c0-fVa" id="xn2-W7-jSG"/>
+                        <outlet property="passwordTestLabel" destination="ABG-ZS-XtV" id="xvl-NT-5sg"/>
                         <outlet property="passwordValidationLabel" destination="bTb-MJ-XNk" id="XQg-cw-iHX"/>
                         <outlet property="schoolEmailTextField" destination="Sf7-d0-QRj" id="oaG-eJ-6Y7"/>
                         <outlet property="selectSchoolButton" destination="OtS-sz-1XH" id="X93-ot-hVD"/>
@@ -1111,7 +1126,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-br-SC2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-br-SC2">
                                         <rect key="frame" x="0.0" y="33" width="333" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6g8-Gc-n8Y"/>
@@ -1127,7 +1142,7 @@
                                             <color key="titleColor" systemColor="systemGrayColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="didSelectedSexButton:" destination="eif-4Y-d9S" eventType="touchUpInside" id="USD-0Q-PYb"/>
+                                            <action selector="didSelectedGenderButton:" destination="eif-4Y-d9S" eventType="touchUpInside" id="xZi-Dd-w2J"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1180,7 +1195,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="didEndEditingBirthTExtField:" destination="eif-4Y-d9S" eventType="editingDidEnd" id="Gbh-D0-4ko"/>
+                                            <action selector="didEndEditingBirthTExtField:" destination="eif-4Y-d9S" eventType="editingDidEnd" id="ZGT-8i-wNd"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -1210,19 +1225,18 @@
                     <connections>
                         <outlet property="birthTextField" destination="pKG-gL-7kt" id="mU3-EJ-PQu"/>
                         <outlet property="completeAllButton" destination="nhq-PE-g24" id="ORb-Az-q79"/>
+                        <outlet property="genderSelectButton" destination="GMK-br-SC2" id="UAq-A8-q1H"/>
                         <outlet property="phoneNumTextField" destination="0qn-re-kFH" id="Oje-x4-Iit"/>
-                        <outlet property="sexSelectButton" destination="GMK-br-SC2" id="1ub-Rl-Mr6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvw-lF-Ftx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="-386"/>
+            <point key="canvasLocation" x="1930.534351145038" y="-386.61971830985919"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="main_icon" width="175" height="175"/>
         <image name="main_label_icon" width="115" height="23"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
