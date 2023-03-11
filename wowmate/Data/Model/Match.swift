@@ -17,6 +17,7 @@ struct MatchList: Codable {
 
 // MARK: - Post
 struct Match: Codable {
+    let postId: Int
     let postTitle, categoryName, tag1, tag2: String
 //    let tag3, tag4, tag5: String
     let postLikeNumber: Int

@@ -163,6 +163,7 @@ extension SearchResultVC: UITableViewDataSource {
             }
         }
 
+        cell.ID = postInfo.postId
         cell.MainCellName.text = postInfo.postTitle
         cell.MainCellCategory.text = postInfo.categoryName
         cell.MainCellDate.text = postInfo.createdDate   // TODO: "0000-00-00 형태로 문자열 자르기"
@@ -179,9 +180,8 @@ extension SearchResultVC: UITableViewDataSource {
 extension SearchResultVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellDetailVC = MatchCellDetailsVC_AloeStackView()
-        
-        // TODO: postID를 통해 매치의 세부 내용 설정
-        
+        let postInfo = resultMatchList[indexPath.row]
+        cellDetailVC.PostID = postInfo.postId
         navigationController?.pushViewController(cellDetailVC, animated: true)
     }
 }
