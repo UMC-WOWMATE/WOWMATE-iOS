@@ -15,6 +15,7 @@ import SnapKit
 class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     // MARK: - Properties
     var PostID: Int = -1
+    var Img: String = ""
     var MatchCellDetailsTitle = String()
     var MatchCellDetailsCategoty = String()
     var MatchCellDetailsDate = String()
@@ -343,26 +344,33 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "채팅", style: .default, handler: { action in
-                    //채팅걸기 통신
-//                    let commentByUser = CommentRegister(commentContext: self.MatchCellDetailsReplytext.text!)
-//
-//                    PostManager.shared.registerComment(ID: self.PostID, comment: commentByUser) { result in
-//                        print(result)
-//                        switch result {
-//                        case .success(let success):
-//                            print(success)
-//                            let alert_done = UIAlertController(
-//                                title: "등록 완료",
-//                                message: nil,
-//                                preferredStyle: .alert)
-//                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-//
-//                            self.present(alert_done, animated: true)
-//
-//                        case .failure(let failure):
-//                            print(failure)
-//                        }
-//                    }
+//                    채팅걸기 통신
+                    ChatManager.shared.isExist(String(self.PostID)) { result in
+                        print(result)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            if success.data1.isBlocked {
+                                let alert = UIAlertController(
+                                    title: "채팅을 걸 수 없습니다.",
+                                    message: nil,
+                                    preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                                self.present(alert, animated: true)
+                                return
+                            }
+                            
+                            let newChatRoom = ChatViewController()
+                            newChatRoom.selectRoomUuid = success.data1.roomUuid
+//                            newChatRoom.chatRoomData.data1.createdDate =
+                            newChatRoom.chatRoomData.data1.postTitle = self.MatchCellDetailsTitle
+                            newChatRoom.chatRoomData.data1.opponentImg = self.Img
+                            self.navigationController?.pushViewController(newChatRoom, animated: true)
+
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
                 }))
                 
                 self.present(alert, animated: true)

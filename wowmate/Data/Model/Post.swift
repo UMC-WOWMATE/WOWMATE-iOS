@@ -34,7 +34,8 @@ struct PostData1: Codable {
     let tag1, tag2, tag3, tag4, tag5: String?
     let postLikeNumber: Int
     let postMember: String
-    let schoolName, createdDate: String
+    let image_url: String?
+    let createdDate: String
 }
 
 struct PostData2: Codable {

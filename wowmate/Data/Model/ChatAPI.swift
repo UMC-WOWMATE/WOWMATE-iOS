@@ -32,7 +32,7 @@ extension ChatAPI: TargetType {
         case .chatRoom(let roomUuid):
             return "/chats/\(roomUuid)"
         case .chatRoomIsExist(let postId):
-            return "/chats/\(postId)"
+            return "/chat/\(postId)"
         }
     }
     
