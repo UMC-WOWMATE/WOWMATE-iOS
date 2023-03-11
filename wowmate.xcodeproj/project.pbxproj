@@ -64,7 +64,6 @@
 		A2D28F81298650E400A7D4EC /* setColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D28F80298650E400A7D4EC /* setColor.swift */; };
 		A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D660CD297598B4006BE26D /* UIColor+Ext.swift */; };
 		A2DA93DE299BE2BA00FD176F /* SchoolImageUrlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */; };
-		A2DA93E0299C020800FD176F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93DF299C020800FD176F /* SocketIOManager.swift */; };
 		A2DA93E2299C064E00FD176F /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E1299C064E00FD176F /* ChatManager.swift */; };
 		A2DA93E4299C065F00FD176F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E3299C065F00FD176F /* UserManager.swift */; };
 		A2DA93E6299C067100FD176F /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA93E5299C067100FD176F /* UserAPI.swift */; };
@@ -156,7 +155,6 @@
 		A2D28F80298650E400A7D4EC /* setColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setColor.swift; sourceTree = "<group>"; };
 		A2D660CD297598B4006BE26D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		A2DA93DD299BE2BA00FD176F /* SchoolImageUrlData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolImageUrlData.swift; sourceTree = "<group>"; };
-		A2DA93DF299C020800FD176F /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		A2DA93E1299C064E00FD176F /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		A2DA93E3299C065F00FD176F /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A2DA93E5299C067100FD176F /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 				A2F9052F29895D9400AC588C /* PostAPI.swift */,
 				A2F9053129895E8E00AC588C /* ChatAPI.swift */,
 				A2DA93E5299C067100FD176F /* UserAPI.swift */,
-				A2DA93DF299C020800FD176F /* SocketIOManager.swift */,
 				A2DA93E3299C065F00FD176F /* UserManager.swift */,
 				A2DA93E1299C064E00FD176F /* ChatManager.swift */,
 				A2F905332989616700AC588C /* PostManager.swift */,
@@ -646,7 +643,6 @@
 				A2D660CE297598B4006BE26D /* UIColor+Ext.swift in Sources */,
 				2C5BC95F29B1E26E0089B0B3 /* PostNotificationVC.swift in Sources */,
 				A2D28F7929852BB100A7D4EC /* ChatFooter.swift in Sources */,
-				A2DA93E0299C020800FD176F /* SocketIOManager.swift in Sources */,
 				A2D28F5C29852B2D00A7D4EC /* DetailReplyCell.swift in Sources */,
 				2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */,
 				A2D28F5929852B2D00A7D4EC /* DetailReplyReactionVC.swift in Sources */,
