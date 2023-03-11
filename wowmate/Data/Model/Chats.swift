@@ -79,20 +79,8 @@ struct ChatRoomExistDataModel: Codable {
     let data1: Data5
 }
 
+// MARK: - Data5
 struct Data5: Codable {
-    let roomUUID: String
-}
-
-// MARK: - ChatRoomVerificationDataModel
-struct ChatRoomVerificationDataModel: Codable {
-    let isSuccess: Bool
-    let code: Int
-    let message: String
-    let data1: Data6
-}
-
-// MARK: - Data1
-struct Data6: Codable {
     let roomUUID: String
     let isBlocked: Bool
 }

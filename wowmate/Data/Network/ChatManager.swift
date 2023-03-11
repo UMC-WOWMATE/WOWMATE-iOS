@@ -34,24 +34,6 @@ class ChatManager {
         }
     }
     
-    // 채팅방 차단 여부
-    func isBlock(_ postId:String, completion: @escaping (Result<ChatRoomVerificationDataModel, Error>) -> Void ) {
-        provider.request(.chatRoomIsExist(postId)) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(ChatRoomVerificationDataModel.self, from: data.data)
-                    completion(.success(result))
-                } catch {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
     // 채팅방 생성
     func createChatRoom(chatRoomData: CreateRoomDataModel, completion: @escaping (Result<String, Error>) -> Void ) {
         provider.request(.createRoom(param: chatRoomData)) { result in

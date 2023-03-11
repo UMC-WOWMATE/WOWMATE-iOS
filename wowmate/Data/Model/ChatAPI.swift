@@ -12,7 +12,6 @@ enum ChatAPI {
     case chatList
     case chatRoom(String)
     case createRoom(param: CreateRoomDataModel)
-    case chatRoomVerification(String)
     case chatRoomIsExist(String)
 }
 
@@ -32,8 +31,6 @@ extension ChatAPI: TargetType {
             return "/chats"
         case .chatRoom(let roomUuid):
             return "/chats/\(roomUuid)"
-        case .chatRoomVerification(let postId):
-            return "/chat/\(postId)"
         case .chatRoomIsExist(let postId):
             return "/chats/\(postId)"
         }
@@ -48,8 +45,6 @@ extension ChatAPI: TargetType {
             return .get
         case .chatRoom(_):
             return .get
-        case .chatRoomVerification(_):
-            return .get
         case .chatRoomIsExist(_):
             return .get
         }
@@ -63,8 +58,6 @@ extension ChatAPI: TargetType {
         case .chatList:
             return .requestPlain
         case .chatRoom(_):
-            return .requestPlain
-        case .chatRoomVerification(_):
             return .requestPlain
         case .chatRoomIsExist(_):
             return .requestPlain
