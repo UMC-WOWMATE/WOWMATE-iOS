@@ -25,6 +25,7 @@ enum PostAPI {
     case postRegisterImage(post: PostRegister, images: [UIImage])
     case postAccusation(postID: Int, reason: String)
     case postCommentAccusation(postID: Int, commentID:Int, reason: String)
+    case myPostList
 }
 
 extension PostAPI: TargetType {
@@ -63,12 +64,14 @@ extension PostAPI: TargetType {
             return "/postAccusation/\(postID)"
         case .postCommentAccusation(let postID, let commentID, _):
             return "/postAccusation/\(postID)/\(commentID)"
+        case .myPostList:
+            return "/posts/user"
         }
     }
     var method: Moya.Method {
         switch self {
 
-        case .posts, .search:
+        case .posts, .search, .myPostList:
             return .get
   
         case .postList, .post, .postListByCategory:
@@ -81,7 +84,7 @@ extension PostAPI: TargetType {
     }
     var task: Moya.Task {
         switch self {
-        case .postList, .post:
+        case .postList, .post, .myPostList:
             return .requestPlain
             
 //        case .search:
@@ -145,11 +148,10 @@ extension PostAPI: TargetType {
 
         case .postRegisterImage:
             return ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzgyNjI4LCJleHAiOjE2Nzg5NzQ2Mjh9.nnGqTXvUlxXgZuulIIJsmKVK7MIk1VHzFQfBGjItI0Q"]
+                    "Authorization": UserDefaults.standard.value(forKey: "token") as! String]
             default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzgyNjI4LCJleHAiOjE2Nzg5NzQ2Mjh9.nnGqTXvUlxXgZuulIIJsmKVK7MIk1VHzFQfBGjItI0Q"]
-//              return ["Content-Type": "application/json"]
+                                "Authorization": UserDefaults.standard.value(forKey: "token") as! String]
         }
     }
     
