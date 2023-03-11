@@ -23,14 +23,12 @@ enum PostAPI {
     //구조체로 해야 깔끔하게 나올듯. 스트링 하나긴 하지만
     
     case postRegisterImage(post: PostRegister, images: [UIImage])
-    
-
+    case postAccusation(postID: Int, reason: PostDeclare)
 }
 
 extension PostAPI: TargetType {
     var baseURL: URL {
         switch self {
-
 
         case .posts, .search:
             return URL(string: ServiceAPI.baseURL)!
@@ -60,7 +58,8 @@ extension PostAPI: TargetType {
             return "/posts/category"
         case .commentRegister(let postID, _):
             return "/posts/\(postID)/comments"
-
+        case .postAccusation(let postID, _):
+            return "/postAccusation/\(postID)"
         }
     }
     var method: Moya.Method {
@@ -71,7 +70,7 @@ extension PostAPI: TargetType {
   
         case .postList, .post, .postListByCategory:
             return .get
-        case .postRegisterImage, .commentRegister:
+        case .postRegisterImage, .commentRegister, .postAccusation:
             return .post
         default:
             return .get
@@ -121,7 +120,8 @@ extension PostAPI: TargetType {
             
         case .commentRegister(_, let comment):
             return .requestJSONEncodable(comment)
-            
+        case .postAccusation(_, let reason):
+            return .requestJSONEncodable(reason)
         default:
             return .requestPlain
         }

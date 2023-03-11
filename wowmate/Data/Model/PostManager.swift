@@ -46,7 +46,7 @@ class PostManager {
             }
         }
     }
-    
+
     func getPostList(completion: @escaping (Result<PostList, Error>) -> Void ) {
         provider.request(.postList) { result in
             switch result {
@@ -94,6 +94,21 @@ class PostManager {
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func accusationPost(ID: Int, reason: PostDeclare, completion: @escaping (Result<String, Error>) -> Void ) {
+        provider.request(.postAccusation(postID: ID, reason: reason)) { result in
+            switch result {
+            case .success(let data):
+                if let json = try? JSONSerialization.jsonObject(with: data.data, options: []) as? [String : Any] {
+                    if let message = json["message"] as? String {
+                        completion(.success(message))
+                    }
                 }
             case .failure(let error):
                 completion(.failure(error))
