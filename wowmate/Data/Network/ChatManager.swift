@@ -16,6 +16,42 @@ class ChatManager {
     
     // Chat API
     
+    // 채팅방 존재 여부
+    func isExist(_ postId:String, completion: @escaping (Result<ChatRoomExistDataModel, Error>) -> Void ) {
+        provider.request(.chatRoomIsExist(postId)) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(ChatRoomExistDataModel.self, from: data.data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // 채팅방 차단 여부
+    func isBlock(_ postId:String, completion: @escaping (Result<ChatRoomVerificationDataModel, Error>) -> Void ) {
+        provider.request(.chatRoomIsExist(postId)) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(ChatRoomVerificationDataModel.self, from: data.data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     // 채팅방 생성
     func createChatRoom(chatRoomData: CreateRoomDataModel, completion: @escaping (Result<String, Error>) -> Void ) {
         provider.request(.createRoom(param: chatRoomData)) { result in
@@ -69,22 +105,6 @@ class ChatManager {
         }
     }
     
-//    func getChatRoom(_ roomUuid:String, completion: @escaping (Result<TestModel, Error>) -> Void ) {
-//        provider.request(.chatRoom(roomUuid)) { result in
-//            switch result {
-//            case .success(let data):
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let result = try decoder.decode(TestModel.self, from: data.data)
-//                    completion(.success(result))
-//                } catch {
-//                    completion(.failure(error))
-//                }
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
-//    }
     
     
 }
