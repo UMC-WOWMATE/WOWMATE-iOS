@@ -27,6 +27,11 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     var MatchCellDetailsCommentReplyDtoList: [CommentReply?] = []
     let placeholder = "댓글 작성하기"
     var MatchCellDetailsReplytext = UITextView()
+    let accusationOption1:String = "유출/사칭/사기/도배"
+    let accusationOption2:String = "욕설/비하"
+    let accusationOption3:String = "음란물/불건전한 내용"
+    let accusationOption4:String = "상업적 광고 및 판매"
+    
     
     // MARK: - Lifecycle
     
@@ -41,14 +46,133 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }
     
     @objc func moreButtonPressed(_ sender:Any){
-            let alertAction = UIAlertController(title: "게시글관련 옵션을 취해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "게시글관련 옵션을 취해주세요.", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: accusationOption1, style: .default, handler: { action in
+                    //업로드 통신
+                    let accusationByUser = PostDeclare(reasnon: self.accusationOption1)
+            
+                    PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
+                        print(result)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            let alert_done = UIAlertController(
+                                title: "신고 완료",
+                                message: nil,
+                                preferredStyle: .alert)
+                            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            
+                            self.present(alert_done, animated: true)
+            
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+            
+                }))
+                        
+        alert.addAction(UIAlertAction(title: accusationOption2, style: .default, handler: { action in
+            //업로드 통신
+            let accusationByUser = PostDeclare(reasnon: self.accusationOption2)
     
-            alertAction.addAction(UIAlertAction(title: "삭제", style: .default))
-            alertAction.addAction(UIAlertAction(title: "차단", style: .default))
-            alertAction.addAction(UIAlertAction(title: "신고", style: .default))
+            PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
+                print(result)
+                switch result {
+                case .success(let success):
+                    print(success)
+                    let alert_done = UIAlertController(
+                        title: "신고 완료",
+                        message: nil,
+                        preferredStyle: .alert)
+                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
     
-            present(alertAction, animated: true)
+                    self.present(alert_done, animated: true)
+    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+    
+        }))
+        
+        alert.addAction( UIAlertAction(title: accusationOption3, style: .default, handler: { action in
+            //업로드 통신
+            let accusationByUser = PostDeclare(reasnon: self.accusationOption3)
+    
+            PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
+                print(result)
+                switch result {
+                case .success(let success):
+                    print(success)
+                    let alert_done = UIAlertController(
+                        title: "신고 완료",
+                        message: nil,
+                        preferredStyle: .alert)
+                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+    
+                    self.present(alert_done, animated: true)
+    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+    
+        }))
+        
+        alert.addAction(UIAlertAction(title: accusationOption4, style: .default, handler: { action in
+            //업로드 통신
+            let accusationByUser = PostDeclare(reasnon: self.accusationOption4)
+    
+            PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
+                print(result)
+                switch result {
+                case .success(let success):
+                    print(success)
+                    let alert_done = UIAlertController(
+                        title: "신고 완료",
+                        message: nil,
+                        preferredStyle: .alert)
+                    alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+    
+                    self.present(alert_done, animated: true)
+    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+    
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        self.present(alert, animated: true)
+        
+        
         }
+//
+//    { action in
+//        //업로드 통신
+//        let accusationByUser = PostDeclare(reasnon: self.accusationOption1)
+//
+//        PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
+//            print(result)
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//                let alert_done = UIAlertController(
+//                    title: "신고 완료",
+//                    message: nil,
+//                    preferredStyle: .alert)
+//                alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+//
+//                self.present(alert_done, animated: true)
+//
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
+//
+//    }
     
     @objc func likeButtonPressed(_ sender:Any){
             let alertAction = UIAlertController(title: "게시글을 추천하시겠습니까?", message: "", preferredStyle: UIAlertController.Style.alert)
