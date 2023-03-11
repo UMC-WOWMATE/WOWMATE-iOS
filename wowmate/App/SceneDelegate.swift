@@ -50,3 +50,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+// 루트뷰 설정하는 메서드 선언
+extension SceneDelegate {
+    func changeRootVC(_ vc: UIViewController, animated: Bool) {
+        guard let window = self.window else { return }
+        window.makeKeyAndVisible()
+        window.rootViewController = vc // 전환
+        UIView.transition(with: window, duration: 0.26, options: [.transitionCrossDissolve], animations: nil, completion: nil)
+      }
+}
+
