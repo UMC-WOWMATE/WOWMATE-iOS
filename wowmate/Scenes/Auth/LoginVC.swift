@@ -50,9 +50,8 @@ class LoginVC: UIViewController {
                 switch result {
                 case .success(let success):
                     if success["code"] as? Int == 200 {
-                        self?.navigationController?.pushViewController(MainTabVC(), animated: true)
-                    } else {
-                        self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)
+                        let vc = MainTabVC()
+                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: false)
                     }
                 case .failure(_):
                     self?.view.makeToast("로그인 실패", duration: 1.0, position: .center)

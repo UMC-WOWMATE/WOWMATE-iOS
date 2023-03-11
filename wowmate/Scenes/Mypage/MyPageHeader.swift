@@ -1,6 +1,6 @@
 //
 //  MyPageHeader.swift
-//  
+//
 //
 //  Created by 장윤정 on 2023/01/19.
 //
@@ -13,11 +13,10 @@ class MyPageHeader: UIView {
     
 //    ---------[Real Use Data]---------
     lazy var myPageData:MyPageDataModel = MyPageDataModel(isSuccess: true, code: 200, message: "SUCCESS!", data1: userData)
-    lazy var userData:User = User(email: "my@sookmyung.ac.kr", univ: "숙명여대", phoneNumber: "010-0000-0000", birth: "2000-10-14", gender: "F", create_date: "2023-02-13 03:19:01.756350")//, image_url: SookImageUrl)
+    lazy var userData:User = User(email: "my@sookmyung.ac.kr", univ: "숙명여대", phoneNumber: "010-0000-0000", birth: "2000-10-14", gender: "F", create_date: "2023-02-13 03:19:01.756350", image_url: imageUrl)
     
 //    ---------[UI components]---------
     let imageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC_Varq6a2k-TR670RYQkEfHPGgRYXArbGuw&usqp=CAU"
-    let SookImageUrl: String = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzg8B0MB919OvJrv57cUBNlZ7mXUFTxQg0Ww&usqp=CAU"
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -44,7 +43,7 @@ class MyPageHeader: UIView {
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         
-        let url = URL(string: SookImageUrl)
+        let url = URL(string: imageUrl)
         imageView.load(url: url!)
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
@@ -224,8 +223,8 @@ class MyPageHeader: UIView {
             case .success(let data):
                 self.myPageData = data
                 
-//                let url = URL(string: self.myPageData.data1.image_url)
-//                self.profileImage.load(url: url!)
+                let url = URL(string: self.myPageData.data1.image_url)
+                self.profileImage.load(url: url!)
                 
                 self.emailLabel.text = self.myPageData.data1.email
                 self.ageLabel.text = "나이: " + self.getAge(self.myPageData.data1.birth)

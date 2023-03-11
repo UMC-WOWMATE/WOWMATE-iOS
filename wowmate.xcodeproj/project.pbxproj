@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0938466229BC749300F02639 /* StompManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938466129BC749300F02639 /* StompManager.swift */; };
 		0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995A54229899DAB00B33D09 /* paddingLabel.swift */; };
 		2C01F38629B353F600372D73 /* ChatNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38529B353F600372D73 /* ChatNotificationVC.swift */; };
 		2C01F38829B3540800372D73 /* ChatNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01F38729B3540800372D73 /* ChatNotificationCell.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		072132D73CCCA45E2DE19BE7 /* Pods_wowmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0938466129BC749300F02639 /* StompManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StompManager.swift; sourceTree = "<group>"; };
 		0995A54229899DAB00B33D09 /* paddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paddingLabel.swift; sourceTree = "<group>"; };
 		2C01F38529B353F600372D73 /* ChatNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationVC.swift; sourceTree = "<group>"; };
 		2C01F38729B3540800372D73 /* ChatNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNotificationCell.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				A2DA93E3299C065F00FD176F /* UserManager.swift */,
 				A2DA93E1299C064E00FD176F /* ChatManager.swift */,
 				A2F905332989616700AC588C /* PostManager.swift */,
+				0938466129BC749300F02639 /* StompManager.swift */,
 				A2446CCB29992CFA008EBED6 /* AuthManager.swift */,
 				A2446CCD29992FF9008EBED6 /* SearchManager.swift */,
 			);
@@ -693,6 +696,7 @@
 				A2F9053029895D9400AC588C /* PostAPI.swift in Sources */,
 				A2D28F7F29852E7400A7D4EC /* setFont.swift in Sources */,
 				A2D28F6329852B9500A7D4EC /* RecentSearchDelegate.swift in Sources */,
+				0938466229BC749300F02639 /* StompManager.swift in Sources */,
 				A2DA93DE299BE2BA00FD176F /* SchoolImageUrlData.swift in Sources */,
 				A2F90526298827FF00AC588C /* Chats.swift in Sources */,
 				2CA2C17F298FBB040099CE20 /* MatchVC.swift in Sources */,

@@ -11,6 +11,7 @@ import Moya
 
 enum UserAPI {
     case mypage
+    case withdraw
 }
 
 extension UserAPI: TargetType {
@@ -25,13 +26,18 @@ extension UserAPI: TargetType {
         switch self {
         case .mypage:
             return "/mypage"
+        case .withdraw:
+            return "/secession"
         }
+            
     }
     
     // HTTP Method
     var method: Moya.Method {
         switch self {
         case .mypage:
+            return .get
+        case .withdraw:
             return .get
         }
     }
@@ -40,6 +46,8 @@ extension UserAPI: TargetType {
     var task: Moya.Task {
         switch self {
         case .mypage:
+            return .requestPlain
+        case .withdraw:
             return .requestPlain
         }
     }
@@ -50,8 +58,6 @@ extension UserAPI: TargetType {
         default:
             return ["Content-Type": "application/json",
                                 "Authorization": UserDefaults.standard.value(forKey: "token") as! String]
-//            return ["Content-Type": "application/json",
-//                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJneXVuMTcxMkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjc2MzU1OTA3LCJleHAiOjE2Nzg5NDc5MDd9.WSvZgtt5qBkaf2XmRT5DnV9gSJeZvC1EopITqlny6VM"]
         }
     }
     

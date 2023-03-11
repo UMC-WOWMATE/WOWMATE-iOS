@@ -18,11 +18,16 @@ class MypageVC: UIViewController {
     // MARK: - Properties
     // 변수 및 상수, IBOutlet
     
+//    ---------[Real Use Data]---------
+    lazy var withdrawData:WithdrawDataModel = WithdrawDataModel(isSuccess: false, message: "", code: 200)
+    
+//    ---------[UI components]---------
     let myPageTableView = UITableView()
     
     
     // MARK: - Lifecycle
     // 생명주기와 관련된 메서드 (viewDidLoad, viewDidDisappear...)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,6 +79,54 @@ class MypageVC: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
+    
+    // TODO: - 로그인 화면으로 이동
+    func moveToLoginVC() {
+        let auth = UIStoryboard.init(name: "Auth", bundle: nil)
+        guard let authController = auth.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else {return}
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(authController, animated: false)
+        
+    }
+    
+    // TODO: - 탈퇴 서버 통신
+    func doWithdraw() {
+        UserManager.shared.doWithdraw { [self] result in
+            switch result {
+            case .success(let data):
+                self.withdrawData = data
+
+                if data.isSuccess == true {
+                    let doneAlert = UIAlertController(title: "", message: "탈퇴 처리가 완료 되었습니다.\n그 동안 서비스를 이용해 주셔서 감사합니다.", preferredStyle: UIAlertController.Style.alert)
+                    self.present(doneAlert, animated: true, completion: nil)
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                        doneAlert.dismiss(animated: true, completion: nil)
+                        self.moveToLoginVC()
+                    })
+                    
+                } else {
+                    let failAlert = UIAlertController(title: "", message: "탈퇴 처리를 실패했습니다. \n고객센터로 문의해주세요.", preferredStyle: UIAlertController.Style.alert)
+                    self.present(failAlert, animated: true, completion: nil)
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                        failAlert.dismiss(animated: true, completion: nil)
+                    })
+                }
+                
+                print(data)
+                
+            case .failure(let Error):
+                print(Error)
+            }
+            
+        }
+    }
+    
+    // TODO: - 로그아웃
+    func doLogout() {
+        UserDefaults.standard.set("", forKey: "token")
+        
+        moveToLoginVC()
+    }
+    
 
 
 }
@@ -175,23 +228,28 @@ extension MypageVC: UITableViewDelegate {
             case 3:
                 let leaveAlert = UIAlertController(title: "탈퇴하기", message: "정말 탈퇴 하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
                 let leaveCancle = UIAlertAction(title: "취소", style: .default, handler: nil)
-                let leaveOk = UIAlertAction(title: "탈퇴하기", style: .destructive, handler: {
+                let leaveOk = UIAlertAction(title: "탈퇴하기", style: .destructive, handler: { [self]
                     action in
+                    
                     print("탈퇴!")
                 })
                 leaveAlert.addAction(leaveCancle)
                 leaveAlert.addAction(leaveOk)
-                present(leaveAlert,animated: true,completion: nil)
+                present(leaveAlert, animated: true, completion: nil)
             case 4:
                 let logAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
                 let logCancle = UIAlertAction(title: "취소", style: .default, handler: nil)
-                let logOk = UIAlertAction(title: "로그아웃", style: .destructive, handler: {
+                let logOk = UIAlertAction(title: "로그아웃", style: .destructive, handler: { [self]
                     action in
+                    
                     print("로그아웃!")
+                    
+                    self.doLogout()
+                    
                 })
                 logAlert.addAction(logCancle)
                 logAlert.addAction(logOk)
-                present(logAlert,animated: true,completion: nil)
+                present(logAlert, animated: true,completion: nil)
             default:
                 break
             }

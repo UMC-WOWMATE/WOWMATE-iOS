@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 import Moya
-import SocketIO
+import StompClientLib
 
 private let cellID = "BubbleCell"
 
@@ -123,8 +123,8 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 데이터 받아오기 - 소캣 오픈(소캣 오픈 보류)
-        fetchChatRoomData()
+        // 데이터 받아오기 + 소캣 오픈
+        fetchChatRoomData(state: "first")
         
         // UI 설정
         configureUI()
@@ -150,10 +150,11 @@ class ChatViewController: UIViewController {
     
     // method to setting a message send button
     func setMessageSendAction() {
+        var sendObject: MessageSendDataModel = MessageSendDataModel(chatroomUuid: selectRoomUuid, senderEmail: data.userEmail, messageType: "TEXT", content: "WOWMATE")
         let sendAction = UIAction { _ in
             let sendmess = String(self.messageField.text ?? "")
             if sendmess != "" {
-                print(sendmess)
+                sendObject.content = sendmess
             }
             
 //            // 임시 메세지 보내기 기능
@@ -161,8 +162,12 @@ class ChatViewController: UIViewController {
 //            self.chatRoomData.data1.messageList.append(messList)
 //            self.chatTableView.reloadData()
             
+            StompManager.shared.sendMessage(sendObject)
+            
             // 메세지 입력창 비우기
             self.messageField.text = ""
+            
+            self.fetchChatRoomData(state: "recall")
         }
         
         sendButton.addAction(sendAction, for: .touchUpInside)
@@ -360,7 +365,7 @@ class ChatViewController: UIViewController {
     }
     
 //    ---------[methods to get data from server]---------
-    func fetchChatRoomData() {
+    func fetchChatRoomData(state:String) {
         ChatManager.shared.getChatRoom(selectRoomUuid) { result in
             
             switch result {
@@ -374,6 +379,12 @@ class ChatViewController: UIViewController {
                 self.chatTableView.scrollToRow(at: IndexPath(row: self.chatRoomData.data1.messageList.count  - 1, section: 0),at: .bottom, animated: false)
 //                SocketIOManager.shared.establishConnection()
                 
+                if state == "first" {
+                    // TODO: - 서버 연결
+                    StompManager.shared.registerSockect()
+                    StompManager.shared.subscribe(roomId: self.selectRoomUuid)
+                }
+            
                 print(data)
             case .failure(let Error):
                 print(Error)

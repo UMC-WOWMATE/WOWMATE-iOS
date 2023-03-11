@@ -6,10 +6,10 @@ PODS:
   - Pageboy (3.7.0)
   - PryntTrimmerView (4.0.2)
   - SnapKit (5.0.1)
-  - Socket.IO-Client-Swift (15.2.0):
-    - Starscream (~> 3.1)
-  - Starscream (3.1.1)
+  - SocketRocket (0.6.0)
   - SteviaLayout (4.7.3)
+  - StompClientLib (1.4.1):
+    - SocketRocket
   - Tabman (2.13.0):
     - Pageboy (~> 3.7.0)
   - YPImagePicker (5.2.1):
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.0.0)
-  - Socket.IO-Client-Swift (~> 15.2.0)
+  - StompClientLib
   - Tabman (~> 2.9)
   - YPImagePicker
 
@@ -35,9 +35,9 @@ SPEC REPOS:
     - Pageboy
     - PryntTrimmerView
     - SnapKit
-    - Socket.IO-Client-Swift
-    - Starscream
+    - SocketRocket
     - SteviaLayout
+    - StompClientLib
     - Tabman
     - YPImagePicker
 
@@ -49,12 +49,12 @@ SPEC CHECKSUMS:
   Pageboy: fe646118f7168960058bea7a96038386aa7c0da8
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  StompClientLib: ac40390e9660c574675f1c933bec81c8e2811a4f
   Tabman: 66ea44c44488327ec20f3c8dc5554a5d22f5908c
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 01f2ecf88a19a95f1af8b1b264f47502bafa1a7e
+PODFILE CHECKSUM: 7d08945e5780601b2ecebc2e25794c92c8fccf0f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.3

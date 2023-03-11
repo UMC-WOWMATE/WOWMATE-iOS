@@ -14,7 +14,7 @@ class UserManager {
     static let shared = UserManager()
     let provider = MoyaProvider<UserAPI>()
   
-    // 채팅방 리스트 조회
+    // 마이페이지 유저 정보 조회
     func getUserInfo(completion: @escaping (Result<MyPageDataModel, Error>) -> Void ) {
         provider.request(.mypage) { result in
             switch result {
@@ -22,6 +22,24 @@ class UserManager {
                 do {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(MyPageDataModel.self, from: data.data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // 사용자 탈퇴
+    func doWithdraw(completion: @escaping (Result<WithdrawDataModel, Error>) -> Void ) {
+        provider.request(.withdraw) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(WithdrawDataModel.self, from: data.data)
                     completion(.success(result))
                 } catch {
                     completion(.failure(error))

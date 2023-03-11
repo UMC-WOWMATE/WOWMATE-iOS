@@ -64,3 +64,8 @@ struct Data3: Codable {
     let opponentImg: String
     let messageList: [MessageList]
 }
+
+// MARK: - SendMessage
+struct MessageSendDataModel {
+    var chatroomUuid, senderEmail, messageType, content: String
+}

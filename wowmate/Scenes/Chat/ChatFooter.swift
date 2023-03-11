@@ -76,7 +76,7 @@ class ChatFooter: UIView {
     // 화면 배치 함수
     func configureUI() {
 //        addSubview(hStackView)
-//        
+//
 //        hStackView.centerY(inView: self)
 //        hStackView.centerX(inView: self)
         
