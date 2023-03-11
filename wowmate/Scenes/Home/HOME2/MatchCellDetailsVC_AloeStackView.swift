@@ -51,7 +51,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         alert.addAction(UIAlertAction(title: accusationOption1, style: .default, handler: { action in
                     //업로드 통신
-                    let accusationByUser = PostDeclare(reasnon: self.accusationOption1)
+                    let accusationByUser = self.accusationOption1
             
                     PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
                         print(result)
@@ -75,7 +75,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
                         
         alert.addAction(UIAlertAction(title: accusationOption2, style: .default, handler: { action in
             //업로드 통신
-            let accusationByUser = PostDeclare(reasnon: self.accusationOption2)
+            let accusationByUser = self.accusationOption2
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
                 print(result)
@@ -99,7 +99,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         alert.addAction( UIAlertAction(title: accusationOption3, style: .default, handler: { action in
             //업로드 통신
-            let accusationByUser = PostDeclare(reasnon: self.accusationOption3)
+            let accusationByUser = self.accusationOption3
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
                 print(result)
@@ -123,7 +123,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         
         alert.addAction(UIAlertAction(title: accusationOption4, style: .default, handler: { action in
             //업로드 통신
-            let accusationByUser = PostDeclare(reasnon: self.accusationOption4)
+            let accusationByUser = self.accusationOption4
     
             PostManager.shared.accusationPost(ID: self.PostID, reason:accusationByUser) { result in
                 print(result)
@@ -194,20 +194,18 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         }
     
     @objc func replyButtonPressed(_ sender:Any){
-            if self.MatchCellDetailsReplytext.text.isEmpty {
-                let alert_done = UIAlertController(
-                    title: "댓글 내용을 입력해주세요.",
-                    message: nil,
-                    preferredStyle: .alert)
-                alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-
-                self.present(alert_done, animated: true)
-                
-                return
-                
-            }
-                
-                let alert = UIAlertController(
+        if self.MatchCellDetailsReplytext.text == placeholder {
+            let alert_done = UIAlertController(
+                title: "댓글 내용을 입력해주세요.",
+                message: nil,
+                preferredStyle: .alert)
+            alert_done.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+            
+            self.present(alert_done, animated: true)
+            return
+        }
+        
+        let alert = UIAlertController(
                     title: "댓글을 등록하시겠습니까?",
                     message: nil,
                     preferredStyle: .alert)

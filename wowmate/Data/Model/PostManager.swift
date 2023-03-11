@@ -101,7 +101,7 @@ class PostManager {
         }
     }
     
-    func accusationPost(ID: Int, reason: PostDeclare, completion: @escaping (Result<String, Error>) -> Void ) {
+    func accusationPost(ID: Int, reason: String, completion: @escaping (Result<String, Error>) -> Void ) {
         provider.request(.postAccusation(postID: ID, reason: reason)) { result in
             switch result {
             case .success(let data):

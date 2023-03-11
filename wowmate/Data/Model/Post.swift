@@ -77,9 +77,4 @@ struct CommentRegister: Codable {
     let commentContext: String
 }
 
-struct PostDeclare: Codable {
-    let reasnon:String
-}
-
-
 

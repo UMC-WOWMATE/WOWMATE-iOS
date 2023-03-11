@@ -23,7 +23,7 @@ enum PostAPI {
     //구조체로 해야 깔끔하게 나올듯. 스트링 하나긴 하지만
     
     case postRegisterImage(post: PostRegister, images: [UIImage])
-    case postAccusation(postID: Int, reason: PostDeclare)
+    case postAccusation(postID: Int, reason: String)
 }
 
 extension PostAPI: TargetType {
@@ -120,8 +120,12 @@ extension PostAPI: TargetType {
             
         case .commentRegister(_, let comment):
             return .requestJSONEncodable(comment)
+            
         case .postAccusation(_, let reason):
-            return .requestJSONEncodable(reason)
+            let param: [String: String] = [
+                "reason": reason
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
