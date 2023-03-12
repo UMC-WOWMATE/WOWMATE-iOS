@@ -23,6 +23,7 @@ extension MatchVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDeleg
             self.clear()
             print("closed")
 //            self.navigationController?.popViewController(animated: true)
+            self.tabBarController?.selectedIndex = 0
             
         }))
         

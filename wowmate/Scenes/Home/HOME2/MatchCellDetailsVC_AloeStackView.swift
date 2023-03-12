@@ -38,6 +38,11 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     
     // MARK: - Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+         self.navigationItem.hidesBackButton = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getData()
@@ -699,14 +704,23 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
     }
     
     func setUp_Comments_tableview() {
+        let stackview = UIStackView()
+        stackview.backgroundColor = .white
+        //        let tableviewHeight = 80 * MatchCellDetailsComments.count
+        replytableview.translatesAutoresizingMaskIntoConstraints = false
+        replytableview.snp.makeConstraints { make in
+            make.height.equalTo(150)
+        }
+        
+        stackview.addArrangedSubview(replytableview)
         self.replytableview.delegate = self
         self.replytableview.dataSource = self
         self.replytableview.register(DetailReplyCell.self, forCellReuseIdentifier: "DetailReplyCell")
-        self.replytableview.reloadData()
         self.replytableview.separatorStyle = .none
-//        self.replytableview.layoutIfNeeded()
+        //        self.replytableview.layoutIfNeeded()
         self.replytableview.rowHeight = 70
-        stackView.addRow(replytableview)
+        stackView.addRow(stackview)
+        
     }
     
     func setUp_FooterView() {

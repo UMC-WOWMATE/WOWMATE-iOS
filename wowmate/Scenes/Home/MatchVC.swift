@@ -37,6 +37,11 @@ class MatchVC: AloeStackViewController {
         setUpGetImage()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     func setUpNavigationbarView() {
         navigationController?.navigationBar.backgroundColor = .white
         

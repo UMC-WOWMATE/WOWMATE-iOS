@@ -27,6 +27,7 @@ import UIKit
 //
 //}
 
+let offset = CGSize(width: 4, height: 4)
 
 class DefaultCategoryButton: UIButton {
     
@@ -41,7 +42,7 @@ class DefaultCategoryButton: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     @objc func buttonDidTap() {
         print("buttonDidTap")
@@ -65,7 +66,7 @@ class DefaultCategoryButton1: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented.")
@@ -86,7 +87,7 @@ class DefaultCategoryButton2: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented.")
@@ -106,7 +107,7 @@ class DefaultCategoryButton3: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented.")
@@ -126,7 +127,7 @@ class DefaultCategoryButton4: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented.")
@@ -146,7 +147,7 @@ class DefaultCategoryButton5: UIButton {
         setTitleColor(.black, for: .normal)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.shadowOffset = offset
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented.")
