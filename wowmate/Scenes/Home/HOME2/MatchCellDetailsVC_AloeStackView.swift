@@ -821,7 +821,7 @@ extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDele
 //        cell.userid.text = "익명" + " \(MatchCellDetailsComments[indexPath.row].commentId)"
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentReplyCell") as! commentReplyCell
             cell.backgroundColor = .white
             cell.usertext.text = MatchCellDetailsComments[indexPath.row]?.commentContext
             cell.datetext.text = MatchCellDetailsComments[indexPath.row]?.createdDate
@@ -832,4 +832,5 @@ extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDele
     
     
 }
+
 
