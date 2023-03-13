@@ -99,6 +99,7 @@
 		BE115C3B29B5F46E00075EB6 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE115C3A29B5F46E00075EB6 /* commentCell.swift */; };
 		BE1C3F22299BB7CF005CAC23 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1C3F21299BB7CF005CAC23 /* Match.swift */; };
 		BECAABAC29BEE546003809DA /* commentReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECAABAB29BEE546003809DA /* commentReplyCell.swift */; };
+		BECAABAE29BEF14A003809DA /* replycell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECAABAD29BEF14A003809DA /* replycell2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +193,7 @@
 		BE115C3A29B5F46E00075EB6 /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		BE1C3F21299BB7CF005CAC23 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		BECAABAB29BEE546003809DA /* commentReplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentReplyCell.swift; sourceTree = "<group>"; };
+		BECAABAD29BEF14A003809DA /* replycell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replycell2.swift; sourceTree = "<group>"; };
 		C10DDAD523411A33DD80BEB5 /* Pods-wowmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.release.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.release.xcconfig"; sourceTree = "<group>"; };
 		CE48141039B0AB5047204039 /* Pods-wowmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowmate.debug.xcconfig"; path = "Target Support Files/Pods-wowmate/Pods-wowmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -491,6 +493,7 @@
 				BE115C3829B5F44E00075EB6 /* replyCell.swift */,
 				BE115C3A29B5F46E00075EB6 /* commentCell.swift */,
 				BECAABAB29BEE546003809DA /* commentReplyCell.swift */,
+				BECAABAD29BEF14A003809DA /* replycell2.swift */,
 			);
 			path = HOME2;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				A2446CCE29992FF9008EBED6 /* SearchManager.swift in Sources */,
 				BECAABAC29BEE546003809DA /* commentReplyCell.swift in Sources */,
 				A295FE3029BB2C9C0032DB20 /* SchoolEmailDomainData.swift in Sources */,
+				BECAABAE29BEF14A003809DA /* replycell2.swift in Sources */,
 				A24FB96E2980370D003FBD0C /* Post.swift in Sources */,
 				A2DA93E2299C064E00FD176F /* ChatManager.swift in Sources */,
 				0995A54329899DAB00B33D09 /* paddingLabel.swift in Sources */,
