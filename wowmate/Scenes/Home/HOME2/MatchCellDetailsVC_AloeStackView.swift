@@ -716,6 +716,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
         self.replytableview.delegate = self
         self.replytableview.dataSource = self
         self.replytableview.register(DetailReplyCell.self, forCellReuseIdentifier: "DetailReplyCell")
+        self.replytableview.register(commentReplyCell.self, forCellReuseIdentifier: "commentReplyCell")
         self.replytableview.separatorStyle = .none
         //        self.replytableview.layoutIfNeeded()
         self.replytableview.rowHeight = 70
@@ -811,13 +812,24 @@ extension MatchCellDetailsVC_AloeStackView:UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
-        cell.backgroundColor = .white
-        cell.usertext.text = MatchCellDetailsComments[indexPath.row]?.commentContext
-        cell.datetext.text = MatchCellDetailsComments[indexPath.row]?.createdDate
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
+//        cell.backgroundColor = .white
+//        cell.usertext.text = MatchCellDetailsComments[indexPath.row]?.commentContext
+//        cell.datetext.text = MatchCellDetailsComments[indexPath.row]?.createdDate
 //        cell.detailreplyreactionVC.heartButtonCount.text = String(MatchCellDetailsComments[indexPath.row]?.likeNumber)
 //        cell.detailreplyreactionVC.likeButtonCount.text = String(MatchCellDetailsComments[indexPath.row].)
 //        cell.userid.text = "익명" + " \(MatchCellDetailsComments[indexPath.row].commentId)"
-        return cell
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailReplyCell") as! DetailReplyCell
+            cell.backgroundColor = .white
+            cell.usertext.text = MatchCellDetailsComments[indexPath.row]?.commentContext
+            cell.datetext.text = MatchCellDetailsComments[indexPath.row]?.createdDate
+            cell.selectionStyle = .none
+            return cell
+
     }
+    
+    
 }
+
