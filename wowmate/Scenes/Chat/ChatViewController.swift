@@ -39,6 +39,8 @@ class ChatViewController: UIViewController {
     
     var selectRoomUuid:String = ""
     
+    var fetchDataState:String = ""
+    
 //    ---------[for method(isSameDate)]---------
     var preDate:String = ""
     
@@ -123,8 +125,10 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 데이터 받아오기 + 소캣 오픈
-        fetchChatRoomData(state: "first")
+        if fetchDataState != "chatRoomCreate" {
+            // 데이터 받아오기 + 소캣 오픈
+            fetchChatRoomData(state: "first")
+        }
         
         // UI 설정
         configureUI()
