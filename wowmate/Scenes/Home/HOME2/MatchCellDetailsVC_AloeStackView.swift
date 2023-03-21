@@ -370,6 +370,7 @@ class MatchCellDetailsVC_AloeStackView: AloeStackViewController {
 //                            newChatRoom.chatRoomData.data1.createdDate =
                             newChatRoom.chatRoomData.data1.postTitle = self.MatchCellDetailsTitle
                             newChatRoom.chatRoomData.data1.opponentImg = self.Img
+                            newChatRoom.fetchDataState = "chatRoomCreate"
                             self.navigationController?.pushViewController(newChatRoom, animated: true)
 
                         case .failure(let failure):
