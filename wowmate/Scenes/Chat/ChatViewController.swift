@@ -132,6 +132,7 @@ class ChatViewController: UIViewController {
         
         // UI 설정
         configureUI()
+        self.setHeader()
         
         
         // 동작 설정
